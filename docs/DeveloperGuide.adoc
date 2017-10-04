@@ -767,6 +767,114 @@ Use case ends.
 +
 Use case resumes at step 2.
 
+[discrete]
+=== Use case: Delete certain fields
+
+*MSS*
+
+1. User requests list of persons with particular name.
+2. AddressBook shows a list of persons.
+3. User requests to select specific contact.
+4. AddressBook selects contact.
+5. User requests to delete particular field(s).
+6. AddressBook clears the listed field(s).
++
+Use case ends.
+
+*Extensions*
+
+[none]
+*2a. The list is empty.
++
+Use case ends.
+
+* 3a. The given index is invalid.
++
+[none]
+** 3a1. AddressBook shows an error message.
++
+Use case resumes at step 2.
+
+* 5a. The given field is blank.
++
+[none]
+** 5a1. AddressBook shows an error message.
++
+Use case ends.
+
+[discrete]
+=== Use case: Creating contact with same name
+*Preconditions*
+1. AddressBook contains existing contact with the name to be duplicated.
+
+*Guarantees*
+1. User will be warned of the existing contact with the same name.
+
+*MSS*
+
+1. User adds contact with the duplicated name.
+2. AddressBook shows list of existing contacts of same name.
+3. AddressBook asks if user wants to continue, update existing contact, or end use case.
+4. User requests to continue.
+5. AddressBook creates new contact.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+*3a. User requests to update existing contact.
+*3b. User selects from existing contact(s).
+*3c. AddressBook updates selected contact.
++
+Use case ends.
++
+**3b1. The given index is invalid.
++
+***3b11. AddressBook shows an error message.
++
+Use case resumes at step 3b.
+
+[discrete]
+=== Use case: Clear
+
+*Preconditions*
+1. AddressBook is not empty.
+
+*MSS*
+
+1. User requests to clear list.
+2. AddressBook clears list.
++
+Use case ends.
+
+[discrete]
+=== Use case: Exit
+
+*MSS*
+
+1. User requests to exit the program.
+2. AddressBook closes the program.
++
+Use case ends.
+
+[discrete]
+=== Use case: History
+
+*MSS*
+
+1. User requests history of commands issued.
+2. AddressBook shows list of commands in reverse chronological order.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+*2a. The list is empty.
++
+Use case ends.
+
 {More to be added}
 
 [appendix]
