@@ -2,19 +2,18 @@ package seedu.address.logic.commands;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
-
-import java.util.Optional;
+import seedu.address.model.person.Remark;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
 
 public class RemarkCommand extends UndoableCommand {
 
     public static final String COMMAND_WORD = "remark";
-    public String text;
+    public Remark remark;
     public Index index;
 
-    public RemarkCommand(String args, Index index){
-        text=args;
+    public RemarkCommand(Remark args, Index index){
+        remark =args;
         this.index=index;
     }
 
@@ -27,7 +26,7 @@ public class RemarkCommand extends UndoableCommand {
             + "Likes to drink coffee.";
 
     public CommandResult executeUndoableCommand() throws CommandException{
-        text+=" "+index.getOneBased();
-        throw new CommandException(text);
+        String remarkText=remark.toString()+" "+index.getOneBased();
+        throw new CommandException(remarkText);
     }
 }

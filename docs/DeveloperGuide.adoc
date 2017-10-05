@@ -729,9 +729,59 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |user |find a person by name |locate details of persons without having to go through the entire list
 
+|`* * *` |user |find all my contacts that have the same tag |search for groups of people easily
+
+|`* * *` |user |search all my contacts by any keyword, name, email address, or address |search for people by other means than names
+
+|`* * *` |user |find a person with an incomplete name |to find a person even if I cannot spell the person's name perfectly
+
+|`* * *` |user |see all tags for a contact |to organise contacts easily
+
+|`* * *` |user |edit all details for my contacts |to keep details of my contacts up to date without having to recreate the contact
+
+|`* * *` |user |create a new contact with a name that already exists in addressbook |have multiple contacts with the same name
+
 |`* *` |user |hide link:#private-contact-detail[private contact details] by default |minimize chance of someone else seeing them by accident
 
+|`* *` |user |add contacts with missing fields |
+
+|`* *` |user |attribute multiple phone numbers to a contact |have a contact's mobile and home numbers in the same contact
+
+|`* *` |user |delete certain fields for my contacts |
+
+|`* *` |user |know if any of my contact information clashes with another one |organise contacts easily
+
+|`* *` |user |delete all tags for a contact |
+
+|`* *` |user |undo previous commands |revert mistakes made
+
+|`* *` |user |add tags to a contact while editing without removing them all |simplify the editing of tags
+
+|`* *` |user |attribute multiple addresses to a contact |have a contact's work and home addresses in the same contact
+
+|`* *` |user |sort the list of contacts in alphabetical order |organise the list
+
+|`* *` |user |sort the list of contacts in the list based on phone number |
+
+|`* *` |user |email a contact by clicking on their email field |simplify the emailing process
+
 |`*` |user with many persons in the address book |sort persons by name |locate a person easily
+
+|`*` |user |see which contacts have recently been changed or updated |locate changes easily
+
+|`*` |user |attribute multiple email addresses to a contact |
+
+|`*` |user |add nicknames to a contact |to identify contacts easily
+
+|`*` |user |view the last 10 commands I typed |track use of the addressbook
+
+|`*` |user |add a priority number to each contact |
+
+|`*` |user |list contacts in priority order |have faster access to the contacts that are most important
+
+|`*` |forgetful user |be reminded of meetings and important events |
+
+|`*` |forgetful user |link appointments with specific contacts |
 |=======================================================================
 
 {More to be added}
