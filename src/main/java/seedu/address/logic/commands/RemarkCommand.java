@@ -1,12 +1,22 @@
 package seedu.address.logic.commands;
 
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
+
+import java.util.Optional;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
 
 public class RemarkCommand extends UndoableCommand {
 
     public static final String COMMAND_WORD = "remark";
+    public String text;
+    public Index index;
+
+    public RemarkCommand(String args, Index index){
+        text=args;
+        this.index=index;
+    }
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a remark to a person in the address book. "
             + "Parameters: "
@@ -17,6 +27,7 @@ public class RemarkCommand extends UndoableCommand {
             + "Likes to drink coffee.";
 
     public CommandResult executeUndoableCommand() throws CommandException{
-        throw new CommandException("dummy text");
+        text+=" "+index.getOneBased();
+        throw new CommandException(text);
     }
 }
