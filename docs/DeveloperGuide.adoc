@@ -920,7 +920,7 @@ AddressBook informs user that Person Index is invalid.
 
 * 1b. User requests to edit information in an invalid format
 +
-Addressbook informs user that the format is invalid, providing the correct format.
+AddressBook informs user that the format is invalid, providing the correct format.
 
 
 [discrete]
