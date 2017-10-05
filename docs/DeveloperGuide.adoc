@@ -779,8 +779,9 @@ Use case resumes at step 2.
 .  System should be usable by users who are new to entering commands via Command Line Interface (CLI).
 .  Should work even after 100 entries of invalid commands.
 .  Source code should be open source to allow other developers to improve the application.
-.  Should be a free application for all
-.  
+.  Should be a free application for all.
+.  App should be updated once a month for bug fixes or implementing a new feature.
+
 {More to be added}
 
 [appendix]
