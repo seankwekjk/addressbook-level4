@@ -1,8 +1,13 @@
 package seedu.address.logic.commands;
 
+import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.Remark;
+import seedu.address.model.person.exceptions.PersonNotFoundException;
+
+import java.util.List;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
 
@@ -13,7 +18,7 @@ public class RemarkCommand extends UndoableCommand {
     public Index index;
 
     public RemarkCommand(Remark args, Index index){
-        remark =args;
+        remark = args;
         this.index=index;
     }
 
@@ -25,8 +30,26 @@ public class RemarkCommand extends UndoableCommand {
             + "1 " + PREFIX_REMARK
             + "Likes to drink coffee.";
 
+    public static final String REMARK_EDIT_SUCCESS = "Remark added.";
+    public static final String REMARK_CLEAR_SUCCESS = "Remark cleared.";
+
     public CommandResult executeUndoableCommand() throws CommandException{
-        String remarkText=remark.toString()+" "+index.getOneBased();
-        throw new CommandException(remarkText);
+        List<ReadOnlyPerson> lastShownList = model.getFilteredPersonList();
+
+        if (index.getZeroBased() >= lastShownList.size()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        }
+
+        ReadOnlyPerson personToEdit = lastShownList.get(index.getZeroBased());
+
+        personToEdit.setRemark(remark);
+
+        if(remark.toString().contentEquals("[]")){
+            return new CommandResult(REMARK_CLEAR_SUCCESS);
+        }
+
+        return new CommandResult(REMARK_EDIT_SUCCESS);
+        /*String remarkText=remark.toString()+" "+index.getOneBased();
+        throw new CommandException(remarkText);*/
     }
 }
