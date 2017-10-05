@@ -781,6 +781,38 @@ Use case resumes at step 2.
 [appendix]
 == Glossary
 
+[[jdk]]
+
+JDK
+
+....
+Java Development Kit.
+....
+
+[[api]]
+
+API
+
+....
+Application Programming Interface.
+....
+
+[[ui]]
+
+UI
+
+....
+User-interface (focuses on maximising usability and optimal user experience).
+....
+
+[[gui]]
+
+GUI
+
+....
+Graphical User Interface. Allows users to interact with the software using graphical and visual icons instead of text.
+....
+
 [[mainstream-os]]
 Mainstream OS
 
@@ -793,6 +825,58 @@ Private contact detail
 
 ....
 A contact detail that is not meant to be shared with others
+....
+
+[[high-level-design]]
+High-level design
+
+....
+High-level design is the overall system design, including the database design and system architecture.
+....
+
+[[clean-up]]
+
+Clean up
+....
+Releases the references to objects.
+....
+
+[[event]]
+
+Event
+....
+Event is a significant change in state.
+....
+
+[[event-driven-design]]
+
+Event-driven design
+....
+Promotes the production, detection, consumption of and reaction to events.
+....
+
+[[single-responsibility-principle]]
+
+Single Responsibility Principle
+
+....
+Every module/class has responsibility (encapsulated in a single class) over a single part of functionality only.
+....
+
+[[separation-of-concerns]]
+
+Separation of Concerns
+
+....
+Separating a computer program into distinct section such that each section address and single and unique concern.
+....
+
+[[idiosyncrasies]]
+
+Idiosyncrasies
+
+....
+Behaviour that is specific to an individual.
 ....
 
 [appendix]
