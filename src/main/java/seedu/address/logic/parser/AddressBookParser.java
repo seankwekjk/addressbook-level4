@@ -81,7 +81,7 @@ public class AddressBookParser {
             return new HistoryCommand();
 
         case ExitCommand.COMMAND_WORD:
-@@ -79,9 +87,11 @@ public Command parseCommand(String userInput) throws ParseException {
+//@@ -79,9 +87,11 @@ public Command parseCommand(String userInput) throws ParseException {
             return new ExitCommand();
 
         case HelpCommand.COMMAND_WORD:
