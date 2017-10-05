@@ -768,6 +768,19 @@ Use case ends.
 Use case resumes at step 2.
 
 [discrete]
+
+=== Use case: Delete certain fields
+
+*MSS*
+
+1. User requests list of persons with particular name.
+2. AddressBook shows a list of persons.
+3. User requests to select specific contact.
+4. AddressBook selects contact.
+5. User requests to delete particular field(s).
+6. AddressBook clears the listed field(s).
+
+[discrete]
 === Use case: Add person
 
 *MSS*
@@ -781,10 +794,44 @@ Use case ends.
 *Extensions*
 
 [none]
+*2a. The list is empty.
++
+Use case ends.
+
+* 3a. The given index is invalid.
++
+[none]
+** 3a1. AddressBook shows an error message.
++
+Use case resumes at step 2.
+
+* 5a. The given field is blank.
++
+[none]
+
+** 5a1. AddressBook shows an error message.
++
+Use case ends.
+
+[discrete]
+=== Use case: Creating contact with same name
+
+*Preconditions*
+1. AddressBook contains existing contact with the name to be duplicated.
+
+*Guarantees*
+1. User will be warned of the existing contact with the same name.
+
+*MSS*
+
+1. User adds contact with the duplicated name.
+2. AddressBook shows list of existing contacts of same name.
+3. AddressBook asks if user wants to continue, update existing contact, or end use case.
+4. User requests to continue.
+5. AddressBook creates new contact.
+
 * 1a. User does not follow the specified format required for input.
 * 1b. Person with same name is already in the list
-
-
 Error: AddressBook informs user that input is invalid.
 
 [discrete]
@@ -816,13 +863,57 @@ Use case ends.
 
 1.  User requests to edit person (index) and specific particular
 2.  AddressBook edits the contact particular and displays latest change
-
 +
 Use case ends.
 
 *Extensions*
 
 [none]
+
+*3a. User requests to update existing contact.
+*3b. User selects from existing contact(s).
+*3c. AddressBook updates selected contact.
++
+Use case ends.
++
+**3b1. The given index is invalid.
++
+***3b11. AddressBook shows an error message.
++
+Use case resumes at step 3b.
+
+[discrete]
+=== Use case: Clear
+
+*Preconditions*
+1. AddressBook is not empty.
+
+*MSS*
+
+1. User requests to clear list.
+2. AddressBook clears list.
++
+Use case ends.
+
+[discrete]
+=== Use case: Exit
+
+*MSS*
+
+1. User requests to exit the program.
+2. AddressBook closes the program.
++
+Use case ends.
+
+[discrete]
+=== Use case: History
+
+*MSS*
+
+1. User requests history of commands issued.
+2. AddressBook shows list of commands in reverse chronological order.
++
+Use case ends.
 * 1a. Person Index is invalid.
 +
 AddressBook informs user that Person Index is invalid.
@@ -866,6 +957,10 @@ AddressBook informs user that contact cannot be found
 *Extensions*
 
 [none]
+*2a. The list is empty.
++
+Use case ends.
+
 * 1a. No contacts in list.
 +
 AddressBook informs user that there are currently no contacts in the list.
@@ -874,57 +969,17 @@ AddressBook informs user that there are currently no contacts in the list.
 +
 AddressBook informs user that the input is not a valid contact index.
 
-
-
 [appendix]
 == Non Functional Requirements
 
 .  Should work on any link:#mainstream-os[mainstream OS] as long as it has Java `1.8.0_60` or higher installed.
 .  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 .  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-.  Data held in addressbook cannot be corrupted in event of unexpected errors.
-.  System should be usable by users who are new to entering commands via Command Line Interface (CLI).
-.  Should work even after 100 entries of invalid commands.
-.  Source code should be open source to allow other developers to improve the application.
-.  Should be a free application for all.
-.  App should be updated once a month for bug fixes or implementing a new feature.
 
 {More to be added}
 
 [appendix]
 == Glossary
-
-[[jdk]]
-
-JDK
-
-....
-Java Development Kit.
-....
-
-[[api]]
-
-API
-
-....
-Application Programming Interface.
-....
-
-[[ui]]
-
-UI
-
-....
-User-interface (focuses on maximising usability and optimal user experience).
-....
-
-[[gui]]
-
-GUI
-
-....
-Graphical User Interface. Allows users to interact with the software using graphical and visual icons instead of text.
-....
 
 [[mainstream-os]]
 Mainstream OS
@@ -938,58 +993,6 @@ Private contact detail
 
 ....
 A contact detail that is not meant to be shared with others
-....
-
-[[high-level-design]]
-High-level design
-
-....
-High-level design is the overall system design, including the database design and system architecture.
-....
-
-[[clean-up]]
-
-Clean up
-....
-Releases the references to objects.
-....
-
-[[event]]
-
-Event
-....
-Event is a significant change in state.
-....
-
-[[event-driven-design]]
-
-Event-driven design
-....
-Promotes the production, detection, consumption of and reaction to events.
-....
-
-[[single-responsibility-principle]]
-
-Single Responsibility Principle
-
-....
-Every module/class has responsibility (encapsulated in a single class) over a single part of functionality only.
-....
-
-[[separation-of-concerns]]
-
-Separation of Concerns
-
-....
-Separating a computer program into distinct section such that each section address and single and unique concern.
-....
-
-[[idiosyncrasies]]
-
-Idiosyncrasies
-
-....
-Behaviour that is specific to an individual.
 ....
 
 [appendix]
