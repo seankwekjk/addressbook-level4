@@ -3,12 +3,15 @@ package seedu.address.logic.commands;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.person.Person;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.Remark;
+import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
 import java.util.List;
 
+import static seedu.address.logic.commands.EditCommand.MESSAGE_DUPLICATE_PERSON;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
 
 public class RemarkCommand extends UndoableCommand {
@@ -41,15 +44,25 @@ public class RemarkCommand extends UndoableCommand {
         }
 
         ReadOnlyPerson personToEdit = lastShownList.get(index.getZeroBased());
+        Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
+                                personToEdit.getAddress(), remark, personToEdit.getTags());
 
-        personToEdit.setRemark(remark);
+        try {
+            model.updatePerson(personToEdit, editedPerson);
+            } catch (DuplicatePersonException dpe) {
+                throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+            } catch (PersonNotFoundException pnfe) {
+                throw new AssertionError("The target person cannot be missing");
+            }
 
-        if(remark.toString().contentEquals("[]")){
-            return new CommandResult(REMARK_CLEAR_SUCCESS);
+            return new CommandResult(generateSuccessMessage(editedPerson));
         }
 
-        return new CommandResult(REMARK_EDIT_SUCCESS);
-        /*String remarkText=remark.toString()+" "+index.getOneBased();
-        throw new CommandException(remarkText);*/
+    private String generateSuccessMessage(ReadOnlyPerson personToEdit) {
+        if (!remark.remarkText.isEmpty()) {
+            return String.format(REMARK_EDIT_SUCCESS, personToEdit);
+        } else {
+            return String.format(REMARK_CLEAR_SUCCESS, personToEdit);
+        }
     }
 }
