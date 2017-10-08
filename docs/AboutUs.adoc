@@ -13,7 +13,7 @@ We are a team based in the http://www.comp.nus.edu.sg[School of Computing, Natio
 
 === Liang Yu Hao
 image::mzxc152.jpg[width="150", align="left"]
-{empty}[http://www.comp.nus.edu.sg/~mzxc152[homepage]] [https://github.com/mzxc152[github]] [<<liangyuhao#, portfolio>>]
+{empty}[https://github.com/mzxc152[github]] [<<liangyuhao#, portfolio>>]
 
 Role: Project Advisor
 
