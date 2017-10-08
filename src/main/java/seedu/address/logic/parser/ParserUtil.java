@@ -90,13 +90,4 @@ public class ParserUtil {
         }
         return tagSet;
     }
-
-    /**
-     * Parses a {@code Optional<String> remark} into an {@code Optional<String>} if {@code remark} is present.
-     * See header comment of this class regarding the use of {@code Optional} parameters.
-     */
-    public static Optional<String> parseRemark(Optional<String> remark) throws IllegalValueException {
-        requireNonNull(remark);
-        return remark.isPresent() ? Optional.of(new String(remark.get())) : Optional.empty();
-    }
 }
