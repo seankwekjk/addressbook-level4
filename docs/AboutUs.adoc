@@ -19,9 +19,9 @@ Role: Project Advisor
 
 '''
 
-=== John Roe
+=== Tiyyagura Hyma
 image::lejolly.jpg[width="150", align="left"]
-{empty}[http://github.com/lejolly[github]] [<<johndoe#, portfolio>>]
+{empty}[http://github.com/hymss[github]] [<<johndoe#, portfolio>>]
 
 Role: Team Lead +
 Responsibilities: UI
