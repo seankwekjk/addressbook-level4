@@ -19,12 +19,20 @@ Role: Project Advisor
 
 '''
 
+
 === Tiyyagura Hyma
 image::hymaPic.jpg[width="150", align="left"]
 {empty}[http://github.com/hymss[github]] [<<johndoe#, portfolio>>]
+Role: Team Member +
+Responsibilities: -
 
-Role: Team Lead +
-Responsibilities: UI
+
+=== Sean Kwek
+image::seankwekjk.png[width="150", align="left"]
+{empty}[https://github.com/seankwekjk[github]] [<<seankwek#, portfolio>>]
+
+Role: Team Member +
+Responsibilities: -
 
 '''
 
