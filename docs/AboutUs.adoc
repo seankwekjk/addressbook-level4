@@ -37,7 +37,7 @@ Responsibilities: -
 '''
 
 === Justus Wah
-image::WAH_JUSTUS.jpg[width="150", align="left"]
+image::justuswah.jpg[width="150", align="left"]
 {empty}[https://github.com/justuswah[github]] [<<justuswah#, portfolio>>]
 
 Role: Team Member +
