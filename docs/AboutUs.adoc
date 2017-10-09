@@ -21,7 +21,7 @@ Role: Project Advisor
 
 
 === Tiyyagura Hyma
-image::lejolly.jpg[width="150", align="left"]
+image::hymaPic.jpg[width="150", align="left"]
 {empty}[http://github.com/hymss[github]] [<<johndoe#, portfolio>>]
 Role: Team Member +
 Responsibilities: -
