@@ -1,6 +1,8 @@
 package seedu.address.logic.parser;
 
-import java.util.Optional;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
+
 import java.util.stream.Stream;
 
 import seedu.address.commons.core.index.Index;
@@ -9,10 +11,10 @@ import seedu.address.logic.commands.RemarkCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Remark;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
-
-public class RemarkCommandParser implements Parser<RemarkCommand>{
+/**
+ * Parses input arguments and creates a new RemarkCommand object
+ */
+public class RemarkCommandParser implements Parser<RemarkCommand> {
     @Override
     public RemarkCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
@@ -32,7 +34,7 @@ public class RemarkCommandParser implements Parser<RemarkCommand>{
         try {
             Remark remark = ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK)).get();
 
-            return new RemarkCommand(remark,index);
+            return new RemarkCommand(remark, index);
         } catch (IllegalValueException ive) {
             throw new ParseException(ive.getMessage(), ive);
         }

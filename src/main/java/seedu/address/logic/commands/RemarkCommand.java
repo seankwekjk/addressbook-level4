@@ -1,5 +1,10 @@
 package seedu.address.logic.commands;
 
+import static seedu.address.logic.commands.EditCommand.MESSAGE_DUPLICATE_PERSON;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
+
+import java.util.List;
+
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -9,21 +14,14 @@ import seedu.address.model.person.Remark;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
-import java.util.List;
-
-import static seedu.address.logic.commands.EditCommand.MESSAGE_DUPLICATE_PERSON;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
-
+/**
+ * Adds, removes and edits remarks of an existing person in the address book.
+ */
 public class RemarkCommand extends UndoableCommand {
 
     public static final String COMMAND_WORD = "remark";
-    public Remark remark;
-    public Index index;
-
-    public RemarkCommand(Remark args, Index index){
-        remark = args;
-        this.index=index;
-    }
+    private Remark remark;
+    private Index index;
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a remark to a person in the address book. "
             + "Parameters: "
@@ -36,7 +34,16 @@ public class RemarkCommand extends UndoableCommand {
     public static final String REMARK_EDIT_SUCCESS = "Remark added.";
     public static final String REMARK_CLEAR_SUCCESS = "Remark cleared.";
 
-    public CommandResult executeUndoableCommand() throws CommandException{
+    /**
+     * @param remark text of the remark
+     * @param index of the person whose remark is being modified
+     */
+    public RemarkCommand(Remark remark, Index index) {
+        this.remark = remark;
+        this.index = index;
+    }
+
+    public CommandResult executeUndoableCommand() throws CommandException {
         List<ReadOnlyPerson> lastShownList = model.getFilteredPersonList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
@@ -49,20 +56,30 @@ public class RemarkCommand extends UndoableCommand {
 
         try {
             model.updatePerson(personToEdit, editedPerson);
-            } catch (DuplicatePersonException dpe) {
-                throw new CommandException(MESSAGE_DUPLICATE_PERSON);
-            } catch (PersonNotFoundException pnfe) {
-                throw new AssertionError("The target person cannot be missing");
-            }
-
-            return new CommandResult(generateSuccessMessage(editedPerson));
+        } catch (DuplicatePersonException dpe) {
+            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+        } catch (PersonNotFoundException pnfe) {
+            throw new AssertionError("The target person cannot be missing");
         }
+        return new CommandResult(successMessageType(editedPerson));
+    }
 
-    private String generateSuccessMessage(ReadOnlyPerson personToEdit) {
+    /**
+     * Creates and returns a {@code String} based on the edited Remark of {@code personToEdit}
+     */
+    private String successMessageType(ReadOnlyPerson personToEdit) {
         if (!remark.remarkText.isEmpty()) {
             return String.format(REMARK_EDIT_SUCCESS, personToEdit);
         } else {
             return String.format(REMARK_CLEAR_SUCCESS, personToEdit);
         }
+    }
+
+    public Remark getRemark() {
+        return remark;
+    }
+
+    public Index getIndex() {
+        return index;
     }
 }
