@@ -12,7 +12,7 @@ endif::[]
 
 * This is a desktop Address Book application. It has a GUI but most of the user interactions happen using a CLI (Command Line Interface).
 * It is a Java application intended for users to store details of contacts and access them easily.
-* It is *written in OOP fashion*. It provides a *reasonably well-written* code example that is *significantly bigger* (around 6 KLoC)than what students usually write in beginner-level SE modules.
+* It is *written in OOP fashion*. It provides a *reasonably well-written* code example for students to edit and improve weekly to experience working on a software product in a group.
 * What's different from https://github.com/se-edu/addressbook-level4[level 4]:
 ** Added features and commands to improve ease of use.
 ** More test cases, including automated GUI testing.
