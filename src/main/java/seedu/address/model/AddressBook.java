@@ -59,10 +59,14 @@ public class AddressBook implements ReadOnlyAddressBook {
         this.tags.setTags(tags);
     }
 
-    public void deleteTag(Tag toRemove){
+    /**
+     * Deletes the tag argument from this AddressBook
+     */
+
+    public void deleteTag(Tag toRemove) {
         tags.removeTag(toRemove);
-        for(Person person :persons){
-            if(person.getTags().contains(toRemove)){
+        for (Person person :persons) {
+            if (person.getTags().contains(toRemove)) {
                 person.remove(toRemove);
             }
         }

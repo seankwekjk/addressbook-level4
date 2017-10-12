@@ -112,6 +112,41 @@ Returns `john` and `John Doe`
 * `find Betsy Tim John` +
 Returns any person having names `Betsy`, `Tim`, or `John`
 
+=== Locating Contacts by any other field: `find` `coming in v2.0`
+
+Finds persons whose names, and any other information particular fields contain any of the given keywords. +
+Format: `find KEYWORD [MORE_KEYWORDS]`
+
+****
+* The search is case insensitive. e.g `hans` will match `Hans`
+* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
+* All fields (including name) are searched.
+* Only full words will be matched e.g. `Han` will not match `Hans`
+* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+****
+
+Examples:
+
+* `find Clementi` +
+Returns `Clementi Street 123`, and Contact with this Address: `John Doe`
+* `find Clementi Bugis Tuas` +
+Returns any person having addresses `Clementi`, `Bugis`, or `Tuas`
+
+=== Removing a Tag from all contacts in the AddressBook : `removeTag`
+
+Removes the Tag specified by the TAGNAME +
+Format: `removeTag TAGNAME`
+
+****
+* The search is case insensitive. e.g `friends` will NOT match with `Friends`
+* All instances of the tag will be removed from the AddressBook.
+****
+
+Examples:
+
+* `removeTag friends` +
+Searches throgugh all contacts in the AddressBook and deletes all instances of the Tag.
+
 === Deleting a person : `delete`
 
 Deletes the specified person from the address book. +

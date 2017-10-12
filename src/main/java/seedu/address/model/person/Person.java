@@ -51,7 +51,7 @@ public class Person implements ReadOnlyPerson {
      * @param toRemove
      */
 
-    public void remove(Tag toRemove){
+    public void remove(Tag toRemove) {
         tags.getValue().removeTag(toRemove);
     }
 

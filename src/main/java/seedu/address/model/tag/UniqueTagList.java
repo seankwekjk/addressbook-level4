@@ -81,8 +81,8 @@ public class UniqueTagList implements Iterable<Tag> {
      * Removes the specified tag from all contacts in the AddressBook
      */
 
-    public void removeTag(Tag toRemove){
-        if(internalList.contains(toRemove)){
+    public void removeTag(Tag toRemove) {
+        if (internalList.contains(toRemove)) {
             internalList.remove(toRemove);
         }
     }

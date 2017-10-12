@@ -114,7 +114,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void removeTag(Tag toRemove){
+        public void removeTag(Tag toRemove) {
             fail("This method should not be called.");
         }
 
