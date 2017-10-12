@@ -5,13 +5,13 @@ package seedu.address.model.person;
  */
 
 public class Remark {
-    public String remarkText;
+    private String remarkText;
 
     /**
      * Validates given Remark.
      */
     public Remark(String text) {
-        try{
+        try {
             this.remarkText = text.trim();
         } catch (NullPointerException npe) {
             remarkText = ("");
