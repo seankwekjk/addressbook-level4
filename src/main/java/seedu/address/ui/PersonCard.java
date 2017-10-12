@@ -59,7 +59,6 @@ public class PersonCard extends UiPart<Region> {
             return tagColors.get(tagValue);
         }
     }
-    
 
     /**
      * Binds the individual UI elements to observe their respective {@code Person} properties
