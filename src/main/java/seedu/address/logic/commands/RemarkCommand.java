@@ -20,8 +20,6 @@ import seedu.address.model.person.exceptions.PersonNotFoundException;
 public class RemarkCommand extends UndoableCommand {
 
     public static final String COMMAND_WORD = "remark";
-    private Remark remark;
-    private Index index;
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a remark to a person in the address book. "
             + "Parameters: "
@@ -34,6 +32,9 @@ public class RemarkCommand extends UndoableCommand {
     public static final String REMARK_EDIT_SUCCESS = "Remark added.";
     public static final String REMARK_CLEAR_SUCCESS = "Remark cleared.";
 
+    private Remark remark;
+    private Index index;
+
     /**
      * @param remark text of the remark
      * @param index of the person whose remark is being modified
@@ -43,6 +44,7 @@ public class RemarkCommand extends UndoableCommand {
         this.index = index;
     }
 
+    @Override
     public CommandResult executeUndoableCommand() throws CommandException {
         List<ReadOnlyPerson> lastShownList = model.getFilteredPersonList();
 

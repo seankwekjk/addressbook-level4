@@ -116,11 +116,17 @@ public class Person implements ReadOnlyPerson {
         return address.get();
     }
 
-    public Remark getRemark() { return remark.get();    }
+    public Remark getRemark() {
+        return remark.get();
+    }
 
-    public ObjectProperty<Remark> remarkProperty() { return remark;    }
+    public ObjectProperty<Remark> remarkProperty() {
+        return remark;
+    }
 
-    public void setRemark(Remark remark){ this.remark.set(requireNonNull(remark));    }
+    public void setRemark(Remark remark) {
+        this.remark.set(requireNonNull(remark));
+    }
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
