@@ -1,24 +1,21 @@
 package seedu.address.model.person;
 
-import static java.util.Objects.requireNonNull;
-
-import seedu.address.commons.exceptions.IllegalValueException;
-
 /**
  *Represents a Remark in the AddressBook.
  */
 
 public class Remark {
-    public final String remarkText;
+    public String remarkText;
 
     /**
      * Validates given Remark.
-     *
-     * @throws IllegalValueException if the given remark string is invalid.
      */
-    public Remark(String name) throws IllegalValueException {
-        requireNonNull(name);
-        this.remarkText = name.trim();
+    public Remark(String text) {
+        try{
+            this.remarkText = text.trim();
+        } catch (NullPointerException npe) {
+            remarkText = ("");
+        }
     }
 
     /**
