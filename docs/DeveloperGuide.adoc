@@ -844,7 +844,7 @@ Use case ends.
 *Extensions*
 
 [none]
-*2a. The list is empty.
+* 2a. The list is empty.
 +
 Use case ends.
 
@@ -858,7 +858,6 @@ Use case resumes at step 2.
 * 5a. The given field is blank.
 +
 [none]
-
 ** 5a1. AddressBook shows an error message.
 +
 Use case ends.
@@ -920,15 +919,15 @@ Use case ends.
 
 [none]
 
-*3a. User requests to update existing contact.
-*3b. User selects from existing contact(s).
-*3c. AddressBook updates selected contact.
+* 3a. User requests to update existing contact.
+* 3b. User selects from existing contact(s).
+* 3c. AddressBook updates selected contact.
 +
 Use case ends.
 +
-**3b1. The given index is invalid.
+** 3b1. The given index is invalid.
 +
-***3b11. AddressBook shows an error message.
+*** 3b11. AddressBook shows an error message.
 +
 Use case resumes at step 3b.
 
@@ -1007,7 +1006,7 @@ AddressBook informs user that contact cannot be found
 *Extensions*
 
 [none]
-*2a. The list is empty.
+* 2a. The list is empty.
 +
 Use case ends.
 
