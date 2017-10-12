@@ -19,6 +19,13 @@ public class Remark {
     }
 
     /**
+     * Returns remarkText for checking operations
+     */
+    public String getRemarkText() {
+        return remarkText;
+    }
+
+    /**
      * Format state as text for viewing.
      */
     public String toString() {

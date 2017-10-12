@@ -70,7 +70,7 @@ public class RemarkCommand extends UndoableCommand {
      * Creates and returns a {@code String} based on the edited Remark of {@code personToEdit}
      */
     private String successMessageType(ReadOnlyPerson personToEdit) {
-        if (!remark.remarkText.isEmpty()) {
+        if (!remark.getRemarkText().isEmpty()) {
             return String.format(REMARK_EDIT_SUCCESS, personToEdit);
         } else {
             return String.format(REMARK_CLEAR_SUCCESS, personToEdit);
