@@ -172,6 +172,26 @@ Emails the 2nd person in the address book.
 `mail 1` +
 Emails the 1st person in the results of the `find` command.
 
+=== Getting directions to a person's address : `map` `m`
+
+Loads the Google Maps page for the address of the person in the address book. +
+Format: `map INDEX`
+
+****
+* Loads the Google Maps page for the address of the person at the specified `INDEX`.
+* The index refers to the index number shown in the most recent listing.
+* The index *must be a positive integer* `1, 2, 3, ...`
+****
+
+Examples:
+
+* `list` +
+`map 2` +
+Loads Google Maps page for the address of the 2nd person in the address book.
+* `find Betsy` +
+`map 1` +
+Loads Google Maps page for the address of the 1st person in the results of the `find` command.
+
 === Listing entered commands : `history` `h`
 
 Lists all the commands that you have entered in reverse chronological order. +
