@@ -240,6 +240,11 @@ Format: `exit`
 Address book data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
 
+=== Directions to address : `direct` `Coming in v2.0`
+
+Provides directions to the address of the selected contact. +
+Format: `direct`
+
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
