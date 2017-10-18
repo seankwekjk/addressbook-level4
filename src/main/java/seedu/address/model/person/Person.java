@@ -60,6 +60,15 @@ public class Person implements ReadOnlyPerson {
                 source.getTags());
     }
 
+    /**
+     * Removes tag from this person
+     * @param toRemove
+     */
+
+    public void remove(Tag toRemove) {
+        tags.getValue().removeTag(toRemove);
+    }
+
     public void setName(Name name) {
         this.name.set(requireNonNull(name));
     }
