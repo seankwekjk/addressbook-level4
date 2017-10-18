@@ -96,7 +96,7 @@ public class AddressBookParser {
         case RedoCommand.COMMAND_WORD:
         case RedoCommand.COMMAND_ALIAS:
             return new RedoCommand();
-            
+
         case RemoveTagCommand.COMMAND_WORD:
             return new RemoveTagCommandParser().parse(arguments);
 
