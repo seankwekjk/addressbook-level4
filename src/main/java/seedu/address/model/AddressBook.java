@@ -87,6 +87,13 @@ public class AddressBook implements ReadOnlyAddressBook {
         syncMasterTagListWith(persons);
     }
 
+    /**
+     * Sorts the list in alphabetical order.
+     */
+    public void sortList(String toSort) {
+        persons.sort(toSort);
+    }
+
     //// person-level operations
 
     /**
