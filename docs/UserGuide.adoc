@@ -10,9 +10,9 @@ ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
 endif::[]
-:repoURL: https://github.com/se-edu/addressbook-level4
+:repoURL: https://github.com/CS2103AUG2017-T16-B4/main
 
-By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
+By: `CS2103T T16 B4`      Since: `Jun 2016`      Licence: `MIT`
 
 == Quick Start
 
@@ -22,7 +22,7 @@ By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
 Having any Java 8 version is not enough. +
 This app will not work with earlier versions of Java 8.
 +
-.  Download the latest `addressbook.jar` link:{repoURL}/releases[here].
+.  Download the latest `addressbook.jar` link:{https://github.com/CS2103AUG2017-T16-B4/main}/releases[here].
 .  Copy the file to the folder you want to use as the home folder for your Address Book.
 .  Double-click the file to start the app. The GUI should appear in a few seconds.
 +
@@ -57,7 +57,7 @@ Format: `help`
 === Adding a person: `add` `a`
 
 Adds a person to the address book +
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS b/BIRTHDAY [t/TAG]...`
 
 [TIP]
 A person can have any number of tags (including 0)
@@ -75,7 +75,7 @@ Format: `list`
 === Editing a person : `edit` `e`
 
 Edits an existing person in the address book. +
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [b/BIRTHDAY] [t/TAG]...`
 
 ****
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the last person listing. The index *must be a positive integer* 1, 2, 3, ...
@@ -345,3 +345,16 @@ e.g. `remark 1 r/Likes coffee.`
 * *History* : `history`
 * *Undo* : `undo`
 * *Redo* : `redo`
+
+== Coming in v2.0
+
+===
+1. Emailing a person by typing in the command email followed by the contact's name or index.
+
+2. A reminder list that will pop up on the screen every time the user opens the application.
+
+3. A meeting scheduler, where users link to their calender application when they first install the application. +
+Subsequently, when they typed in the command free followed by the contact name or index, they and get a list of common free timings with that contact.
+
+===
+
