@@ -40,7 +40,7 @@ public class Person implements ReadOnlyPerson {
         // protect internal tags from changes in the arg list
         this.tags = new SimpleObjectProperty<>(new UniqueTagList(tags));
     }
-  
+
     /**
      * Creates a copy of the given ReadOnlyPerson.
      */
