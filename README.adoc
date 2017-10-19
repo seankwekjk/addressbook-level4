@@ -1,6 +1,8 @@
-= Address Book (v1.1)
+= Contags
 ifdef::env-github,env-browser[:relfileprefix: docs/]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+https://travis-ci.org/CS2103AUG2017-T16-B4/main[image:https://travis-ci.org/CS2103AUG2017-T16-B4/main.svg?branch=master[Build Status]]
 
 ifdef::env-github[]
 image::docs/images/Ui.png[width="600"]
