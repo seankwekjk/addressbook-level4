@@ -15,6 +15,7 @@ import seedu.address.commons.events.model.AddressBookChangedEvent;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.model.tag.Tag;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -47,6 +48,16 @@ public class ModelManager extends ComponentManager implements Model {
     public void resetData(ReadOnlyAddressBook newData) {
         addressBook.resetData(newData);
         indicateAddressBookChanged();
+    }
+
+    /**
+     * removes tag from all persons
+     * @return
+     */
+
+    @Override
+    public void removeTag(Tag toRemove) {
+        addressBook.deleteTag(toRemove);
     }
 
     @Override

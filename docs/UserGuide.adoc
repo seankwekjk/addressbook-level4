@@ -54,7 +54,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 Format: `help`
 
-=== Adding a person: `add`
+=== Adding a person: `add` `a`
 
 Adds a person to the address book +
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...`
@@ -67,12 +67,12 @@ Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
 
-=== Listing all persons : `list`
+=== Listing all persons : `list` `l`
 
 Shows a list of all persons in the address book. +
 Format: `list`
 
-=== Editing a person : `edit`
+=== Editing a person : `edit` `e`
 
 Edits an existing person in the address book. +
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
@@ -92,7 +92,7 @@ Edits the phone number and email address of the 1st person to be `91234567` and 
 * `edit 2 n/Betsy Crower t/` +
 Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
-=== Locating persons by name: `find`
+=== Locating persons by name: `find` `f`
 
 Finds persons whose names contain any of the given keywords. +
 Format: `find KEYWORD [MORE_KEYWORDS]`
@@ -111,6 +111,41 @@ Examples:
 Returns `john` and `John Doe`
 * `find Betsy Tim John` +
 Returns any person having names `Betsy`, `Tim`, or `John`
+
+=== Locating Contacts by any other field: `find` `coming in v2.0`
+
+Finds persons whose names, and any other information particular fields contain any of the given keywords. +
+Format: `find KEYWORD [MORE_KEYWORDS]`
+
+****
+* The search is case insensitive. e.g `hans` will match `Hans`
+* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
+* All fields (including name) are searched.
+* Only full words will be matched e.g. `Han` will not match `Hans`
+* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+****
+
+Examples:
+
+* `find Clementi` +
+Returns `Clementi Street 123`, and Contact with this Address: `John Doe`
+* `find Clementi Bugis Tuas` +
+Returns any person having addresses `Clementi`, `Bugis`, or `Tuas`
+
+=== Removing a Tag from all contacts in the AddressBook : `removeTag`
+
+Removes the Tag specified by the TAGNAME +
+Format: `removeTag TAGNAME`
+
+****
+* The search is case insensitive. e.g `friends` will NOT match with `Friends`
+* All instances of the tag will be removed from the AddressBook.
+****
+
+Examples:
+
+* `removeTag friends` +
+Searches throgugh all contacts in the AddressBook and deletes all instances of the Tag.
 
 === Deleting a person : `delete`
 
@@ -132,7 +167,7 @@ Deletes the 2nd person in the address book.
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
 
-=== Selecting a person : `select`
+=== Selecting a person : `select` `s`
 
 Selects the person identified by the index number used in the last person listing. +
 Format: `select INDEX`
@@ -152,6 +187,59 @@ Selects the 2nd person in the address book.
 `select 1` +
 Selects the 1st person in the results of the `find` command.
 
+=== Emailing a person: `mail` `m`
+
+Loads the email page to email the specified person in the address book. +
+Format: `mail INDEX`
+
+****
+* Loads the email page to email the person at the specified `INDEX`.
+* The index refers to the index number shown in the most recent listing.
+* The index *must be a positive integer* `1, 2, 3, ...`
+****
+
+Examples:
+
+* `list` +
+`mail 2` +
+Emails the 2nd person in the address book.
+* `find Betsy` +
+`mail 1` +
+Emails the 1st person in the results of the `find` command.
+
+=== Getting directions to a person's address : `map` `m`
+
+Loads the Google Maps page for the address of the person in the address book. +
+Format: `map INDEX`
+
+****
+* Loads the Google Maps page for the address of the person at the specified `INDEX`.
+* The index refers to the index number shown in the most recent listing.
+* The index *must be a positive integer* `1, 2, 3, ...`
+****
+
+Examples:
+
+* `list` +
+`map 2` +
+Loads Google Maps page for the address of the 2nd person in the address book.
+* `find Betsy` +
+`map 1` +
+Loads Google Maps page for the address of the 1st person in the results of the `find` command.
+
+=== Adding remarks: `remark`
+
+Edits the remark for a person specified in the INDEX
+
+Format: `remark INDEX r/[REMARK]`
+
+Examples:
+
+*`remark 1 r/Likes to drink coffee.`
+Edits the remark for the first person to `Likes to drink coffee.`
+*`remark 1 r/`
+Removes the remark for the first person.
+
 === Listing entered commands : `history`
 
 Lists all the commands that you have entered in reverse chronological order. +
@@ -163,7 +251,7 @@ Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and 
 ====
 
 // tag::undoredo[]
-=== Undoing previous command : `undo`
+=== Undoing previous command : `undo` `u`
 
 Restores the address book to the state before the previous _undoable_ command was executed. +
 Format: `undo`
@@ -212,12 +300,12 @@ The `redo` command fails as there are no `undo` commands executed previously.
 `redo` (reapplies the `clear` command) +
 // end::undoredo[]
 
-=== Clearing all entries : `clear`
+=== Clearing all entries : `clear` `c`
 
 Clears all entries from the address book. +
 Format: `clear`
 
-=== Exiting the program : `exit`
+=== Exiting the program : `exit` `e`
 
 Exits the program. +
 Format: `exit`
@@ -226,6 +314,11 @@ Format: `exit`
 
 Address book data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
+
+=== Directions to address : `direct` `Coming in v2.0`
+
+Provides directions to the address of the selected contact. +
+Format: `direct`
 
 == FAQ
 
@@ -247,6 +340,8 @@ e.g. `find James Jake`
 * *Help* : `help`
 * *Select* : `select INDEX` +
 e.g.`select 2`
+* *Remark* : `remark INDEX r/[INDEX]` +
+e.g. `remark 1 r/Likes coffee.`
 * *History* : `history`
 * *Undo* : `undo`
 * *Redo* : `redo`
