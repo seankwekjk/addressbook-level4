@@ -126,6 +126,7 @@ public class Person implements ReadOnlyPerson {
     @Override
     public Birthday getBirthday() {
         return birthday.get();
+    }
 
     public Remark getRemark() {
         return remark.get();
