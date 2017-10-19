@@ -29,7 +29,8 @@ public class Person implements ReadOnlyPerson {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Birthday birthday, Remark remark, Set<Tag> tags) {
+    public Person(Name name, Phone phone, Email email, Address address, Birthday birthday,
+                  Remark remark, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, birthday, tags);
         this.name = new SimpleObjectProperty<>(name);
         this.phone = new SimpleObjectProperty<>(phone);
@@ -40,7 +41,7 @@ public class Person implements ReadOnlyPerson {
         // protect internal tags from changes in the arg list
         this.tags = new SimpleObjectProperty<>(new UniqueTagList(tags));
     }
-  
+
     /**
      * Creates a copy of the given ReadOnlyPerson.
      */

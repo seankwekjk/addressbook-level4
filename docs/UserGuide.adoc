@@ -349,13 +349,9 @@ e.g. `remark 1 r/Likes coffee.`
 
 == Coming in v2.0
 
-===
 1. Emailing a person by typing in the command email followed by the contact's name or index.
 
 2. A reminder list that will pop up on the screen every time the user opens the application.
 
 3. A meeting scheduler, where users link to their calender application when they first install the application. +
 Subsequently, when they typed in the command free followed by the contact name or index, they and get a list of common free timings with that contact.
-
-===
-

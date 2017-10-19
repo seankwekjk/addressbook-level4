@@ -121,7 +121,9 @@ public class PersonBuilder {
         } catch (IllegalValueException ive) {
             throw new IllegalArgumentException("birthday is expected to be unique.");
         }
-      
+        return this;
+    }
+
     /**
      * Sets the {@code Remark} of the {@code Person} that we are building.
      */
