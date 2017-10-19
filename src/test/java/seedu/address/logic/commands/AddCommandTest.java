@@ -113,6 +113,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void sortList(String toSort) {
+            fail("There is no person in the addressbook to sort.");
+        }
+
+        @Override
         public void deletePerson(ReadOnlyPerson target) throws PersonNotFoundException {
             fail("This method should not be called.");
         }
