@@ -345,6 +345,96 @@ image::UndoRedoActivityDiagram.png[width="200"]
 **Cons:** Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things. +
 // end::undoredo[]
 
+=== Remark mechanism
+
+`Remark` functions as an additional Optional field for a `Person`. It exists separately from tags, and does not interfere with its function.
+
+During initialising of a new `Person`, the `Remark` field is not able to be filled, and it generates an empty `Remark` instead. Both the `add` and `edit` commands are unable to modify the `Remark` field of any given `Person`.
+
+The following sequence diagram shows the execution of the RemarkCommand.
+
+image::RemarkCommandSequenceDiagram.png[width="800"]
+
+[NOTE]
+The `index` field of the `RemarkCommand` uses the indexing of the filtered list that is currently being shown, not the list of all persons.
+
+The implementation of `RemarkCommand` is similar to that of the `EditCommand`. As such, the `updatePerson()` method found in the `ModelManager` is utilised.
+
+Since `Remark` is an optional field, the value of `remarkText` may be null. In this case, the `Remark` field of the person at `index` will be cleared.
+
+To create a difference between the updating and clearing of the `Remark` field, the `CommandResult` of `RemarkCommand` will differ based on the new contents of the `Remark`. This will also provide some additional clarity to users when using the command.
+
+==== Design Considerations
+
+**Aspect:** How `RemarkCommand` executes +
+**Alternative 1 (current choice):** Follow logic of `edit` command, to generate a new person with an updated `Remark` field and write over the existing `Person` +
+**Pros:** Follows an existing style, making it easier to implement and troubleshoot. +
+**Cons:** Seems unintuitive to create a new `Person` to edit a field that cannot be modified by the `edit` command. +
+**Alternative 2:** Create a `setRemark()` method to modify the `Remark` field of the existing selected `Person` +
+**Pros:** Would be very simple to implement. +
+**Cons:** As the `RemarkCommand` requires the input of an `index`, we require to interface with the list of persons already existing in the AddressBook. These methods however, return lists of `ReadOnlyPerson`, which do not allow the inclusion of a `setReamrk()` method. This would require changes elsewhere in the project that would affect other aspects.
+
+---
+
+**Aspect:** Separation of `Remark` from `add` and `edit` commands +
+**Alternative 1 (current choice):** Do not allow `add` and `edit` to add a `Remark` +
+**Pros:** The desired outcome was to experience the development of an entirely new infrastructure for a new command, and to modify 2 existing commands would not have the same educational effect. +
+**Cons:** Unintuitive to have a separate command simply for 1 field. +
+**Alternative 2:** Allow `add` and `edit` to add a `Remark` +
+**Pros:** Is more intuitive for the user, and is simpler to implement the logic of the command. +
+**Cons:** Is not as challenging to implement and does not possess the same educational value.
+
+---
+
+**Aspect:** Source of `index` +
+**Alternative 1 (current choice):** Use the current filtered list that is displayed +
+**Pros:** It is intuitive to use the index that is currently being displayed in the ui. +
+**Cons:** It does not allow any `Person` that is not currently in the filtered list to have their `Remark` edited. +
+**Alternative 2:** Use the list of all persons +
+**Pros** It allows all persons, even those not currently being shown, to have their `Remark` edited. +
+**Cons** The user will find it difficult to know the `index` of the `Person` he would like to edit, particularly if it is not currently in the filtered list. It is not intuitive and difficult for the user to utilise.
+
+=== Logging
+
+We are using `java.util.logging` package for logging. The `LogsCenter` class is used to manage the logging levels and logging destinations.
+
+* The logging level can be controlled using the `logLevel` setting in the configuration file (See link:#configuration[Configuration])
+* The `Logger` for a class can be obtained using `LogsCenter.getLogger(Class)` which will log messages according to the specified logging level
+* Currently log messages are output through: `Console` and to a `.log` file.
+
+*Logging Levels*
+
+* `SEVERE` : Critical problem detected which may possibly cause the termination of the application
+* `WARNING` : Can continue, but with caution
+* `INFO` : Information showing the noteworthy actions by the App
+* `FINE` : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size
+
+=== Configuration
+
+Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: `config.json`).
+
+== Birthday field
+
+=== Design Considerations
+
+**Aspect:** Implementation of birthday field +
+**Alternative 1 (current choice):** Add a new birthday field to all files containing the other fields (name, phone, address, email). +
+**Pros:** We will not lose any other functionality as it is now just an additional part of the default behaviour. Existing classes and commands do not have to know that the birthday field exists, barring Add and Edit command. It is also easy for new developers to understand. +
+**Cons:** Design is not modular and has high dependency. +
+**Alternative 2:** Create a new class completely for optional fields such as birthday field +
+**Pros:** Does not involve the existing template pattern, easier for new developers to understand. +
+**Cons:** Methods of the birthday field that are inherited from the other fields must remember to call the super methods, or lose the ability to perform like the other fields.
+
+---
+
+**Aspect:** Whether it should be an optional field (can be left blank) +
+**Alternative 1 (current choice):** Birthday field currently cannot be an empty field. +
+**Pros:** Easy to implement and easy for new developers to understand the implementation and work on it. +
+**Cons:** Not very user-friendly as not all users would want to add birthdays for all their contacts. +
+**Alternative 2:** Make the birthday field optional. +
+**Pros:** More user-friendly. +
+**Cons: Implementation is sligtly more tedious and new developers might need more time to understand the implementation. **
+
 === Logging
 
 We are using `java.util.logging` package for logging. The `LogsCenter` class is used to manage the logging levels and logging destinations.
@@ -729,9 +819,59 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |user |find a person by name |locate details of persons without having to go through the entire list
 
+|`* * *` |user |find all my contacts that have the same tag |search for groups of people easily
+
+|`* * *` |user |search all my contacts by any keyword, name, email address, or address |search for people by other means than names
+
+|`* * *` |user |find a person with an incomplete name |to find a person even if I cannot spell the person's name perfectly
+
+|`* * *` |user |see all tags for a contact |to organise contacts easily
+
+|`* * *` |user |edit all details for my contacts |to keep details of my contacts up to date without having to recreate the contact
+
+|`* * *` |user |create a new contact with a name that already exists in addressbook |have multiple contacts with the same name
+
 |`* *` |user |hide link:#private-contact-detail[private contact details] by default |minimize chance of someone else seeing them by accident
 
+|`* *` |user |add contacts with missing fields |
+
+|`* *` |user |attribute multiple phone numbers to a contact |have a contact's mobile and home numbers in the same contact
+
+|`* *` |user |delete certain fields for my contacts |
+
+|`* *` |user |know if any of my contact information clashes with another one |organise contacts easily
+
+|`* *` |user |delete all tags for a contact |
+
+|`* *` |user |undo previous commands |revert mistakes made
+
+|`* *` |user |add tags to a contact while editing without removing them all |simplify the editing of tags
+
+|`* *` |user |attribute multiple addresses to a contact |have a contact's work and home addresses in the same contact
+
+|`* *` |user |sort the list of contacts in alphabetical order |organise the list
+
+|`* *` |user |sort the list of contacts in the list based on phone number |
+
+|`* *` |user |email a contact by clicking on their email field |simplify the emailing process
+
 |`*` |user with many persons in the address book |sort persons by name |locate a person easily
+
+|`*` |user |see which contacts have recently been changed or updated |locate changes easily
+
+|`*` |user |attribute multiple email addresses to a contact |
+
+|`*` |user |add nicknames to a contact |to identify contacts easily
+
+|`*` |user |view the last 10 commands I typed |track use of the addressbook
+
+|`*` |user |add a priority number to each contact |
+
+|`*` |user |list contacts in priority order |have faster access to the contacts that are most important
+
+|`*` |forgetful user |be reminded of meetings and important events |
+
+|`*` |forgetful user |link appointments with specific contacts |
 |=======================================================================
 
 {More to be added}
@@ -767,7 +907,206 @@ Use case ends.
 +
 Use case resumes at step 2.
 
-{More to be added}
+[discrete]
+
+=== Use case: Delete certain fields
+
+*MSS*
+
+1. User requests list of persons with particular name.
+2. AddressBook shows a list of persons.
+3. User requests to select specific contact.
+4. AddressBook selects contact.
+5. User requests to delete particular field(s).
+6. AddressBook clears the listed field(s).
+
+[discrete]
+=== Use case: Add person
+
+*MSS*
+
+1.  User requests to add persons in the specified format.
+2.  AddressBook adds person in the specified format to the list.
+3.  AddressBook acknowledges that the person has been added to the list.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. The list is empty.
++
+Use case ends.
+
+* 3a. The given index is invalid.
++
+[none]
+** 3a1. AddressBook shows an error message.
++
+Use case resumes at step 2.
+
+* 5a. The given field is blank.
++
+[none]
+** 5a1. AddressBook shows an error message.
++
+Use case ends.
+
+[discrete]
+=== Use case: Creating contact with same name
+
+*Preconditions*
+1. AddressBook contains existing contact with the name to be duplicated.
+
+*Guarantees*
+1. User will be warned of the existing contact with the same name.
+
+*MSS*
+
+1. User adds contact with the duplicated name.
+2. AddressBook shows list of existing contacts of same name.
+3. AddressBook asks if user wants to continue, update existing contact, or end use case.
+4. User requests to continue.
+5. AddressBook creates new contact.
+
+* 1a. User does not follow the specified format required for input.
+* 1b. Person with same name is already in the list
+Error: AddressBook informs user that input is invalid.
+
+[discrete]
+=== Use case: List Contact
+
+
+*MSS*
+
+1.  User requests to list persons
+2.  AddressBook shows a list of persons
+
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. The list is empty.
++
+Use case ends.
+
+
+
+[discrete]
+=== Use case: Edit Contact
+
+
+*MSS*
+
+1.  User requests to edit person (index) and specific particular
+2.  AddressBook edits the contact particular and displays latest change
++
+Use case ends.
+
+*Extensions*
+
+[none]
+
+* 3a. User requests to update existing contact.
+* 3b. User selects from existing contact(s).
+* 3c. AddressBook updates selected contact.
++
+Use case ends.
++
+** 3b1. The given index is invalid.
++
+*** 3b11. AddressBook shows an error message.
++
+Use case resumes at step 3b.
+
+[discrete]
+=== Use case: Clear
+
+*Preconditions*
+1. AddressBook is not empty.
+
+*MSS*
+
+1. User requests to clear list.
+2. AddressBook clears list.
++
+Use case ends.
+
+[discrete]
+=== Use case: Exit
+
+*MSS*
+
+1. User requests to exit the program.
+2. AddressBook closes the program.
++
+Use case ends.
+
+[discrete]
+=== Use case: History
+
+*MSS*
+
+1. User requests history of commands issued.
+2. AddressBook shows list of commands in reverse chronological order.
++
+Use case ends.
+* 1a. Person Index is invalid.
++
+AddressBook informs user that Person Index is invalid.
+
+* 1b. User requests to edit information in an invalid format
++
+AddressBook informs user that the format is invalid, providing the correct format.
+
+
+[discrete]
+=== Use case: Find Contact
+
+
+*MSS*
+
+
+ 1.  User requests to find person by entering part of contact name
+ 2.  AddressBook finds contact with keyword included in name, and displays latest change
+ +
+ Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. Contact cannot be found
++
+AddressBook informs user that contact cannot be found
+
+[discrete]
+=== Use case: Select Contact
+
+
+*MSS*
+
+1.  User requests to see entire list of contacts
+2.  Based on list, user selects contact by providing contact index.
+3.  AddressBook selects contact with index given.
+
++ Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. The list is empty.
++
+Use case ends.
+
+* 1a. No contacts in list.
++
+AddressBook informs user that there are currently no contacts in the list.
+
+* 2a. User inputs invalid contact index.
++
+AddressBook informs user that the input is not a valid contact index.
 
 [appendix]
 == Non Functional Requirements
@@ -775,11 +1114,49 @@ Use case resumes at step 2.
 .  Should work on any link:#mainstream-os[mainstream OS] as long as it has Java `1.8.0_60` or higher installed.
 .  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 .  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+.  Data held in addressbook cannot be corrupted in event of unexpected errors.
+.  System should be usable by users who are new to entering commands via Command Line Interface (CLI).
+.  Should work even after 100 entries of invalid commands.
+.  Source code should be open source to allow other developers to improve the application.
+.  Should be a free application for all.
+.  App should be updated once a month for bug fixes or implementing a new feature.
 
 {More to be added}
 
 [appendix]
 == Glossary
+
+[[jdk]]
+
+JDK
+
+....
+Java Development Kit.
+....
+
+[[api]]
+
+API
+
+....
+Application Programming Interface.
+....
+
+[[ui]]
+
+UI
+
+....
+User-interface (focuses on maximising usability and optimal user experience).
+....
+
+[[gui]]
+
+GUI
+
+....
+Graphical User Interface. Allows users to interact with the software using graphical and visual icons instead of text.
+....
 
 [[mainstream-os]]
 Mainstream OS
@@ -793,6 +1170,58 @@ Private contact detail
 
 ....
 A contact detail that is not meant to be shared with others
+....
+
+[[high-level-design]]
+High-level design
+
+....
+High-level design is the overall system design, including the database design and system architecture.
+....
+
+[[clean-up]]
+
+Clean up
+....
+Releases the references to objects.
+....
+
+[[event]]
+
+Event
+....
+Event is a significant change in state.
+....
+
+[[event-driven-design]]
+
+Event-driven design
+....
+Promotes the production, detection, consumption of and reaction to events.
+....
+
+[[single-responsibility-principle]]
+
+Single Responsibility Principle
+
+....
+Every module/class has responsibility (encapsulated in a single class) over a single part of functionality only.
+....
+
+[[separation-of-concerns]]
+
+Separation of Concerns
+
+....
+Separating a computer program into distinct section such that each section address and single and unique concern.
+....
+
+[[idiosyncrasies]]
+
+Idiosyncrasies
+
+....
+Behaviour that is specific to an individual.
 ....
 
 [appendix]
