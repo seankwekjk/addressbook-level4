@@ -23,7 +23,7 @@ understanding of: +
 
 • Contags's architecture and object model +
 
-• The web technologies on which the Content Engine relies
+• How features are implemented using the UI, Logic, Model and Storage components.
 
 == Setting up
 
@@ -70,7 +70,7 @@ This will generate all resources required by the application and tests.
 
 This project follows https://github.com/oss-generic/process/blob/master/docs/CodingStandards.md[oss-generic coding standards]. IntelliJ's default style is mostly compliant with ours but it uses a different import order from ours. To rectify,
 
-. Go to `File` > `Settings...` (Windows/Linux), or `IntelliJ IDEA` > `Preferences...` (macOS)
+. Go to `File` > `Settings...` (Windows/Linux), or `IntelliJ IDEA` > `Preferences...` (macOS).
 . Select `Editor` > `Code Style` > `Java`.
 . Click on the `Imports` tab to set the order.
 
