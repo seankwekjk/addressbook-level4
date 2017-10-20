@@ -44,7 +44,6 @@ public class BrowserPanelTest extends GuiUnitTest {
         URL expectedPersonUrl = new URL(GOOGLE_SEARCH_URL_PREFIX
                 + CARL.getAddress().value.replaceAll(" ", "+").replaceAll(",", "%2C"));
 
-        waitUntilBrowserLoaded(browserPanelHandle);
         assertEquals(expectedPersonUrl, browserPanelHandle.getLoadedUrl());
     }
 }
