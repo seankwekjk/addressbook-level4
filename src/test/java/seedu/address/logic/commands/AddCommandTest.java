@@ -114,6 +114,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void sortList(String toSort) {
+            fail("There is no person in the addressbook to sort.");
+        }
+
+        @Override
         public void removeTag(Tag toRemove) {
             fail("This method should not be called.");
         }

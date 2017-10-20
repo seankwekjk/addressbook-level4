@@ -345,6 +345,96 @@ image::UndoRedoActivityDiagram.png[width="200"]
 **Cons:** Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things. +
 // end::undoredo[]
 
+=== Remark mechanism
+
+`Remark` functions as an additional Optional field for a `Person`. It exists separately from tags, and does not interfere with its function.
+
+During initialising of a new `Person`, the `Remark` field is not able to be filled, and it generates an empty `Remark` instead. Both the `add` and `edit` commands are unable to modify the `Remark` field of any given `Person`.
+
+The following sequence diagram shows the execution of the RemarkCommand.
+
+image::RemarkCommandSequenceDiagram.png[width="800"]
+
+[NOTE]
+The `index` field of the `RemarkCommand` uses the indexing of the filtered list that is currently being shown, not the list of all persons.
+
+The implementation of `RemarkCommand` is similar to that of the `EditCommand`. As such, the `updatePerson()` method found in the `ModelManager` is utilised.
+
+Since `Remark` is an optional field, the value of `remarkText` may be null. In this case, the `Remark` field of the person at `index` will be cleared.
+
+To create a difference between the updating and clearing of the `Remark` field, the `CommandResult` of `RemarkCommand` will differ based on the new contents of the `Remark`. This will also provide some additional clarity to users when using the command.
+
+==== Design Considerations
+
+**Aspect:** How `RemarkCommand` executes +
+**Alternative 1 (current choice):** Follow logic of `edit` command, to generate a new person with an updated `Remark` field and write over the existing `Person` +
+**Pros:** Follows an existing style, making it easier to implement and troubleshoot. +
+**Cons:** Seems unintuitive to create a new `Person` to edit a field that cannot be modified by the `edit` command. +
+**Alternative 2:** Create a `setRemark()` method to modify the `Remark` field of the existing selected `Person` +
+**Pros:** Would be very simple to implement. +
+**Cons:** As the `RemarkCommand` requires the input of an `index`, we require to interface with the list of persons already existing in the AddressBook. These methods however, return lists of `ReadOnlyPerson`, which do not allow the inclusion of a `setReamrk()` method. This would require changes elsewhere in the project that would affect other aspects.
+
+---
+
+**Aspect:** Separation of `Remark` from `add` and `edit` commands +
+**Alternative 1 (current choice):** Do not allow `add` and `edit` to add a `Remark` +
+**Pros:** The desired outcome was to experience the development of an entirely new infrastructure for a new command, and to modify 2 existing commands would not have the same educational effect. +
+**Cons:** Unintuitive to have a separate command simply for 1 field. +
+**Alternative 2:** Allow `add` and `edit` to add a `Remark` +
+**Pros:** Is more intuitive for the user, and is simpler to implement the logic of the command. +
+**Cons:** Is not as challenging to implement and does not possess the same educational value.
+
+---
+
+**Aspect:** Source of `index` +
+**Alternative 1 (current choice):** Use the current filtered list that is displayed +
+**Pros:** It is intuitive to use the index that is currently being displayed in the ui. +
+**Cons:** It does not allow any `Person` that is not currently in the filtered list to have their `Remark` edited. +
+**Alternative 2:** Use the list of all persons +
+**Pros** It allows all persons, even those not currently being shown, to have their `Remark` edited. +
+**Cons** The user will find it difficult to know the `index` of the `Person` he would like to edit, particularly if it is not currently in the filtered list. It is not intuitive and difficult for the user to utilise.
+
+=== Logging
+
+We are using `java.util.logging` package for logging. The `LogsCenter` class is used to manage the logging levels and logging destinations.
+
+* The logging level can be controlled using the `logLevel` setting in the configuration file (See link:#configuration[Configuration])
+* The `Logger` for a class can be obtained using `LogsCenter.getLogger(Class)` which will log messages according to the specified logging level
+* Currently log messages are output through: `Console` and to a `.log` file.
+
+*Logging Levels*
+
+* `SEVERE` : Critical problem detected which may possibly cause the termination of the application
+* `WARNING` : Can continue, but with caution
+* `INFO` : Information showing the noteworthy actions by the App
+* `FINE` : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size
+
+=== Configuration
+
+Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: `config.json`).
+
+== Birthday field
+
+=== Design Considerations
+
+**Aspect:** Implementation of birthday field +
+**Alternative 1 (current choice):** Add a new birthday field to all files containing the other fields (name, phone, address, email). +
+**Pros:** We will not lose any other functionality as it is now just an additional part of the default behaviour. Existing classes and commands do not have to know that the birthday field exists, barring Add and Edit command. It is also easy for new developers to understand. +
+**Cons:** Design is not modular and has high dependency. +
+**Alternative 2:** Create a new class completely for optional fields such as birthday field +
+**Pros:** Does not involve the existing template pattern, easier for new developers to understand. +
+**Cons:** Methods of the birthday field that are inherited from the other fields must remember to call the super methods, or lose the ability to perform like the other fields.
+
+---
+
+**Aspect:** Whether it should be an optional field (can be left blank) +
+**Alternative 1 (current choice):** Birthday field currently cannot be an empty field. +
+**Pros:** Easy to implement and easy for new developers to understand the implementation and work on it. +
+**Cons:** Not very user-friendly as not all users would want to add birthdays for all their contacts. +
+**Alternative 2:** Make the birthday field optional. +
+**Pros:** More user-friendly. +
+**Cons: Implementation is sligtly more tedious and new developers might need more time to understand the implementation. **
+
 === Logging
 
 We are using `java.util.logging` package for logging. The `LogsCenter` class is used to manage the logging levels and logging destinations.
