@@ -40,9 +40,9 @@ public class BrowserPanel extends UiPart<Region> {
         registerAsAnEventHandler(this);
     }
 
-    private void loadPersonPage(ReadOnlyPerson per) {
+    private void loadPersonPage(ReadOnlyPerson pers) {
         loadPage(GOOGLE_SEARCH_URL_PREFIX
-                + per.getAddress().value.replaceAll(" ", "+").replaceAll(",", "%2C"));
+                + pers.getAddress().value.replaceAll(" ", "+").replaceAll(",", "%2C"));
     }
 
     public void loadPage(String url) {
