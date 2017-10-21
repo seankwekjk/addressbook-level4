@@ -16,14 +16,16 @@ By: `CS2103AUG17-T16-B4`      Since: `Sep 2017`      Licence: `MIT`
 
 == Introduction
 
-Contags is a platform for storing and managing contacts and their associated information. It provides you with a set of core APIs which you can use to concentrate on the production, editing and publishing of enhancements, new features and documentation.
+Contags is a platform for storing and managing contacts and their associated particulars and other information. It provides you with a set of core APIs which you can use to concentrate on the production, editing and publishing of enhancements, new features and documentation.
 
-In order to be a successful Contags developer, you need a general
+In order to be a successful Contags developer, you will need a general
 understanding of: +
 
 • Contags's architecture and object model +
 
 • How features are implemented using the UI, Logic, Model and Storage components.
+
+The sections below give a more detailed overview and implmentation of the design of Contags. Do take a look before getting started on using Contags! +
 
 == Setting up
 
@@ -586,6 +588,8 @@ Managing these _dependencies_ can be automated using Gradle. For example, Gradle
 [appendix]
 == User Stories
 
+The user stories here depict the various types of features and considerations that you, as a developer, may have for the users of Contags. These user stories serve as a guide towards the features that you should create for users. +
+
 Priorities: +
             `* * \*` - High (must have), +
             `* \*` - Medium (nice to have), +
@@ -661,6 +665,7 @@ Priorities: +
 
 [appendix]
 == Use Cases
+The use cases here are for you (and other developers) to understand the flow in which a user may follow in using a particular feature implemented in Contags. +
 
 (For all use cases below, the *System* is the `Contags` and the *Actor* is the `user`, unless specified otherwise)
 
@@ -678,14 +683,12 @@ Use case ends.
 
 *Extensions*
 
-[none]
 * 2a. The list is empty.
 +
 Use case ends.
 
 * 3a. The given index is invalid.
 +
-[none]
 ** 3a1. Contags shows an error message.
 +
 Use case resumes at step 2.
@@ -717,7 +720,7 @@ Use case ends.
 
 *Extensions*
 
-[none]
+
 * 2a. The list is empty.
 +
 Use case ends.
