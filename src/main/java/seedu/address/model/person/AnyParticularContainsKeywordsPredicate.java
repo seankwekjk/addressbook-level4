@@ -17,13 +17,19 @@ public class AnyParticularContainsKeywordsPredicate implements Predicate<ReadOnl
 
     @Override
     public boolean test(ReadOnlyPerson person) {
+
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword)) || keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getAddress().toString(), keyword)) || keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getBirthday().toString(), keyword)) || keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getEmail().toString(), keyword)) || keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getPhone().toString(), keyword)) || keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getRemark().getRemarkText(), keyword));
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword))
+                || keywords.stream().anyMatch(keyword -> StringUtil.containsWordIgnoreCase
+                (person.getAddress().toString(), keyword))
+                || keywords.stream().anyMatch(keyword -> StringUtil.containsWordIgnoreCase
+                (person.getBirthday().toString(), keyword))
+                || keywords.stream().anyMatch(keyword -> StringUtil.containsWordIgnoreCase
+                (person.getEmail().toString(), keyword))
+                || keywords.stream().anyMatch(keyword -> StringUtil.containsWordIgnoreCase
+                (person.getPhone().toString(), keyword))
+                || keywords.stream().anyMatch(keyword -> StringUtil.containsWordIgnoreCase
+                (person.getRemark().getRemarkText(), keyword));
     }
 
     @Override
