@@ -14,6 +14,33 @@ endif::[]
 
 By: `CS2103AUG17-T16-B4`      Since: `Sep 2017`      Licence: `MIT`
 
+== Cover Page
+
+image::cove_page.jpg[width="790"]
+
+== Introduction
+
+Contags is an enhanced version of the conventional AddressBook application.
+The name "Contags" was chosen as an inspiration to our commitment towards the contacts in the application, with an
+inherent focus on ensuring ease of use for consumers as they add to and maintain the relationships that they have. Our
+target consumer group are business executives who would largely benefit from the enhancements and commands that we have
+developed for this application, which is based upon superior aesthetic design, efficiency, as well as ease of use all in
+an attempt to synchronize communication. Ultimately, we hope this brings people together and solidifies both
+professional and personal relationships.
+
+This is why the motto "your digital secretary" was chosen, in order to cater to high-profile executives and their needs
+to maintain personal and professional relationships through a digital, efficient medium.
+
+The contact particulars that we have chosen to include in this application were selected based upon their relevancy in a
+professional setting. Namely, these particulars are: Name, Phone Number, Email, Address, Birthday, Remark, and Tags.
+Accordingly, the enhancements that we have made are based upon these seven fields, in attempt to make these fields more
+accessible and practically comprehensive as possible for the user.
+
+Written and enhanced in Java, this application also is made readily editable, in order to be further enhanced in Version
+2.0 in which we hope to bring across as soon as possible. We project that the current changes to this particular
+AddressBook, as well as those that will be brought across in Version 2.0, will make Contags one of the most
+professional, aesthetic, and sought-after products in the market on any operating system.
+
 == Quick Start
 
 .  Ensure you have Java version `1.8.0_60` or later installed in your Computer.
@@ -33,7 +60,8 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 .  Some example commands you can try:
 
 * *`list`* : lists all contacts
-* **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : adds a contact named `John Doe` to the Address Book.
+* **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : adds a contact named
+`John Doe` to the Address Book.
 * **`delete`**`3` : deletes the 3rd contact shown in the current list
 * *`exit`* : exits the app
 
@@ -44,10 +72,13 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 ====
 *Command Format*
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+* Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add n/NAME`, `NAME` is a parameter which
+can be used as `add n/John Doe`.
 * Items in square brackets are optional e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
-* Items with `…`​ after them can be used multiple times including zero times e.g. `[t/TAG]...` can be used as `{nbsp}` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
-* Parameters can be in any order e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+* Items with `…`​ after them can be used multiple times including zero times e.g. `[t/TAG]...` can be used as `{nbsp}`
+(i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+* Parameters can be in any order e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also
+acceptable.
 ====
 
 === Viewing help : `help`
@@ -323,13 +354,15 @@ Emails the 1st person in the results of the `find` command.
 
 === Sorting Contacts based on Frequency `frequent` `Coming in v2.0`
 
-Displays a list of sorted contacts in the Contags Application based upon the frequency of communication between user and contact +
+Displays a list of sorted contacts in the Contags Application based upon the frequency of communication between user and
+contact +
 Format: `frequent`
 
 ****
 * Sorts all Contacts based upon frequency of communication
 * Contacts that have been communicated with most frequently will appear at the top of the list
-* Application determines frequency by keeping a counter of contact particulars that have been accessed since the contact has been added
+* Application determines frequency by keeping a counter of contact particulars that have been accessed since the contact
+has been added
 * All contact particulars that have been accessed add an equal count of 1 to this counter
 ****
 
@@ -342,7 +375,8 @@ Displays a list of sorted contacts based upon the frequency of communication.
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
-*A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.
+*A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the
+data of your previous Address Book folder.
 
 == Command Summary
 
@@ -376,6 +410,55 @@ e.g. `remark 1 r/Likes coffee.`
 2. A reminder list that will pop up on the screen every time the user opens the application.
 
 3. A meeting scheduler, where users link to their calender application when they first install the application. +
-Subsequently, when they typed in the command free followed by the contact name or index, they and get a list of common free timings with that contact.
+Subsequently, when they typed in the command free followed by the contact name or index, they and get a list of common
+free timings with that contact.
 
-4. Contacts can be sorted in the Contags Application based upon the frequency of communication between user and all contacts
+4. Contacts can be starred in the Contags Application based upon the user's preference to give priority in the list of
+contacts.
+
+== Compact Summary
+
+This section provides a compact, executive summary of the entire User Guide of Contags.
+
+=== Introduction & Cover Page
+
+* In summary, the Contags application is an enhanced replica of the conventional AddressBook application, with a focus
+on convenience as well as ease of use for our main consumer base, which are professional executives in the business
+workforce.
+* Our slogan "Your Digital Secretary" encompasses this definition, as well as encapsulates our goal to digitize
+ the job scope of secretary with our development and efforts in Contags.
+
+
+=== Quick Start
+
+* The quick start section highlights that the user needs Java version `1.8.0_60` or later installed in the Computer.
+* Additionally, to execute a command, type in the appropriate command word in the correct command format, then hit
+the `enter` key on the computer.
+
+=== Features
+
+Here is a quick list of all the features that the Contags Application can execute correctly:
+
+* `help` - opens a help window for the user
+* `add` - adds a contact to the application
+* `list` - lists all contacts in the application
+* `edit` - edits a certain field of a contact
+* `find` - helps user to locate and identify an appropriate contact in the application
+* `removeTag` - removes a specified tag from all contacts in the application
+* `delete` - deletes a contact from the application
+* `select` - selects a particular contact in the list shown
+* `map` - Loads the google map page for the address of a particular contact
+* `remark` - adds a remark to a particular contact in the application
+* `history` - shows a brief history of previous user command inputs into the application
+* `undo` - undo the previous command by the user
+* `redo` - redo the command that was previously undone by the user
+* `clear` - removes all contacts from the application
+* `exit` - exits the application
+* `direct` - provides directions to a particular contact's address
+* `mail` - opens an email directed to the contact's email address
+
+=== Coming in V2.0
+
+* More features will be implemented in future versions, including a reminder list for the user, a meeting scheduler,
+as well as starred contacts.
+
