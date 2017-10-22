@@ -7,7 +7,9 @@ import com.google.common.eventbus.Subscribe;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
@@ -21,6 +23,8 @@ import seedu.address.commons.events.ui.ExitAppRequestEvent;
 import seedu.address.commons.events.ui.ShowHelpRequestEvent;
 import seedu.address.commons.util.FxViewUtil;
 import seedu.address.logic.Logic;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.UserPrefs;
 
 /**
@@ -49,6 +53,12 @@ public class MainWindow extends UiPart<Region> {
     private StackPane browserPlaceholder;
 
     @FXML
+    private TextField searchField;
+
+    @FXML
+    private ComboBox comboBox;
+
+    @FXML
     private StackPane commandBoxPlaceholder;
 
     @FXML
@@ -63,7 +73,8 @@ public class MainWindow extends UiPart<Region> {
     @FXML
     private StackPane statusbarPlaceholder;
 
-    public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic) {
+    public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic)
+            throws CommandException, ParseException {
         super(FXML);
 
         // Set dependencies
@@ -79,9 +90,49 @@ public class MainWindow extends UiPart<Region> {
         setWindowDefaultSize(prefs);
         Scene scene = new Scene(getRoot());
         primaryStage.setScene(scene);
+        initSearchField(logic);
+        initSortBox();
 
         setAccelerators();
         registerAsAnEventHandler(this);
+    }
+
+    /**
+     * Initializes the search field.
+     *
+     * @param logic
+     */
+    private void initSearchField(Logic logic) {
+        searchField.setOnKeyReleased(e -> {
+            try {
+                if (searchField.getText().isEmpty()) {
+                    logic.execute("list");
+                }
+                logic.execute("find " + searchField.getText());
+            } catch (CommandException e1) {
+                e1.printStackTrace();
+            } catch (ParseException e1) {
+                e1.printStackTrace();
+            }
+        });
+    }
+
+    /**
+     * Initializes the sort box.
+     */
+    private void initSortBox() throws CommandException, ParseException {
+        comboBox.getItems().addAll("Name", "Phone", "Email", "Address");
+        comboBox.getSelectionModel().select(0);
+        logic.execute("sort name");
+        comboBox.setOnAction(e -> {
+            try {
+                logic.execute("sort " + comboBox.getValue().toString());
+            } catch (CommandException e1) {
+                e1.printStackTrace();
+            } catch (ParseException e1) {
+                e1.printStackTrace();
+            }
+        });
     }
 
     public Stage getPrimaryStage() {
