@@ -123,7 +123,7 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public String updateEmailRecipient(Predicate<ReadOnlyPerson> predicate) {
+    public String updateMailRecipientList(Predicate<ReadOnlyPerson> predicate) {
         requireNonNull(predicate);
         filteredMails.setPredicate(predicate);
         List<String> validPeopleList = new ArrayList<>();
