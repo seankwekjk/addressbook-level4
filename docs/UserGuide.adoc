@@ -14,6 +14,15 @@ endif::[]
 
 By: `CS2103AUG17-T16-B4`      Since: `Sep 2017`      Licence: `MIT`
 
+== About
+
+This document is intended to assist first time users with setting up Contags, as well as introducing new users to the functionality of the application. After reading this document, a user should be able to utilise the application with minimal difficulty.
+
+Contags was developed by the CS2103 T16-B4 Team. +
+The contact details of the team may be found <<ContactUs#, here>>.
+
+As development of Contags is continuously ongoing, we recommend checking for new updates every 2 weeks, to ensure that your version of Contags is up to date with the latest and most exciting new features.
+
 == Quick Start
 
 .  Ensure you have Java version `1.8.0_60` or later installed in your Computer.
@@ -325,6 +334,24 @@ Emails the 1st person in the results of the `find` command.
 
 *Q*: How do I transfer my data to another Computer? +
 *A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.
+
+*Q*: Does the app work without an internet connection? +
+*A*: The primary functions of the application do not require an internet connection, but specific aspects of the app such as the Google Maps search, social media integration, and email functionality cannot function as intended without an active internet connection on your device.
+
+*Q*: What if I want to add 2 different contacts of the same name? Does Contags allow that? +
+*A*: Currently, Contags does not allow you to add 2 contacts of the exact same name, and as such we recommend that you append an identifier to the person's name to allow you to save the contact and distinguish between the 2 contacts. We are, however, planning on updating the add command to allow 2 contacts of the same name, as well as assisting you to distinguish between them.
+
+*Q*: Can I use my mouse or keyboard shortcuts to access the app's functions? +
+*A*: No. The application was built to rely primarily on the Command-Line Interface and as such is meant to minimise the amount of interactions with other forms of input apart from the keyboard.
+
+*Q*: How does the app work? +
+*A*: Those interested in the mechanisms of our application may reference the Developer Guide located <<DeveloperGuide#, here.>>
+
+*Q*: How can I request new features for the app? +
+*A*: Suggestions are always welcome and you can provide us with the details of your ideas at devteam@contags.com.sg.
+
+*Q*: How do I report any bugs to the developers? +
+*A*: You can send a screenshot with the details regarding the bugs to help@contags.com.sg and we will get back to you as soon as possible.
 
 == Command Summary
 
