@@ -602,7 +602,7 @@ Priorities: +
 
 |`* * *` |user |search all my contacts by any keyword, name, email address, or address |search for people by other means than names
 
-|`* * *` |user |find a person with an incomplete name |find a person with an incomplete name |to find a person even if I cannot remember or spell the person's name correctly
+|`* * *` |user |find a person with an incomplete name |to find a person even if I cannot remember or spell the person's name correctly
 
 |`* * *` |user |see all tags for a contact |to organise contacts easily
 
