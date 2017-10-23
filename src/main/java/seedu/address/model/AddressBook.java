@@ -60,6 +60,19 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Deletes the tag argument from this AddressBook
+     */
+
+    public void deleteTag(Tag toRemove) {
+        tags.removeTag(toRemove);
+        for (Person person :persons) {
+            if (person.getTags().contains(toRemove)) {
+                person.remove(toRemove);
+            }
+        }
+    }
+
+    /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
     public void resetData(ReadOnlyAddressBook newData) {
@@ -72,6 +85,13 @@ public class AddressBook implements ReadOnlyAddressBook {
 
         setTags(new HashSet<>(newData.getTagList()));
         syncMasterTagListWith(persons);
+    }
+
+    /**
+     * Sorts the list in alphabetical order.
+     */
+    public void sortList(String toSort) {
+        persons.sort(toSort);
     }
 
     //// person-level operations
