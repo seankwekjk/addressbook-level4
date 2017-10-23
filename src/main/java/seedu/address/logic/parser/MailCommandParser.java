@@ -19,16 +19,16 @@ public class MailCommandParser implements Parser<MailCommand> {
      */
     public MailCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, MAIL_RECEPIENT, MAIL_TITLE, MAIL_MESSAGE);
+                ArgumentTokenizer.tokenize(args, PREFIX_MAIL_RECEPIENT, PREFIX_MAIL_TITLE, PREFIX_MAIL_MESSAGE);
 
-        if (!arePrefixesPresent(argMultimap, MAIL_RECEPIENT) {
+        if (!arePrefixesPresent(argMultimap, PREFIX_MAIL_RECEPIENT) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MailCommand.MESSAGE_USAGE));
         }
 
         try {
-            String[] createList = ParserUtil.parseMailToCommand(argMultimap.getAllValues(MAIL_RECEPIENT));
-            String title = String.join(" ", argMultimap.getAllValues(MAIL_TITLE)).replace(" ", "%2C");
-            String message = String.join(" ", argMultimap.getAllValues(MAIL_SUBJECT)).replace(" ", "%2C");
+            String[] createList = ParserUtil.parseMailToCommand(argMultimap.getAllValues(PREFIX_MAIL_RECEPIENT));
+            String title = String.join("", argMultimap.getAllValues(PREFIX_MAIL_TITLE)).replace(" ", "%20");
+            String message = String.join("", argMultimap.getAllValues(PREFIX_MAIL_SUBJECT)).replace(" ", "%20");
         }
         catch (IllegalValueException ive) {
             throw new ParseException(ive.getMessage(), ive);
