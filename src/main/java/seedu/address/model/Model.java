@@ -54,6 +54,6 @@ public interface Model {
      * Updates the filter of the filtered list of people to mail to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
-    String updateEmailRecipient(Predicate<ReadOnlyPerson> predicate);
+    String updateMailRecipientList(Predicate<ReadOnlyPerson> predicate);
 
 }
