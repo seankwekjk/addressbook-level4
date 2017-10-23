@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.model.tag.Tag;
 
 /**
  * The API of the Model component.
@@ -20,12 +21,16 @@ public interface Model {
     /** Returns the AddressBook */
     ReadOnlyAddressBook getAddressBook();
 
+    /** Sorts the AddressBook in alphabetical order. */
+    void sortList(String toSort);
+
     /** Deletes the given person. */
     void deletePerson(ReadOnlyPerson target) throws PersonNotFoundException;
 
     /** Adds the given person */
     void addPerson(ReadOnlyPerson person) throws DuplicatePersonException;
 
+    void removeTag(Tag tag);
     /**
      * Replaces the given person {@code target} with {@code editedPerson}.
      *

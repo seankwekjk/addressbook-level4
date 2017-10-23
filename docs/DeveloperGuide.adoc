@@ -1,4 +1,4 @@
-= AddressBook Level 4 - Developer Guide
+= Contags - Developer Guide
 :toc:
 :toc-title:
 :toc-placement: preamble
@@ -10,11 +10,13 @@ ifdef::env-github[]
 :note-caption: :information_source:
 endif::[]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:repoURL: https://github.com/se-edu/addressbook-level4/tree/master
+:repoURL: https://github.com/CS2103AUG2017-T16-B4/main
 
-By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
+By: `CS2103AUG17-T16-B4`      Since: `Sep 2017`      Licence: `MIT`
 
 == Setting up
+
+Before you can start working on the code, you have to ensure that your system is configured correctly. This section provides the necessary information and resources to help you get started.
 
 === Prerequisites
 
@@ -34,21 +36,21 @@ Do not disable them. If you have disabled them, go to `File` > `Settings` > `Plu
 
 === Setting up the project in your computer
 
-. Fork this repo, and clone the fork to your computer
-. Open IntelliJ (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project dialog first)
-. Set up the correct JDK version for Gradle
-.. Click `Configure` > `Project Defaults` > `Project Structure`
-.. Click `New...` and find the directory of the JDK
-. Click `Import Project`
-. Locate the `build.gradle` file and select it. Click `OK`
-. Click `Open as Project`
-. Click `OK` to accept the default settings
+. Fork this repo, and clone the fork to your computer.
+. Open IntelliJ (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project dialog first).
+. Set up the correct JDK version for Gradle.
+.. Click `Configure` > `Project Defaults` > `Project Structure`.
+.. Click `New...` and find the directory of the JDK.
+. Click `Import Project`.
+. Locate the `build.gradle` file and select it. Click `OK`.
+. Click `Open as Project`.
+. Click `OK` to accept the default settings.
 . Open a console and run the command `gradlew processResources` (Mac/Linux: `./gradlew processResources`). It should finish with the `BUILD SUCCESSFUL` message. +
 This will generate all resources required by the application and tests.
 
 === Verifying the setup
 
-. Run the `seedu.address.MainApp` and try a few commands
+. Run the `seedu.address.MainApp` and try a few commands.
 . link:#testing[Run the tests] to ensure they all pass.
 
 === Configurations to do before writing code
@@ -58,17 +60,17 @@ This will generate all resources required by the application and tests.
 This project follows https://github.com/oss-generic/process/blob/master/docs/CodingStandards.md[oss-generic coding standards]. IntelliJ's default style is mostly compliant with ours but it uses a different import order from ours. To rectify,
 
 . Go to `File` > `Settings...` (Windows/Linux), or `IntelliJ IDEA` > `Preferences...` (macOS)
-. Select `Editor` > `Code Style` > `Java`
-. Click on the `Imports` tab to set the order
+. Select `Editor` > `Code Style` > `Java`.
+. Click on the `Imports` tab to set the order.
 
-* For `Class count to use import with '\*'` and `Names count to use static import with '*'`: Set to `999` to prevent IntelliJ from contracting the import statements
-* For `Import Layout`: The order is `import static all other imports`, `import java.\*`, `import javax.*`, `import org.\*`, `import com.*`, `import all other imports`. Add a `<blank line>` between each `import`
+* For `Class count to use import with '\*'` and `Names count to use static import with '*'`: Set to `999` to prevent IntelliJ from contracting the import statements.
+* For `Import Layout`: The order is `import static all other imports`, `import java.\*`, `import javax.*`, `import org.\*`, `import com.*`, `import all other imports`. Add a `<blank line>` between each `import`.
 
 Optionally, you can follow the <<UsingCheckstyle#, UsingCheckstyle.adoc>> document to configure Intellij to check style-compliance as you write code.
 
 ==== Updating documentation to match your fork
 
-After forking the repo, links in the documentation will still point to the `se-edu/addressbook-level4` repo. If you plan to develop this as a separate product (i.e. instead of contributing to the `se-edu/addressbook-level4`) , you should replace the URL in the variable `repoURL` in `DeveloperGuide.adoc` and `UserGuide.adoc` with the URL of your fork.
+After forking the repo, links in the documentation will still point to the `CS2103AUG2017-T16-B4/main` repo. If you plan to develop this as a separate product (i.e. instead of contributing to `CS2103AUG2017-T16-B4/main`) , you should replace the URL in the variable `repoURL` in `DeveloperGuide.adoc` and `UserGuide.adoc` with the URL of your fork.
 
 ==== Setting up CI
 
@@ -93,25 +95,29 @@ When you are ready to start coding,
 image::Architecture.png[width="600"]
 _Figure 2.1.1 : Architecture Diagram_
 
-The *_Architecture Diagram_* given above explains the high-level design of the App. Given below is a quick overview of each component.
+The *_Architecture Diagram (Figure 2.1.1)_* given above explains the high-level design of the App. Given below is a quick overview of each component.
 
 [TIP]
-The `.pptx` files used to create diagrams in this document can be found in the link:{repoURL}/docs/diagrams/[diagrams] folder. To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose `Save as picture`.
+You can find the `.pptx` files used to create diagrams in this document in the link:{repoURL}/docs/diagrams/[diagrams] folder. +
+To update a diagram: +
+1. Modify the diagram in the `.pptx` file as desired +
+2. Select the objects of the diagram, +
+3. Choose `Save as picture`.
 
 `Main` has only one class called link:{repoURL}/src/main/java/seedu/address/MainApp.java[`MainApp`]. It is responsible for,
 
-* At app launch: Initializes the components in the correct sequence, and connects them up with each other.
-* At shut down: Shuts down the components and invokes cleanup method where necessary.
+* At app launch: Initializing the components in the correct sequence, and conneecting them with each other.
+* At shut down: Shutting down the components and invoking cleanup method where necessary.
 
-link:#common-classes[*`Commons`*] represents a collection of classes used by multiple other components. Two of those classes play important roles at the architecture level.
+link:#common-classes[*`Commons`*] represents a collection of classes used by multiple components. Two of these classes play important roles at the architecture level, namely:
 
-* `EventsCenter` : This class (written using https://github.com/google/guava/wiki/EventBusExplained[Google's Event Bus library]) is used by components to communicate with other components using events (i.e. a form of _Event Driven_ design)
+* `EventsCenter` :  Used by components to communicate with other components using events (class written using https://github.com/google/guava/wiki/EventBusExplained[Google's Event Bus library]). (i.e. a form of _Event Driven_ design)
 * `LogsCenter` : Used by many classes to write log messages to the App's log file.
 
 The rest of the App consists of four components.
 
-* link:#ui-component[*`UI`*] : The UI of the App.
-* link:#logic-component[*`Logic`*] : The command executor.
+* link:#ui-component[*`UI`*] : Acts as the interaction link between the user and application.
+* link:#logic-component[*`Logic`*] : Executes Commands.
 * link:#model-component[*`Model`*] : Holds the data of the App in-memory.
 * link:#storage-component[*`Storage`*] : Reads data from, and writes data to, the hard disk.
 
@@ -120,7 +126,7 @@ Each of the four components
 * Defines its _API_ in an `interface` with the same name as the Component.
 * Exposes its functionality using a `{Component Name}Manager` class.
 
-For example, the `Logic` component (see the class diagram given below) defines it's API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class.
+For example, the `Logic` component (see the _class diagram (Figure 2.1.2)_ given below) defines it's API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class.
 
 image::LogicClassDiagram.png[width="800"]
 _Figure 2.1.2 : Class Diagram of the Logic Component_
@@ -128,23 +134,23 @@ _Figure 2.1.2 : Class Diagram of the Logic Component_
 [discrete]
 ==== Events-Driven nature of the design
 
-The _Sequence Diagram_ below shows how the components interact for the scenario where the user issues the command `delete 1`.
+The _Sequence Diagram (Figure 2.1.3a)_ below shows how the components interact for the scenario where the user issues the command `delete 1`.
 
 image::SDforDeletePerson.png[width="800"]
 _Figure 2.1.3a : Component interactions for `delete 1` command (part 1)_
 
 [NOTE]
-Note how the `Model` simply raises a `AddressBookChangedEvent` when the Address Book data are changed, instead of asking the `Storage` to save the updates to the hard disk.
+Note how the `Model` simply raises a `AddressBookChangedEvent` when the Contags data are changed, instead of asking the `Storage` to save the updates to the hard disk.
 
-The diagram below shows how the `EventsCenter` reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.
+The _Sequence Diagram (Figure 2.1.3b)_ below shows how the `EventsCenter` reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.
 
 image::SDforDeletePersonEventHandling.png[width="800"]
 _Figure 2.1.3b : Component interactions for `delete 1` command (part 2)_
 
 [NOTE]
-Note how the event is propagated through the `EventsCenter` to the `Storage` and `UI` without `Model` having to be coupled to either of them. This is an example of how this Event Driven approach helps us reduce direct coupling between components.
+Note how the event is propagated through the `EventsCenter` to the `Storage` and `UI` without `Model` having to be coupled to either of them. This is an example of how this Event Driven approach helps us to reduce direct coupling between components.
 
-The sections below give more details of each component.
+You can look at the sections below for more details of each component.
 
 === UI component
 
@@ -155,13 +161,15 @@ _Figure 2.2.1 : Structure of the UI Component_
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter`, `BrowserPanel` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
-The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the link:{repoURL}/src/main/java/seedu/address/ui/MainWindow.java[`MainWindow`] is specified in link:{repoURL}/src/main/resources/view/MainWindow.fxml[`MainWindow.fxml`]
+The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. +
 
-The `UI` component,
+For example, the layout of the link:{repoURL}/src/main/java/seedu/address/ui/MainWindow.java[`MainWindow`] is specified in link:{repoURL}/src/main/resources/view/MainWindow.fxml[`MainWindow.fxml`].
 
-* Executes user commands using the `Logic` component.
-* Binds itself to some data in the `Model` so that the UI can auto-update when data in the `Model` change.
-* Responds to events raised from various parts of the App and updates the UI accordingly.
+The `UI` component can do the following:
+
+* Execute user commands using the `Logic` component.
+* Bind itself to some data in the `Model` so that the UI can auto-update when data in the `Model` change.
+* Respond to events raised from various parts of Contags and updates the UI accordingly.
 
 === Logic component
 
@@ -345,7 +353,66 @@ image::UndoRedoActivityDiagram.png[width="200"]
 **Cons:** Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things. +
 // end::undoredo[]
 
-=== Birthday field
+=== Remark mechanism
+
+`Remark` functions as an additional Optional field for a `Person`. It exists separately from tags, and does not interfere with its function.
+
+During initialising of a new `Person`, the `Remark` field is not able to be filled, and it generates an empty `Remark` instead. Both the `add` and `edit` commands are unable to modify the `Remark` field of any given `Person`.
+
+The following sequence diagram shows the execution of the RemarkCommand.
+
+image::RemarkCommandSequenceDiagram.png[width="800"]
+
+[NOTE]
+The `index` field of the `RemarkCommand` uses the indexing of the filtered list that is currently being shown, not the list of all persons.
+
+The implementation of `RemarkCommand` is similar to that of the `EditCommand`. As such, the `updatePerson()` method found in the `ModelManager` is utilised.
+
+Since `Remark` is an optional field, the value of `remarkText` may be null. In this case, the `Remark` field of the person at `index` will be cleared.
+
+To create a difference between the updating and clearing of the `Remark` field, the `CommandResult` of `RemarkCommand` will differ based on the new contents of the `Remark`. This will also provide some additional clarity to users when using the command.
+
+==== Design Considerations
+
+**Aspect:** How `RemarkCommand` executes +
+**Alternative 1 (current choice):** Follow logic of `edit` command, to generate a new person with an updated `Remark` field and write over the existing `Person` +
+**Pros:** Follows an existing style, making it easier to implement and troubleshoot. +
+**Cons:** Seems unintuitive to create a new `Person` to edit a field that cannot be modified by the `edit` command. +
+**Alternative 2:** Create a `setRemark()` method to modify the `Remark` field of the existing selected `Person` +
+**Pros:** Would be very simple to implement. +
+**Cons:** As the `RemarkCommand` requires the input of an `index`, we require to interface with the list of persons already existing in the AddressBook. These methods however, return lists of `ReadOnlyPerson`, which do not allow the inclusion of a `setReamrk()` method. This would require changes elsewhere in the project that would affect other aspects.
+
+---
+
+**Aspect:** Separation of `Remark` from `add` and `edit` commands +
+**Alternative 1 (current choice):** Do not allow `add` and `edit` to add a `Remark` +
+**Pros:** The desired outcome was to experience the development of an entirely new infrastructure for a new command, and to modify 2 existing commands would not have the same educational effect. +
+**Cons:** Unintuitive to have a separate command simply for 1 field. +
+**Alternative 2:** Allow `add` and `edit` to add a `Remark` +
+**Pros:** Is more intuitive for the user, and is simpler to implement the logic of the command. +
+**Cons:** Is not as challenging to implement and does not possess the same educational value.
+
+---
+
+**Aspect:** Source of `index` +
+**Alternative 1 (current choice):** Use the current filtered list that is displayed +
+**Pros:** It is intuitive to use the index that is currently being displayed in the ui. +
+**Cons:** It does not allow any `Person` that is not currently in the filtered list to have their `Remark` edited. +
+**Alternative 2:** Use the list of all persons +
+**Pros** It allows all persons, even those not currently being shown, to have their `Remark` edited. +
+**Cons** The user will find it difficult to know the `index` of the `Person` he would like to edit, particularly if it is not currently in the filtered list. It is not intuitive and difficult for the user to utilise.
+
+=== Logging
+
+We are using `java.util.logging` package for logging. The `LogsCenter` class is used to manage the logging levels and logging destinations.
+
+* The logging level can be controlled using the `logLevel` setting in the configuration file (See link:#configuration[Configuration])
+* The `Logger` for a class can be obtained using `LogsCenter.getLogger(Class)` which will log messages according to the specified logging level
+* Currently log messages are output through: `Console` and to a `.log` file.
+
+*Logging Levels*
+
+=== Birthday Field
 
 The person class consists of five compulsory attributes, `Name` `Phone` `Email` `Address` `Birthday` and optional `Remark` and `Tag`. The implementation of the birthday attribute is similar to that of the other compulsory attributes. It is a compulsory field and cannot be left blank. The constructor takes in the birthday value in a String format and a new instance of the birthday field is initialised.
 
@@ -755,9 +822,59 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |user |find a person by name |locate details of persons without having to go through the entire list
 
+|`* * *` |user |find all my contacts that have the same tag |search for groups of people easily
+
+|`* * *` |user |search all my contacts by any keyword, name, email address, or address |search for people by other means than names
+
+|`* * *` |user |find a person with an incomplete name |to find a person even if I cannot spell the person's name perfectly
+
+|`* * *` |user |see all tags for a contact |to organise contacts easily
+
+|`* * *` |user |edit all details for my contacts |to keep details of my contacts up to date without having to recreate the contact
+
+|`* * *` |user |create a new contact with a name that already exists in addressbook |have multiple contacts with the same name
+
 |`* *` |user |hide link:#private-contact-detail[private contact details] by default |minimize chance of someone else seeing them by accident
 
+|`* *` |user |add contacts with missing fields |
+
+|`* *` |user |attribute multiple phone numbers to a contact |have a contact's mobile and home numbers in the same contact
+
+|`* *` |user |delete certain fields for my contacts |
+
+|`* *` |user |know if any of my contact information clashes with another one |organise contacts easily
+
+|`* *` |user |delete all tags for a contact |
+
+|`* *` |user |undo previous commands |revert mistakes made
+
+|`* *` |user |add tags to a contact while editing without removing them all |simplify the editing of tags
+
+|`* *` |user |attribute multiple addresses to a contact |have a contact's work and home addresses in the same contact
+
+|`* *` |user |sort the list of contacts in alphabetical order |organise the list
+
+|`* *` |user |sort the list of contacts in the list based on phone number |
+
+|`* *` |user |email a contact by clicking on their email field |simplify the emailing process
+
 |`*` |user with many persons in the address book |sort persons by name |locate a person easily
+
+|`*` |user |see which contacts have recently been changed or updated |locate changes easily
+
+|`*` |user |attribute multiple email addresses to a contact |
+
+|`*` |user |add nicknames to a contact |to identify contacts easily
+
+|`*` |user |view the last 10 commands I typed |track use of the addressbook
+
+|`*` |user |add a priority number to each contact |
+
+|`*` |user |list contacts in priority order |have faster access to the contacts that are most important
+
+|`*` |forgetful user |be reminded of meetings and important events |
+
+|`*` |forgetful user |link appointments with specific contacts |
 |=======================================================================
 
 {More to be added}
@@ -793,7 +910,206 @@ Use case ends.
 +
 Use case resumes at step 2.
 
-{More to be added}
+[discrete]
+
+=== Use case: Delete certain fields
+
+*MSS*
+
+1. User requests list of persons with particular name.
+2. AddressBook shows a list of persons.
+3. User requests to select specific contact.
+4. AddressBook selects contact.
+5. User requests to delete particular field(s).
+6. AddressBook clears the listed field(s).
+
+[discrete]
+=== Use case: Add person
+
+*MSS*
+
+1.  User requests to add persons in the specified format.
+2.  AddressBook adds person in the specified format to the list.
+3.  AddressBook acknowledges that the person has been added to the list.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. The list is empty.
++
+Use case ends.
+
+* 3a. The given index is invalid.
++
+[none]
+** 3a1. AddressBook shows an error message.
++
+Use case resumes at step 2.
+
+* 5a. The given field is blank.
++
+[none]
+** 5a1. AddressBook shows an error message.
++
+Use case ends.
+
+[discrete]
+=== Use case: Creating contact with same name
+
+*Preconditions*
+1. AddressBook contains existing contact with the name to be duplicated.
+
+*Guarantees*
+1. User will be warned of the existing contact with the same name.
+
+*MSS*
+
+1. User adds contact with the duplicated name.
+2. AddressBook shows list of existing contacts of same name.
+3. AddressBook asks if user wants to continue, update existing contact, or end use case.
+4. User requests to continue.
+5. AddressBook creates new contact.
+
+* 1a. User does not follow the specified format required for input.
+* 1b. Person with same name is already in the list
+Error: AddressBook informs user that input is invalid.
+
+[discrete]
+=== Use case: List Contact
+
+
+*MSS*
+
+1.  User requests to list persons
+2.  AddressBook shows a list of persons
+
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. The list is empty.
++
+Use case ends.
+
+
+
+[discrete]
+=== Use case: Edit Contact
+
+
+*MSS*
+
+1.  User requests to edit person (index) and specific particular
+2.  AddressBook edits the contact particular and displays latest change
++
+Use case ends.
+
+*Extensions*
+
+[none]
+
+* 3a. User requests to update existing contact.
+* 3b. User selects from existing contact(s).
+* 3c. AddressBook updates selected contact.
++
+Use case ends.
++
+** 3b1. The given index is invalid.
++
+*** 3b11. AddressBook shows an error message.
++
+Use case resumes at step 3b.
+
+[discrete]
+=== Use case: Clear
+
+*Preconditions*
+1. AddressBook is not empty.
+
+*MSS*
+
+1. User requests to clear list.
+2. AddressBook clears list.
++
+Use case ends.
+
+[discrete]
+=== Use case: Exit
+
+*MSS*
+
+1. User requests to exit the program.
+2. AddressBook closes the program.
++
+Use case ends.
+
+[discrete]
+=== Use case: History
+
+*MSS*
+
+1. User requests history of commands issued.
+2. AddressBook shows list of commands in reverse chronological order.
++
+Use case ends.
+* 1a. Person Index is invalid.
++
+AddressBook informs user that Person Index is invalid.
+
+* 1b. User requests to edit information in an invalid format
++
+AddressBook informs user that the format is invalid, providing the correct format.
+
+
+[discrete]
+=== Use case: Find Contact
+
+
+*MSS*
+
+
+ 1.  User requests to find person by entering part of contact name
+ 2.  AddressBook finds contact with keyword included in name, and displays latest change
+ +
+ Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. Contact cannot be found
++
+AddressBook informs user that contact cannot be found
+
+[discrete]
+=== Use case: Select Contact
+
+
+*MSS*
+
+1.  User requests to see entire list of contacts
+2.  Based on list, user selects contact by providing contact index.
+3.  AddressBook selects contact with index given.
+
++ Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. The list is empty.
++
+Use case ends.
+
+* 1a. No contacts in list.
++
+AddressBook informs user that there are currently no contacts in the list.
+
+* 2a. User inputs invalid contact index.
++
+AddressBook informs user that the input is not a valid contact index.
 
 [appendix]
 == Non Functional Requirements
@@ -801,11 +1117,49 @@ Use case resumes at step 2.
 .  Should work on any link:#mainstream-os[mainstream OS] as long as it has Java `1.8.0_60` or higher installed.
 .  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 .  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+.  Data stored in Contags should not be corrupted in event of unexpected error leading to application crashing unexpectedly.
+.  System should be usable by users who are new to entering commands via Command Line Interface (CLI).
+.  Should work even after multiple entries of invalid commands.
+.  Source code should be open source to allow other developers to improve the application.
+.  Should be a free application for all.
+.  App should be updated regularly for bug fixes or implementing new features.
 
 {More to be added}
 
 [appendix]
 == Glossary
+
+[[jdk]]
+
+JDK
+
+....
+Java Development Kit.
+....
+
+[[api]]
+
+API
+
+....
+Application Programming Interface.
+....
+
+[[ui]]
+
+UI
+
+....
+User-interface (focuses on maximising usability and optimal user experience).
+....
+
+[[gui]]
+
+GUI
+
+....
+Graphical User Interface. Allows users to interact with the software using graphical and visual icons instead of text.
+....
 
 [[mainstream-os]]
 Mainstream OS
@@ -819,6 +1173,58 @@ Private contact detail
 
 ....
 A contact detail that is not meant to be shared with others
+....
+
+[[high-level-design]]
+High-level design
+
+....
+High-level design is the overall system design, including the database design and system architecture.
+....
+
+[[clean-up]]
+
+Clean up
+....
+Releases the references to objects.
+....
+
+[[event]]
+
+Event
+....
+Event is a significant change in state.
+....
+
+[[event-driven-design]]
+
+Event-driven design
+....
+Promotes the production, detection, consumption of and reaction to events.
+....
+
+[[single-responsibility-principle]]
+
+Single Responsibility Principle
+
+....
+Every module/class has responsibility (encapsulated in a single class) over a single part of functionality only.
+....
+
+[[separation-of-concerns]]
+
+Separation of Concerns
+
+....
+Separating a computer program into distinct section such that each section address and single and unique concern.
+....
+
+[[idiosyncrasies]]
+
+Idiosyncrasies
+
+....
+Behaviour that is specific to an individual.
 ....
 
 [appendix]
