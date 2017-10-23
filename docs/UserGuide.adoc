@@ -41,6 +41,15 @@ Written and enhanced in Java, this application also is made readily editable, in
 AddressBook, as well as those that will be brought across in Version 2.0, will make Contags one of the most
 professional, aesthetic, and sought-after products in the market on any operating system.
 
+== About
+
+This document is intended to assist first time users with setting up Contags, as well as introducing new users to the functionality of the application. After reading this document, a user should be able to utilise the application with minimal difficulty.
+
+Contags was developed by the CS2103 T16-B4 Team. +
+The contact details of the team may be found <<ContactUs#, here>>.
+
+As development of Contags is continuously ongoing, we recommend checking for new updates every 2 weeks, to ensure that your version of Contags is up to date with the latest and most exciting new features.
+
 == Quick Start
 
 .  Ensure you have Java version `1.8.0_60` or later installed in your Computer.
@@ -198,6 +207,27 @@ Selects the 2nd person in the address book.
 * `find Betsy` +
 `select 1` +
 Selects the 1st person in the results of the `find` command.
+
+=== Sorting the list of people: `sort`
+
+Sorts the list of people saved in Contags according to: +
+Name, Phone number, Email, Address. +
+Format: `sort KEYWORD`
+
+****
+* Sorting is done in alphanumerical ascending order. +
+* Keywords for sorting: *name, phone, email, address* +
+* Keywords are *case-insensitive* i.e. *Name* and *NAME* both work. +
+****
+
+Examples:
+
+* `sort name` +
+List is sorted according to name in ascending order.
+* `sort EMAIL` +
+List is sorted according to email addresses in ascending order.
+* `sort Address` +
+List is sorted according to addresses in ascending order.
 
 === Getting directions to a person's address : `map` `m`
 
@@ -378,14 +408,32 @@ Displays a list of sorted contacts based upon the frequency of communication.
 *A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the
 data of your previous Address Book folder.
 
+*Q*: Does the app work without an internet connection? +
+*A*: The primary functions of the application do not require an internet connection, but specific aspects of the app such as the Google Maps search, social media integration, and email functionality cannot function as intended without an active internet connection on your device.
+
+*Q*: What if I want to add 2 different contacts of the same name? Does Contags allow that? +
+*A*: Currently, Contags does not allow you to add 2 contacts of the exact same name, and as such we recommend that you append an identifier to the person's name to allow you to save the contact and distinguish between the 2 contacts. We are, however, planning on updating the add command to allow 2 contacts of the same name, as well as assisting you to distinguish between them.
+
+*Q*: Can I use my mouse or keyboard shortcuts to access the app's functions? +
+*A*: No. The application was built to rely primarily on the Command-Line Interface and as such is meant to minimise the amount of interactions with other forms of input apart from the keyboard.
+
+*Q*: How does the app work? +
+*A*: Those interested in the mechanisms of our application may reference the Developer Guide located <<DeveloperGuide#, here.>>
+
+*Q*: How can I request new features for the app? +
+*A*: Suggestions are always welcome and you can provide us with the details of your ideas at devteam@contags.com.sg.
+
+*Q*: How do I report any bugs to the developers? +
+*A*: You can send a screenshot with the details regarding the bugs to help@contags.com.sg and we will get back to you as soon as possible.
+
 == Command Summary
 
-* *Add* `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` +
-e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+* *Add* `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS b/BIRTHDAY [t/TAG]...` +
+e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 b/01/01/1990 t/friend t/colleague`
 * *Clear* : `clear`
 * *Delete* : `delete INDEX` +
 e.g. `delete 3`
-* *Edit* : `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
+* *Edit* : `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [b/BIRTHDAY] [t/TAG]...` +
 e.g. `edit 2 n/James Lee e/jameslee@example.com`
 * *Find* : `find KEYWORD [MORE_KEYWORDS]` +
 e.g. `find James Jake` or eg. `find Clementi`
@@ -393,6 +441,7 @@ e.g. `find James Jake` or eg. `find Clementi`
 e.g. `removeTag friends`
 * *List* : `list`
 * *Help* : `help`
+* *Sort* : `sort KEYWORD`
 * *Select* : `select INDEX` +
 e.g.`select 2`
 * *frequent* :
@@ -461,4 +510,3 @@ Here is a quick list of all the features that the Contags Application can execut
 
 * More features will be implemented in future versions, including a reminder list for the user, a meeting scheduler,
 as well as starred contacts.
-

@@ -115,7 +115,7 @@ public class AddCommandTest {
 
         @Override
         public void sortList(String toSort) {
-            fail("There is no person in the addressbook to sort.");
+            fail("There is no person in Contags to sort.");
         }
 
         @Override

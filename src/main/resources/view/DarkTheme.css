@@ -358,5 +358,5 @@
 }
 
 #comboBox .cell {
-    -fx-background-color: dimgrey;
+    -fx-background-color: derive(#383838, 45%);
 }
