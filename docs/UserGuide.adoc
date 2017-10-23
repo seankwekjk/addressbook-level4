@@ -426,10 +426,6 @@ data of your previous Address Book folder.
 *Q*: How do I report any bugs to the developers? +
 *A*: You can send a screenshot with the details regarding the bugs to help@contags.com.sg and we will get back to you as soon as possible.
 
-== Command Summary
-
-
-
 == Compact Summary
 
 This section provides a compact, executive summary of the entire User Guide of Contags.
@@ -479,7 +475,7 @@ e.g. `remark 1 r/Likes coffee.`
 * *Exit* : `exit`
 * *Mail* : `mail`
 
-== Coming in V2.0
+== Coming in v2.0
 
 * Emailing a person by typing in the command email followed by the contact's name or index.
 
