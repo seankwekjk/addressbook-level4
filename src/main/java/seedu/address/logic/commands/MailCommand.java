@@ -54,13 +54,13 @@ public class MailCommand extends Command {
         }
 
         Desktop desktop = Desktop.getDesktop();
-        URI mailRecepient;
+        URI mailTo;
         String url = "";
 
         try {
-            url = "mailRecepient:" + sendMailTo + "&body=";
-            mailRecepient = new URI(url);
-            desktop.mail(mailRecepient);
+            url = "mailTo:" + sendMailTo + "&body=";
+            mailTo = new URI(url);
+            desktop.mail(mailTo);
         }
         catch (IOException e) {
             e.printStackTrace();
