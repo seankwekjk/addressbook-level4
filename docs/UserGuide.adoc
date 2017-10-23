@@ -426,7 +426,28 @@ data of your previous Address Book folder.
 *Q*: How do I report any bugs to the developers? +
 *A*: You can send a screenshot with the details regarding the bugs to help@contags.com.sg and we will get back to you as soon as possible.
 
-== Command Summary
+== Compact Summary
+
+This section provides a compact, executive summary of the entire User Guide of Contags.
+
+=== Introduction & Cover Page
+
+* In summary, the Contags application is an enhanced replica of the conventional AddressBook application, with a focus
+on convenience as well as ease of use for our main consumer base, which are professional executives in the business
+workforce.
+* Our slogan "Your Digital Secretary" encompasses this definition, as well as encapsulates our goal to digitize
+ the job scope of secretary with our development and efforts in Contags.
+
+
+=== Quick Start
+
+* The quick start section highlights that the user needs Java version `1.8.0_60` or later installed in the Computer.
+* Additionally, to execute a command, type in the appropriate command word in the correct command format, then hit
+the `enter` key on the computer.
+
+=== Features
+
+Here is a quick list of all the features that the Contags Application can execute correctly:
 
 * *Add* `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS b/BIRTHDAY [t/TAG]...` +
 e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 b/01/01/1990 t/friend t/colleague`
@@ -451,62 +472,21 @@ e.g. `remark 1 r/Likes coffee.`
 * *History* : `history`
 * *Undo* : `undo`
 * *Redo* : `redo`
+* *Exit* : `exit`
+* *Mail* : `mail`
 
 == Coming in v2.0
 
-1. Emailing a person by typing in the command email followed by the contact's name or index.
+* Emailing a person by typing in the command email followed by the contact's name or index.
 
-2. A reminder list that will pop up on the screen every time the user opens the application.
+* A reminder list that will pop up on the screen every time the user opens the application.
 
-3. A meeting scheduler, where users link to their calender application when they first install the application. +
+* A meeting scheduler, where users link to their calender application when they first install the application. +
 Subsequently, when they typed in the command free followed by the contact name or index, they and get a list of common
 free timings with that contact.
 
-4. Contacts can be starred in the Contags Application based upon the user's preference to give priority in the list of
+* Contacts can be starred in the Contags Application based upon the user's preference to give priority in the list of
 contacts.
-
-== Compact Summary
-
-This section provides a compact, executive summary of the entire User Guide of Contags.
-
-=== Introduction & Cover Page
-
-* In summary, the Contags application is an enhanced replica of the conventional AddressBook application, with a focus
-on convenience as well as ease of use for our main consumer base, which are professional executives in the business
-workforce.
-* Our slogan "Your Digital Secretary" encompasses this definition, as well as encapsulates our goal to digitize
- the job scope of secretary with our development and efforts in Contags.
-
-
-=== Quick Start
-
-* The quick start section highlights that the user needs Java version `1.8.0_60` or later installed in the Computer.
-* Additionally, to execute a command, type in the appropriate command word in the correct command format, then hit
-the `enter` key on the computer.
-
-=== Features
-
-Here is a quick list of all the features that the Contags Application can execute correctly:
-
-* `help` - opens a help window for the user
-* `add` - adds a contact to the application
-* `list` - lists all contacts in the application
-* `edit` - edits a certain field of a contact
-* `find` - helps user to locate and identify an appropriate contact in the application
-* `removeTag` - removes a specified tag from all contacts in the application
-* `delete` - deletes a contact from the application
-* `select` - selects a particular contact in the list shown
-* `map` - Loads the google map page for the address of a particular contact
-* `remark` - adds a remark to a particular contact in the application
-* `history` - shows a brief history of previous user command inputs into the application
-* `undo` - undo the previous command by the user
-* `redo` - redo the command that was previously undone by the user
-* `clear` - removes all contacts from the application
-* `exit` - exits the application
-* `direct` - provides directions to a particular contact's address
-* `mail` - opens an email directed to the contact's email address
-
-=== Coming in V2.0
 
 * More features will be implemented in future versions, including a reminder list for the user, a meeting scheduler,
 as well as starred contacts.
