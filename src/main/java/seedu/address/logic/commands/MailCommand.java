@@ -2,10 +2,10 @@ package seedu.address.logic.commands;
 
 import java.awt.Desktop;
 import java.io.IOException;
-
+import java.net.URI;
+import java.net.URISyntaxException;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.person.AnyParticularContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
