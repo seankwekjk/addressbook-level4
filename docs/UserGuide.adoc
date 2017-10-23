@@ -168,6 +168,27 @@ Selects the 2nd person in the address book.
 `select 1` +
 Selects the 1st person in the results of the `find` command.
 
+=== Sorting the list of people: `sort`
+
+Sorts the list of people saved in Contags according to: +
+Name, Phone number, Email, Address. +
+Format: `sort KEYWORD`
+
+****
+* Sorting is done in alphanumerical ascending order. +
+* Keywords for sorting: *name, phone, email, address* +
+* Keywords are *case-insensitive* i.e. *Name* and *NAME* both work. +
+****
+
+Examples:
+
+* `sort name` +
+List is sorted according to name in ascending order.
+* `sort EMAIL` +
+List is sorted according to email addresses in ascending order.
+* `sort Address` +
+List is sorted according to addresses in ascending order.
+
 === Getting directions to a person's address : `map` `m`
 
 Loads the Google Maps page for the address of the person in the address book. +
@@ -359,6 +380,7 @@ e.g. `find James Jake` or eg. `find Clementi`
 e.g. `removeTag friends`
 * *List* : `list`
 * *Help* : `help`
+* *Sort* : `sort KEYWORD`
 * *Select* : `select INDEX` +
 e.g.`select 2`
 * *frequent* :
