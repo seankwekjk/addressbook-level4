@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.stream.Stream;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_RECEPIENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_TITLE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_MESSAGE;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
@@ -28,7 +31,7 @@ public class MailCommandParser implements Parser<MailCommand> {
         try {
             String[] createList = ParserUtil.parseMailToCommand(argMultimap.getAllValues(PREFIX_MAIL_RECEPIENT));
             String title = String.join("", argMultimap.getAllValues(PREFIX_MAIL_TITLE)).replace(" ", "%20");
-            String message = String.join("", argMultimap.getAllValues(PREFIX_MAIL_SUBJECT)).replace(" ", "%20");
+            String message = String.join("", argMultimap.getAllValues(PREFIX_MAIL_MESSAGE)).replace(" ", "%20");
         }
         catch (IllegalValueException ive) {
             throw new ParseException(ive.getMessage(), ive);
