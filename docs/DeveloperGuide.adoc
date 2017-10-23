@@ -1097,16 +1097,15 @@ XML is a metalanguage which allows users to define their own customized markup l
 [appendix]
 == Product Survey
 
-*Product Name*
+*Mac Contacts*
 
-Author: ...
+Author: Apple Inc.
 
 Pros:
 
-* ...
-* ...
+* Allows users to call, email and FaceTime contacts easily by clicking on the contact's respective field.
+* Includes various useful features such as importing and exporting contacts and creating groups, adding notes and reminders, etc.
 
 Cons:
 
-* ...
-* ...
+* Has no command-line interface.
