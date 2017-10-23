@@ -1,5 +1,9 @@
 package seedu.address.logic.commands;
 
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_RECEPIENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_TITLE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_MESSAGE;
+
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
@@ -21,10 +25,14 @@ public class MailCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Mail successfully sent.";
     public static final String MESSAGE_FAILURE = "Mail wasn't sent. Please enter a valid mail address and valid message.";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Mails a contact in Contags.\n"
-            + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + COMMAND_WORD + MAIL_RECEPIENT + " John Doe "
-            + MAIL_TITLE + " Meeting Reminder "
-            + MAIL_MESSAGE + " Meeting is at 2pm.\n";
+            + "Recepient mail address cannot be blank.\n"
+            + "Parameters: "
+            + PREFIX_MAIL_RECEPIENT + " NAME "
+            + PREFIX_MAIL_TITLE + " NAME "
+            + PREFIX_MAIL_MESSAGE + " MAIL \n"
+            + "Example: " + COMMAND_WORD + PREFIX_MAIL_RECEPIENT + " John Doe "
+            + PREFIX_MAIL_TITLE + " Meeting Reminder "
+            + PREFIX_MAIL_MESSAGE + " Meeting is at 2pm.\n";
 
     private final AnyParticularContainsKeywordsPredicate targetIndex;
     private final String title;
@@ -35,6 +43,10 @@ public class MailCommand extends Command {
         this.title = title;
         this.message = message;
     }
+
+    /**
+     * Opens up Desktop Email application.
+     */
 
     private void sendMail(String sendMailTo) throws ParseException {
         if (sendMailTo.equalsIgnoreCase(" ")) {
@@ -60,6 +72,7 @@ public class MailCommand extends Command {
 
     @Override
     public CommandResult execute() {
+        String sendMailTo = model.updateMailRecipientList(targetIndex);
         try {
             sendMail(sendMailTo);
         }
