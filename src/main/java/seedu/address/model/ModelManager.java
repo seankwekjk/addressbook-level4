@@ -3,6 +3,8 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -26,6 +28,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     private final AddressBook addressBook;
     private final FilteredList<ReadOnlyPerson> filteredPersons;
+    private final FilteredList<ReadOnlyPerson> filteredMails;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -38,6 +41,7 @@ public class ModelManager extends ComponentManager implements Model {
 
         this.addressBook = new AddressBook(addressBook);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        filteredMails = new FilteredList<>(this.addressBook.getPersonList());
     }
 
     public ModelManager() {
@@ -115,6 +119,20 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredPersonList(Predicate<ReadOnlyPerson> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+    }
+
+    @Override
+    public String updateEmailRecipient(Predicate<ReadOnlyPerson> predicate) {
+        requireNonNull(predicate);
+        filteredMails.setPredicate(predicate);
+        List<String> validPeopleList = new ArrayList<>();
+        for (ReadOnlyPerson person : filteredMails) {
+            if (person.getMail() != null && !person.getMail().value.equalsIgnoreCase("INVALID_EMAIL@INVALID.COM")
+                    && !validPeopleList.contains(person.getMail().value)) {
+                validPeopleList.add(person.getEmail().value);
+            }
+        }
+        return String.join(",", validPeopleList);
     }
 
     @Override
