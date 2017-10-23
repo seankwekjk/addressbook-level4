@@ -140,7 +140,7 @@ image::SDforDeletePerson.png[width="800"]
 _Figure 2.1.3a : Component interactions for `delete 1` command (part 1)_
 
 [NOTE]
-Note how the `Model` simply raises a `AddressBookChangedEvent` when the Contags data are changed, instead of asking the `Storage` to save the updates to the hard disk.
+Note how the `Model` simply raises a `ContagsChangedEvent` when the Address Book data are changed, instead of asking the `Storage` to save the updates to the hard disk.
 
 The _Sequence Diagram (Figure 2.1.3b)_ below shows how the `EventsCenter` reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.
 
@@ -182,7 +182,7 @@ _Figure 2.3.2 : Structure of Commands in the Logic Component. This diagram shows
 *API* :
 link:{repoURL}/src/main/java/seedu/address/logic/Logic.java[`Logic.java`]
 
-.  `Logic` uses the `AddressBookParser` class to parse the user command.
+.  `Logic` uses the `ContagsParser` class to parse the user command.
 .  This results in a `Command` object which is executed by the `LogicManager`.
 .  The command execution can affect the `Model` (e.g. adding a person) and/or raise events.
 .  The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
@@ -220,7 +220,7 @@ The `Storage` component,
 
 === Common classes
 
-Classes used by multiple components are in the `seedu.addressbook.commons` package.
+Classes used by multiple components are in the `seedu.Contags.commons` package.
 
 == Implementation
 
@@ -340,7 +340,7 @@ image::UndoRedoActivityDiagram.png[width="200"]
 **Alternative 2:** Include all commands. +
 **Pros:** Might be more intuitive for the user. +
 **Cons:** User have no way of skipping such commands if he or she just want to reset the state of the address book and not the view. +
-**Additional Info:** See our discussion  https://github.com/se-edu/addressbook-level4/issues/390#issuecomment-298936672[here].
+**Additional Info:** See our discussion  https://github.com/se-edu/Contags-level4/issues/390#issuecomment-298936672[here].
 
 ---
 
@@ -380,7 +380,7 @@ To create a difference between the updating and clearing of the `Remark` field, 
 **Cons:** Seems unintuitive to create a new `Person` to edit a field that cannot be modified by the `edit` command. +
 **Alternative 2:** Create a `setRemark()` method to modify the `Remark` field of the existing selected `Person` +
 **Pros:** Would be very simple to implement. +
-**Cons:** As the `RemarkCommand` requires the input of an `index`, we require to interface with the list of persons already existing in the AddressBook. These methods however, return lists of `ReadOnlyPerson`, which do not allow the inclusion of a `setReamrk()` method. This would require changes elsewhere in the project that would affect other aspects.
+**Cons:** As the `RemarkCommand` requires the input of an `index`, we require to interface with the list of persons already existing in the Contags. These methods however, return lists of `ReadOnlyPerson`, which do not allow the inclusion of a `setReamrk()` method. This would require changes elsewhere in the project that would affect other aspects.
 
 ---
 
@@ -412,18 +412,13 @@ We are using `java.util.logging` package for logging. The `LogsCenter` class is 
 
 *Logging Levels*
 
-* `SEVERE` : Critical problem detected which may possibly cause the termination of the application
-* `WARNING` : Can continue, but with caution
-* `INFO` : Information showing the noteworthy actions by the App
-* `FINE` : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size
+=== Birthday Field
 
-=== Configuration
+The person class consists of five compulsory attributes, `Name` `Phone` `Email` `Address` `Birthday` and optional `Remark` and `Tag`. The implementation of the birthday attribute is similar to that of the other compulsory attributes. It is a compulsory field and cannot be left blank. The constructor takes in the birthday value in a String format and a new instance of the birthday field is initialised.
 
-Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: `config.json`).
+The birthday value is validated before being accepted as a parameter in the constructor for the person class. A valid birthday value has to be in the form `DD/MM/YYYY` or `DD/MM/YY`. Only digits and forward slashes are permitted. The birthday value is also checked to ensure that the date actually exists. The different number of days in the month February in leap years are accounted for and the different days in various months are also taken into account. This check minimises the chances of the user making a typo in entering the birthday and also ensures that the user does not accidentally input a wrong field in place of the birthday field (i.e. input an address in the birthday field).
 
-== Birthday field
-
-=== Design Considerations
+==== Design Considerations
 
 **Aspect:** Implementation of birthday field +
 **Alternative 1 (current choice):** Add a new birthday field to all files containing the other fields (name, phone, address, email). +
@@ -590,10 +585,10 @@ Do take a look at the link:#logic-component[Design: Logic Component] section bef
 ****
 * Hints
 ** Just like we store each individual command word constant `COMMAND_WORD` inside `*Command.java` (e.g.  link:{repoURL}/src/main/java/seedu/address/logic/commands/FindCommand.java[`FindCommand#COMMAND_WORD`], link:{repoURL}/src/main/java/seedu/address/logic/commands/DeleteCommand.java[`DeleteCommand#COMMAND_WORD`]), you need a new constant for aliases as well (e.g. `FindCommand#COMMAND_ALIAS`).
-** link:{repoURL}/src/main/java/seedu/address/logic/parser/AddressBookParser.java[`AddressBookParser`] is responsible for analyzing command words.
+** link:{repoURL}/src/main/java/seedu/address/logic/parser/ContagsParser.java[`ContagsParser`] is responsible for analyzing command words.
 * Solution
-** Modify the switch statement in link:{repoURL}/src/main/java/seedu/address/logic/parser/AddressBookParser.java[`AddressBookParser#parseCommand(String)`] such that both the proper command word and alias can be used to execute the same intended command.
-** See this https://github.com/se-edu/addressbook-level4/pull/590/files[PR] for the full solution.
+** Modify the switch statement in link:{repoURL}/src/main/java/seedu/address/logic/parser/ContagsParser.java[`ContagsParser#parseCommand(String)`] such that both the proper command word and alias can be used to execute the same intended command.
+** See this https://github.com/se-edu/Contags-level4/pull/590/files[PR] for the full solution.
 ****
 
 [discrete]
@@ -607,10 +602,10 @@ Do take a look at the link:#model-component[Design: Model Component] section bef
 ****
 * Hints
 ** The link:{repoURL}/src/main/java/seedu/address/model/Model.java[`Model`] API needs to be updated.
-**  Find out which of the existing API methods in  link:{repoURL}/src/main/java/seedu/address/model/AddressBook.java[`AddressBook`] and link:{repoURL}/src/main/java/seedu/address/model/person/Person.java[`Person`] classes can be used to implement the tag removal logic. link:{repoURL}/src/main/java/seedu/address/model/AddressBook.java[`AddressBook`] allows you to update a person, and link:{repoURL}/src/main/java/seedu/address/model/person/Person.java[`Person`] allows you to update the tags.
+**  Find out which of the existing API methods in  link:{repoURL}/src/main/java/seedu/address/model/Contags.java[`Contags`] and link:{repoURL}/src/main/java/seedu/address/model/person/Person.java[`Person`] classes can be used to implement the tag removal logic. link:{repoURL}/src/main/java/seedu/address/model/Contags.java[`Contags`] allows you to update a person, and link:{repoURL}/src/main/java/seedu/address/model/person/Person.java[`Person`] allows you to update the tags.
 * Solution
 ** Add the implementation of `deleteTag(Tag)` method in link:{repoURL}/src/main/java/seedu/address/model/ModelManager.java[`ModelManager`]. Loop through each person, and remove the `tag` from each person.
-** See this https://github.com/se-edu/addressbook-level4/pull/591/files[PR] for the full solution.
+** See this https://github.com/se-edu/Contags-level4/pull/591/files[PR] for the full solution.
 ****
 
 [discrete]
@@ -634,7 +629,7 @@ image::getting-started-ui-tag-after.png[width="300"]
 ** The tag labels are created inside link:{repoURL}/src/main/java/seedu/address/ui/PersonCard.java[`PersonCard#initTags(ReadOnlyPerson)`] (`new Label(tag.tagName)`). https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Label.html[JavaFX's `Label` class] allows you to modify the style of each Label, such as changing its color.
 ** Use the .css attribute `-fx-background-color` to add a color.
 * Solution
-** See this https://github.com/se-edu/addressbook-level4/pull/592/files[PR] for the full solution.
+** See this https://github.com/se-edu/Contags-level4/pull/592/files[PR] for the full solution.
 ****
 
 . Modify link:{repoURL}/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java[`NewResultAvailableEvent`] such that link:{repoURL}/src/main/java/seedu/address/ui/ResultDisplay.java[`ResultDisplay`] can show a different style on error (currently it shows the same regardless of errors).
@@ -654,7 +649,7 @@ image::getting-started-ui-result-after.png[width="200"]
 * Solution
 ** Modify link:{repoURL}/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java[`NewResultAvailableEvent`] 's constructor so that users of the event can indicate whether an error has occurred.
 ** Modify link:{repoURL}/src/main/java/seedu/address/ui/ResultDisplay.java[`ResultDisplay#handleNewResultAvailableEvent(event)`] to react to this event appropriately.
-** See this https://github.com/se-edu/addressbook-level4/pull/593/files[PR] for the full solution.
+** See this https://github.com/se-edu/Contags-level4/pull/593/files[PR] for the full solution.
 ****
 
 . Modify the link:{repoURL}/src/main/java/seedu/address/ui/StatusBarFooter.java[`StatusBarFooter`] to show the total number of people in the address book.
@@ -673,8 +668,8 @@ image::getting-started-ui-status-after.png[width="500"]
 ** link:{repoURL}/src/main/java/seedu/address/ui/StatusBarFooter.java[`StatusBarFooter`] needs to initialize the status bar on application start, and to update it accordingly whenever the address book is updated.
 * Solution
 ** Modify the constructor of link:{repoURL}/src/main/java/seedu/address/ui/StatusBarFooter.java[`StatusBarFooter`] to take in the number of persons when the application just started.
-** Use link:{repoURL}/src/main/java/seedu/address/ui/StatusBarFooter.java[`StatusBarFooter#handleAddressBookChangedEvent(AddressBookChangedEvent)`] to update the number of persons whenever there are new changes to the addressbook.
-** See this https://github.com/se-edu/addressbook-level4/pull/596/files[PR] for the full solution.
+** Use link:{repoURL}/src/main/java/seedu/address/ui/StatusBarFooter.java[`StatusBarFooter#handleContagsChangedEvent(ContagsChangedEvent)`] to update the number of persons whenever there are new changes to the Contags.
+** See this https://github.com/se-edu/Contags-level4/pull/596/files[PR] for the full solution.
 ****
 
 [discrete]
@@ -683,14 +678,14 @@ image::getting-started-ui-status-after.png[width="500"]
 [TIP]
 Do take a look at the link:#storage-component[Design: Storage Component] section before attempting to modify the `Storage` component.
 
-. Add a new method `backupAddressBook(ReadOnlyAddressBook)`, so that the address book can be saved in a fixed temporary location.
+. Add a new method `backupContags(ReadOnlyContags)`, so that the address book can be saved in a fixed temporary location.
 +
 ****
 * Hint
-** Add the API method in link:{repoURL}/src/main/java/seedu/address/storage/AddressBookStorage.java[`AddressBookStorage`] interface.
+** Add the API method in link:{repoURL}/src/main/java/seedu/address/storage/ContagsStorage.java[`ContagsStorage`] interface.
 ** Implement the logic in link:{repoURL}/src/main/java/seedu/address/storage/StorageManager.java[`StorageManager`] class.
 * Solution
-** See this https://github.com/se-edu/addressbook-level4/pull/594/files[PR] for the full solution.
+** See this https://github.com/se-edu/Contags-level4/pull/594/files[PR] for the full solution.
 ****
 
 === Creating a new command: `remark`
@@ -716,12 +711,12 @@ Let's start by teaching the application how to parse a `remark` command. We will
 **Main:**
 
 . Add a `RemarkCommand` that extends link:{repoURL}/src/main/java/seedu/address/logic/commands/UndoableCommand.java[`UndoableCommand`]. Upon execution, it should just throw an `Exception`.
-. Modify link:{repoURL}/src/main/java/seedu/address/logic/parser/AddressBookParser.java[`AddressBookParser`] to accept a `RemarkCommand`.
+. Modify link:{repoURL}/src/main/java/seedu/address/logic/parser/ContagsParser.java[`ContagsParser`] to accept a `RemarkCommand`.
 
 **Tests:**
 
 . Add `RemarkCommandTest` that tests that `executeUndoableCommand()` throws an Exception.
-. Add new test method to link:{repoURL}/src/test/java/seedu/address/logic/parser/AddressBookParserTest.java[`AddressBookParserTest`], which tests that typing "remark" returns an instance of `RemarkCommand`.
+. Add new test method to link:{repoURL}/src/test/java/seedu/address/logic/parser/ContagsParserTest.java[`ContagsParserTest`], which tests that typing "remark" returns an instance of `RemarkCommand`.
 
 ===== [Step 2] Logic: Teach the app to accept 'remark' arguments
 Let's teach the application to parse arguments that our `remark` command will accept. E.g. `1 r/Likes to drink coffee.`
@@ -730,14 +725,14 @@ Let's teach the application to parse arguments that our `remark` command will ac
 
 . Modify `RemarkCommand` to take in an `Index` and `String` and print those two parameters as the error message.
 . Add `RemarkCommandParser` that knows how to parse two arguments, one index and one with prefix 'r/'.
-. Modify link:{repoURL}/src/main/java/seedu/address/logic/parser/AddressBookParser.java[`AddressBookParser`] to use the newly implemented `RemarkCommandParser`.
+. Modify link:{repoURL}/src/main/java/seedu/address/logic/parser/ContagsParser.java[`ContagsParser`] to use the newly implemented `RemarkCommandParser`.
 
 **Tests:**
 
 . Modify `RemarkCommandTest` to test the `RemarkCommand#equals()` method.
 . Add `RemarkCommandParserTest` that tests different boundary values
 for `RemarkCommandParser`.
-. Modify link:{repoURL}/src/test/java/seedu/address/logic/parser/AddressBookParserTest.java[`AddressBookParserTest`] to test that the correct command is generated according to the user input.
+. Modify link:{repoURL}/src/test/java/seedu/address/logic/parser/ContagsParserTest.java[`ContagsParserTest`] to test that the correct command is generated according to the user input.
 
 ===== [Step 3] Ui: Add a placeholder for remark in `PersonCard`
 Let's add a placeholder on all our link:{repoURL}/src/main/java/seedu/address/ui/PersonCard.java[`PersonCard`] s to display a remark for each person later.
@@ -770,7 +765,7 @@ Now we have the `Remark` class, we need to actually use it inside link:{repoURL}
 
 . Add three methods `setRemark(Remark)`, `getRemark()` and `remarkProperty()`. Be sure to implement these newly created methods in link:{repoURL}/src/main/java/seedu/address/model/person/ReadOnlyPerson.java[`Person`], which implements the link:{repoURL}/src/main/java/seedu/address/model/person/ReadOnlyPerson.java[`ReadOnlyPerson`] interface.
 . You may assume that the user will not be able to use the `add` and `edit` commands to modify the remarks field (i.e. the person will be created without a remark).
-. Modify link:{repoURL}/src/main/java/seedu/address/model/util/SampleDataUtil.java/[`SampleDataUtil`] to add remarks for the sample data (delete your `addressBook.xml` so that the application will load the sample data when you launch it.)
+. Modify link:{repoURL}/src/main/java/seedu/address/model/util/SampleDataUtil.java/[`SampleDataUtil`] to add remarks for the sample data (delete your `Contags.xml` so that the application will load the sample data when you launch it.)
 
 ===== [Step 6] Storage: Add `Remark` field to `XmlAdaptedPerson` class
 We now have `Remark` s for `Person` s, but they will be gone when we exit the application. Let's modify link:{repoURL}/src/main/java/seedu/address/storage/XmlAdaptedPerson.java[`XmlAdaptedPerson`] to include a `Remark` field so that it will be saved.
@@ -782,7 +777,7 @@ We now have `Remark` s for `Person` s, but they will be gone when we exit the ap
 
 **Tests:**
 
-. Fix `validAddressBook.xml` such that the XML tests will not fail due to a missing `<remark>` element.
+. Fix `validContags.xml` such that the XML tests will not fail due to a missing `<remark>` element.
 
 ===== [Step 7] Ui: Connect `Remark` field to `PersonCard`
 Our remark label in link:{repoURL}/src/main/java/seedu/address/ui/PersonCard.java[`PersonCard`] is still a placeholder. Let's bring it to life by binding it with the actual `remark` field.
@@ -809,7 +804,7 @@ We now have everything set up... but we still can't modify the remarks. Let's fi
 
 ==== Full Solution
 
-See this https://github.com/se-edu/addressbook-level4/pull/599[PR] for the step-by-step solution.
+See this https://github.com/se-edu/Contags-level4/pull/599[PR] for the step-by-step solution.
 
 [appendix]
 == User Stories
@@ -837,7 +832,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |user |edit all details for my contacts |to keep details of my contacts up to date without having to recreate the contact
 
-|`* * *` |user |create a new contact with a name that already exists in addressbook |have multiple contacts with the same name
+|`* * *` |user |create a new contact with a name that already exists in Contags |have multiple contacts with the same name
 
 |`* *` |user |hide link:#private-contact-detail[private contact details] by default |minimize chance of someone else seeing them by accident
 
@@ -871,7 +866,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`*` |user |add nicknames to a contact |to identify contacts easily
 
-|`*` |user |view the last 10 commands I typed |track use of the addressbook
+|`*` |user |view the last 10 commands I typed |track use of the Contags
 
 |`*` |user |add a priority number to each contact |
 
@@ -887,7 +882,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 [appendix]
 == Use Cases
 
-(For all use cases below, the *System* is the `AddressBook` and the *Actor* is the `user`, unless specified otherwise)
+(For all use cases below, the *System* is the `Contags` and the *Actor* is the `user`, unless specified otherwise)
 
 [discrete]
 === Use case: Delete person
@@ -895,9 +890,9 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 *MSS*
 
 1.  User requests to list persons
-2.  AddressBook shows a list of persons
+2.  Contags shows a list of persons
 3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+4.  Contags deletes the person
 +
 Use case ends.
 
@@ -911,7 +906,7 @@ Use case ends.
 * 3a. The given index is invalid.
 +
 [none]
-** 3a1. AddressBook shows an error message.
+** 3a1. Contags shows an error message.
 +
 Use case resumes at step 2.
 
@@ -922,11 +917,11 @@ Use case resumes at step 2.
 *MSS*
 
 1. User requests list of persons with particular name.
-2. AddressBook shows a list of persons.
+2. Contags shows a list of persons.
 3. User requests to select specific contact.
-4. AddressBook selects contact.
+4. Contags selects contact.
 5. User requests to delete particular field(s).
-6. AddressBook clears the listed field(s).
+6. Contags clears the listed field(s).
 
 [discrete]
 === Use case: Add person
@@ -934,8 +929,8 @@ Use case resumes at step 2.
 *MSS*
 
 1.  User requests to add persons in the specified format.
-2.  AddressBook adds person in the specified format to the list.
-3.  AddressBook acknowledges that the person has been added to the list.
+2.  Contags adds person in the specified format to the list.
+3.  Contags acknowledges that the person has been added to the list.
 +
 Use case ends.
 
@@ -949,14 +944,14 @@ Use case ends.
 * 3a. The given index is invalid.
 +
 [none]
-** 3a1. AddressBook shows an error message.
+** 3a1. Contags shows an error message.
 +
 Use case resumes at step 2.
 
 * 5a. The given field is blank.
 +
 [none]
-** 5a1. AddressBook shows an error message.
+** 5a1. Contags shows an error message.
 +
 Use case ends.
 
@@ -964,7 +959,7 @@ Use case ends.
 === Use case: Creating contact with same name
 
 *Preconditions*
-1. AddressBook contains existing contact with the name to be duplicated.
+1. Contags contains existing contact with the name to be duplicated.
 
 *Guarantees*
 1. User will be warned of the existing contact with the same name.
@@ -972,14 +967,14 @@ Use case ends.
 *MSS*
 
 1. User adds contact with the duplicated name.
-2. AddressBook shows list of existing contacts of same name.
-3. AddressBook asks if user wants to continue, update existing contact, or end use case.
+2. Contags shows list of existing contacts of same name.
+3. Contags asks if user wants to continue, update existing contact, or end use case.
 4. User requests to continue.
-5. AddressBook creates new contact.
+5. Contags creates new contact.
 
 * 1a. User does not follow the specified format required for input.
 * 1b. Person with same name is already in the list
-Error: AddressBook informs user that input is invalid.
+Error: Contags informs user that input is invalid.
 
 [discrete]
 === Use case: List Contact
@@ -988,7 +983,7 @@ Error: AddressBook informs user that input is invalid.
 *MSS*
 
 1.  User requests to list persons
-2.  AddressBook shows a list of persons
+2.  Contags shows a list of persons
 
 +
 Use case ends.
@@ -1009,7 +1004,7 @@ Use case ends.
 *MSS*
 
 1.  User requests to edit person (index) and specific particular
-2.  AddressBook edits the contact particular and displays latest change
+2.  Contags edits the contact particular and displays latest change
 +
 Use case ends.
 
@@ -1019,13 +1014,13 @@ Use case ends.
 
 * 3a. User requests to update existing contact.
 * 3b. User selects from existing contact(s).
-* 3c. AddressBook updates selected contact.
+* 3c. Contags updates selected contact.
 +
 Use case ends.
 +
 ** 3b1. The given index is invalid.
 +
-*** 3b11. AddressBook shows an error message.
+*** 3b11. Contags shows an error message.
 +
 Use case resumes at step 3b.
 
@@ -1033,12 +1028,12 @@ Use case resumes at step 3b.
 === Use case: Clear
 
 *Preconditions*
-1. AddressBook is not empty.
+1. Contags is not empty.
 
 *MSS*
 
 1. User requests to clear list.
-2. AddressBook clears list.
+2. Contags clears list.
 +
 Use case ends.
 
@@ -1048,9 +1043,26 @@ Use case ends.
 *MSS*
 
 1. User requests to exit the program.
-2. AddressBook closes the program.
+2. Contags closes the program.
 +
 Use case ends.
+
+[discrete]
+=== Use case: Remove Tag from all Contacts
+
+*MSS*
+
+ 1.  User requests to removeTag from all contacts, and includes tag label name.
+ 2.  Contags searches through all contacts that have been tagged with the same tag, removes the tags from all these contacts and displays latest change
+ +
+ Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. Tag cannot be found
++
+Contags informs user that the tag does not exist
 
 [discrete]
 === Use case: History
@@ -1058,27 +1070,25 @@ Use case ends.
 *MSS*
 
 1. User requests history of commands issued.
-2. AddressBook shows list of commands in reverse chronological order.
+2. Contags shows list of commands in reverse chronological order.
 +
 Use case ends.
 * 1a. Person Index is invalid.
 +
-AddressBook informs user that Person Index is invalid.
+Contags informs user that Person Index is invalid.
 
 * 1b. User requests to edit information in an invalid format
 +
-AddressBook informs user that the format is invalid, providing the correct format.
+Contags informs user that the format is invalid, providing the correct format.
 
 
 [discrete]
 === Use case: Find Contact
 
-
 *MSS*
 
-
- 1.  User requests to find person by entering part of contact name
- 2.  AddressBook finds contact with keyword included in name, and displays latest change
+ 1.  User requests to find person by entering any keyword that is part of contact particulars
+ 2.  Contags finds contact with keyword included in either name, address, email, or phone number, and displays latest change
  +
  Use case ends.
 
@@ -1087,17 +1097,16 @@ AddressBook informs user that the format is invalid, providing the correct forma
 [none]
 * 1a. Contact cannot be found
 +
-AddressBook informs user that contact cannot be found
+Contags informs user that contact cannot be found
 
 [discrete]
 === Use case: Select Contact
-
 
 *MSS*
 
 1.  User requests to see entire list of contacts
 2.  Based on list, user selects contact by providing contact index.
-3.  AddressBook selects contact with index given.
+3.  Contags selects contact with index given.
 
 + Use case ends.
 
@@ -1110,11 +1119,11 @@ Use case ends.
 
 * 1a. No contacts in list.
 +
-AddressBook informs user that there are currently no contacts in the list.
+Contags informs user that there are currently no contacts in the list.
 
 * 2a. User inputs invalid contact index.
 +
-AddressBook informs user that the input is not a valid contact index.
+Contags informs user that the input is not a valid contact index.
 
 [appendix]
 == Non Functional Requirements
