@@ -153,7 +153,7 @@ image::SDforDeletePerson.png[width="800"]
 _Figure 2.1.3a : Component interactions for `delete 1` command (part 1)_
 
 [NOTE]
-Note how the `Model` simply raises a `AddressBookChangedEvent` when the Contags data are changed, instead of asking the `Storage` to save the updates to the hard disk.
+Note how the `Model` simply raises a `ContagsChangedEvent` when the Contags data are changed, instead of asking the `Storage` to save the updates to the hard disk.
 
 The _Sequence Diagram (Figure 2.1.3b)_ below shows how the `EventsCenter` reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.
 
@@ -283,7 +283,7 @@ public class DeleteCommand extends UndoableCommand {
 
 Suppose that the user has just launched the application. The `UndoRedoStack` will be empty at the beginning.
 
-The user executes a new `UndoableCommand`, `delete 5`, to delete the 5th person in the address book. The current state of the address book is saved before the `delete 5` command executes. The `delete 5` command will then be pushed onto the `undoStack` (the current state is saved together with the command).
+The user executes a new `UndoableCommand`, `delete 5`, to delete the 5th person in the address book. The current state of the address book is saved before the `delete 5` command is executed. The `delete 5` command will then be pushed onto the `undoStack` (the current state is saved together with the command).
 
 image::UndoRedoStartingStackDiagram.png[width="800"]
 
@@ -301,7 +301,7 @@ We will pop the most recent command out of the `undoStack` and push it back to t
 image::UndoRedoExecuteUndoStackDiagram.png[width="800"]
 
 [NOTE]
-If the `undoStack` is empty, then there are no other commands left to be undone, and an `Exception` will be thrown when popping the `undoStack`.
+If the `undoStack` is empty, there are no other commands left to be undone and an `Exception` will be thrown when popping the `undoStack`.
 
 The following sequence diagram shows how the undo operation works:
 
@@ -310,17 +310,17 @@ image::UndoRedoSequenceDiagram.png[width="800"]
 The redo does the exact opposite (pops from `redoStack`, push to `undoStack`, and restores the address book to the state after the command is executed).
 
 [NOTE]
-If the `redoStack` is empty, then there are no other commands left to be redone, and an `Exception` will be thrown when popping the `redoStack`.
+If the `redoStack` is empty, there are no other commands left to be redone and an `Exception` will be thrown when popping the `redoStack`.
 
 The user now decides to execute a new command, `clear`. As before, `clear` will be pushed into the `undoStack`. This time the `redoStack` is no longer empty. It will be purged as it no longer make sense to redo the `add n/David` command (this is the behavior that most modern desktop applications follow).
 
 image::UndoRedoNewCommand2StackDiagram.png[width="800"]
 
-Commands that are not undoable are not added into the `undoStack`. For example, `list`, which inherits from `Command` rather than `UndoableCommand`, will not be added after execution:
+Commands that cannot be undone are not added into the `undoStack`. For example, `list`, which inherits from `Command` rather than `UndoableCommand`, will not be added after execution:
 
 image::UndoRedoNewCommand3StackDiagram.png[width="800"]
 
-The following activity diagram summarize what happens inside the `UndoRedoStack` when a user executes a new command:
+The following activity diagram summarizes what happens inside the `UndoRedoStack` when a user executes a new command:
 
 image::UndoRedoActivityDiagram.png[width="200"]
 
@@ -393,7 +393,7 @@ To create a difference between the updating and clearing of the `Remark` field, 
 **Cons:** Seems unintuitive to create a new `Person` to edit a field that cannot be modified by the `edit` command. +
 **Alternative 2:** Create a `setRemark()` method to modify the `Remark` field of the existing selected `Person` +
 **Pros:** Would be very simple to implement. +
-**Cons:** As the `RemarkCommand` requires the input of an `index`, we require to interface with the list of persons already existing in the AddressBook. These methods however, return lists of `ReadOnlyPerson`, which do not allow the inclusion of a `setReamrk()` method. This would require changes elsewhere in the project that would affect other aspects.
+**Cons:** As the `RemarkCommand` requires the input of an `index`, we require to interface with the list of persons already existing in the Contags. These methods however, return lists of `ReadOnlyPerson`, which do not allow the inclusion of a `setReamrk()` method. This would require changes elsewhere in the project that would affect other aspects.
 
 ---
 
@@ -904,6 +904,23 @@ Use case ends.
 * 2a. User inputs invalid contact index.
 +
 ** 2a1. Contags informs user that the input is not a valid contact index.
+
+[discrete]
+ === Use case: Remove Tag from all Contacts
+
+*MSS*
+
+1.  User requests to removeTag from all contacts, and includes tag label name.
+2.  Contags searches through all contacts that have been tagged with the same tag, removes the tags from all these contacts and displays latest change
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. Tag cannot be found
++
+** 1b. Contags informs user that the tag does not exist
 
 [appendix]
 == Non Functional Requirements
