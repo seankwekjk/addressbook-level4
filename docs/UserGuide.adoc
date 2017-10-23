@@ -112,20 +112,20 @@ Returns `john` and `John Doe`
 * `find Betsy Tim John` +
 Returns any person having names `Betsy`, `Tim`, or `John`
 
-=== Removing a Tag from all contacts in the AddressBook : `removeTag`
+=== Removing a Tag from all contacts in Contags : `removeTag`
 
 Removes the Tag specified by the TAGNAME +
 Format: `removeTag TAGNAME`
 
 ****
 * The search is case insensitive. e.g `friends` will NOT match with `Friends`
-* All instances of the tag will be removed from the AddressBook.
+* All instances of the tag will be removed from the Contags.
 ****
 
 Examples:
 
 * `removeTag friends` +
-Searches throgugh all contacts in the AddressBook and deletes all instances of the Tag.
+Searches through all contacts in the Contags and deletes all instances of the Tag.
 
 === Deleting a person : `delete`
 
@@ -297,12 +297,7 @@ Format: `exit`
 Address book data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
 
-=== Directions to address : `direct` `Coming in v2.0`
-
-Provides directions to the address of the selected contact. +
-Format: `direct`
-
-=== Locating Contacts by any other field: `find` `Coming in v2.0`
+=== Locating Contacts by any other field: `find`
 
 Finds persons whose names, and any other information particular fields contain any of the given keywords. +
 Format: `find KEYWORD [MORE_KEYWORDS]`
@@ -321,6 +316,11 @@ Examples:
 Returns `Clementi Street 123`, and Contact with this Address: `John Doe`
 * `find Clementi Bugis Tuas` +
 Returns any person having addresses `Clementi`, `Bugis`, or `Tuas`
+
+=== Directions to address : `direct` `Coming in v2.0`
+
+Provides directions to the address of the selected contact. +
+Format: `direct`
 
 === Emailing a person: `mail` `Coming in v2.0`
 
@@ -342,6 +342,24 @@ Emails the 2nd person in the address book.
 `mail 1` +
 Emails the 1st person in the results of the `find` command.
 
+=== Sorting Contacts based on Frequency `frequent` `Coming in v2.0`
+
+Displays a list of sorted contacts in the Contags Application based upon the frequency of communication between user and contact +
+Format: `frequent`
+
+****
+* Sorts all Contacts based upon frequency of communication
+* Contacts that have been communicated with most frequently will appear at the top of the list
+* Application determines frequency by keeping a counter of contact particulars that have been accessed since the contact has been added
+* All contact particulars that have been accessed add an equal count of 1 to this counter
+****
+
+Examples:
+
+* `frequent` +
+Displays a list of sorted contacts based upon the frequency of communication.
+
+
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
@@ -357,12 +375,16 @@ e.g. `delete 3`
 * *Edit* : `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
 e.g. `edit 2 n/James Lee e/jameslee@example.com`
 * *Find* : `find KEYWORD [MORE_KEYWORDS]` +
-e.g. `find James Jake`
+e.g. `find James Jake` or eg. `find Clementi`
+* *RemoveTag* : `removeTag KEYWORD` +
+e.g. `removeTag friends`
 * *List* : `list`
 * *Help* : `help`
 * *Sort* : `sort KEYWORD`
 * *Select* : `select INDEX` +
 e.g.`select 2`
+* *frequent* :
+e.g.`frequent`
 * *Remark* : `remark INDEX r/[INDEX]` +
 e.g. `remark 1 r/Likes coffee.`
 * *History* : `history`
@@ -377,3 +399,5 @@ e.g. `remark 1 r/Likes coffee.`
 
 3. A meeting scheduler, where users link to their calender application when they first install the application. +
 Subsequently, when they typed in the command free followed by the contact name or index, they and get a list of common free timings with that contact.
+
+4. Contacts can be sorted in the Contags Application based upon the frequency of communication between user and all contacts
