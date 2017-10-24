@@ -117,8 +117,8 @@ public class ParserUtil {
      */
     public static String[] parseMailToCommand(List<String> name) throws IllegalValueException {
         requireNonNull(name);
-        String trimmedArgs = String.join(" ", name).trim();
-        String[] trimmed = trimmedArgs.split("\\s+");
-        return trimmed;
+        String trimmed = String.join(" ", name).trim();
+        String[] newTrimmed = trimmed.split("\\s+");
+        return newTrimmed;
     }
 }
