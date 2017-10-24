@@ -1,7 +1,8 @@
 package seedu.address.ui;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Random;
 
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
@@ -17,9 +18,9 @@ import seedu.address.model.person.ReadOnlyPerson;
 public class PersonCard extends UiPart<Region> {
 
     private static final String FXML = "PersonListCard.fxml";
-    private static String[] colors = { "red", "yellow", "blue", "orange", "brown", "green", "pink", "black", "grey" };
+    private static ArrayList<String> colors = new
+            ArrayList<String>(Arrays.asList("red", "maroon", "blue", "orange", "green", "pink", "black", "slategrey"));
     private static HashMap<String, String> tagColors = new HashMap<String, String>();
-    private static Random random = new Random();
 
 
     /**
@@ -59,12 +60,13 @@ public class PersonCard extends UiPart<Region> {
         bindListeners(person);
     }
 
-    private static String getColorForTag(String tagValue) {
-        if (!tagColors.containsKey(tagValue)) {
-            return colors[random.nextInt(colors.length)];
-        } else {
-            return tagColors.get(tagValue);
+    private static String getColorForTag(String tagName) {
+        if (!tagColors.containsKey(tagName)) {
+            String color = colors.get(0);
+            tagColors.put(tagName, color);
+            colors.remove(0);
         }
+        return tagColors.get(tagName);
     }
 
     /**
