@@ -19,9 +19,8 @@ public class PersonCard extends UiPart<Region> {
 
     private static final String FXML = "PersonListCard.fxml";
     private static ArrayList<String> colors = new
-            ArrayList<String>(Arrays.asList("red", "maroon", "blue", "orange", "green", "pink", "black", "slategrey"));
+            ArrayList<String>(Arrays.asList("salmon", "springgreen", "tan", "royalblue", "maroon", "seagreen", "rosybrown", "pink", "black", "red", "seashell"));
     private static HashMap<String, String> tagColors = new HashMap<String, String>();
-
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -65,6 +64,9 @@ public class PersonCard extends UiPart<Region> {
             String color = colors.get(0);
             tagColors.put(tagName, color);
             colors.remove(0);
+            if (colors.isEmpty()) {
+                colors.add("slategrey");
+            }
         }
         return tagColors.get(tagName);
     }
