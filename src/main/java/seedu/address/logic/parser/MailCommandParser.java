@@ -1,14 +1,14 @@
 package seedu.address.logic.parser;
 
-import java.util.Arrays;
-import java.util.stream.Stream;
-
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_MESSAGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_RECEPIENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_TITLE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_MESSAGE;
 
-import seedu.address.commons.core.index.Index;
+import java.util.Arrays;
+import java.util.Properties;
+import java.util.stream.Stream;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.MailCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -28,6 +28,11 @@ public class MailCommandParser implements Parser<MailCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MailCommand.MESSAGE_USAGE));
         }
 
+        String host = "localhost";
+
+        Properties properties = System.getProperties();
+        properties.setProperty("mail.sftp.host", host);
+
         try {
             String[] createList = ParserUtil.parseMailToCommand(argMultimap.getAllValues(PREFIX_MAIL_RECEPIENT));
             String title = String.join("", argMultimap.getAllValues(PREFIX_MAIL_TITLE)).replace(" ", "%20");
@@ -38,8 +43,6 @@ public class MailCommandParser implements Parser<MailCommand> {
         catch (IllegalValueException ive) {
             throw new ParseException(ive.getMessage(), ive);
         }
-
-
     }
 
     /**
