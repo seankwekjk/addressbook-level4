@@ -24,6 +24,7 @@ public class Person implements ReadOnlyPerson {
     private ObjectProperty<Address> address;
     private ObjectProperty<Birthday> birthday;
     private ObjectProperty<Remark> remark;
+    private ObjectProperty<String> social;
     private ObjectProperty<UniqueTagList> tags;
 
     /**
@@ -139,6 +140,18 @@ public class Person implements ReadOnlyPerson {
 
     public void setRemark(Remark remark) {
         this.remark.set(requireNonNull(remark));
+    }
+
+    public String getSocialMedia() {
+        return social.get();
+    }
+
+    public ObjectProperty<String> socialProperty() {
+        return social;
+    }
+
+    public void setSocialMedia(String social) {
+        this.social.set(requireNonNull(social));
     }
 
     /**

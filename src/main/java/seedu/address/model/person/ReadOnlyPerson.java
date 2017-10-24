@@ -24,6 +24,8 @@ public interface ReadOnlyPerson {
     Birthday getBirthday();
     ObjectProperty<Remark> remarkProperty();
     Remark getRemark();
+    ObjectProperty<String> socialProperty();
+    String getSocialMedia();
     ObjectProperty<UniqueTagList> tagProperty();
     Set<Tag> getTags();
 

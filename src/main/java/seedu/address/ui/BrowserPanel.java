@@ -22,6 +22,7 @@ public class BrowserPanel extends UiPart<Region> {
 
     public static final String DEFAULT_PAGE = "default.html";
     public static final String GOOGLE_SEARCH_URL_PREFIX = "https://www.google.com/maps/search/?api=1&query=";
+    public static Boolean browserMode = true;
 
     private static final String FXML = "BrowserPanel.fxml";
 
@@ -43,6 +44,10 @@ public class BrowserPanel extends UiPart<Region> {
     private void loadPersonPage(ReadOnlyPerson pers) {
         loadPage(GOOGLE_SEARCH_URL_PREFIX
                 + pers.getAddress().value.replaceAll(" ", "+").replaceAll(",", "%2C"));
+    }
+
+    private void loadSocialPage(ReadOnlyPerson pers){
+        loadPage(pers.getSocialMedia());
     }
 
     public void loadPage(String url) {
@@ -67,6 +72,11 @@ public class BrowserPanel extends UiPart<Region> {
     @Subscribe
     private void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        loadPersonPage(event.getNewSelection().person);
+        if(browserMode) {
+            loadPersonPage(event.getNewSelection().person);
+        }
+        else{
+            loadSocialPage(event.getNewSelection().person);
+        }
     }
 }

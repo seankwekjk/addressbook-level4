@@ -132,6 +132,14 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code String} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withSocialMedia(String social) {
+        this.person.setSocialMedia(social);
+        return this;
+    }
+
     public Person build() {
         return this.person;
     }
