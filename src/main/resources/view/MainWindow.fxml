@@ -40,17 +40,17 @@
   </StackPane>
   <StackPane prefHeight="42.0" prefWidth="690.0" styleClass="pane-with-border">
     <children>
-      <Label style="-fx-font-size: 17; -fx-text-fill: white;" text="Sort By:" StackPane.alignment="CENTER_RIGHT">
+      <Label style="-fx-font-size: 14; -fx-text-fill: white;" text="Sort By:" StackPane.alignment="CENTER_RIGHT">
         <StackPane.margin>
           <Insets right="140.0" />
         </StackPane.margin>
       </Label>
-      <ComboBox fx:id="comboBox" prefHeight="17.0" prefWidth="120.0" StackPane.alignment="CENTER_RIGHT">
+      <ComboBox fx:id="comboBox" prefHeight="27.0" prefWidth="120.0" StackPane.alignment="CENTER_RIGHT">
         <StackPane.margin>
           <Insets right="10.0" />
         </StackPane.margin>
       </ComboBox>
-      <TextField fx:id="searchField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="315.0" promptText="Search person ..." style="-fx-background-color: derive(#383838, 45%);" styleClass="pane-with-border" StackPane.alignment="CENTER_LEFT">
+      <TextField fx:id="findField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="295.0" promptText="Find ..." style="-fx-background-color: derive(#383838, 45%);" styleClass="pane-with-border" StackPane.alignment="CENTER_LEFT">
         <StackPane.margin>
           <Insets left="15.0" />
         </StackPane.margin>

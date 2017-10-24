@@ -623,6 +623,8 @@ Priorities: +
 
 |`* *` |user |email a contact by clicking on their email field |simplify the emailing process
 
+|`* *` |user |have tags of different colours| easily identify different tags
+
 |`*` |user with many persons in Contags |sort persons by name |locate a person easily
 
 |`*` |user |see which contacts have recently been changed or updated |locate changes easily
