@@ -46,7 +46,7 @@ public class BrowserPanel extends UiPart<Region> {
                 + pers.getAddress().value.replaceAll(" ", "+").replaceAll(",", "%2C"));
     }
 
-    private void loadSocialPage(ReadOnlyPerson pers){
+    private void loadSocialPage(ReadOnlyPerson pers) {
         loadPage(pers.getSocialMedia());
     }
 
@@ -80,10 +80,9 @@ public class BrowserPanel extends UiPart<Region> {
     @Subscribe
     private void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        if(browserMode) {
+        if (browserMode) {
             loadPersonPage(event.getNewSelection().person);
-        }
-        else{
+        }   else {
             loadSocialPage(event.getNewSelection().person);
         }
     }
