@@ -128,7 +128,7 @@ public class ModelManager extends ComponentManager implements Model {
         filteredMails.setPredicate(predicate);
         List<String> validPeopleList = new ArrayList<>();
         for (ReadOnlyPerson person : filteredMails) {
-            if (person.getEmail() != null && !person.getEmail().value.equalsIgnoreCase("EMAIL@INVALID.COM")
+            if (person.getEmail() != null && !person.getEmail().value.equalsIgnoreCase(" ")
                     && !validPeopleList.contains(person.getEmail().value)) {
                 validPeopleList.add(person.getEmail().value);
             }
