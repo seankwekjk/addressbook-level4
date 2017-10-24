@@ -22,23 +22,19 @@ public class MailCommandParser implements Parser<MailCommand> {
      */
     public MailCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_MAIL_RECEPIENT, PREFIX_MAIL_TITLE, PREFIX_MAIL_MESSAGE);
+                ArgumentTokenizer.tokenize(args, PREFIX_MAIL_RECEPIENT);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_MAIL_RECEPIENT)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MailCommand.MESSAGE_USAGE));
         }
 
-        String host = "localhost";
-
-        Properties properties = System.getProperties();
-        properties.setProperty("mail.sftp.host", host);
-
         try {
             String[] createList = ParserUtil.parseMailToCommand(argMultimap.getAllValues(PREFIX_MAIL_RECEPIENT));
-            String title = String.join("", argMultimap.getAllValues(PREFIX_MAIL_TITLE)).replace(" ", "%20");
-            String message = String.join("", argMultimap.getAllValues(PREFIX_MAIL_MESSAGE)).replace(" ", "%20");
+            //String targetIndex = argMultimap.getAllValues(PREFIX_MAIL_RECEPIENT);
+            //String title = String.join("", argMultimap.getAllValues(PREFIX_MAIL_TITLE)).replace(" ", "%20");
+            //String message = String.join("", argMultimap.getAllValues(PREFIX_MAIL_MESSAGE)).replace(" ", "%20");
 
-            return new MailCommand(new AnyParticularContainsKeywordsPredicate(Arrays.asList(createList)), title, message);
+            return new MailCommand(new AnyParticularContainsKeywordsPredicate(Arrays.asList(createList)));
         }
         catch (IllegalValueException ive) {
             throw new ParseException(ive.getMessage(), ive);
