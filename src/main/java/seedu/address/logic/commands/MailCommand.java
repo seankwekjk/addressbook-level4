@@ -22,24 +22,22 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_MESSAGE;
 public class MailCommand extends Command {
 
     private final AnyParticularContainsKeywordsPredicate targetIndex;
-    private final String title;
-    private final String message;
+    //private final String title;
+    //private final String message;
 
-    public MailCommand(AnyParticularContainsKeywordsPredicate targetIndex, String title, String message) {
+    public MailCommand(AnyParticularContainsKeywordsPredicate targetIndex) {
         this.targetIndex = targetIndex;
-        this.title = title;
-        this.message = message;
+        //this.title = title;
+        //this.message = message;
     }
 
     public static final String COMMAND_WORD = "mail";
-    public static final String MESSAGE_SUCCESS = "Mail successfully sent.";
-    public static final String MESSAGE_FAILURE = "Mail wasn't sent. Please enter a valid mail address and valid message.";
+    public static final String MESSAGE_SUCCESS = "Redirect to Mail application success.";
+    public static final String MESSAGE_FAILURE = "Could not redirect to Mail application. Please enter a valid mail address.";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Mails a contact in Contags.\n"
             + "Recepient mail address cannot be blank.\n"
-            + "Parameters: " + PREFIX_MAIL_RECEPIENT + " NAME " + PREFIX_MAIL_TITLE + " NAME "
-            + PREFIX_MAIL_MESSAGE + " MAIL\n"
-            + "Example: " + COMMAND_WORD + PREFIX_MAIL_RECEPIENT + " John Doe "
-            + PREFIX_MAIL_TITLE + " Meeting Reminder " + PREFIX_MAIL_MESSAGE + " Meeting is at 2pm.\n";
+            + "Parameters: " + PREFIX_MAIL_RECEPIENT + " NAME\n"
+            + "Example: " + COMMAND_WORD + PREFIX_MAIL_RECEPIENT + " John Doe ";
 
     /**
      * Opens up Desktop Mail application.
@@ -55,7 +53,7 @@ public class MailCommand extends Command {
         String url = "";
 
         try {
-            url = "mailTo:" + sendMailTo + "&body=";
+            url = "mailTo:" + sendMailTo;
             mailTo = new URI(url);
             desktop.mail(mailTo);
         }
