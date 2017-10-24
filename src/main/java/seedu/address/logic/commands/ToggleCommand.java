@@ -3,7 +3,10 @@ package seedu.address.logic.commands;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.ui.BrowserPanel;
 
-public class ToggleCommand extends Command{
+/**
+ * Toggles Browser function of the Select Command.
+ */
+public class ToggleCommand extends Command {
 
     public static final String COMMAND_WORD = "toggle";
 
@@ -11,11 +14,11 @@ public class ToggleCommand extends Command{
 
     @Override
     public CommandResult execute() throws CommandException {
-        BrowserPanel.browserMode=!BrowserPanel.browserMode;
+        BrowserPanel.setBrowserMode();
         return new CommandResult(composeCommandResult());
     }
 
-    private String composeCommandResult(){
-        return TOGGLE_SUCCESS + BrowserPanel.browserMode.toString();
+    private String composeCommandResult() {
+        return TOGGLE_SUCCESS + BrowserPanel.getBrowserMode().toString();
     }
 }
