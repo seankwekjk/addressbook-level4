@@ -4,6 +4,18 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Properties;
+
+import javax.activation.DataHandler;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.mail.util.ByteArrayDataSource;
+
 import static java.util.Objects.requireNonNull;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
@@ -13,8 +25,8 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.logic.parser.exceptions.ParseException;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_RECEPIENT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_TITLE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_MESSAGE;
+//import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_TITLE;
+//import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_MESSAGE;
 
 /**
  * Mails a person in Contags.
@@ -37,7 +49,7 @@ public class MailCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Mails a contact in Contags.\n"
             + "Recepient mail address cannot be blank.\n"
             + "Parameters: " + PREFIX_MAIL_RECEPIENT + " NAME\n"
-            + "Example: " + COMMAND_WORD + PREFIX_MAIL_RECEPIENT + " John Doe ";
+            + "Example: " + COMMAND_WORD + " " + PREFIX_MAIL_RECEPIENT + "John Doe";
 
     /**
      * Opens up Desktop Mail application.
@@ -63,6 +75,31 @@ public class MailCommand extends Command {
         catch (URISyntaxException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void send(String from, Collection<String> recipients, String subject, String text)
+            throws MessagingException, IOException {
+        send(from, recipients, subject, text, null, null, null);
+
+        Properties properties = new Properties();
+        properties.load(JavaMailService.class.getResourceAsStream("/mail.properties"));
+
+        // create a Session instance specifying the system properties
+        Session session = Session.getInstance(properties);
+
+        // create a message instance associated to the session
+        MimeMessage message = new MimeMessage(session);
+
+
+        // configure from address, add recipients, and set the subject of the message
+        message.setFrom(from);
+        message.addRecipients(Message.RecipientType.TO, String.join(",", recipients));
+        message.setSubject(subject);
+
+        // send the message
+        String username = properties.getProperty("mail.smtp.username");
+        String password = properties.getProperty("mail.smtp.password");
+        Transport.send(message, username, password);
     }
 
     @Override
