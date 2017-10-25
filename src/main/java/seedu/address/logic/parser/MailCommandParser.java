@@ -6,7 +6,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_RECEPIENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_TITLE;
 
 import java.util.Arrays;
-import java.util.Properties;
 import java.util.stream.Stream;
 
 import seedu.address.commons.exceptions.IllegalValueException;
@@ -36,7 +35,8 @@ public class MailCommandParser implements Parser<MailCommand> {
             String title = String.join("", argMultimap.getAllValues(PREFIX_MAIL_TITLE));
             String message = String.join("", argMultimap.getAllValues(PREFIX_MAIL_MESSAGE));
 
-            return new MailCommand(new AnyParticularContainsKeywordsPredicate(Arrays.asList(mailToCommand)), title, message);
+            return new MailCommand(new AnyParticularContainsKeywordsPredicate(Arrays.asList(mailToCommand)),
+                    title, message);
         } catch (IllegalValueException ive) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MailCommand.MESSAGE_USAGE));
         }

@@ -1,14 +1,15 @@
 package seedu.address.logic.commands;
 
-
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_RECEPIENT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_TITLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_MESSAGE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_TITLE;
+
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Properties;
+
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.AnyParticularContainsKeywordsPredicate;
 
@@ -30,15 +31,17 @@ public class MailCommand extends Command {
 
     public static final String COMMAND_WORD = "mail";
     public static final String COMMAND_ALIAS = "m";
-    public static final String MESSAGE_SUCCESS = "Redirect to Mail application success.";
-    public static final String MESSAGE_FAILURE = "Could not redirect to Mail application. " +
-            "Please enter a valid mail address.";
+
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Mails a contact in Contags.\n"
             + "Recepient mail address cannot be blank.\n"
             + "Parameters: " + PREFIX_MAIL_RECEPIENT + " NAME" + PREFIX_MAIL_TITLE + " TITLE" + PREFIX_MAIL_MESSAGE
             + " MESSAGE\n"
             + "Example: " + COMMAND_WORD + " " + PREFIX_MAIL_RECEPIENT + "John Doe" + " " + PREFIX_MAIL_TITLE
             + "Meeting Reminder" + " " + PREFIX_MAIL_MESSAGE + "Meeting is at 2pm on Sunday.";
+
+    public static final String MESSAGE_SUCCESS = "Redirect to Mail application success.";
+    public static final String MESSAGE_FAILURE = "Could not redirect to Mail application. "
+            + "Please enter a valid mail address.";
 
     /**
      * Opens up Desktop Mail application.
