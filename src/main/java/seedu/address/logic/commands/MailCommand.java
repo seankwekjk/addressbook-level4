@@ -64,7 +64,7 @@ public class MailCommand extends Command {
         String url = "";
 
         try {
-            url = "mailTo:" + sendMailTo;
+            url = "mailTo:" + sendMailTo + "?subject=" + this.title + "&body=" + this.message;;
             mailTo = new URI(url);
             desktop.mail(mailTo);
         }
