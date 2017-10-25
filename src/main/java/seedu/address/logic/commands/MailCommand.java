@@ -10,7 +10,6 @@ import javax.activation.DataHandler;
 
 import static java.util.Objects.requireNonNull;
 
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.person.AnyParticularContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
@@ -36,12 +35,15 @@ public class MailCommand extends Command {
     }
 
     public static final String COMMAND_WORD = "mail";
+    public static final String COMMAND_ALIAS = "m";
     public static final String MESSAGE_SUCCESS = "Redirect to Mail application success.";
     public static final String MESSAGE_FAILURE = "Could not redirect to Mail application. Please enter a valid mail address.";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Mails a contact in Contags.\n"
             + "Recepient mail address cannot be blank.\n"
-            + "Parameters: " + PREFIX_MAIL_RECEPIENT + " NAME\n"
-            + "Example: " + COMMAND_WORD + " " + PREFIX_MAIL_RECEPIENT + "John Doe";
+            + "Parameters: " + PREFIX_MAIL_RECEPIENT + " NAME" + PREFIX_MAIL_TITLE + " TITLE" + PREFIX_MAIL_MESSAGE
+            + " MESSAGE\n"
+            + "Example: " + COMMAND_WORD + " " + PREFIX_MAIL_RECEPIENT + "John Doe" + " " + PREFIX_MAIL_TITLE
+            + "Meeting Reminder" + " " + PREFIX_MAIL_MESSAGE + "Meeting is at 2pm on Sunday.";
 
     /**
      * Opens up Desktop Mail application.
@@ -51,6 +53,11 @@ public class MailCommand extends Command {
         if (sendMailTo.equalsIgnoreCase(" ")) {
             throw new ParseException("Recipient mail is not valid. Please enter a valid mail address.");
         }
+
+        String host = "localhost";
+
+        Properties properties = System.getProperties();
+        properties.setProperty("mail.sftp.host", host);
 
         Desktop desktop = Desktop.getDesktop();
         URI mailTo;
