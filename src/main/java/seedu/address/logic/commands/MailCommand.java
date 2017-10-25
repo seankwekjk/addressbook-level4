@@ -1,23 +1,17 @@
 package seedu.address.logic.commands;
 
+
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_RECEPIENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_TITLE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_MESSAGE;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Properties;
-
-import javax.activation.DataHandler;
-
-import static java.util.Objects.requireNonNull;
-
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.person.AnyParticularContainsKeywordsPredicate;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.logic.parser.exceptions.ParseException;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_RECEPIENT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_TITLE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_MESSAGE;
+import seedu.address.model.person.AnyParticularContainsKeywordsPredicate;
+
 
 /**
  * Mails a person in Contags.
@@ -37,7 +31,8 @@ public class MailCommand extends Command {
     public static final String COMMAND_WORD = "mail";
     public static final String COMMAND_ALIAS = "m";
     public static final String MESSAGE_SUCCESS = "Redirect to Mail application success.";
-    public static final String MESSAGE_FAILURE = "Could not redirect to Mail application. Please enter a valid mail address.";
+    public static final String MESSAGE_FAILURE = "Could not redirect to Mail application. " +
+            "Please enter a valid mail address.";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Mails a contact in Contags.\n"
             + "Recepient mail address cannot be blank.\n"
             + "Parameters: " + PREFIX_MAIL_RECEPIENT + " NAME" + PREFIX_MAIL_TITLE + " TITLE" + PREFIX_MAIL_MESSAGE
@@ -67,11 +62,9 @@ public class MailCommand extends Command {
             url = "mailTo:" + sendMailTo + "?subject=" + this.title + "&body=" + this.message;;
             mailTo = new URI(url);
             desktop.mail(mailTo);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-        }
-        catch (URISyntaxException e) {
+        } catch (URISyntaxException e) {
             e.printStackTrace();
         }
     }
@@ -106,8 +99,7 @@ public class MailCommand extends Command {
         String sendMailTo = model.updateMailRecipientList(targetIndex);
         try {
             sendMail(sendMailTo);
-        }
-        catch (ParseException e) {
+        } catch (ParseException e) {
             e.printStackTrace();
             return new CommandResult(MESSAGE_FAILURE);
         }

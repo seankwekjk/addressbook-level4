@@ -14,6 +14,9 @@ import seedu.address.logic.commands.MailCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.AnyParticularContainsKeywordsPredicate;
 
+/**
+ * Parses input arguments and creates a new MailCommand object
+ */
 public class MailCommandParser implements Parser<MailCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the MailCommand
@@ -29,11 +32,11 @@ public class MailCommandParser implements Parser<MailCommand> {
         }
 
         try {
-            String[] MailToCommand = ParserUtil.parseMailToCommand(argMultimap.getAllValues(PREFIX_MAIL_RECEPIENT));
+            String[] mailToCommand = ParserUtil.parseMailToCommand(argMultimap.getAllValues(PREFIX_MAIL_RECEPIENT));
             String title = String.join("", argMultimap.getAllValues(PREFIX_MAIL_TITLE));
             String message = String.join("", argMultimap.getAllValues(PREFIX_MAIL_MESSAGE));
 
-            return new MailCommand(new AnyParticularContainsKeywordsPredicate(Arrays.asList(MailToCommand)), title, message);
+            return new MailCommand(new AnyParticularContainsKeywordsPredicate(Arrays.asList(mailToCommand)), title, message);
         } catch (IllegalValueException ive) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MailCommand.MESSAGE_USAGE));
         }
