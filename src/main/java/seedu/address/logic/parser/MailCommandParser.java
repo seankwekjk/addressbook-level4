@@ -28,11 +28,6 @@ public class MailCommandParser implements Parser<MailCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MailCommand.MESSAGE_USAGE));
         }
 
-        String host = "localhost";
-
-        Properties properties = System.getProperties();
-        properties.setProperty("mail.sftp.host", host);
-
         try {
             String[] MailToCommand = ParserUtil.parseMailToCommand(argMultimap.getAllValues(PREFIX_MAIL_RECEPIENT));
             String title = String.join("", argMultimap.getAllValues(PREFIX_MAIL_TITLE));
