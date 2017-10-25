@@ -161,7 +161,7 @@ public class EditCommand extends UndoableCommand {
          */
         public boolean isAnyFieldEdited() {
             return CollectionUtil.isAnyNonNull(this.name, this.phone, this.email, this.address,
-                    this.birthday, this.tags);
+                    this.birthday, this.url, this.tags);
         }
 
         public void setName(Name name) {
@@ -240,6 +240,7 @@ public class EditCommand extends UndoableCommand {
                     && getEmail().equals(e.getEmail())
                     && getAddress().equals(e.getAddress())
                     && getBirthday().equals(e.getBirthday())
+                    && getSocial().equals(e.getSocial())
                     && getTags().equals(e.getTags());
         }
     }

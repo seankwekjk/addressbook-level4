@@ -35,7 +35,7 @@ public class XmlAdaptedPerson {
     private String birthday;
     @XmlElement(required = true)
     private String remark;
-    @XmlElement
+    @XmlElement(required = true)
     private String url;
 
     @XmlElement

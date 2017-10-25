@@ -22,6 +22,7 @@ public class BrowserPanel extends UiPart<Region> {
 
     public static final String DEFAULT_PAGE = "default.html";
     public static final String GOOGLE_SEARCH_URL_PREFIX = "https://www.google.com/maps/search/?api=1&query=";
+    public static final String SOCIAL_MEDIA_URL_PREFIX = "https://";
 
     private static Boolean browserMode = true;
     private static final String FXML = "BrowserPanel.fxml";
@@ -47,7 +48,7 @@ public class BrowserPanel extends UiPart<Region> {
     }
 
     private void loadSocialPage(ReadOnlyPerson pers) {
-        loadPage(pers.getSocialMedia());
+        loadPage(SOCIAL_MEDIA_URL_PREFIX + pers.getSocialMedia());
     }
 
     public static Boolean getBrowserMode() {
