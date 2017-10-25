@@ -103,11 +103,20 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code Optional<String> remark} into an {@code Optional<String>} if {@code remark} is present.
+     * Parses a {@code Optional<String> remark} into an {@code Optional<Remark>} if {@code remark} is present.
      * See header comment of this class regarding the use of {@code Optional} parameters.
      */
     public static Optional<Remark> parseRemark(Optional<String> remark) throws IllegalValueException {
         requireNonNull(remark);
         return remark.isPresent() ? Optional.of(new Remark(remark.get())) : Optional.empty();
+    }
+
+    /**
+     * Parses a {@code Optional<String> url} into an {@code Optional<String>} if {@code url} is present.
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static Optional<String> parseSocial(Optional<String> url) throws IllegalValueException {
+        requireNonNull(url);
+        return url.isPresent() ? Optional.of(url.get()) : Optional.empty();
     }
 }

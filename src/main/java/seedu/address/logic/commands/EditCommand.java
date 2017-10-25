@@ -105,11 +105,12 @@ public class EditCommand extends UndoableCommand {
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Birthday updatedBirthday = editPersonDescriptor.getBirthday().orElse(personToEdit.getBirthday());
+        String updatedSocial = editPersonDescriptor.getSocial().orElse(personToEdit.getSocialMedia());
         Remark updatedRemark = personToEdit.getRemark();
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedBirthday,
-                updatedRemark, updatedTags);
+                updatedRemark, updatedSocial, updatedTags);
     }
 
     @Override
@@ -140,6 +141,7 @@ public class EditCommand extends UndoableCommand {
         private Email email;
         private Address address;
         private Birthday birthday;
+        private String url;
         private Set<Tag> tags;
 
         public EditPersonDescriptor() {}
@@ -150,6 +152,7 @@ public class EditCommand extends UndoableCommand {
             this.email = toCopy.email;
             this.address = toCopy.address;
             this.birthday = toCopy.birthday;
+            this.url = toCopy.url;
             this.tags = toCopy.tags;
         }
 
@@ -199,6 +202,14 @@ public class EditCommand extends UndoableCommand {
 
         public Optional<Birthday> getBirthday() {
             return Optional.ofNullable(birthday);
+        }
+
+        public void setSocial(String url) {
+            this.url = url;
+        }
+
+        public Optional<String> getSocial() {
+            return Optional.ofNullable(url);
         }
 
         public void setTags(Set<Tag> tags) {

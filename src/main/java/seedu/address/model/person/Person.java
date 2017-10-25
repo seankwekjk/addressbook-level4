@@ -44,11 +44,28 @@ public class Person implements ReadOnlyPerson {
     }
 
     /**
+     * Only url is allowed to be null.
+     */
+    public Person(Name name, Phone phone, Email email, Address address, Birthday birthday,
+                  Remark remark, String url, Set<Tag> tags) {
+        requireAllNonNull(name, phone, email, address, birthday, tags);
+        this.name = new SimpleObjectProperty<>(name);
+        this.phone = new SimpleObjectProperty<>(phone);
+        this.email = new SimpleObjectProperty<>(email);
+        this.address = new SimpleObjectProperty<>(address);
+        this.birthday = new SimpleObjectProperty<>(birthday);
+        this.remark = new SimpleObjectProperty<>(remark);
+        this.social = new SimpleObjectProperty<>(url);
+        // protect internal tags from changes in the arg list
+        this.tags = new SimpleObjectProperty<>(new UniqueTagList(tags));
+    }
+
+    /**
      * Creates a copy of the given ReadOnlyPerson.
      */
     public Person(ReadOnlyPerson source) {
         this(source.getName(), source.getPhone(), source.getEmail(), source.getAddress(),
-                source.getBirthday(), source.getRemark(), source.getTags());
+                source.getBirthday(), source.getRemark(), source.getSocialMedia(), source.getTags());
     }
 
     /**
