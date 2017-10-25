@@ -1,7 +1,7 @@
 package seedu.address.logic.commands;
 
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_RECEPIENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_MESSAGE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_RECEPIENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_TITLE;
 
 import java.awt.Desktop;
@@ -19,16 +19,6 @@ import seedu.address.model.person.AnyParticularContainsKeywordsPredicate;
  */
 public class MailCommand extends Command {
 
-    private final AnyParticularContainsKeywordsPredicate targetIndex;
-    private final String title;
-    private final String message;
-
-    public MailCommand(AnyParticularContainsKeywordsPredicate targetIndex, String title, String message) {
-        this.targetIndex = targetIndex;
-        this.title = title;
-        this.message = message;
-    }
-
     public static final String COMMAND_WORD = "mail";
     public static final String COMMAND_ALIAS = "m";
 
@@ -42,6 +32,16 @@ public class MailCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Redirect to Mail application success.";
     public static final String MESSAGE_FAILURE = "Could not redirect to Mail application. "
             + "Please enter a valid mail address.";
+
+    private final AnyParticularContainsKeywordsPredicate targetIndex;
+    private final String title;
+    private final String message;
+
+    public MailCommand(AnyParticularContainsKeywordsPredicate targetIndex, String title, String message) {
+        this.targetIndex = targetIndex;
+        this.title = title;
+        this.message = message;
+    }
 
     /**
      * Opens up Desktop Mail application.
