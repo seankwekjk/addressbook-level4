@@ -19,6 +19,11 @@ public class ToggleCommand extends Command {
     }
 
     private String composeCommandResult() {
-        return TOGGLE_SUCCESS + BrowserPanel.getBrowserMode().toString();
+        if(BrowserPanel.getBrowserMode()) {
+            return TOGGLE_SUCCESS + "Display Address";
+        }
+        else {
+            return TOGGLE_SUCCESS + "Display Social Media";
+        }
     }
 }
