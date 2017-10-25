@@ -127,12 +127,6 @@ public class ModelManager extends ComponentManager implements Model {
         requireNonNull(predicate);
         filteredMails.setPredicate(predicate);
         List<String> validPeopleList = new ArrayList<>();
-        for (ReadOnlyPerson person : filteredMails) {
-            if (person.getEmail() != null && !person.getEmail().value.equalsIgnoreCase(" ")
-                    && !validPeopleList.contains(person.getEmail().value)) {
-                validPeopleList.add(person.getEmail().value);
-            }
-        }
         return String.join(",", validPeopleList);
     }
 
