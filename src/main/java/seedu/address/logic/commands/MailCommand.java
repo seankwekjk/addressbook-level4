@@ -7,14 +7,6 @@ import java.net.URISyntaxException;
 import java.util.Properties;
 
 import javax.activation.DataHandler;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
-import javax.mail.util.ByteArrayDataSource;
 
 import static java.util.Objects.requireNonNull;
 
@@ -25,8 +17,8 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.logic.parser.exceptions.ParseException;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_RECEPIENT;
-//import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_TITLE;
-//import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_MESSAGE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_TITLE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_MESSAGE;
 
 /**
  * Mails a person in Contags.
@@ -34,13 +26,13 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_RECEPIENT;
 public class MailCommand extends Command {
 
     private final AnyParticularContainsKeywordsPredicate targetIndex;
-    //private final String title;
-    //private final String message;
+    private final String title;
+    private final String message;
 
-    public MailCommand(AnyParticularContainsKeywordsPredicate targetIndex) {
+    public MailCommand(AnyParticularContainsKeywordsPredicate targetIndex, String title, String message) {
         this.targetIndex = targetIndex;
-        //this.title = title;
-        //this.message = message;
+        this.title = title;
+        this.message = message;
     }
 
     public static final String COMMAND_WORD = "mail";
@@ -77,7 +69,7 @@ public class MailCommand extends Command {
         }
     }
 
-    public static void send(String from, Collection<String> recipients, String subject, String text)
+    /* public static void send(String from, Collection<String> recipients, String subject, String text)
             throws MessagingException, IOException {
         send(from, recipients, subject, text, null, null, null);
 
@@ -100,7 +92,7 @@ public class MailCommand extends Command {
         String username = properties.getProperty("mail.smtp.username");
         String password = properties.getProperty("mail.smtp.password");
         Transport.send(message, username, password);
-    }
+    } */
 
     @Override
     public CommandResult execute() {
