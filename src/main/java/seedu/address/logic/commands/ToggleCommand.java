@@ -18,9 +18,9 @@ public class ToggleCommand extends Command {
         return new CommandResult(composeCommandResult());
     }
 
-/**
- * Composes the Command Result @String based on the status of the toggled boolean variable
- */
+    /**
+    * Composes the Command Result @String based on the status of the toggled boolean variable
+    */
     private String composeCommandResult() {
         if (BrowserPanel.getBrowserMode()) {
             return TOGGLE_SUCCESS + "Display Address";
