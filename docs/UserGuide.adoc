@@ -209,6 +209,17 @@ Loads Google Maps page for the address of the 2nd person in the address book.
 `map 1` +
 Loads Google Maps page for the address of the 1st person in the results of the `find` command.
 
+=== Mailing a contact: `mail` `m`
+
+Mails a contact in Contags
+
+Format: `mail to/[EMAIL]`
+
+Examples:
+
+*`mail to/john@gmail.com title/hi message/hello`
+Opens up mail application and to, title and message fields of the mail will be automatically filled in.
+
 === Adding remarks: `remark`
 
 Edits the remark for a person specified in the INDEX
@@ -363,6 +374,7 @@ e.g. `find James Jake`
 * *Sort* : `sort KEYWORD`
 * *Select* : `select INDEX` +
 e.g.`select 2`
+* *Mail* : `mail to/[EMAIL] title/[KEYWORD] message[KEYWORD]`
 * *Remark* : `remark INDEX r/[INDEX]` +
 e.g. `remark 1 r/Likes coffee.`
 * *History* : `history`
@@ -371,7 +383,7 @@ e.g. `remark 1 r/Likes coffee.`
 
 == Coming in v2.0
 
-1. Emailing a person by typing in the command email followed by the contact's name or index.
+1. Auto-login for mail and auto-sending of mail without needing to click send on the mail application.
 
 2. A reminder list that will pop up on the screen every time the user opens the application.
 
