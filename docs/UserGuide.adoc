@@ -233,7 +233,7 @@ List is sorted according to email addresses in ascending order.
 * `sort Address` +
 List is sorted according to addresses in ascending order.
 
-=== Sending a SMS Message to the telephone number of the contact indicated bby the given index: `select INDEX`
+=== Sending a SMS Message to the telephone number of the contact indicated bby the given index: `sms`
 
 Sends a SMS message from the user's phone number (to be configured) to the phone number indicated by the contact
 particulars of the index gievn.
@@ -244,26 +244,6 @@ Format: `sms INDEX`
 * Currently is only configured to send "hi" message. +
 * Full text messages will be able to be sent in V1.4
 ****
-
-=== Getting directions to a contact's address : `map` `m`
-
-Loads the Google Maps page for the address of the contact in Contags. +
-Format: `map INDEX`
-
-****
-* Loads the Google Maps page for the address of the contact at the specified `INDEX`.
-* The index refers to the index number shown in the most recent listing.
-* The index *must be a positive integer*. e.g. `1`, `2`, `3`, `...`.
-****
-
-Examples:
-
-* `list` +
-`map 2` +
-Loads Google Maps page for the address of the 2nd contact in Contags.
-* `find Betsy` +
-`map 1` +
-Loads Google Maps page for the address of the 1st contact in the results of the `find` command.
 
 === Mailing a contact: `mail` `m`
 
@@ -392,26 +372,6 @@ Returns any contacts having addresses `Clementi`, `Bugis`, or `Tuas`.
 
 Provides directions to the address of the selected contact. +
 Format: `direct`
-
-=== Emailing a person: `mail` `Coming in v2.0`
-
-Loads the email page to email the specified contact in Contags. +
-Format: `mail INDEX`
-
-****
-* Loads the email page to email the contact at the specified `INDEX`.
-* The index refers to the index number shown in the most recent listing.
-* The index *must be a positive integer*. e.g. `1`, `2`, `3`, `...`.
-****
-
-Examples:
-
-* `list` +
-`mail 2` +
-Emails the 2nd contact in Contags.
-* `find Betsy` +
-`mail 1` +
-Emails the 1st contact in the results of the `find` command.
 
 === Sorting Contacts based on Frequency `frequent` `Coming in v2.0`
 
