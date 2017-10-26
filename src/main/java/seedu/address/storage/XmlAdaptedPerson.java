@@ -85,6 +85,9 @@ public class XmlAdaptedPerson {
         final Remark remark = new Remark(this.remark);
         final String url = this.url;
         final Set<Tag> tags = new HashSet<>(personTags);
+        if (url == null) {
+            return new Person(name, phone, email, address, birthday, remark, tags);
+        }
         return new Person(name, phone, email, address, birthday, remark, url, tags);
     }
 }

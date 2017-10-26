@@ -97,6 +97,18 @@ public class EditPersonDescriptorBuilder {
     }
 
     /**
+     *Sets the {@code URL} of the {@code EditPersonDescriptor} that we are building.
+     */
+    public EditPersonDescriptorBuilder withSocial(String url) {
+        try {
+            ParserUtil.parseSocial(Optional.of(url)).ifPresent(descriptor::setSocial);
+        } catch (IllegalValueException ive) {
+            throw new IllegalArgumentException("address is expected to be unique.");
+        }
+        return this;
+    }
+
+    /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code EditPersonDescriptor}
      * that we are building.
      */
