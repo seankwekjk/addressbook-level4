@@ -590,6 +590,8 @@ Priorities: +
 
 |`* * *` |user |search all my contacts by any keyword, name, email address, or address |search for people by other means than names
 
+|`* * *` |user |send an SMS message to any contact in the Contags Application
+
 |`* * *` |user |find a person with an incomplete name |to find a person even if I cannot remember or spell the person's name correctly
 
 |`* * *` |user |see all tags for a contact |to organise contacts easily
@@ -599,7 +601,6 @@ Priorities: +
 |`* * *` |user |create a new contact with a name that already exists in Contags |have multiple contacts with the same name if I know people with the same name
 
 |`* *` |user |hide link:#private-contact-detail[private contact details] by default |minimize chance of someone else seeing them by accident
-
 
 |`* *` |user |add contacts with missing fields |include a contact even if I do not know some of the information fields
 
@@ -777,6 +778,24 @@ Use case ends.
 [none]
 * 2a. The list is empty.
 +
+Use case ends.
+
+[discrete]
+=== Use case: SMS Contact
+
+*MSS*
+
+1.  User requests to SMS a specific person in the Contags Application
+2.  Contags sends SMS to indicated person with message input from user.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. Given Index is not Valid
++
+** 1a1. Contags informs user that index is invalid, and prompts for another index.
 Use case ends.
 
 [discrete]

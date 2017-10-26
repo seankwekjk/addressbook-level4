@@ -229,6 +229,18 @@ List is sorted according to email addresses in ascending order.
 * `sort Address` +
 List is sorted according to addresses in ascending order.
 
+=== Sending a SMS Message to the telephone number of the contact indicated bby the given index: `select INDEX`
+
+Sends a SMS message from the user's phone number (to be configured) to the phone number indicated by the contact
+particulars of the index gievn.
+
+Format: `sms INDEX`
+
+****
+* Currently is only configured to send "hi" message. +
+* Full text messages will be able to be sent in V1.4
+****
+
 === Getting directions to a person's address : `map` `m`
 
 Loads the Google Maps page for the address of the person in the address book. +
@@ -465,6 +477,7 @@ e.g. `removeTag friends`
 * *Sort* : `sort KEYWORD`
 * *Select* : `select INDEX` +
 e.g.`select 2`
+* *SMS* : `SMS INDEX` + e.g. `SMS 1`
 * *frequent* :
 e.g.`frequent`
 * *Remark* : `remark INDEX r/[INDEX]` +
