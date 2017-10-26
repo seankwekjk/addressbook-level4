@@ -269,7 +269,7 @@ Loads Google Maps page for the address of the 1st contact in the results of the 
 
 Mails a contact in Contags
 
-Format: `mail to/[EMAIL]`
+Format: `mail to/[EMAIL] title/[SUBJECT] message/[MESSAGE]`
 
 Examples:
 
