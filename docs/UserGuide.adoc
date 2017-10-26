@@ -218,7 +218,7 @@ Format: `sort KEYWORD`
 * Sorts the list of contacts saved in Contags and then displays the sorted list. +
 * Sorting is done in alphanumerical ascending order. +
 * Keywords for sorting: `name`, `phone`, `email`, `address`, `tag`. +
-* Keywords are *case-insensitive* e.g. `sort name` and `sort NAME` both sorts the list . +
+* Keywords are *case-insensitive*. e.g. `sort name` and `sort NAME` both sorts the list . +
 ****
 
 Examples:
