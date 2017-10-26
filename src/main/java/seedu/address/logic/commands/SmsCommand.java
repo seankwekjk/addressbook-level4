@@ -1,20 +1,20 @@
 package seedu.address.logic.commands;
 
+import java.util.List;
+
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 
-import seedu.address.commons.core.EventsCenter;
-import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
-import seedu.address.commons.events.ui.JumpToListRequestEvent;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.person.Person;
 import seedu.address.model.person.ReadOnlyPerson;
 
-import java.util.List;
+/**
+ * Sends a SMS message to an existing person in the address book.
+ */
 
-public class SMS_Command extends Command{
+public class SmsCommand extends Command {
 
     public static final String COMMAND_WORD = "sms";
     public static final String ACCOUNT_SID = "ACed7baf2459e41d773a5f9c2232d4d975";
@@ -29,7 +29,7 @@ public class SMS_Command extends Command{
 
     private final Index targetIndex;
 
-    public SMS_Command(Index targetIndex) {
+    public SmsCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
     }
@@ -41,7 +41,7 @@ public class SMS_Command extends Command{
         String receivingNumber = lastShownList.get(targetIndex.getOneBased()).getPhone().toString();
 
         Message message = Message
-                .creator(new PhoneNumber("+65"+receivingNumber), new PhoneNumber("+12082157763"),
+                .creator(new PhoneNumber("+65" + receivingNumber), new PhoneNumber("+12082157763"),
                         "Hello!")
                 .setMediaUrl("https://climacons.herokuapp.com/clear.png")
                 .create();
