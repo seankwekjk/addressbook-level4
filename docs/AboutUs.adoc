@@ -4,10 +4,11 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :imagesDir: images
 :stylesDir: stylesheets
 
-AddressBook - Level 4 was developed by the https://se-edu.github.io/docs/Team.html[se-edu] team. +
-The dummy content given below serves as a placeholder to be used by future forks of the project. +
-{empty} +
 We are a team based in the http://www.comp.nus.edu.sg[School of Computing, National University of Singapore].
+
+Contags was developed together by the 4 of us mentioned below. +
+
+This page provides details of us and to some relevant links that you may find useful to get to know us better or to take a look at the other projects that we have worked on previously +
 
 == Project Team
 
@@ -15,7 +16,8 @@ We are a team based in the http://www.comp.nus.edu.sg[School of Computing, Natio
 image::mzxc152.jpg[width="150", align="left"]
 {empty}[https://github.com/mzxc152[github]] [<<liangyuhao#, portfolio>>]
 
-Role: Project Advisor
+Role: Team Member +
+Responsibilities: -
 
 '''
 
