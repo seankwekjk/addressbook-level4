@@ -1,7 +1,7 @@
 package seedu.address.logic.commands;
 
 /**
- * Lists all persons in the address book to the user.
+ * Lists all persons in Contags to the user.
  */
 public class SortCommand extends Command {
 

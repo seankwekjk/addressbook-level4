@@ -98,7 +98,7 @@ public class MainWindow extends UiPart<Region> {
     }
 
     /**
-     * Initializes the search field.
+     * Initializes the find field.
      *
      * @param logic
      */
