@@ -65,6 +65,9 @@ public class UniquePersonList implements Iterable<Person> {
         case "address":
             internalList.sort((p1, p2) -> p1.getAddress().toString().compareToIgnoreCase(p2.getAddress().toString()));
             break;
+        case "tag":
+            internalList.sort((p1, p2) -> p1.getTags().toString().compareToIgnoreCase(p2.getTags().toString()));
+            break;
         default:
             break;
         }

@@ -465,6 +465,35 @@ When it is toggled, the `select` command will cause the `select` command to foll
 
 ---
 
+=== Sort Mechanism
+
+The sort command sorts the `person` in `Contags` based on their `Name`, `Phone`, `Email`, `Address` or `Tag`. The implementation of `SortCommand` inherits from `Command`. Sorting currently works in ascending order only. +
+
+There is also the use of the `SortCommandParser`, which implements the `Parser` interface, that parses out the keywords to be used with the `sort` command. The `SortCommandParser` checks for the correct keywords used and also allows the keywords to be case-insensitive.  +
+
+[NOTE]
+If arguments entered by the user do not comply with the correct format, ParseException will be thrown before execution of the method. +
+
+==== Design Considerations
+
+**Aspect:** Attributes to sort +
+**Alternative 1 (current choice):** List of contacts can be sorted by `Name`, `Phone`, `Email`, `Address` or `Tag`. +
+**Pros:** Gives users the ability to change the sorting of the list by different attributes. +
+**Cons:** Most of the attributes are unique and thus sorting by phone or email or address may not be very useful. +
+**Alternative 2:** List of contacts can be sorted by `Name` only. +
+**Pros:** Useful for most users who may want to view a sorted list of contacts. +
+**Cons:** Not useful for users who may want to sort based on other attributes such as phone or address.
+
+---
+
+**Aspect:** How the sort command works +
+**Alternative 1 (current choice):** List of contacts is sorted in alphabetical order in ascending order. +
+**Pros:** Easier to implement than including descending order. +
+**Cons:** Sort command has less functionality, some users may want a descending order for some use cases. +
+**Alternative 2:** List of contacts is sorted in alphabetical order, and can be in either ascending or descending order as decided by user. +
+**Pros:** Has more functionality, more user-friendly. +
+**Cons:** Harder to implement and develop. +
+
 === Logging
 
 We are using `java.util.logging` package for logging. The `LogsCenter` class is used to manage the logging levels and logging destinations.
@@ -650,6 +679,10 @@ Priorities: +
 |`* *` |user |sort the list of contacts in the list based on phone number |organise the list
 
 |`* *` |user |email a contact by clicking on their email field |simplify the emailing process
+
+|`* *` |user |have tags of different colours| easily identify different tags
+
+|`*` |user| change colors of the tags| customise the tags to my own color groupings
 
 |`*` |user with many persons in Contags |sort persons by name |locate a person easily
 
@@ -1156,3 +1189,22 @@ Pros:
 Cons:
 
 * Has no command-line interface.
+* Only available on Mac OS.
+
+---
+
+*Microsoft People*
+
+Author: Microsoft Corporation.
+
+Pros:
+
+* Allows users to send messages through email or Skype and also start a Skype call with the selected contact through the App. +
+* Includes features such as syncing with email accounts, sharing contact details, including profile pictures. +
+
+Cons:
+
+* Only available on Windows.
+* No command-line interface, requires use of mouse and keyboard.
+* Does not support tags.
+
