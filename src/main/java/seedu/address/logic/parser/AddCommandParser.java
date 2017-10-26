@@ -51,11 +51,19 @@ public class AddCommandParser implements Parser<AddCommand> {
             Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL)).get();
             Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS)).get();
             Birthday birthday = ParserUtil.parseBirthday(argMultimap.getValue(PREFIX_BIRTHDAY)).get();
-            String url = ParserUtil.parseSocial(argMultimap.getValue(PREFIX_SOCIAL)).get();
+            String url = null;
+            if (arePrefixesPresent(argMultimap, PREFIX_SOCIAL)) {
+                url = ParserUtil.parseSocial(argMultimap.getValue(PREFIX_SOCIAL)).get();
+            }
             Remark remark = new Remark("");
             Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-            ReadOnlyPerson person = new Person(name, phone, email, address, birthday, remark, url, tagList);
+            ReadOnlyPerson person;
+            if (url != null) {
+                person = new Person(name, phone, email, address, birthday, remark, url, tagList);
+            }   else {
+                person = new Person(name, phone, email, address, birthday, remark, tagList);
+            }
 
             return new AddCommand(person);
         } catch (IllegalValueException ive) {
