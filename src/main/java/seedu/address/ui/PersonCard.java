@@ -19,8 +19,8 @@ public class PersonCard extends UiPart<Region> {
 
     private static final String FXML = "PersonListCard.fxml";
     private static ArrayList<String> colors = new
-            ArrayList<String>(Arrays.asList("salmon", "springgreen", "tan", "royalblue",
-            "maroon", "seagreen", "rosybrown", "pink", "black", "red", "seashell"));
+            ArrayList<String>(Arrays.asList("salmon", "mediumspringgreen", "tan", "royalblue",
+            "maroon", "seagreen", "rosybrown", "pink", "black", "red", "beige"));
     private static HashMap<String, String> tagColors = new HashMap<String, String>();
 
     /**
@@ -61,13 +61,11 @@ public class PersonCard extends UiPart<Region> {
     }
 
     private static String getColorForTag(String tagName) {
-        if (!tagColors.containsKey(tagName)) {
+        if (!tagColors.containsKey(tagName) && !colors.isEmpty()) {
             String color = colors.get(0);
             tagColors.put(tagName, color);
+            colors.add(color);
             colors.remove(0);
-            if (colors.isEmpty()) {
-                colors.add("slategrey");
-            }
         }
         return tagColors.get(tagName);
     }
