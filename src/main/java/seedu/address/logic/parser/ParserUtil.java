@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -103,11 +104,30 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code Optional<String> remark} into an {@code Optional<String>} if {@code remark} is present.
+     * Parses a {@code Optional<String> remark} into an {@code Optional<Remark>} if {@code remark} is present.
      * See header comment of this class regarding the use of {@code Optional} parameters.
      */
     public static Optional<Remark> parseRemark(Optional<String> remark) throws IllegalValueException {
         requireNonNull(remark);
         return remark.isPresent() ? Optional.of(new Remark(remark.get())) : Optional.empty();
+    }
+
+    /**
+     * Parses a {@code Optional<String> url} into an {@code Optional<String>} if {@code url} is present.
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static Optional<String> parseSocial(Optional<String> url) throws IllegalValueException {
+        requireNonNull(url);
+        return url.isPresent() ? Optional.of(url.get()) : Optional.empty();
+    }
+
+    /**
+     * Parses a {@code Optional<String> name} into an {@code Optional<Name>} if {@code name} is present.
+     */
+    public static String[] parseMailToCommand(List<String> name) throws IllegalValueException {
+        requireNonNull(name);
+        String trimmed = String.join(" ", name).trim();
+        String[] newTrimmed = trimmed.split("\\s+");
+        return newTrimmed;
     }
 }
