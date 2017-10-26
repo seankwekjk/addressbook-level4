@@ -97,10 +97,11 @@ Format: `help`
 === Adding a contact: `add` `a`
 
 Adds a contact to Contags. +
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS b/BIRTHDAY [t/TAG]...`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS b/BIRTHDAY [s/SOCIAL_MEDIA_URL] [t/TAG]...`
 
 [TIP]
-A contact can have any number of tags (including 0).
+A person can have any number of tags (including 0) +
+Social Media Url is an optional field
 
 Examples:
 
@@ -115,7 +116,7 @@ Format: `list`
 === Editing a contact : `edit` `e`
 
 Edits an existing contact in Contags. +
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [b/BIRTHDAY] [t/TAG]...`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [b/BIRTHDAY] [s/SOCIAL_MEDIA_URL] [t/TAG]...`
 
 ****
 * Edits the contact at the specified `INDEX`. The index refers to the index number shown in the last contact listing. The index *must be a positive integer* 1, 2, 3, ...
@@ -194,7 +195,9 @@ Format: `select INDEX`
 
 ****
 * Selects the contact and loads a Google Maps search of the contact's specified address
+* Selects the contact and loads either a Google Maps search of the person's specified address, or the person's specified social media link
  at the specified `INDEX`.
+* The function is toggled using the `toggle` command.
 * The index refers to the index number shown in the most recent listing.
 * The index *must be a positive integer*. e.g. `1`, `2`, `3`, `...`.
 ****
@@ -249,6 +252,17 @@ Loads Google Maps page for the address of the 2nd contact in Contags.
 * `find Betsy` +
 `map 1` +
 Loads Google Maps page for the address of the 1st contact in the results of the `find` command.
+
+=== Mailing a contact: `mail` `m`
+
+Mails a contact in Contags
+
+Format: `mail to/[EMAIL]`
+
+Examples:
+
+*`mail to/john@gmail.com title/hi message/hello`
+Opens up mail application and to, title and message fields of the mail will be automatically filled in.
 
 === Adding remarks: `remark`
 
@@ -327,6 +341,10 @@ The `redo` command fails as there are no `undo` commands executed previously.
 
 Clears all entries from Contags. +
 Format: `clear`
+
+=== Toggling `select` command function : `toggle` `Since v1.3`
+
+When used, toggles the function of the `select` command between displaying a Google Maps search and the specified social media page.
 
 === Exiting the program : `exit` `e`
 
@@ -466,6 +484,7 @@ e.g. `removeTag friends`
 * *Sort* : `sort KEYWORD`
 * *Select* : `select INDEX` +
 e.g.`select 2`
+* *Mail* : `mail to/[EMAIL] title/[KEYWORD] message[KEYWORD]`
 * *frequent* :
 e.g.`frequent`
 * *Remark* : `remark INDEX r/[INDEX]` +
@@ -478,7 +497,7 @@ e.g. `remark 1 r/Likes coffee.`
 
 == Coming in v2.0
 
-* Email a contact by typing in the command `mail` followed by the contact's name or index.
+* Auto-login for mail and auto-sending of mail without needing to click send on the mail application.
 
 * A reminder list that will pop up on the screen every time you open Contags.
 
