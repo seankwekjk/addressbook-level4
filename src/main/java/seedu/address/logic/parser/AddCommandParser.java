@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_BIRTHDAY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SOCIAL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Set;
@@ -37,7 +38,7 @@ public class AddCommandParser implements Parser<AddCommand> {
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
-                        PREFIX_BIRTHDAY, PREFIX_TAG);
+                        PREFIX_BIRTHDAY, PREFIX_SOCIAL, PREFIX_TAG);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE,
                 PREFIX_BIRTHDAY, PREFIX_EMAIL)) {
@@ -50,10 +51,19 @@ public class AddCommandParser implements Parser<AddCommand> {
             Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL)).get();
             Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS)).get();
             Birthday birthday = ParserUtil.parseBirthday(argMultimap.getValue(PREFIX_BIRTHDAY)).get();
+            String url = null;
+            if (arePrefixesPresent(argMultimap, PREFIX_SOCIAL)) {
+                url = ParserUtil.parseSocial(argMultimap.getValue(PREFIX_SOCIAL)).get();
+            }
             Remark remark = new Remark("");
             Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-            ReadOnlyPerson person = new Person(name, phone, email, address, birthday, remark, tagList);
+            ReadOnlyPerson person;
+            if (url != null) {
+                person = new Person(name, phone, email, address, birthday, remark, url, tagList);
+            }   else {
+                person = new Person(name, phone, email, address, birthday, remark, tagList);
+            }
 
             return new AddCommand(person);
         } catch (IllegalValueException ive) {
