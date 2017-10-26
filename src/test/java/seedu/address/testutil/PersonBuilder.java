@@ -24,6 +24,7 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_BIRTHDAY = "20/11/1997";
+    public static final String DEFAULT_SOCIAL = "sg.linkedin.com";
     public static final String DEFAULT_REMARK = "";
     public static final String DEFAULT_TAGS = "friends";
 
@@ -37,9 +38,10 @@ public class PersonBuilder {
             Address defaultAddress = new Address(DEFAULT_ADDRESS);
             Birthday defaultBirthday = new Birthday(DEFAULT_BIRTHDAY);
             Remark defaultRemark = new Remark(DEFAULT_REMARK);
+            String defaultSocial = new String(DEFAULT_SOCIAL);
             Set<Tag> defaultTags = SampleDataUtil.getTagSet(DEFAULT_TAGS);
             this.person = new Person(defaultName, defaultPhone, defaultEmail, defaultAddress,
-                    defaultBirthday, defaultRemark, defaultTags);
+                    defaultBirthday, defaultRemark, defaultSocial, defaultTags);
         } catch (IllegalValueException ive) {
             throw new AssertionError("Default person's values are invalid.");
         }
