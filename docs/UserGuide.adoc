@@ -478,7 +478,7 @@ e.g. `remark 1 r/Likes coffee.`
 
 == Coming in v2.0
 
-* Email a contact by typing in the command `email` followed by the contact's name or index.
+* Email a contact by typing in the command `mail` followed by the contact's name or index.
 
 * A reminder list that will pop up on the screen every time you open Contags.
 
@@ -486,5 +486,10 @@ e.g. `remark 1 r/Likes coffee.`
 Subsequently, when you type in the command `free` followed by the contact's name or index, you will get a list of common
 free timings with that contact.
 
-* Contacts can be starred in Contags based upon your preference to give priority in the list of
+* Contacts can be starred in Contags based on your preference to give priority in the list of
 contacts.
+
+* Tag colors can be changed according to your preference by typing in the command `change` followed by the tag's name and the preferred color. +
+** e.g. `change` `friends` `yellow` +
+The color of the `friends` tag changes to `yellow`. +
+** For a complete list of color names that you can use, you can refer to this color guide link:{https://www.quackit.com/css/css_color_codes.cfm[here].
