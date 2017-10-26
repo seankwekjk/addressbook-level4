@@ -465,6 +465,14 @@ When it is toggled, the `select` command will cause the `select` command to foll
 
 ---
 
+**Aspect:** Method of selecting which display to be shown +
+**Alternative 1 (current choice):** Toggled via independent command +
+**Pros:** The option is saved, so when users want to view multiple contacts consecutively, they can minimise the number of commands they use or the amount of input keyed in. +
+**Cons:** A separate command needs to be implemented and linked to both the BrowserPanel and Select Command +
+**Alternative 2:** Enter choice in the select command +
+**Pros:** When users want to alternate between functions, it will be easier and require fewer commands. +
+**Cons:** Complicates the Select Command.
+
 === Sort Mechanism
 
 The sort command sorts the `person` in `Contags` based on their `Name`, `Phone`, `Email`, `Address` or `Tag`. The implementation of `SortCommand` inherits from `Command`. Sorting currently works in ascending order only. +
