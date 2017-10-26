@@ -96,7 +96,7 @@ public class AddCommandTest {
     /**
      * A default model stub that have all of the methods failing.
      */
-    private class ModelStub implements Model {
+    private abstract class ModelStub implements Model {
         @Override
         public void addPerson(ReadOnlyPerson person) throws DuplicatePersonException {
             fail("This method should not be called.");
@@ -143,6 +143,12 @@ public class AddCommandTest {
         @Override
         public void updateFilteredPersonList(Predicate<ReadOnlyPerson> predicate) {
             fail("This method should not be called.");
+        }
+
+        @Override
+        public String updateMailRecipientList(Predicate<ReadOnlyPerson> predicate) {
+            fail("This method should not be called.");
+            return null;
         }
     }
 
