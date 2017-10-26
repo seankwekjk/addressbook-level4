@@ -435,7 +435,35 @@ The birthday value is validated before being accepted as a parameter in the cons
 **Cons:** Not very user-friendly as not all users would want to add birthdays for all their contacts. +
 **Alternative 2:** Make the birthday field optional. +
 **Pros:** More user-friendly. +
-**Cons: Implementation is sligtly more tedious and new developers might need more time to understand the implementation. **
+**Cons: Implementation is slightly more tedious and new developers might need more time to understand the implementation. **
+
+=== Social Media
+
+The Social Media display consists of several parts. Firstly, there is the social media url field contained within the `Person` class. +
+This field is an optional one that does not have to be included in the `add` command when adding new a new contact.
+
+The second part is the `toggle` command, which modifies a class-level variable within the `BrowserPanel` class.
+[source,java]
+----
+public class BrowserPanel extends UiPart<Region> {
+    private static Boolean browserMode = true;
+}
+----
+
+By default, the variable is true, and it will cause the `select` command to display the contact's address. +
+When it is toggled, the `select` command will cause the `select` command to follow the url specified in the social media url field instead.
+
+==== Design Considerations
+
+**Aspect:** Implementation of social media display in BrowserPanel +
+**Alternative 1 (current choice):** Create a new command to toggle the function of select, and display only either the address or social media page at one one +
+**Pros:** The windows will be less cramped and we do not need to have double the resources used to open 2 BrowserPanels simultaneously +
+**Cons:** We have to implement 2 separate sets of logic, and link it to a variable that determines the current behaviour +
+**Alternative 2:** Open 2 BrowserPanels side by side when select is called, one displaying address and the other displaying the social media page +
+**Pros:** It allows the user to utilise both functions simultaneously +
+**Cons:** It consumes a large amount of resources and the resulting panels will both be small, reducing the functionality of the 2 panels.
+
+---
 
 === Logging
 
