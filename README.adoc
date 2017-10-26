@@ -13,10 +13,13 @@ endif::[]
 ifndef::env-github[]
 image::images/Ui.png[width="600"]
 endif::[]
+Have you ever wished that there was some application to store the details of all your contacts easily, with organisation features to easily view details that you need with just some short keyboard commands? +
 
-* This is a desktop Address Book application. It has a GUI but most of the user interactions happen using a CLI (Command Line Interface).
-* It is a Java application intended for users to store details of contacts and access them easily.
-* It is *written in OOP fashion*. It provides a *reasonably well-written* code example for students to edit and improve weekly to experience working on a software product in a group.
+*_Contags_* does that and more! Come take a look at the unique features that *_Contags_* provides you with to boost your productivity today! +
+
+* This is a desktop Address Book application. It has a GUI but most of the user interactions happen using a CLI (Command Line Interface). +
+* It is a Java application intended for you to store details of contacts and access them easily. It also allows you to get directions to the contact's address through the Google Maps feature and allows easy organisation of Contacts through the use of tags, remarks, and sort features. +
+* It is *written in OOP fashion*. This allows future developers to come aboard and help to develop Contags with newer and more innovative features to further enhance the productivity of you and other users.
 
 == Site Map
 
