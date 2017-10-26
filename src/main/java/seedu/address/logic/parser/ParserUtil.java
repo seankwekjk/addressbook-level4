@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -118,5 +119,15 @@ public class ParserUtil {
     public static Optional<String> parseSocial(Optional<String> url) throws IllegalValueException {
         requireNonNull(url);
         return url.isPresent() ? Optional.of(url.get()) : Optional.empty();
+    }
+
+    /**
+     * Parses a {@code Optional<String> name} into an {@code Optional<Name>} if {@code name} is present.
+     */
+    public static String[] parseMailToCommand(List<String> name) throws IllegalValueException {
+        requireNonNull(name);
+        String trimmed = String.join(" ", name).trim();
+        String[] newTrimmed = trimmed.split("\\s+");
+        return newTrimmed;
     }
 }
