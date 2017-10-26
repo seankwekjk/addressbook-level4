@@ -24,6 +24,8 @@ public interface ReadOnlyPerson {
     Birthday getBirthday();
     ObjectProperty<Remark> remarkProperty();
     Remark getRemark();
+    ObjectProperty<String> socialProperty();
+    String getSocialMedia();
     ObjectProperty<UniqueTagList> tagProperty();
     Set<Tag> getTags();
 
@@ -54,6 +56,8 @@ public interface ReadOnlyPerson {
                 .append(getAddress())
                 .append(" Birthday: ")
                 .append(getBirthday())
+                .append(" Url: ")
+                .append(getSocialMedia())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();

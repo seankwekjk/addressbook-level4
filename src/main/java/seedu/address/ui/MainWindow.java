@@ -53,7 +53,7 @@ public class MainWindow extends UiPart<Region> {
     private StackPane browserPlaceholder;
 
     @FXML
-    private TextField searchField;
+    private TextField findField;
 
     @FXML
     private ComboBox comboBox;
@@ -90,7 +90,7 @@ public class MainWindow extends UiPart<Region> {
         setWindowDefaultSize(prefs);
         Scene scene = new Scene(getRoot());
         primaryStage.setScene(scene);
-        initSearchField(logic);
+        initFindField(logic);
         initSortBox();
 
         setAccelerators();
@@ -98,17 +98,17 @@ public class MainWindow extends UiPart<Region> {
     }
 
     /**
-     * Initializes the search field.
+     * Initializes the find field.
      *
      * @param logic
      */
-    private void initSearchField(Logic logic) {
-        searchField.setOnKeyReleased(e -> {
+    private void initFindField(Logic logic) {
+        findField.setOnKeyReleased(e -> {
             try {
-                if (searchField.getText().isEmpty()) {
+                if (findField.getText().isEmpty()) {
                     logic.execute("list");
                 }
-                logic.execute("find " + searchField.getText());
+                logic.execute("find " + findField.getText());
             } catch (CommandException e1) {
                 e1.printStackTrace();
             } catch (ParseException e1) {
@@ -121,7 +121,7 @@ public class MainWindow extends UiPart<Region> {
      * Initializes the sort box.
      */
     private void initSortBox() throws CommandException, ParseException {
-        comboBox.getItems().addAll("Name", "Phone", "Email", "Address");
+        comboBox.getItems().addAll("Name", "Phone", "Email", "Address", "Tag");
         comboBox.getSelectionModel().select(0);
         logic.execute("sort name");
         comboBox.setOnAction(e -> {

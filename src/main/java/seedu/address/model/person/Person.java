@@ -24,6 +24,7 @@ public class Person implements ReadOnlyPerson {
     private ObjectProperty<Address> address;
     private ObjectProperty<Birthday> birthday;
     private ObjectProperty<Remark> remark;
+    private ObjectProperty<String> social;
     private ObjectProperty<UniqueTagList> tags;
 
     /**
@@ -38,6 +39,24 @@ public class Person implements ReadOnlyPerson {
         this.address = new SimpleObjectProperty<>(address);
         this.birthday = new SimpleObjectProperty<>(birthday);
         this.remark = new SimpleObjectProperty<>(remark);
+        this.social = new SimpleObjectProperty<>(new String(""));
+        // protect internal tags from changes in the arg list
+        this.tags = new SimpleObjectProperty<>(new UniqueTagList(tags));
+    }
+
+    /**
+     * Only url is allowed to be null.
+     */
+    public Person(Name name, Phone phone, Email email, Address address, Birthday birthday,
+                  Remark remark, String url, Set<Tag> tags) {
+        requireAllNonNull(name, phone, email, address, birthday, url, tags);
+        this.name = new SimpleObjectProperty<>(name);
+        this.phone = new SimpleObjectProperty<>(phone);
+        this.email = new SimpleObjectProperty<>(email);
+        this.address = new SimpleObjectProperty<>(address);
+        this.birthday = new SimpleObjectProperty<>(birthday);
+        this.remark = new SimpleObjectProperty<>(remark);
+        this.social = new SimpleObjectProperty<>(url);
         // protect internal tags from changes in the arg list
         this.tags = new SimpleObjectProperty<>(new UniqueTagList(tags));
     }
@@ -47,7 +66,7 @@ public class Person implements ReadOnlyPerson {
      */
     public Person(ReadOnlyPerson source) {
         this(source.getName(), source.getPhone(), source.getEmail(), source.getAddress(),
-                source.getBirthday(), source.getRemark(), source.getTags());
+                source.getBirthday(), source.getRemark(), source.getSocialMedia(), source.getTags());
     }
 
     /**
@@ -139,6 +158,18 @@ public class Person implements ReadOnlyPerson {
 
     public void setRemark(Remark remark) {
         this.remark.set(requireNonNull(remark));
+    }
+
+    public String getSocialMedia() {
+        return social.get();
+    }
+
+    public ObjectProperty<String> socialProperty() {
+        return social;
+    }
+
+    public void setSocialMedia(String social) {
+        this.social.set(requireNonNull(social));
     }
 
     /**
