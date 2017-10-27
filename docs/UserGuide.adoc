@@ -159,7 +159,7 @@ Removes the Tag specified by the TAGNAME. +
 Format: `removeTag TAGNAME`
 
 ****
-* The search is case insensitive. e.g `friends` will NOT match with `Friends`.
+* The search is case sensitive. e.g `friends` will NOT match with `Friends`.
 * All instances of the tag will be removed from the Contags.
 ****
 
