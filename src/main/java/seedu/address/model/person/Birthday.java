@@ -33,7 +33,7 @@ public class Birthday {
     public Birthday(String birthday) throws IllegalValueException {
         requireNonNull(birthday);
         String trimmedBirthday = birthday.trim();
-        if (!isValidAddress(trimmedBirthday)) {
+        if (!isValidBirthday(trimmedBirthday)) {
             throw new IllegalValueException(MESSAGE_BIRTHDAY_CONSTRAINTS);
         }
         this.value = birthday;
@@ -42,7 +42,7 @@ public class Birthday {
     /**
      * Returns true if a given string is a valid birthday.
      */
-    public static boolean isValidAddress(String test) {
+    public static boolean isValidBirthday(String test) {
         return test.matches(BIRTHDAY_VALIDATION_REGEX);
     }
 
