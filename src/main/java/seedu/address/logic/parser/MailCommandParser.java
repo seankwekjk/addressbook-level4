@@ -32,8 +32,8 @@ public class MailCommandParser implements Parser<MailCommand> {
 
         try {
             String[] mailToCommand = ParserUtil.parseMailToCommand(argMultimap.getAllValues(PREFIX_MAIL_RECEPIENT));
-            String title = String.join("", argMultimap.getAllValues(PREFIX_MAIL_TITLE));
-            String message = String.join("", argMultimap.getAllValues(PREFIX_MAIL_MESSAGE));
+            String title = String.join("", argMultimap.getAllValues(PREFIX_MAIL_TITLE)).replace(" ", "%20");
+            String message = String.join("", argMultimap.getAllValues(PREFIX_MAIL_MESSAGE)).replace(" ", "%20");
 
             return new MailCommand(new AnyParticularContainsKeywordsPredicate(Arrays.asList(mailToCommand)),
                     title, message);
