@@ -51,9 +51,9 @@ public class BrowserPanelTest extends GuiUnitTest {
         selectionChangedEventStub = new PersonPanelSelectionChangedEvent(new PersonCard(ALICE, 1));
         BrowserPanel.setBrowserMode();
         postNow(selectionChangedEventStub);
-        URL expectedSocialURL = new URL(SOCIAL_MEDIA_URL_PREFIX + ALICE.getSocialMedia() + "/");
+        URL expectedSocialUrl = new URL(SOCIAL_MEDIA_URL_PREFIX + ALICE.getSocialMedia() + "/");
 
-        assertEquals(expectedSocialURL, browserPanelHandle.getLoadedUrl());
+        assertEquals(expectedSocialUrl, browserPanelHandle.getLoadedUrl());
         BrowserPanel.setBrowserMode();
     }
 }
