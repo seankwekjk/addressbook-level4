@@ -21,11 +21,13 @@ public class RemarkCommandParserTest {
 
     @Test
     public void parse_invalidIndex_throwsParseException() {
-        assertParseFailure(parser, "0 " + PREFIX_REMARK + REMARK_TEXT, String.format(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX));
+        assertParseFailure(parser, "0 " + PREFIX_REMARK + REMARK_TEXT,
+                String.format(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX));
     }
 
     @Test
     public void parse_invalidArgs_throwsParseException() {
-        assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_COMMAND_FORMAT, RemarkCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                RemarkCommand.MESSAGE_USAGE));
     }
 }
