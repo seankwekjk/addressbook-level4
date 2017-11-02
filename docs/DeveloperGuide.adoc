@@ -448,6 +448,27 @@ The birthday value is validated before being accepted as a parameter in the cons
 **Pros:** More user-friendly. +
 **Cons: Implementation is slightly more tedious and new developers might need more time to understand the implementation. **
 
+=== ListBirthday Mechanism
+
+The listbirthday command displays the list of contacts in Contags whose birthdays fall on the current date. The list is sorted in order of the list according to the `updateFilteredPersonsList`.
+
+The lisbirthday command is facilitated by the `BirthdayChecker` class in the person class. Take note that the listbirthday command is not an undoable command and hence inherits from `Command` rather than `UndoableCommand` (see design considerations below).
+
+The BirthdayChecker class checks if a contact's birthday falls on the current date by checking if the month and day of the contact's birthday and current date are equal. This is done so by converting the month and day first to a string, which is then converted to a date object and finally a calendar object.
+
+==== Design Considerations
+
+**Aspect:** Whether the listbirthday should be an executable command that requires manual typing of the command each time.
+**Alternative 1 (current choice):** listbirthday is a command and users would have to type that every time they want to find out if a contact's birthday falls on that day.
+**Pros:** Easy to implement and easy for new developers to understand and work on it.
+**Cons:** Not as user friendly as users would have to manually key in the command every time.
+**Alternative 2:** List of contacts whose birthdays falls on the current day appear as a popup every time the app is started.
+**Pros:** More user friendly as users would not have to type the command every day. Users might forget to type the command everyday to check if any of their contact's birthday is on the current date.
+**Cons:** Implementation is more tedious.
+**Alternative 3:** List the contacts whose birthdays fall within a week from the current date.
+**Pros:** More user friendly as users might want to know whose birthday is nearing.
+**Cons:** More tedious to implement.
+
 === Social Media
 
 The Social Media display consists of several parts. Firstly, there is the social media url field contained within the `Person` class. +
