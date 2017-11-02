@@ -51,13 +51,13 @@ public class MainWindow extends UiPart<Region> {
 
     @FXML
     private StackPane browserPlaceholder;
-
+    //@@author mzxc152
     @FXML
     private TextField findField;
 
     @FXML
     private ComboBox comboBox;
-
+    //@@author
     @FXML
     private StackPane commandBoxPlaceholder;
 
@@ -72,9 +72,10 @@ public class MainWindow extends UiPart<Region> {
 
     @FXML
     private StackPane statusbarPlaceholder;
-
+    //@@author mzxc152
     public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic)
             throws CommandException, ParseException {
+        //@@author
         super(FXML);
 
         // Set dependencies
@@ -96,7 +97,7 @@ public class MainWindow extends UiPart<Region> {
         setAccelerators();
         registerAsAnEventHandler(this);
     }
-
+    //@@author mzxc152
     /**
      * Initializes the find field.
      *
@@ -134,7 +135,7 @@ public class MainWindow extends UiPart<Region> {
             }
         });
     }
-
+    //@@author
     public Stage getPrimaryStage() {
         return primaryStage;
     }

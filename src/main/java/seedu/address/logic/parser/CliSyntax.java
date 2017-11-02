@@ -17,4 +17,6 @@ public class CliSyntax {
     public static final Prefix PREFIX_MAIL_RECEPIENT = new Prefix("to/");
     public static final Prefix PREFIX_MAIL_MESSAGE = new Prefix("message/");
     public static final Prefix PREFIX_MAIL_TITLE = new Prefix("title/");
+    public static final Prefix PREFIX_SMS_TEXT = new Prefix("text/");
+
 }

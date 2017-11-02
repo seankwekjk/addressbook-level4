@@ -89,10 +89,10 @@ public class AddressBookParser {
 
         case SmsCommand.COMMAND_WORD:
             return new SmsCommandParser().parse(arguments);
-
+        //@@author mzxc152
         case SortCommand.COMMAND_WORD:
             return new SortCommandParser().parse(arguments);
-
+        //@@author
         case HistoryCommand.COMMAND_WORD:
         case HistoryCommand.COMMAND_ALIAS:
             return new HistoryCommand();
@@ -117,12 +117,14 @@ public class AddressBookParser {
         case RemoveTagCommand.COMMAND_WORD:
             return new RemoveTagCommandParser().parse(arguments);
 
+        //@@author seankwekjk
         case RemarkCommand.COMMAND_WORD:
             return new RemarkCommandParser().parse(arguments);
 
         case ToggleCommand.COMMAND_WORD:
             return new ToggleCommand();
 
+        //@@author
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }

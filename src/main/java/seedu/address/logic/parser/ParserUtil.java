@@ -130,4 +130,5 @@ public class ParserUtil {
         String[] newTrimmed = trimmed.split("\\s+");
         return newTrimmed;
     }
+
 }

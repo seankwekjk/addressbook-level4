@@ -348,7 +348,7 @@
     -fx-background-radius: 2;
     -fx-font-size: 11;
 }
-
+/* @@author mzxc152 */
 #comboBox .list-cell {
     -fx-text-fill: white;
 }

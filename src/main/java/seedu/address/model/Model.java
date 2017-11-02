@@ -20,10 +20,10 @@ public interface Model {
 
     /** Returns the AddressBook */
     ReadOnlyAddressBook getAddressBook();
-
-    /** Sorts the AddressBook in alphabetical order. */
+    //@@author mzxc152
+    /** Sorts Contags in alphabetical order. */
     void sortList(String toSort);
-
+    //@@author
     /** Deletes the given person. */
     void deletePerson(ReadOnlyPerson target) throws PersonNotFoundException;
 
