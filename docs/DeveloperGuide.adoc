@@ -1028,6 +1028,15 @@ Use case ends.
 Contags informs user that mail address is not valid.
 
 [discrete]
+=== Use case: List contacts whose birthdays fall on current date
+
+*MSS*
+1. User requests to see the list of contacts whose birthdays fall on the current date.
+2. Contags shows the list of filtered contacts.
++
+Use case ends.
+
+[discrete]
 === Use case: Select Contact
 
 *MSS*

@@ -237,6 +237,16 @@ List is sorted according to email addresses in ascending order.
 * `sort Address` +
 List is sorted according to addresses in ascending order.
 
+=== Viewing contacts whose birthdays fall on the current date: `listbirthday`
+
+Lists the contacts whose birthdays matches the current date. +
+Format: `listbirthday`
+
+****
+* Lists the contacts in order of the most updated list.
+****
+
+=== Sending a SMS Message to the telephone number of the contact indicated bby the given index: `select INDEX`
 // tag::smsContact[]
 
 === Sending a SMS Message to the telephone number of the contact indicated bby the given index: `sms`
