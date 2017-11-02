@@ -1,7 +1,8 @@
 package seedu.address.logic.commands;
+//@@author mzxc152
 
 /**
- * Lists all persons in Contags to the user.
+ * Sorts all persons in Contags to the user.
  */
 public class SortCommand extends Command {
 
@@ -12,7 +13,6 @@ public class SortCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Sorts the list by name, phone, email, address or tag.\n"
             + "Parameters: KEYWORD\n"
-            + "Example for name sort: " + COMMAND_WORD + " name\n"
             + "Example for email sort: " + COMMAND_WORD + " email";
 
     public final String toSort;

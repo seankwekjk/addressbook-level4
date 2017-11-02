@@ -18,6 +18,7 @@ import seedu.address.model.person.ReadOnlyPerson;
 public class PersonCard extends UiPart<Region> {
 
     private static final String FXML = "PersonListCard.fxml";
+    //@@author mzxc152
     private static ArrayList<String> colors = new
             ArrayList<String>(Arrays.asList("salmon", "mediumspringgreen", "tan", "royalblue",
             "maroon", "seagreen", "rosybrown", "pink", "black", "red", "beige"));
