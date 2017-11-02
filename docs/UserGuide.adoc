@@ -256,7 +256,7 @@ Examples:
 *`mail to/john@gmail.com title/hi message/hello`
 Opens up mail application and to, title and message fields of the mail will be automatically filled in.
 
-=== Adding remarks: `remark`
+=== Adding remarks: `remark` `Since v1.1`
 
 Edits the remark for a contact specified in the INDEX.
 
@@ -372,6 +372,11 @@ Returns any contacts having addresses `Clementi`, `Bugis`, or `Tuas`.
 
 Provides directions to the address of the selected contact. +
 Format: `direct`
+
+=== Social media autocomplete : `social` `Coming in v2.0`
+
+Provides possible links to social media pages from various social media sites of the contact specified in the INDEX and allows the user to select the correct one to add to the contact +
+Format: `social INDEX`
 
 === Sorting Contacts based on Frequency `frequent` `Coming in v2.0`
 
