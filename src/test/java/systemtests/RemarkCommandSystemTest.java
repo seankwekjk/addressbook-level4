@@ -16,6 +16,7 @@ import seedu.address.model.Model;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.Remark;
 
+//@@author seankwekjk
 public class RemarkCommandSystemTest extends AddressBookSystemTest {
 
     @Test

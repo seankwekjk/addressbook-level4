@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import seedu.address.logic.commands.RemarkCommand;
 
+//@@author seankwekjk
 /**
  * Test scope: similar to {@code DeleteCommandParserTest}.
  * @see DeleteCommandParserTest

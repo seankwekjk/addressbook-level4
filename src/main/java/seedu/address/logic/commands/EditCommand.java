@@ -206,6 +206,7 @@ public class EditCommand extends UndoableCommand {
             return Optional.ofNullable(birthday);
         }
 
+        //@@author seankwekjk
         public void setSocial(String url) {
             this.url = url;
         }
@@ -214,6 +215,7 @@ public class EditCommand extends UndoableCommand {
             return Optional.ofNullable(url);
         }
 
+        //@@author
         public void setTags(Set<Tag> tags) {
             this.tags = tags;
         }

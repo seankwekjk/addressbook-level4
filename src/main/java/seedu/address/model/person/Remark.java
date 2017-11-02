@@ -1,5 +1,6 @@
 package seedu.address.model.person;
 
+//@@author seankwekjk
 /**
  *Represents a Remark in the AddressBook.
  */

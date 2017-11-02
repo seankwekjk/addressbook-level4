@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.ui.BrowserPanel;
 
+//@@author seankwekjk
 /**
  * Toggles Browser function of the Select Command.
  */
