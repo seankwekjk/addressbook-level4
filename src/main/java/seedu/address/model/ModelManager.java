@@ -56,7 +56,7 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     /**
-     * removes tag from all persons
+     * Removes tag from all persons.
      * @return
      */
 
@@ -65,6 +65,10 @@ public class ModelManager extends ComponentManager implements Model {
         addressBook.deleteTag(toRemove);
     }
 
+    /**
+     * Sorts the list in alphabetical order.
+     * @param toSort
+     */
     @Override
     public void sortList(String toSort) {
         addressBook.sortList(toSort);
