@@ -8,10 +8,12 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Properties;
 
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.AnyParticularContainsKeywordsPredicate;
+import seedu.address.model.person.ReadOnlyPerson;
 
 
 /**
@@ -24,20 +26,21 @@ public class MailCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Mails a contact in Contags.\n"
             + "Recepient mail address cannot be blank.\n"
-            + "Parameters: " + PREFIX_MAIL_RECEPIENT + " NAME" + PREFIX_MAIL_TITLE + " TITLE" + PREFIX_MAIL_MESSAGE
+            + "Parameters: " + PREFIX_MAIL_RECEPIENT + " INDEX" + PREFIX_MAIL_TITLE + " TITLE" + PREFIX_MAIL_MESSAGE
             + " MESSAGE\n"
-            + "Example: " + COMMAND_WORD + " " + PREFIX_MAIL_RECEPIENT + "John Doe" + " " + PREFIX_MAIL_TITLE
+            + "Example: " + COMMAND_WORD + " " + PREFIX_MAIL_RECEPIENT + "1" + " " + PREFIX_MAIL_TITLE
             + "Meeting Reminder" + " " + PREFIX_MAIL_MESSAGE + "Meeting is at 2pm on Sunday.";
 
     public static final String MESSAGE_SUCCESS = "Redirect to Mail application success.";
     public static final String MESSAGE_FAILURE = "Could not redirect to Mail application. "
             + "Please enter a valid mail address.";
 
-    private final AnyParticularContainsKeywordsPredicate targetIndex;
+    //private final AnyParticularContainsKeywordsPredicate targetIndex;
+    private final Index targetIndex;
     private final String title;
     private final String message;
 
-    public MailCommand(AnyParticularContainsKeywordsPredicate targetIndex, String title, String message) {
+    public MailCommand(Index targetIndex, String title, String message) {
         this.targetIndex = targetIndex;
         this.title = title;
         this.message = message;
@@ -65,47 +68,24 @@ public class MailCommand extends Command {
             url = "mailTo:" + sendMailTo + "?subject=" + this.title + "&body=" + this.message;;
             mailTo = new URI(url);
             desktop.mail(mailTo);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
+        } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
         }
     }
 
-    /* public static void send(String from, Collection<String> recipients, String subject, String text)
-            throws MessagingException, IOException {
-        send(from, recipients, subject, text, null, null, null);
-
-        Properties properties = new Properties();
-        properties.load(JavaMailService.class.getResourceAsStream("/mail.properties"));
-
-        // create a Session instance specifying the system properties
-        Session session = Session.getInstance(properties);
-
-        // create a message instance associated to the session
-        MimeMessage message = new MimeMessage(session);
-
-
-        // configure from address, add recipients, and set the subject of the message
-        message.setFrom(from);
-        message.addRecipients(Message.RecipientType.TO, String.join(",", recipients));
-        message.setSubject(subject);
-
-        // send the message
-        String username = properties.getProperty("mail.smtp.username");
-        String password = properties.getProperty("mail.smtp.password");
-        Transport.send(message, username, password);
-    } */
-
     @Override
     public CommandResult execute() {
-        String sendMailTo = model.updateMailRecipientList(targetIndex);
+
+        List<ReadOnlyPerson> lastShownList = model.getFilteredPersonList();
+        String sendMailTo = lastShownList.get(targetIndex.getZeroBased()).getEmail().toString();
+
         try {
             sendMail(sendMailTo);
         } catch (ParseException e) {
             e.printStackTrace();
             return new CommandResult(MESSAGE_FAILURE);
         }
+
         return new CommandResult(MESSAGE_SUCCESS);
     }
 
