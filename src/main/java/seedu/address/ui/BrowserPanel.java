@@ -42,6 +42,7 @@ public class BrowserPanel extends UiPart<Region> {
         registerAsAnEventHandler(this);
     }
 
+    //@@author seankwekjk
     private void loadPersonPage(ReadOnlyPerson pers) {
         loadPage(GOOGLE_SEARCH_URL_PREFIX
                 + pers.getAddress().value.replaceAll(" ", "+").replaceAll(",", "%2C"));
@@ -59,6 +60,7 @@ public class BrowserPanel extends UiPart<Region> {
         browserMode = !browserMode;
     }
 
+    //@@author
     public void loadPage(String url) {
         Platform.runLater(() -> browser.getEngine().load(url));
     }
@@ -78,6 +80,7 @@ public class BrowserPanel extends UiPart<Region> {
         browser = null;
     }
 
+    //@@author seankwekjk
     @Subscribe
     private void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));

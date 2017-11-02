@@ -47,7 +47,7 @@ public class UniquePersonList implements Iterable<Person> {
         }
         internalList.add(new Person(toAdd));
     }
-
+    //@@author mzxc152
     /**
      * Sorts the list in alphabetical order.
      */
@@ -72,7 +72,7 @@ public class UniquePersonList implements Iterable<Person> {
             break;
         }
     }
-
+    //@@author
     /**
      * Replaces the person {@code target} in the list with {@code editedPerson}.
      *

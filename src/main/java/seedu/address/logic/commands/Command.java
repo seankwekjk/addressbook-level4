@@ -24,6 +24,10 @@ public abstract class Command {
         return String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, displaySize);
     }
 
+    public static String getMessageForBirthdayListShownSummary(int displaySize) {
+        return String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, displaySize);
+    }
+
     /**
      * Executes the command and returns the result message.
      *

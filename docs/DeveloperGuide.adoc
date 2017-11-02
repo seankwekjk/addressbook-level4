@@ -453,6 +453,14 @@ public class BrowserPanel extends UiPart<Region> {
 By default, the variable is true, and it will cause the `select` command to display the contact's address. +
 When it is toggled, the `select` command will cause the `select` command to follow the url specified in the social media url field instead.
 
+The following sequence diagram shows the execution of the SelectCommand, including the `toggle` mechanism. The execution of the ToggleCommand is excluded for brevity.
+
+image::SocialMediaSequenceDiagram.png[width="800"]
+
+The mechanism of the SelectCommand remains intact. However, the changes are in the execution within BrowserPanel based on the state of the boolean variable.
+
+After toggling, instead of retrieving the contact's address and opening a Google Maps page, it will follow the url of the contact's social media field
+
 ==== Design Considerations
 
 **Aspect:** Implementation of social media display in BrowserPanel +
@@ -464,6 +472,14 @@ When it is toggled, the `select` command will cause the `select` command to foll
 **Cons:** It consumes a large amount of resources and the resulting panels will both be small, reducing the functionality of the 2 panels.
 
 ---
+
+**Aspect:** Method of selecting which display to be shown +
+**Alternative 1 (current choice):** Toggled via independent command +
+**Pros:** The option is saved, so when users want to view multiple contacts consecutively, they can minimise the number of commands they use or the amount of input keyed in. +
+**Cons:** A separate command needs to be implemented and linked to both the BrowserPanel and Select Command +
+**Alternative 2:** Enter choice in the select command +
+**Pros:** When users want to alternate between functions, it will be easier and require fewer commands. +
+**Cons:** Complicates the Select Command.
 
 === Sort Mechanism
 
@@ -841,6 +857,8 @@ Use case ends.
 +
 Use case ends.
 
+//  tag::SmsContact[]
+
 [discrete]
 === Use case: SMS Contact
 
@@ -858,6 +876,8 @@ Use case ends.
 +
 ** 1a1. Contags informs user that index is invalid, and prompts for another index.
 Use case ends.
+
+//  end::SmsContact[]
 
 [discrete]
 === Use case: Edit Contact
@@ -908,6 +928,8 @@ Use case ends.
 +
 Use case ends.
 
+// tag::removeTag[]
+
 [discrete]
 === Use case: Remove Tag from all Contacts
 
@@ -925,6 +947,29 @@ Use case ends.
 +
 Contags informs user that the tag does not exist
 
+// end::removeTag[]
+// tag::smsContact[]
+[discrete]
+=== Use case: Send an SMS Message to Contacts
+
+*MSS*
+
+ 1.  User requests to send an sms message to the number of the contact given by the index, followed by the message that is to be sent.
+ 2.  Contags uses the Twilio API to create a message, and send to the contact
+ +
+ Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. Number not yet authorized on Twilio
++
+Contags informs user that the number is not yet authorized on Twilio
+
+* 1b. Index given is invalid
++
+Contags informs user that the index given is invalid
+// end::smsContact[]
 [discrete]
 === Use case: History
 
@@ -945,13 +990,15 @@ Use case ends.
 +
 ** 1b1. Contags informs user that the format is invalid, providing the correct format.
 
+// tag::findCommand[]
+
 [discrete]
 === Use case: Find Contact
 
 *MSS*
 
- 1.  User requests to find person by entering part of contact name.
- 2.  AddressBook finds contact with keyword included in name, and displays latest change.
+ 1.  User requests to find person by entering full word inside contact name, or any other particular.
+ 2.  AddressBook finds contact with keyword included in particular, and displays latest change.
  +
  Use case ends.
 
@@ -961,6 +1008,8 @@ Use case ends.
 * 1a. Contact cannot be found.
 +
 AddressBook informs user that contact cannot be found.
+
+// end::findCommand[]
 
 [discrete]
 === Use case: Mail Contact
@@ -977,6 +1026,15 @@ Use case ends.
 * 1a. Mail address is invalid.
 +
 Contags informs user that mail address is not valid.
+
+[discrete]
+=== Use case: List contacts whose birthdays fall on current date
+
+*MSS*
+1. User requests to see the list of contacts whose birthdays fall on the current date.
+2. Contags shows the list of filtered contacts.
++
+Use case ends.
 
 [discrete]
 === Use case: Select Contact
