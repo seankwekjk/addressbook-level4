@@ -117,12 +117,14 @@ public class AddressBookParser {
         case RemoveTagCommand.COMMAND_WORD:
             return new RemoveTagCommandParser().parse(arguments);
 
+        //@@author seankwekjk
         case RemarkCommand.COMMAND_WORD:
             return new RemarkCommandParser().parse(arguments);
 
         case ToggleCommand.COMMAND_WORD:
             return new ToggleCommand();
 
+        //@@author
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
