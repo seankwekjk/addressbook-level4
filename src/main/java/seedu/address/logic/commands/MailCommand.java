@@ -13,7 +13,6 @@ import java.util.Properties;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.AnyParticularContainsKeywordsPredicate;
 import seedu.address.model.person.ReadOnlyPerson;
 
 

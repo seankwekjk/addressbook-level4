@@ -16,12 +16,11 @@ public class ListBirthdayCommand extends Command {
             + "Parameters: KEYWORD\n"
             + "Example for birthday list: " + COMMAND_WORD;
 
+    private BirthdayChecker checker = new BirthdayChecker();
+
     public ListBirthdayCommand (){
 
     }
-
-    private BirthdayChecker checker = new BirthdayChecker();
-
 
     @Override
     public CommandResult execute() {

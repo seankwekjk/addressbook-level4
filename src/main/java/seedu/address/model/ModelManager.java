@@ -130,7 +130,7 @@ public class ModelManager extends ComponentManager implements Model {
         for (ReadOnlyPerson person : filteredPersons) {
             if (person.getEmail() != null && !person.getEmail().value.equalsIgnoreCase("INVALID_EMAIL@EXAMPLE.COM")
                  && !validPeopleList.contains(person.getEmail().value)) {
-               validPeopleList.add(person.getEmail().value);
+                validPeopleList.add(person.getEmail().value);
             }
         }
         return String.join(",", validPeopleList);
