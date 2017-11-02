@@ -487,6 +487,10 @@ free timings with that contact.
 * Contacts can be starred in Contags based on your preference to give priority in the list of
 contacts.
 
+* Social Media links displayed in the list of contacts will be divided into 2 parts, the first displaying which social media platform, and the second displaying the profile url.
+
+* Multiple social media pages can be added to a single contact.
+
 * Tag colors can be changed according to your preference by typing in the command `change` followed by the tag's name and the preferred color. +
 ** e.g. `change` `friends` `yellow` +
 The color of the `friends` tag changes to `yellow`. +

@@ -453,6 +453,14 @@ public class BrowserPanel extends UiPart<Region> {
 By default, the variable is true, and it will cause the `select` command to display the contact's address. +
 When it is toggled, the `select` command will cause the `select` command to follow the url specified in the social media url field instead.
 
+The following sequence diagram shows the execution of the SelectCommand, including the `toggle` mechanism. The execution of the ToggleCommand is excluded for brevity.
+
+image::SocialMediaSequenceDiagram.png[width="800"]
+
+The mechanism of the SelectCommand remains intact. However, the changes are in the execution within BrowserPanel based on the state of the boolean variable.
+
+After toggling, instead of retrieving the contact's address and opening a Google Maps page, it will follow the url of the contact's social media field
+
 ==== Design Considerations
 
 **Aspect:** Implementation of social media display in BrowserPanel +
