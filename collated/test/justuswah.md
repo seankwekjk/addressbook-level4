@@ -1,29 +1,6 @@
-package seedu.address.logic.commands;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
-import static seedu.address.commons.core.Messages.MESSAGE_SMS_NUMBER_UNAUTHORIZED;
-import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
-
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-
-import com.twilio.exception.ApiException;
-
-import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
-import seedu.address.model.UserPrefs;
-import seedu.address.ui.testutil.EventsCollectorRule;
-
-/**
- * Contains integration tests (interaction with the Model) for {@code SmsCommand}.
- */
-//@@author justuswah
+# justuswah
+###### \java\seedu\address\logic\commands\SmsCommandTest.java
+``` java
 public class SmsCommandTest {
     @Rule
     public final EventsCollectorRule eventsCollectorRule = new EventsCollectorRule();
@@ -63,3 +40,4 @@ public class SmsCommandTest {
         }
     }
 }
+```

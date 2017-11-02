@@ -857,6 +857,8 @@ Use case ends.
 +
 Use case ends.
 
+//  tag::SmsContact[]
+
 [discrete]
 === Use case: SMS Contact
 
@@ -874,6 +876,8 @@ Use case ends.
 +
 ** 1a1. Contags informs user that index is invalid, and prompts for another index.
 Use case ends.
+
+//  end::SmsContact[]
 
 [discrete]
 === Use case: Edit Contact
@@ -924,6 +928,8 @@ Use case ends.
 +
 Use case ends.
 
+// tag::removeTag[]
+
 [discrete]
 === Use case: Remove Tag from all Contacts
 
@@ -941,6 +947,29 @@ Use case ends.
 +
 Contags informs user that the tag does not exist
 
+// end::removeTag[]
+// tag::smsContact[]
+[discrete]
+=== Use case: Send an SMS Message to Contacts
+
+*MSS*
+
+ 1.  User requests to send an sms message to the number of the contact given by the index, followed by the message that is to be sent.
+ 2.  Contags uses the Twilio API to create a message, and send to the contact
+ +
+ Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. Number not yet authorized on Twilio
++
+Contags informs user that the number is not yet authorized on Twilio
+
+* 1b. Index given is invalid
++
+Contags informs user that the index given is invalid
+// end::smsContact[]
 [discrete]
 === Use case: History
 
@@ -961,13 +990,15 @@ Use case ends.
 +
 ** 1b1. Contags informs user that the format is invalid, providing the correct format.
 
+// tag::findCommand[]
+
 [discrete]
 === Use case: Find Contact
 
 *MSS*
 
- 1.  User requests to find person by entering part of contact name.
- 2.  AddressBook finds contact with keyword included in name, and displays latest change.
+ 1.  User requests to find person by entering full word inside contact name, or any other particular.
+ 2.  AddressBook finds contact with keyword included in particular, and displays latest change.
  +
  Use case ends.
 
@@ -977,6 +1008,8 @@ Use case ends.
 * 1a. Contact cannot be found.
 +
 AddressBook informs user that contact cannot be found.
+
+// end::findCommand[]
 
 [discrete]
 === Use case: Mail Contact

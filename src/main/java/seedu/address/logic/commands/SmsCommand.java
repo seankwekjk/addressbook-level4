@@ -18,7 +18,7 @@ import seedu.address.model.person.ReadOnlyPerson;
 /**
  * Sends a SMS message to an existing person in the address book.
  */
-
+//@@author justuswah
 public class SmsCommand extends Command {
 
     public static final String COMMAND_WORD = "sms";
