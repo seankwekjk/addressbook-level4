@@ -11,6 +11,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 /**
  * Parses input index and argument and creates a new SMSCommand object to specified person
  */
+//@@author justuswah
 public class SmsCommandParser implements Parser<SmsCommand> {
 
     /**

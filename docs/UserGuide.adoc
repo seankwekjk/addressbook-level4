@@ -153,6 +153,8 @@ Returns `john` and `John Doe`.
 * `find Betsy Tim John` +
 Returns any contacts having names `Betsy`, `Tim`, or `John`.
 
+// tag::removeTag[]
+
 === Removing a Tag from all contacts in Contags : `removeTag`
 
 Removes the Tag specified by the TAGNAME. +
@@ -167,6 +169,8 @@ Examples:
 
 * `removeTag friends` +
 Searches through all contacts in the Contags and deletes all instances of the Tag `friends`.
+
+// end::removeTag[]
 
 === Deleting a contact : `delete`
 
@@ -233,17 +237,21 @@ List is sorted according to email addresses in ascending order.
 * `sort Address` +
 List is sorted according to addresses in ascending order.
 
+// tag::smsContact[]
+
 === Sending a SMS Message to the telephone number of the contact indicated bby the given index: `sms`
 
 Sends a SMS message from the user's phone number (to be configured) to the phone number indicated by the contact
 particulars of the index gievn.
 
-Format: `sms INDEX`
+Format: `sms INDEX text/MESSAGE`
 
-****
-* Currently is only configured to send "hi" message. +
-* Full text messages will be able to be sent in V1.4
-****
+Examples:
+
+* `sms 1 text/hello there!` +
+Sends an sms message to the number of the contact indicated by the index, with the message "hello there!"
+
+// end::smsContact[]
 
 === Mailing a contact: `mail` `m`
 
@@ -348,6 +356,8 @@ Format: `exit`
 Contags data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
 
+// tag::findCommand[]
+
 === Locating Contacts by any other field: `find`
 
 Finds contacts whose names, and any other information particular fields contain any of the given keywords. +
@@ -367,6 +377,8 @@ Examples:
 Returns `Clementi Street 123`, and contact with this Address: `John Doe`.
 * `find Clementi Bugis Tuas` +
 Returns any contacts having addresses `Clementi`, `Bugis`, or `Tuas`.
+
+// end::findCommand[]
 
 === Directions to address : `direct` `Coming in v2.0`
 

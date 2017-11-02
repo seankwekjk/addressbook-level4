@@ -43,4 +43,5 @@ image::justusw.jpg[width="150", align="left"]
 {empty}[https://github.com/justuswah[github]] [<<justuswah#, portfolio>>]
 
 Role: Team Member +
-Responsibilities: Software Development, Method Implementation, UI?
+Responsibilities: SMS Command Implementation, Find Command Enhancement, RemoveTag Command, JUnit Testing
+
