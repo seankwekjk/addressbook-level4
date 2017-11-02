@@ -153,13 +153,15 @@ Returns `john` and `John Doe`.
 * `find Betsy Tim John` +
 Returns any contacts having names `Betsy`, `Tim`, or `John`.
 
+// tag::removeTag[]
+
 === Removing a Tag from all contacts in Contags : `removeTag`
 
 Removes the Tag specified by the TAGNAME. +
 Format: `removeTag TAGNAME`
 
 ****
-* The search is case insensitive. e.g `friends` will NOT match with `Friends`.
+* The search is case sensitive. e.g `friends` will NOT match with `Friends`.
 * All instances of the tag will be removed from the Contags.
 ****
 
@@ -167,6 +169,8 @@ Examples:
 
 * `removeTag friends` +
 Searches through all contacts in the Contags and deletes all instances of the Tag `friends`.
+
+// end::removeTag[]
 
 === Deleting a contact : `delete`
 
@@ -233,50 +237,44 @@ List is sorted according to email addresses in ascending order.
 * `sort Address` +
 List is sorted according to addresses in ascending order.
 
+=== Viewing contacts whose birthdays fall on the current date: `listbirthday`
+
+Lists the contacts whose birthdays matches the current date. +
+Format: `listbirthday`
+
+****
+* Lists the contacts in order of the most updated list.
+****
+
 === Sending a SMS Message to the telephone number of the contact indicated bby the given index: `select INDEX`
+// tag::smsContact[]
+
+=== Sending a SMS Message to the telephone number of the contact indicated bby the given index: `sms`
 
 Sends a SMS message from the user's phone number (to be configured) to the phone number indicated by the contact
 particulars of the index gievn.
 
-Format: `sms INDEX`
-
-****
-* Currently is only configured to send "hi" message. +
-* Full text messages will be able to be sent in V1.4
-****
-
-=== Getting directions to a contact's address : `map` `m`
-
-Loads the Google Maps page for the address of the contact in Contags. +
-Format: `map INDEX`
-
-****
-* Loads the Google Maps page for the address of the contact at the specified `INDEX`.
-* The index refers to the index number shown in the most recent listing.
-* The index *must be a positive integer*. e.g. `1`, `2`, `3`, `...`.
-****
+Format: `sms INDEX text/MESSAGE`
 
 Examples:
 
-* `list` +
-`map 2` +
-Loads Google Maps page for the address of the 2nd contact in Contags.
-* `find Betsy` +
-`map 1` +
-Loads Google Maps page for the address of the 1st contact in the results of the `find` command.
+* `sms 1 text/hello there!` +
+Sends an sms message to the number of the contact indicated by the index, with the message "hello there!"
+
+// end::smsContact[]
 
 === Mailing a contact: `mail` `m`
 
 Mails a contact in Contags
 
-Format: `mail to/[EMAIL]`
+Format: `mail to/[EMAIL] title/[SUBJECT] message/[MESSAGE]`
 
 Examples:
 
 *`mail to/john@gmail.com title/hi message/hello`
 Opens up mail application and to, title and message fields of the mail will be automatically filled in.
 
-=== Adding remarks: `remark`
+=== Adding remarks: `remark` `Since v1.1`
 
 Edits the remark for a contact specified in the INDEX.
 
@@ -368,6 +366,8 @@ Format: `exit`
 Contags data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
 
+// tag::findCommand[]
+
 === Locating Contacts by any other field: `find`
 
 Finds contacts whose names, and any other information particular fields contain any of the given keywords. +
@@ -388,30 +388,17 @@ Returns `Clementi Street 123`, and contact with this Address: `John Doe`.
 * `find Clementi Bugis Tuas` +
 Returns any contacts having addresses `Clementi`, `Bugis`, or `Tuas`.
 
+// end::findCommand[]
+
 === Directions to address : `direct` `Coming in v2.0`
 
 Provides directions to the address of the selected contact. +
 Format: `direct`
 
-=== Emailing a person: `mail` `Coming in v2.0`
+=== Social media autocomplete : `social` `Coming in v2.0`
 
-Loads the email page to email the specified contact in Contags. +
-Format: `mail INDEX`
-
-****
-* Loads the email page to email the contact at the specified `INDEX`.
-* The index refers to the index number shown in the most recent listing.
-* The index *must be a positive integer*. e.g. `1`, `2`, `3`, `...`.
-****
-
-Examples:
-
-* `list` +
-`mail 2` +
-Emails the 2nd contact in Contags.
-* `find Betsy` +
-`mail 1` +
-Emails the 1st contact in the results of the `find` command.
+Provides possible links to social media pages from various social media sites of the contact specified in the INDEX and allows the user to select the correct one to add to the contact +
+Format: `social INDEX`
 
 === Sorting Contacts based on Frequency `frequent` `Coming in v2.0`
 
@@ -521,6 +508,10 @@ free timings with that contact.
 
 * Contacts can be starred in Contags based on your preference to give priority in the list of
 contacts.
+
+* Social Media links displayed in the list of contacts will be divided into 2 parts, the first displaying which social media platform, and the second displaying the profile url.
+
+* Multiple social media pages can be added to a single contact.
 
 * Tag colors can be changed according to your preference by typing in the command `change` followed by the tag's name and the preferred color. +
 ** e.g. `change` `friends` `yellow` +

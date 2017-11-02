@@ -44,6 +44,7 @@ public class Person implements ReadOnlyPerson {
         this.tags = new SimpleObjectProperty<>(new UniqueTagList(tags));
     }
 
+    //@@author seankwekjk
     /**
      * Only url is allowed to be null.
      */
@@ -61,6 +62,7 @@ public class Person implements ReadOnlyPerson {
         this.tags = new SimpleObjectProperty<>(new UniqueTagList(tags));
     }
 
+    //@@author
     /**
      * Creates a copy of the given ReadOnlyPerson.
      */
@@ -148,6 +150,7 @@ public class Person implements ReadOnlyPerson {
         return birthday.get();
     }
 
+    //@@author seankwekjk
     public Remark getRemark() {
         return remark.get();
     }
@@ -172,6 +175,7 @@ public class Person implements ReadOnlyPerson {
         this.social.set(requireNonNull(social));
     }
 
+    //@@author
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.

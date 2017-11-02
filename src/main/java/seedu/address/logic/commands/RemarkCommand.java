@@ -14,6 +14,7 @@ import seedu.address.model.person.Remark;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
+//@@author seankwekjk
 /**
  * Adds, removes and edits remarks of an existing person in the address book.
  */

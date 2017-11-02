@@ -56,7 +56,7 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     /**
-     * removes tag from all persons
+     * Removes tag from all persons.
      * @return
      */
 
@@ -64,13 +64,17 @@ public class ModelManager extends ComponentManager implements Model {
     public void removeTag(Tag toRemove) {
         addressBook.deleteTag(toRemove);
     }
-
+    //@@author mzxc152
+    /**
+     * Sorts the list in alphabetical order.
+     * @param toSort
+     */
     @Override
     public void sortList(String toSort) {
         addressBook.sortList(toSort);
         indicateAddressBookChanged();
     }
-
+    //@@author
     @Override
     public ReadOnlyAddressBook getAddressBook() {
         return addressBook;
@@ -127,6 +131,12 @@ public class ModelManager extends ComponentManager implements Model {
         requireNonNull(predicate);
         filteredMails.setPredicate(predicate);
         List<String> validPeopleList = new ArrayList<>();
+        for (ReadOnlyPerson person : filteredPersons) {
+            if (person.getEmail() != null && !person.getEmail().value.equalsIgnoreCase("INVALID_EMAIL@EXAMPLE.COM")
+                 && !validPeopleList.contains(person.getEmail().value)) {
+                validPeopleList.add(person.getEmail().value);
+            }
+        }
         return String.join(",", validPeopleList);
     }
 

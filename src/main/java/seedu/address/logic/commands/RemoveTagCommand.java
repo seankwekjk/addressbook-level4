@@ -9,7 +9,7 @@ import seedu.address.model.tag.Tag;
 /**
  * Deletes a tag from the entire AddressBook
  */
-
+//@@author justuswah
 public class RemoveTagCommand extends UndoableCommand {
 
     public static final String COMMAND_WORD = "removeTag";

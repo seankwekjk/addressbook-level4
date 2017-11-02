@@ -3,10 +3,11 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :imagesDir: ../images
 :stylesDir: ../stylesheets
 
-== Project: AddressBook - Level 4
-"Product Name" is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.
+== Project: Contags
+"Contags" is a desktop address book application used for organizing, storing, and easily accessing contact information for Business Executives. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 8 kLoC.
 
-*Code contributed*: [https://github.com[RemoveTag Method]] [https://github.com[Colored Tag Changes]]
+*Code contributed*:  See "collated/Main/justuswah.md" & "collated/test/justuswah.md"
+
 //to be changed and updated
 
 === Enhancement Added: Undo/Redo
@@ -17,11 +18,10 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 #Start of Extract [from: User Guide]#
 
 include::../UserGuide.adoc[tag=removeTag]
-//tag to be added into user guide once files are merged
 
-include::../UserGuide.adoc[tag=assignTagColor]
-//tag to be added into user guide once files are merged
+include::../UserGuide.adoc[tag=smsContact]
 
+include::../UserGuide.adoc[tag=findCommand]
 
 #End of Extract#
 
@@ -42,10 +42,10 @@ This provides the most relevant and updated AddressBook for the user.
 #Start of Extract [from: Developer Guide]#
 
 include::../DeveloperGuide.adoc[tag=removeTag]
-//tag to be added into developer guide once files are merged
 
-include::../DeveloperGuide.adoc[tag=changeTagColor]
-//tag to be added into developer guide once files are merged
+include::../DeveloperGuide.adoc[tag=smsContact]
+
+include::../DeveloperGuide.adoc[tag=findCommand]
 
 #End of Extract#
 
