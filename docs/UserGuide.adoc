@@ -21,10 +21,9 @@ image::cove_page.jpg[width="790"]
 == Introduction
 
 Contags is an enhanced version of the conventional AddressBook application.
-The name "Contags" was chosen as an inspiration to our commitment towards the contacts in the application, with an
-inherent focus on ensuring ease of use for consumers as they add to and maintain the relationships that they have. Our
-target consumer group are business executives who would largely benefit from the enhancements and commands that we have
-developed for this application, which is based upon superior aesthetic design, efficiency, as well as ease of use all in
+The name "Contags" was chosen as an inspiration to our commitment towards maintaining contacts in the application, with an
+inherent focus on ensuring ease of use for consumers as they increase and improve the relationships that they have. Our
+target consumer group is business executives. Our application was designed to provide superior aesthetic design, efficiency, as well as ease of use all in
 an attempt to synchronize communication. Ultimately, we hope this brings people together and solidifies both
 professional and personal relationships.
 
@@ -33,12 +32,9 @@ to maintain personal and professional relationships through a digital, efficient
 
 The contact particulars that we have chosen to include in this application were selected based upon their relevancy in a
 professional setting. Namely, these particulars are: Name, Phone Number, Email, Address, Birthday, Remark, and Tags.
-Accordingly, the enhancements that we have made are based upon these seven fields, in attempt to make these fields more
-accessible and practically comprehensive as possible for the user.
 
 Written and enhanced in Java, this application also is made readily editable, in order to be further enhanced in Version
-2.0 in which we hope to bring across as soon as possible. We project that the current changes to this particular
-AddressBook, as well as those that will be brought across in Version 2.0, will make Contags one of the most
+2.0 in which we hope to bring across as soon as possible. We project that our current application, as well as those that will be brought across in Version 2.0, will make Contags one of the most
 professional, aesthetic, and sought-after products in the market on any operating system.
 
 == About
