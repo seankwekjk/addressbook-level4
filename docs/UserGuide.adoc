@@ -22,9 +22,8 @@ image::cove_page.jpg[width="790"]
 
 Contags is an enhanced version of the conventional AddressBook application.
 The name "Contags" was chosen as an inspiration to our commitment towards maintaining contacts in the application, with an
-inherent focus on ensuring ease of use for consumers as they add to and maintain the relationships that they have. Our
-target consumer group are business executives who would largely benefit from the enhancements and commands that we have
-developed for this application, which is based upon superior aesthetic design, efficiency, as well as ease of use all in
+inherent focus on ensuring ease of use for consumers as they increase and improve the relationships that they have. Our
+target consumer group is business executives. Our application was designed to provide superior aesthetic design, efficiency, as well as ease of use all in
 an attempt to synchronize communication. Ultimately, we hope this brings people together and solidifies both
 professional and personal relationships.
 
@@ -33,8 +32,6 @@ to maintain personal and professional relationships, done through the use of our
 
 The contact particulars that we have chosen to include in this application were selected based upon their relevancy in a
 professional setting. Namely, these particulars are: Name, Phone Number, Email, Address, Birthday, Remark, and Tags.
-Accordingly, the enhancements that we have made are based upon these seven fields, in attempt to make these fields more
-accessible and practically comprehensive as possible for the user.
 
 == About
 
@@ -103,9 +100,10 @@ Adds a contact to Contags. +
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS b/BIRTHDAY [s/SOCIAL_MEDIA_URL] [t/TAG]...` +
 Alias: `a`
 
-[TIP]
-A person can have any number of tags (including 0) +
-Social Media URL is an optional field
+****
+* A person can have any number of tags (including 0) +
+* Social Media Url is an optional field
+****
 
 Examples:
 
@@ -238,6 +236,11 @@ Format: `listbirthday`
 Sends a SMS message from the user's phone number (to be configured) to the phone number indicated by the contact
 particulars of the index given. +
 Format: `sms INDEX text/MESSAGE`
+
+****
+* Message is sent directly to the Singapore extension of the phone number indicated
+* Twilio Account must be set up properly, with correct authentication token. Currently synced to developer's account.
+****
 
 Examples:
 
