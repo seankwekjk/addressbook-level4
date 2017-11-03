@@ -18,12 +18,11 @@ By: `CS2103AUG17-T16-B4`      Since: `Sep 2017`      Licence: `MIT`
 
 Welcome fellow developer! We hope that you have as much fun developing Contags as we did. Good luck!
 
-Contags is a platform for storing and managing contacts and their associated particulars and other information. It provides you with a set of core APIs which you can use to concentrate on the production, editing and publishing of enhancements, new features and documentation.
+Contags is a platform for storing and managing contacts and their associated particulars and other information. This developer guide provides you with a set of core APIs which you can use to concentrate on the production, editing and publishing of enhancements, new features and documentation.
 
-In order to be a successful Contags developer, you will need a general
-understanding of: +
+In order to be a successful Contags developer, you will need a general understanding of: +
 
-• Contags's architecture and object model +
+• Contags's architecture and object model. +
 
 • How features are implemented using the UI, Logic, Model and Storage components.
 
@@ -35,7 +34,7 @@ Before you can start working on the code, you have to ensure that your system is
 
 === Prerequisites
 
-. *JDK `1.8.0_60`* or later
+. *JDK `1.8.0_60`* or later.
 +
 [NOTE]
 Having any Java 8 version is not enough. +
@@ -112,8 +111,8 @@ The *_Architecture Diagram (Figure 3.1.1)_* given above explains the high-level 
 [TIP]
 You can find the `.pptx` files used to create diagrams in this document in the link:{repoURL}/docs/diagrams/[diagrams] folder. +
 If you would like to update a diagram: +
-1. Modify the diagram in the `.pptx` file as desired +
-2. Select the objects of the diagram, +
+1. Modify the diagram in the `.pptx` file as desired. +
+2. Select the objects of the diagram. +
 3. Choose `Save as picture`.
 
 `Main` has only one class called link:{repoURL}/src/main/java/seedu/address/MainApp.java[`MainApp`]. It is responsible for:
@@ -138,7 +137,7 @@ Each of the four components:
 * Defines its _API_ in an `interface` with the same name as the Component.
 * Exposes its functionality using a `{Component Name}Manager` class.
 
-For example, the `Logic` component (see the _class diagram (Figure 3.1.2)_ given below) defines it's API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class.
+For example, the `Logic` component (see the _class diagram (Figure 3.1.2)_ given below) defines its API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class.
 
 image::LogicClassDiagram.png[width="800"]
 _Figure 2.1.2 : Class Diagram of the Logic Component_
@@ -152,7 +151,7 @@ image::SDforDeletePerson.png[width="800"]
 _Figure 2.1.3a : Component interactions for `delete 1` command (part 1)_
 
 [NOTE]
-Note how the `Model` simply raises a `ContagsChangedEvent` when the Contags data are changed, instead of asking the `Storage` to save the updates to the hard disk.
+Note how the `Model` simply raises a `AddressBookChangedEvent` when the Contags data are changed, instead of asking the `Storage` to save the updates to the hard disk.
 
 The _Sequence Diagram (Figure 3.1.3b)_ below shows how the `EventsCenter` reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.
 
@@ -171,7 +170,9 @@ _Figure 3.2.1 : Structure of the UI Component_
 
 *API* : link:{repoURL}/src/main/java/seedu/address/ui/Ui.java[`Ui.java`]
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter`, `BrowserPanel` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter`, `BrowserPanel` etc.
+
+All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
 The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. +
 
@@ -189,7 +190,9 @@ image::LogicClassDiagram.png[width="800"]
 _Figure 3.3.1 : Structure of the Logic Component_
 
 image::LogicCommandClassDiagram.png[width="800"]
-_Figure 3.3.2 : Structure of Commands in the Logic Component. This diagram shows finer details concerning `XYZCommand` and `Command` in Figure 2.3.1_
+_Figure 3.3.2 : Structure of Commands in the Logic Component.
+
+This diagram shows finer details concerning `XYZCommand` and `Command` in Figure 3.3.1_
 
 *API* :
 link:{repoURL}/src/main/java/seedu/address/logic/Logic.java[`Logic.java`]
@@ -232,7 +235,7 @@ The `Storage` component:
 
 === Common classes
 
-Classes used by multiple components are in the `seedu.Contags.commons` package.
+Classes used by multiple components are in the `seedu.address.commons` package.
 
 == Implementation
 
@@ -248,7 +251,7 @@ The undo/redo mechanism is facilitated by an `UndoRedoStack`, which resides insi
 image::LogicCommandClassDiagram.png[width="800"]
 _Figure 4.1a : Logic Command class diagram_
 
-As you can see from the diagram, `UndoableCommand` adds an extra layer between the abstract `Command` class and concrete commands that can be undone, such as the `DeleteCommand`. Note that extra tasks need to be done when executing a command in an _undoable_ way, such as saving the state of the address book before execution. `UndoableCommand` contains the high-level algorithm for those extra tasks while the child classes implements the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the https://www.tutorialspoint.com/design_pattern/template_pattern.htm[template pattern].
+As you can see from the _Class Diagram (Figure 4.1.1)_ above, `UndoableCommand` adds an extra layer between the abstract `Command` class and concrete commands that can be undone, such as the `DeleteCommand`. Note that extra tasks need to be done when executing a command in an _undoable_ way, such as saving the state of the address book before execution. `UndoableCommand` contains the high-level algorithm for those extra tasks while the child classes implements the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the https://www.tutorialspoint.com/design_pattern/template_pattern.htm[template pattern].
 
 Commands that are not undoable are implemented this way:
 [source,java]
