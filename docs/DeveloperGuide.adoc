@@ -16,16 +16,17 @@ By: `CS2103AUG17-T16-B4`      Since: `Sep 2017`      Licence: `MIT`
 
 == Introduction
 
-Contags is a platform for storing and managing contacts and their associated particulars and other information. It provides you with a set of core APIs which you can use to concentrate on the production, editing and publishing of enhancements, new features and documentation.
+Welcome fellow developer! We hope that you have as much fun developing Contags as we did. Good luck!
 
-In order to be a successful Contags developer, you will need a general
-understanding of: +
+Contags is a platform for storing and managing contacts and their associated particulars and other information. This developer guide provides you with a set of core APIs which you can use to concentrate on the production, editing and publishing of enhancements, new features and documentation.
 
-• Contags's architecture and object model +
+In order to be a successful Contags developer, you will need a general understanding of: +
+
+• Contags's architecture and object model. +
 
 • How features are implemented using the UI, Logic, Model and Storage components.
 
-The sections below give a more detailed overview and implmentation of the design of Contags. Do take a look before getting started on using Contags! +
+The sections below give a more detailed overview and implementation of the design of Contags. Do take a look before getting started on using Contags! +
 
 == Setting up
 
@@ -33,7 +34,7 @@ Before you can start working on the code, you have to ensure that your system is
 
 === Prerequisites
 
-. *JDK `1.8.0_60`* or later
+. *JDK `1.8.0_60`* or later.
 +
 [NOTE]
 Having any Java 8 version is not enough. +
@@ -49,8 +50,8 @@ Do not disable them. If you have disabled them, go to `File` > `Settings` > `Plu
 
 === Setting up the project in your computer
 
-. Fork this repo, and clone the fork to your computer.
-. Open IntelliJ (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project dialog first).
+. Firstly, fork this repo, and clone the fork to your computer.
+. Next, open IntelliJ (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project dialog first).
 . Set up the correct JDK version for Gradle.
 .. Click `Configure` > `Project Defaults` > `Project Structure`.
 .. Click `New...` and find the directory of the JDK.
@@ -83,7 +84,7 @@ Optionally, you can follow the <<UsingCheckstyle#, UsingCheckstyle.adoc>> docume
 
 ==== Updating documentation to match your fork
 
-After forking the repo, links in the documentation will still point to the `CS2103AUG2017-T16-B4/main` repo. If you plan to develop this as a separate product (i.e. instead of contributing to `CS2103AUG2017-T16-B4/main`) , you should replace the URL in the variable `repoURL` in `DeveloperGuide.adoc` and `UserGuide.adoc` with the URL of your fork.
+After forking the repo, links in the documentation will still point to the `CS2103AUG2017-T16-B4/main` repo. If you plan to develop this as a separate product (i.e. instead of contributing to `CS2103AUG2017-T16-B4/main`), you should replace the URL in the variable `repoURL` in `DeveloperGuide.adoc` and `UserGuide.adoc` with the URL of your fork.
 
 ==== Setting up CI
 
@@ -92,51 +93,51 @@ Set up Travis to perform Continuous Integration (CI) for your fork. See <<UsingT
 Optionally, you can set up AppVeyor as a second CI (see <<UsingAppVeyor#, UsingAppVeyor.adoc>>).
 
 [NOTE]
-Having both Travis and AppVeyor ensures your App works on both Unix-based platforms and Windows-based platforms (Travis is Unix-based and AppVeyor is Windows-based)
+Having both Travis and AppVeyor ensures your App works on both Unix-based platforms and Windows-based platforms (Travis is Unix-based and AppVeyor is Windows-based).
 
 ==== Getting started with coding
 
-When you are ready to start coding, get some sense of the overall design by reading the link:#architecture[Architecture] section.
+Once you've completed the steps above and are ready to start coding, get some sense of the overall design by reading the link:#architecture[Architecture] section.
 
 == Design
 
 === Architecture
 
 image::Architecture.png[width="600"]
-_Figure 2.1.1 : Architecture Diagram_
+_Figure 3.1.1 : Architecture Diagram_
 
-The *_Architecture Diagram (Figure 2.1.1)_* given above explains the high-level design of the App. Given below is a quick overview of each component.
+The *_Architecture Diagram (Figure 3.1.1)_* given above explains the high-level design of the App. Given below is a quick overview of each component.
 
 [TIP]
 You can find the `.pptx` files used to create diagrams in this document in the link:{repoURL}/docs/diagrams/[diagrams] folder. +
-To update a diagram: +
-1. Modify the diagram in the `.pptx` file as desired +
-2. Select the objects of the diagram, +
+If you would like to update a diagram: +
+1. Modify the diagram in the `.pptx` file as desired. +
+2. Select the objects of the diagram. +
 3. Choose `Save as picture`.
 
-`Main` has only one class called link:{repoURL}/src/main/java/seedu/address/MainApp.java[`MainApp`]. It is responsible for,
+`Main` has only one class called link:{repoURL}/src/main/java/seedu/address/MainApp.java[`MainApp`]. It is responsible for:
 
-* At app launch: Initializing the components in the correct sequence, and conneecting them with each other.
+* At app launch: Initializing the components in the correct sequence, and connecting them with each other.
 * At shut down: Shutting down the components and invoking cleanup method where necessary.
 
 link:#common-classes[*`Commons`*] represents a collection of classes used by multiple components. Two of these classes play important roles at the architecture level, namely:
 
-* `EventsCenter` :  Used by components to communicate with other components using events (class written using https://github.com/google/guava/wiki/EventBusExplained[Google's Event Bus library]). (i.e. a form of _Event Driven_ design)
+* `EventsCenter` : Used by components to communicate with other components using events (class written using https://github.com/google/guava/wiki/EventBusExplained[Google's Event Bus library]) (i.e. a form of _Event Driven_ design).
 * `LogsCenter` : Used by many classes to write log messages to the App's log file.
 
 The rest of the App consists of four components.
 
-* link:#ui-component[*`UI`*] : Acts as the interaction link between the user and application.
+* link:#ui-component[*`UI`*] : Acts as the interaction link (user interface) between the user and application.
 * link:#logic-component[*`Logic`*] : Executes Commands.
 * link:#model-component[*`Model`*] : Holds the data of the App in-memory.
 * link:#storage-component[*`Storage`*] : Reads data from, and writes data to, the hard disk.
 
-Each of the four components
+Each of the four components:
 
 * Defines its _API_ in an `interface` with the same name as the Component.
 * Exposes its functionality using a `{Component Name}Manager` class.
 
-For example, the `Logic` component (see the _class diagram (Figure 2.1.2)_ given below) defines it's API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class.
+For example, the `Logic` component (see the _class diagram (Figure 3.1.2)_ given below) defines its API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class.
 
 image::LogicClassDiagram.png[width="800"]
 _Figure 2.1.2 : Class Diagram of the Logic Component_
@@ -144,18 +145,18 @@ _Figure 2.1.2 : Class Diagram of the Logic Component_
 [discrete]
 ==== Events-Driven nature of the design
 
-The _Sequence Diagram (Figure 2.1.3a)_ below shows how the components interact for the scenario where the user issues the command `delete 1`.
+The _Sequence Diagram (Figure 3.1.3a)_ below shows how the components interact in a scenario where the user issues the command `delete 1`.
 
 image::SDforDeletePerson.png[width="800"]
 _Figure 2.1.3a : Component interactions for `delete 1` command (part 1)_
 
 [NOTE]
-Note how the `Model` simply raises a `ContagsChangedEvent` when the Contags data are changed, instead of asking the `Storage` to save the updates to the hard disk.
+Note how the `Model` simply raises a `AddressBookChangedEvent` when the Contags data are changed, instead of asking the `Storage` to save the updates to the hard disk.
 
-The _Sequence Diagram (Figure 2.1.3b)_ below shows how the `EventsCenter` reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.
+The _Sequence Diagram (Figure 3.1.3b)_ below shows how the `EventsCenter` reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.
 
 image::SDforDeletePersonEventHandling.png[width="800"]
-_Figure 2.1.3b : Component interactions for `delete 1` command (part 2)_
+_Figure 3.1.3b : Component interactions for `delete 1` command (part 2)_
 
 [NOTE]
 Note how the event is propagated through the `EventsCenter` to the `Storage` and `UI` without `Model` having to be coupled to either of them. This is an example of how this Event Driven approach helps us to reduce direct coupling between components.
@@ -165,11 +166,13 @@ You can look at the sections below for more details of each component.
 === UI component
 
 image::UiClassDiagram.png[width="800"]
-_Figure 2.2.1 : Structure of the UI Component_
+_Figure 3.2.1 : Structure of the UI Component_
 
 *API* : link:{repoURL}/src/main/java/seedu/address/ui/Ui.java[`Ui.java`]
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter`, `BrowserPanel` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter`, `BrowserPanel` etc.
+
+All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
 The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. +
 
@@ -178,59 +181,61 @@ For example, the layout of the link:{repoURL}/src/main/java/seedu/address/ui/Mai
 The `UI` component can do the following:
 
 * Execute user commands using the `Logic` component.
-* Bind itself to some data in the `Model` so that the UI can auto-update when data in the `Model` change.
+* Bind itself to some data in the `Model` so that the UI can auto-update when data in the `Model` changes.
 * Respond to events raised from various parts of Contags and updates the UI accordingly.
 
 === Logic component
 
 image::LogicClassDiagram.png[width="800"]
-_Figure 2.3.1 : Structure of the Logic Component_
+_Figure 3.3.1 : Structure of the Logic Component_
 
 image::LogicCommandClassDiagram.png[width="800"]
-_Figure 2.3.2 : Structure of Commands in the Logic Component. This diagram shows finer details concerning `XYZCommand` and `Command` in Figure 2.3.1_
+_Figure 3.3.2 : Structure of Commands in the Logic Component.
+
+This diagram shows finer details concerning `XYZCommand` and `Command` in Figure 3.3.1_
 
 *API* :
 link:{repoURL}/src/main/java/seedu/address/logic/Logic.java[`Logic.java`]
 
-.  `Logic` uses the `ContagsParser` class to parse the user command.
+.  `Logic` uses the `AddressBookParser` class to parse the user command.
 .  This results in a `Command` object which is executed by the `LogicManager`.
 .  The command execution can affect the `Model` (e.g. adding a person) and/or raise events.
-.  The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
+.  The result of the command execution is encapsulated in a `CommandResult` object which is passed back to the `UI`.
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
 
 image::DeletePersonSdForLogic.png[width="800"]
-_Figure 2.3.1 : Interactions Inside the Logic Component for the `delete 1` Command_
+_Figure 3.3.1 : Interactions Inside the Logic Component for the `delete 1` Command_
 
 === Model component
 
 image::ModelClassDiagram.png[width="800"]
-_Figure 2.4.1 : Structure of the Model Component_
+_Figure 3.4.1 : Structure of the Model Component_
 
 *API* : link:{repoURL}/src/main/java/seedu/address/model/Model.java[`Model.java`]
 
-The `Model`,
+The `Model`:
 
-* stores a `UserPref` object that represents the user's preferences.
-* stores the Address Book data.
-* exposes an unmodifiable `ObservableList<ReadOnlyPerson>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
-* does not depend on any of the other three components.
+* Stores a `UserPref` object that represents the user's preferences.
+* Stores the data of Contags.
+* Exposes an unmodifiable `ObservableList<ReadOnlyPerson>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list changes.
+* Does not depend on any of the other three components.
 
 === Storage component
 
 image::StorageClassDiagram.png[width="800"]
-_Figure 2.5.1 : Structure of the Storage Component_
+_Figure 3.5.1 : Structure of the Storage Component_
 
 *API* : link:{repoURL}/src/main/java/seedu/address/storage/Storage.java[`Storage.java`]
 
-The `Storage` component,
+The `Storage` component:
 
-* can save `UserPref` objects in json format and read it back.
-* can save the Address Book data in xml format and read it back.
+* Can save the `UserPref` object in json format and read it back.
+* Can save the data of Contags in xml format and read it back.
 
 === Common classes
 
-Classes used by multiple components are in the `seedu.Contags.commons` package.
+Classes used by multiple components are in the `seedu.address.commons` package.
 
 == Implementation
 
@@ -239,13 +244,14 @@ This section describes some noteworthy details on how certain features are imple
 // tag::undoredo[]
 === Undo/Redo mechanism
 
-The undo/redo mechanism is facilitated by an `UndoRedoStack`, which resides inside `LogicManager`. It supports undoing and redoing of commands that modifies the state of the address book (e.g. `add`, `edit`). Such commands will inherit from `UndoableCommand`.
+The undo/redo mechanism is facilitated by an `UndoRedoStack`, which resides inside `LogicManager`. It supports undoing and redoing of commands that modify the state of the address book (e.g. `add`, `edit`). Such commands will inherit from `UndoableCommand`.
 
-`UndoRedoStack` only deals with `UndoableCommands`. Commands that cannot be undone will inherit from `Command` instead. The following diagram shows the inheritance diagram for commands:
+`UndoRedoStack` only deals with `UndoableCommand`. Commands that cannot be undone will inherit from `Command` instead. The following diagram shows the inheritance diagram for commands:
 
 image::LogicCommandClassDiagram.png[width="800"]
+_Figure 4.1a : Logic Command class diagram_
 
-As you can see from the diagram, `UndoableCommand` adds an extra layer between the abstract `Command` class and concrete commands that can be undone, such as the `DeleteCommand`. Note that extra tasks need to be done when executing a command in an _undoable_ way, such as saving the state of the address book before execution. `UndoableCommand` contains the high-level algorithm for those extra tasks while the child classes implements the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the https://www.tutorialspoint.com/design_pattern/template_pattern.htm[template pattern].
+As you can see from the _Class Diagram (Figure 4.1.1)_ above, `UndoableCommand` adds an extra layer between the abstract `Command` class and concrete commands that can be undone, such as the `DeleteCommand`. Note that extra tasks need to be done when executing a command in an _undoable_ way, such as saving the state of the address book before execution. `UndoableCommand` contains the high-level algorithm for those extra tasks while the child classes implements the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the https://www.tutorialspoint.com/design_pattern/template_pattern.htm[template pattern].
 
 Commands that are not undoable are implemented this way:
 [source,java]
@@ -283,10 +289,12 @@ Suppose that the user has just launched the application. The `UndoRedoStack` wil
 The user executes a new `UndoableCommand`, `delete 5`, to delete the 5th person in the address book. The current state of the address book is saved before the `delete 5` command is executed. The `delete 5` command will then be pushed onto the `undoStack` (the current state is saved together with the command).
 
 image::UndoRedoStartingStackDiagram.png[width="800"]
+_Figure 4.1b : Undo/Redo starting stack diagram_
 
 As the user continues to use the program, more commands are added into the `undoStack`. For example, the user may execute `add n/David ...` to add a new person.
 
 image::UndoRedoNewCommand1StackDiagram.png[width="800"]
+_Figure 4.1c : Undo/Redo new command stack diagram_
 
 [NOTE]
 If a command fails its execution, it will not be pushed to the `UndoRedoStack` at all.
@@ -296,6 +304,7 @@ The user now decides that adding the person was a mistake, and decides to undo t
 We will pop the most recent command out of the `undoStack` and push it back to the `redoStack`. We will restore the address book to the state before the `add` command executed.
 
 image::UndoRedoExecuteUndoStackDiagram.png[width="800"]
+_Figure 4.1d : Undo/Redo execute undo stack diagram_
 
 [NOTE]
 If the `undoStack` is empty, there are no other commands left to be undone and an `Exception` will be thrown when popping the `undoStack`.
@@ -303,6 +312,7 @@ If the `undoStack` is empty, there are no other commands left to be undone and a
 The following sequence diagram shows how the undo operation works:
 
 image::UndoRedoSequenceDiagram.png[width="800"]
+_Figure 4.1e : Undo/Redo sequence diagram_
 
 The redo does the exact opposite (pops from `redoStack`, push to `undoStack`, and restores the address book to the state after the command is executed).
 
@@ -312,14 +322,17 @@ If the `redoStack` is empty, there are no other commands left to be redone and a
 The user now decides to execute a new command, `clear`. As before, `clear` will be pushed into the `undoStack`. This time the `redoStack` is no longer empty. It will be purged as it no longer make sense to redo the `add n/David` command (this is the behavior that most modern desktop applications follow).
 
 image::UndoRedoNewCommand2StackDiagram.png[width="800"]
+_Figure 4.1f : Undo/Redo new command part 1_
 
 Commands that cannot be undone are not added into the `undoStack`. For example, `list`, which inherits from `Command` rather than `UndoableCommand`, will not be added after execution:
 
 image::UndoRedoNewCommand3StackDiagram.png[width="800"]
+_Figure 4.1g : Undo/Redo new command part 2_
 
 The following activity diagram summarizes what happens inside the `UndoRedoStack` when a user executes a new command:
 
 image::UndoRedoActivityDiagram.png[width="200"]
+_Figure 4.1h : Undo/Redo activity diagram_
 
 ==== Design Considerations
 
@@ -371,6 +384,7 @@ During initialising of a new `Person`, the `Remark` field is not able to be fill
 The following sequence diagram shows the execution of the RemarkCommand.
 
 image::RemarkCommandSequenceDiagram.png[width="800"]
+_Figure 3.5.1 : Remark Command sequence diagram_
 
 [NOTE]
 The `index` field of the `RemarkCommand` uses the indexing of the filtered list that is currently being shown, not the list of all persons.
@@ -437,6 +451,27 @@ The birthday value is validated before being accepted as a parameter in the cons
 **Pros:** More user-friendly. +
 **Cons: Implementation is slightly more tedious and new developers might need more time to understand the implementation. **
 
+=== ListBirthday Mechanism
+
+The listbirthday command displays the list of contacts in Contags whose birthdays fall on the current date. The list is sorted in order of the list according to the `updateFilteredPersonsList`.
+
+The lisbirthday command is facilitated by the `BirthdayChecker` class in the person class. Take note that the listbirthday command is not an undoable command and hence inherits from `Command` rather than `UndoableCommand` (see design considerations below).
+
+The BirthdayChecker class checks if a contact's birthday falls on the current date by checking if the month and day of the contact's birthday and current date are equal. This is done so by converting the month and day first to a string, which is then converted to a date object and finally a calendar object.
+
+==== Design Considerations
+
+**Aspect:** Whether the listbirthday should be an executable command that requires manual typing of the command each time.
+**Alternative 1 (current choice):** listbirthday is a command and users would have to type that every time they want to find out if a contact's birthday falls on that day.
+**Pros:** Easy to implement and easy for new developers to understand and work on it.
+**Cons:** Not as user friendly as users would have to manually key in the command every time.
+**Alternative 2:** List of contacts whose birthdays falls on the current day appear as a popup every time the app is started.
+**Pros:** More user friendly as users would not have to type the command every day. Users might forget to type the command everyday to check if any of their contact's birthday is on the current date.
+**Cons:** Implementation is more tedious.
+**Alternative 3:** List the contacts whose birthdays fall within a week from the current date.
+**Pros:** More user friendly as users might want to know whose birthday is nearing.
+**Cons:** More tedious to implement.
+
 === Social Media
 
 The Social Media display consists of several parts. Firstly, there is the social media url field contained within the `Person` class. +
@@ -456,6 +491,7 @@ When it is toggled, the `select` command will cause the `select` command to foll
 The following sequence diagram shows the execution of the SelectCommand, including the `toggle` mechanism. The execution of the ToggleCommand is excluded for brevity.
 
 image::SocialMediaSequenceDiagram.png[width="800"]
+_Figure 4.4a : Social Media sequence diagram_
 
 The mechanism of the SelectCommand remains intact. However, the changes are in the execution within BrowserPanel based on the state of the boolean variable.
 
@@ -557,7 +593,7 @@ Here are the steps to convert the project documentation files to PDF format.
 .  Set the destination to `Save as PDF`, then click `Save` to save a copy of the file in PDF format. For best results, use the settings indicated in the screenshot below.
 
 image::chrome_save_as_pdf.png[width="300"]
-_Figure 5.6.1 : Saving documentation as PDF files in Chrome_
+_Figure 5.3.1 : Saving documentation as PDF files in Chrome_
 
 == Testing
 
@@ -570,8 +606,8 @@ The most reliable way to run tests is the 3rd one. The first two methods might f
 
 *Method 1: Using IntelliJ JUnit test runner*
 
-* To run all tests, right-click on the `src/test/java` folder and choose `Run 'All Tests'`
-* To run a subset of tests, you can right-click on a test package, test class, or a test and choose `Run 'ABC'`
+* To run all tests, right-click on the `src/test/java` folder and choose `Run 'All Tests'`.
+* To run a subset of tests, you can right-click on a test package, test class, or a test and choose `Run 'ABC'`.
 
 *Method 2: Using Gradle*
 
@@ -584,7 +620,7 @@ See <<UsingGradle#, UsingGradle.adoc>> for more info on how to run tests using G
 
 Thanks to the https://github.com/TestFX/TestFX[TestFX] library we use, our GUI tests can be run in the _headless_ mode. In the headless mode, GUI tests do not show up on the screen. That means the developer can do other things on the Computer while the tests are running.
 
-To run tests in headless mode, open a console and run the command `gradlew clean headless allTests` (Mac/Linux: `./gradlew clean headless allTests`)
+To run tests in headless mode, open a console and run the command `gradlew clean headless allTests` (Mac/Linux: `./gradlew clean headless allTests`).
 
 === Types of tests
 
@@ -610,7 +646,6 @@ e.g. `seedu.address.logic.LogicManagerTest`
 
 == Dev Ops
 
-
 === Build Automation
 
 See <<UsingGradle#, UsingGradle.adoc>> to learn how to use Gradle for build automation.
@@ -632,7 +667,7 @@ Here are the steps to create a new release.
 
 A project often depends on third-party libraries. Contags depends on the http://wiki.fasterxml.com/JacksonHome[Jackson library] for XML parsing.
 
-Managing these _dependencies_ can be automated using Gradle. For example, Gradle can download the dependencies automatically, which is better than these alternatives:
+Managing these _dependencies_ can be automated using Gradle. For example, Gradle can download the dependencies automatically, which is better than the following alternatives:
 
 * Include those libraries in the repo (this bloats the repo size). +
 * Require developers to download those libraries manually (this creates extra work for developers).
@@ -645,13 +680,12 @@ The user stories here depict the various types of features and considerations th
 Priorities: +
             `* * \*` - High (must have), +
             `* \*` - Medium (nice to have), +
-            `*` - Low (Not very important to have)
+            `*` - Low (Not very important to have).
 
 [width="59%",cols="22%,<23%,<25%,<30%",options="header",]
 |=======================================================================
 |Priority |As a ... |I want to ... |So that I can...
 |`* * *` |new user |see usage instructions through a help window or command|refer to instructions on how to use Contags
-
 
 |`* * *` |user |add a new person |to store information in Contags
 
@@ -663,7 +697,9 @@ Priorities: +
 
 |`* * *` |user |search all my contacts by any keyword, name, email address, or address |search for people by other means than names
 
-|`* * *` |user |send an SMS message to any contact in the Contags Application
+|`* * *` |user |send an email to any contact in Contags |so that I can conveniently send an email
+
+|`* * *` |user |send an SMS message to any contact in the Contags Application |so that I can conveniently send a SMS
 
 |`* * *` |user |find a person with an incomplete name |to find a person even if I cannot remember or spell the person's name correctly
 
@@ -681,7 +717,7 @@ Priorities: +
 
 |`* *` |user |delete certain fields for my contacts |
 
-|`* *` |user |know if any of my contact information clashes with another one |organise contacts easily
+|`* *` |user |know if any of my contact information clashes with another one |organise contacts easily |
 
 |`* *` |user |delete all tags for a contact |
 
@@ -695,11 +731,11 @@ Priorities: +
 
 |`* *` |user |sort the list of contacts in the list based on phone number |organise the list
 
-|`* *` |user |email a contact by clicking on their email field |simplify the emailing process
+|`* *` |user |view a list of contacts whose birthdays fall on the current date |remember their birthdays and wish them
 
-|`* *` |user |have tags of different colours| easily identify different tags
+|`* *` |user |have tags of different colours |easily identify different tags
 
-|`*` |user| change colors of the tags| customise the tags to my own color groupings
+|`*` |user| change colors of the tags |customise the tags to my own color groupings
 
 |`*` |user with many persons in Contags |sort persons by name |locate a person easily
 
@@ -726,9 +762,7 @@ Priorities: +
 == Use Cases
 The use cases here are for you (and other developers) to understand the flow in which a user may follow in using a particular feature implemented in Contags. +
 
-The use cases here are for you (and other developers) to understand the flow in which a user may follow in using a particular feature implemented in Contags. +
-
-(For all use cases below, the *System* is the `Contags` and the *Actor* is the `user`, unless specified otherwise)
+(For all use cases below, the *System* is the `Contags` and the *Actor* is the `user`, unless specified otherwise).
 
 [discrete]
 === Use case: Delete person
@@ -739,8 +773,7 @@ The use cases here are for you (and other developers) to understand the flow in 
 2.  Contags displays a list of persons.
 3.  User requests to delete a specific person in the list.
 4.  Contags deletes the person.
-+
-Use case ends.
+5.  Use case ends.
 
 *Extensions*
 
@@ -767,22 +800,33 @@ Use case resumes at step 2.
 4. Contags selects contact.
 5. User requests to delete particular field(s).
 6. Contags clears the listed field(s).
+7. Use case ends.
+
+*Extensions*
+
+* 2a. The list is empty.
 +
 Use case ends.
+
+* 3a. The given index is invalid.
++
+
+[none]
+** 3a1. Contags shows an error message.
++
+Use case resumes at step 2.
 
 [discrete]
 === Use case: Add person
 
 *MSS*
 
-1.  User requests to add persons in the specified format.
+1.  User requests to add person in the specified format.
 2.  Contags adds person in the specified format to the list.
 3.  Contags acknowledges that the person has been added to the list.
-+
-Use case ends.
+4.  Use case ends.
 
 *Extensions*
-
 
 * 2a. The list is empty.
 +
@@ -805,12 +849,6 @@ Use case ends.
 [discrete]
 === Use case: Creating contact with same name
 
-*Preconditions* +
-1. Contags contains existing contact with the name to be duplicated.
-
-*Guarantees* +
-1. User will be warned of the existing contact with the same name.
-
 *MSS*
 
 1. User adds contact with the duplicated name.
@@ -818,10 +856,13 @@ Use case ends.
 3. Contags asks if user wants to continue, update existing contact, or end use case.
 4. User requests to continue.
 5. Contags creates new contact.
+6. Use case ends.
 
-* 1a. User does not follow the specified format required for input.
-* 1b. Person with same name is already in the list
-Error: Contags informs user that input is invalid.
+*Extensions*
+
+* 2a. The list is empty.
++
+Use case ends.
 
 [discrete]
 === Use case: List Contact
@@ -830,8 +871,7 @@ Error: Contags informs user that input is invalid.
 
 1.  User requests to list persons
 2.  Contags displays a list of persons
-+
-Use case ends.
+3.  Use case ends.
 
 *Extensions*
 
@@ -847,8 +887,7 @@ Use case ends.
 
 1. User requests to sort list of contacts based on Name, Phone, Email or Address.
 2. Contags sorts the list of contacts and displays the list based on user selection.
-+
-Use case ends.
+3. Use case ends.
 
 *Extensions*
 
@@ -857,28 +896,6 @@ Use case ends.
 +
 Use case ends.
 
-//  tag::SmsContact[]
-
-[discrete]
-=== Use case: SMS Contact
-
-*MSS*
-
-1.  User requests to SMS a specific person in the Contags Application
-2.  Contags sends SMS to indicated person with message input from user.
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 1a. Given Index is not Valid
-+
-** 1a1. Contags informs user that index is invalid, and prompts for another index.
-Use case ends.
-
-//  end::SmsContact[]
-
 [discrete]
 === Use case: Edit Contact
 
@@ -886,37 +903,25 @@ Use case ends.
 
 1.  User requests to edit person (index) and specific particular
 2.  Contags edits the contact particular and displays latest change
-+
-Use case ends.
+3.  Use case ends.
 
 *Extensions*
 
 [none]
+* 1a. The given index is invalid.
 
-* 3a. User requests to update existing contact.
-* 3b. User selects from existing contact(s).
-* 3c. Contags updates selected contact.
 +
 Use case ends.
-+
-** 3b1. The given index is invalid.
-+
-*** 3b11. Contags displays an error message.
-+
-Use case resumes at step 3b.
+
 
 [discrete]
 === Use case: Clear
-
-*Preconditions*
-1. Contags is not empty.
 
 *MSS*
 
 1. User requests to clear list.
 2. Contags clears list.
-+
-Use case ends.
+3. Use case ends.
 
 [discrete]
 === Use case: Exit
@@ -925,11 +930,9 @@ Use case ends.
 
 1. User requests to exit the program.
 2. Contags closes the program.
-+
-Use case ends.
+3. Use case ends.
 
 // tag::removeTag[]
-
 [discrete]
 === Use case: Remove Tag from all Contacts
 
@@ -937,15 +940,14 @@ Use case ends.
 
  1.  User requests to removeTag from all contacts, and includes tag label name.
  2.  Contags searches through all contacts that have been tagged with the same tag, removes the tags from all these contacts and displays latest change
- +
- Use case ends.
+ 3.  Use case ends.
 
 *Extensions*
 
 [none]
-* 1a. Tag cannot be found
+* 1a. Tag cannot be found.
 +
-Contags informs user that the tag does not exist
+Contags informs user that the tag does not exist. Use case ends.
 
 // end::removeTag[]
 // tag::smsContact[]
@@ -956,20 +958,20 @@ Contags informs user that the tag does not exist
 
  1.  User requests to send an sms message to the number of the contact given by the index, followed by the message that is to be sent.
  2.  Contags uses the Twilio API to create a message, and send to the contact
- +
- Use case ends.
+ 3.  Use case ends.
 
 *Extensions*
 
 [none]
-* 1a. Number not yet authorized on Twilio
+* 1a. Number not yet authorized on Twilio.
 +
-Contags informs user that the number is not yet authorized on Twilio
+Contags informs user that the number is not yet authorized on Twilio. Use case ends.
 
-* 1b. Index given is invalid
+* 1b. Index given is invalid.
 +
-Contags informs user that the index given is invalid
+Contags informs user that the index given is invalid. Use case ends.
 // end::smsContact[]
+
 [discrete]
 === Use case: History
 
@@ -977,18 +979,17 @@ Contags informs user that the index given is invalid
 
 1. User requests history of commands issued.
 2. Contags shows list of commands in reverse chronological order.
-+
-Use case ends.
+3. Use case ends.
 
 *Extensions*
 
 * 1a. Person Index is invalid.
 +
-** 1a1. Contags informs user that Person Index is invalid.
+Contags informs user that Person Index is invalid. Use case ends.
 
 * 1b. User requests to edit information in an invalid format.
 +
-** 1b1. Contags informs user that the format is invalid, providing the correct format.
+Contags informs user that the format is invalid, providing the correct format. Use case ends.
 
 // tag::findCommand[]
 
@@ -999,38 +1000,37 @@ Use case ends.
 
  1.  User requests to find person by entering full word inside contact name, or any other particular.
  2.  AddressBook finds contact with keyword included in particular, and displays latest change.
- +
- Use case ends.
+ 3.  Use case ends.
 
 *Extensions*
 
 [none]
 * 1a. Contact cannot be found.
 +
-AddressBook informs user that contact cannot be found.
+Contags informs user that the contact cannot be found. Use case ends.
 
 // end::findCommand[]
-
 [discrete]
 === Use case: Mail Contact
 
 *MSS*
+
 1. User requests to mail a contact by typing in mail command, followed by the mail, title and message.
 2. Contags opens up desktop mail application and user clicks send.
-+
-Use case ends.
+3. Use case ends.
 
 *Extensions*
 
 [none]
-* 1a. Mail address is invalid.
+* 1a. Index is invalid.
 +
-Contags informs user that mail address is not valid.
+** 1a1. Contags informs user that index is not valid.
 
 [discrete]
 === Use case: List contacts whose birthdays fall on current date
 
 *MSS*
+
 1. User requests to see the list of contacts whose birthdays fall on the current date.
 2. Contags shows the list of filtered contacts.
 +
@@ -1044,23 +1044,18 @@ Use case ends.
 1.  User requests to see entire list of contacts.
 2.  Based on list, user selects contact by providing contact index.
 3.  Contags selects contact with index given.
-
-+ Use case ends.
+4.  Use case ends.
 
 *Extensions*
 
 [none]
-* 2a. The list is empty.
+* 1a. The list is empty.
 +
 Use case ends.
 
-* 1a. No contacts in list.
-+
-** 1a1. Contags informs user that there are currently no contacts in the list.
-
 * 2a. User inputs invalid contact index.
 +
-** 2a1. Contags informs user that the input is not a valid contact index.
+Contags informs user that the input is not a valid contact index. Use case ends.
 
 [discrete]
 === Use case: Remove Tag from all Contacts
@@ -1068,16 +1063,16 @@ Use case ends.
 *MSS*
 
 1.  User requests to removeTag from all contacts, and includes tag label name.
-2.  Contags searches through all contacts that have been tagged with the same tag, removes the tags from all these contacts and displays latest change
+2.  Contags searches through all contacts that have been tagged with the same tag, removes the tags from all these contacts and displays latest change.
 +
 Use case ends.
 
 *Extensions*
 
 [none]
-* 1a. Tag cannot be found
+* 1a. Tag cannot be found.
 +
-** 1b. Contags informs user that the tag does not exist
+Contags informs user that the tag does not exist. Use case ends.
 
 [appendix]
 == Non Functional Requirements
@@ -1284,4 +1279,3 @@ Cons:
 * Only available on Windows.
 * No command-line interface, requires use of mouse and keyboard.
 * Does not support tags.
-
