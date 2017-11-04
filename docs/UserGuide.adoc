@@ -70,6 +70,7 @@ image::Ui.png[width="790"]
 . You can refer to the link:#features[Features] section below for more details of the commands available in Contags.
 
 == Features
+
 This section details the full list of commands that Contags currently supports, and walks you through using each of the commands, with examples provided too.
 Do take a look to understand how to use all the features that Contags provides you with to get the full use out of Contags! +
 
@@ -93,14 +94,19 @@ acceptable.
 ====
 _Figure 5.0.1 :Command Format Summary_
 
-=== Coloured tags
+=== Features not requiring commands
 
-Each unique tag currently has a colour pre-fixed to that tag name, for you to easily identify different groups of tags that you have added. Colours cannot be chosen currently, but will be added in a future update to Contags.
+The features in this subsection do not require any commands to execute and are already working automatically in Contags. They are documented here for your reference.
 
-=== Saving the data
+==== Coloured tags
+
+Each unique tag currently has a colour pre-fixed to that tag name, for you to easily identify different groups of tags that you have added. +
+You cannot individually set the colour you want for each tag, but this feature will be added in a future update to Contags.
+
+==== Saving the data
 
 Contags data are saved in the hard disk automatically after any command that changes the data. +
-There is no need to save manually.
+There is no need for you to save manually.
 
 === Adding a contact: `add` `a`
 
@@ -369,7 +375,7 @@ Format: `social INDEX`
 
 // tag::sort[]
 
-=== Sorting the list of contacts: `sort`
+=== Sorting contacts: `sort`
 
 Want to change the way your list of contacts is displayed? `sort` sorts the list of contacts saved in Contags according to: +
 `Name`, `Phone`, `Email`, `Address`, `Tag`. +
