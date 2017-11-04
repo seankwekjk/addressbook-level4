@@ -55,7 +55,7 @@ public class BrowserPanel extends UiPart<Region> {
     }
 
     //@@author hymss
-    /*
+    /**
     * Loads the address of the contact select and corresponding google maps page.
     * @param pers
      */
@@ -66,7 +66,7 @@ public class BrowserPanel extends UiPart<Region> {
         bindAddress(pers);
     }
 
-    /*
+    /**
     * Bind address to the person
      */
     private void bindAddress(ReadOnlyPerson pers) {
