@@ -66,6 +66,9 @@ public class BrowserPanel extends UiPart<Region> {
         bindAddress(pers);
     }
 
+    /*
+    * Bind address to the person
+     */
     private void bindAddress(ReadOnlyPerson pers) {
         address.textProperty().bind(Bindings.convert(pers.addressProperty()));
     }
