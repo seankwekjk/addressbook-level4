@@ -106,7 +106,7 @@ Once you've completed the steps above and are ready to start coding, get some se
 image::Architecture.png[width="600"]
 _Figure 3.1.1 : Architecture Diagram_
 
-The _Architecture Diagram (Figure 3.1.1)_ given above explains the high-level design of the App. Given below is a quick overview of each component.
+The Architecture Diagram _(Figure 3.1.1)_ given above explains the high-level design of the App. Given below is a quick overview of each component.
 
 [TIP]
 You can find the `.pptx` files used to create diagrams in this document in the link:{repoURL}/docs/diagrams/[diagrams] folder. +
@@ -516,14 +516,15 @@ After toggling, instead of retrieving the contact's address and opening a Google
 **Pros:** When users want to alternate between functions, it will be easier and require fewer commands. +
 **Cons:** Complicates the Select Command.
 
+//tag::sort[]
 === Sort Mechanism
 
-The sort command sorts the `person` in `Contags` based on their `Name`, `Phone`, `Email`, `Address` or `Tag`. The implementation of `SortCommand` inherits from `Command`. Sorting currently works in ascending order only. +
+`SortCommand` sorts the `person` in Contags based on their `Name`, `Phone`, `Email`, `Address` or `Tag`. The implementation of `SortCommand` inherits from `Command`. Sorting currently works in ascending order only. +
 
-There is also the use of the `SortCommandParser`, which implements the `Parser` interface, that parses out the keywords to be used with the `sort` command. The `SortCommandParser` checks for the correct keywords used and also allows the keywords to be case-insensitive.  +
+There is also the use of the `SortCommandParser` class, which implements the `Parser` interface, that parses out the keywords to be used with the `sort` command. The `SortCommandParser` checks for the correct keywords used and also allows the keywords to be case-insensitive.  +
 
 [NOTE]
-If arguments entered by the user do not comply with the correct format, ParseException will be thrown before execution of the method. +
+If you entered arguments that do not follow the required format, `ParseException` will be thrown. +
 
 ==== Design Considerations
 
@@ -545,6 +546,7 @@ If arguments entered by the user do not comply with the correct format, ParseExc
 **Pros:** Has more functionality, more user-friendly. +
 **Cons:** Harder to implement and develop. +
 
+//end::sort[]
 === Logging
 
 We are using `java.util.logging` package for logging. The `LogsCenter` class is used to manage the logging levels and logging destinations.
