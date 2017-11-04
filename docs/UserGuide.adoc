@@ -76,7 +76,7 @@ Do take a look to understand how to use all the features that Contags provides y
 
 The Command Format Summary _(Figure 5.0.1)_ given below, guides you through how the commands are to be used and gives a brief explanation on how we describe the use of the commands.
 
-====
+=========================================
 *Command Format*
 
 * Words in `UPPER_CASE` are the parameters to be supplied by you, the user. +
@@ -91,7 +91,7 @@ The Command Format Summary _(Figure 5.0.1)_ given below, guides you through how 
 acceptable.
 * Commands with an alias indicates that the command word can be substituted with that letter instead when typing in the command. +
 ** e.g. in `add n/NAME`, `a n/NAME` will also work.
-====
+=========================================
 _Figure 5.0.1 :Command Format Summary_
 
 === Features not requiring commands
