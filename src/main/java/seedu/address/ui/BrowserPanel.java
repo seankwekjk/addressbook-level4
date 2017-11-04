@@ -55,6 +55,10 @@ public class BrowserPanel extends UiPart<Region> {
     }
 
     //@@author hymss
+    /*
+    * Loads the address of the contact select and corresponding google maps page.
+    * @param pers
+     */
     private void loadPersonPage(ReadOnlyPerson pers) {
         loadPage(GOOGLE_SEARCH_URL_PREFIX
                 + pers.getAddress().value.replaceAll(" ", "+").replaceAll(",", "%2C"));
