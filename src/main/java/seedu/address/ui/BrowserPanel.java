@@ -6,8 +6,10 @@ import java.util.logging.Logger;
 import com.google.common.eventbus.Subscribe;
 
 import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import javafx.scene.web.WebView;
 import seedu.address.MainApp;
@@ -27,10 +29,15 @@ public class BrowserPanel extends UiPart<Region> {
     private static Boolean browserMode = true;
     private static final String FXML = "BrowserPanel.fxml";
 
+    private ReadOnlyPerson pers;
+
     private final Logger logger = LogsCenter.getLogger(this.getClass());
 
     @FXML
     private WebView browser;
+
+    @FXML
+    private Label address;
 
     public BrowserPanel() {
         super(FXML);
@@ -43,13 +50,20 @@ public class BrowserPanel extends UiPart<Region> {
     }
 
     //@@author seankwekjk
+    private void loadSocialPage(ReadOnlyPerson pers) {
+        loadPage(SOCIAL_MEDIA_URL_PREFIX + pers.getSocialMedia());
+    }
+
+    //@@author hymss
     private void loadPersonPage(ReadOnlyPerson pers) {
         loadPage(GOOGLE_SEARCH_URL_PREFIX
                 + pers.getAddress().value.replaceAll(" ", "+").replaceAll(",", "%2C"));
+        this.pers = pers;
+        bindAddress(pers);
     }
 
-    private void loadSocialPage(ReadOnlyPerson pers) {
-        loadPage(SOCIAL_MEDIA_URL_PREFIX + pers.getSocialMedia());
+    private void bindAddress(ReadOnlyPerson pers) {
+        address.textProperty().bind(Bindings.convert(pers.addressProperty()));
     }
 
     public static Boolean getBrowserMode() {
