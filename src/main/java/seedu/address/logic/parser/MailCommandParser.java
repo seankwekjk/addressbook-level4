@@ -1,9 +1,6 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_MESSAGE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_RECEPIENT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_TITLE;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
@@ -22,17 +19,13 @@ public class MailCommandParser implements Parser<MailCommand> {
 
     public MailCommand parse(String args) throws ParseException {
 
-        ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_MAIL_RECEPIENT, PREFIX_MAIL_TITLE, PREFIX_MAIL_MESSAGE);
         try {
             Index index = ParserUtil.parseIndex(args);
-            String title = String.join("", argMultimap.getAllValues(PREFIX_MAIL_TITLE)).replace(" ", "%20");
-            String message = String.join("", argMultimap.getAllValues(PREFIX_MAIL_MESSAGE)).replace(" ", "%20");
-
-            return new MailCommand(index, title, message);
+            return new MailCommand(index);
         } catch (IllegalValueException ive) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, MailCommand.MESSAGE_USAGE));
         }
+
     }
 }
