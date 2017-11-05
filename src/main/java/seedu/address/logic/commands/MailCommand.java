@@ -77,7 +77,7 @@ public class MailCommand extends Command {
         } catch (ParseException e) {
             e.printStackTrace();
             return new CommandResult(MESSAGE_FAILURE);
-        } catch (IOException | URISyntaxException e){
+        } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
         }
 
