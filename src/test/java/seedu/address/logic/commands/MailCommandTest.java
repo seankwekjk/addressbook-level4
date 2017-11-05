@@ -13,6 +13,7 @@ import java.net.URISyntaxException;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -60,13 +61,13 @@ public class MailCommandTest {
         } catch (NullPointerException npe) {
             assertEquals(expectedMessage, MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
             assertTrue(eventsCollectorRule.eventsCollector.isEmpty());
-        } catch (URISyntaxException use){
+        } catch (URISyntaxException use) {
             assertEquals(expectedMessage, MESSAGE_MAIL_FAILURE);
             assertTrue(eventsCollectorRule.eventsCollector.isEmpty());
-        } catch (ParseException e){
+        } catch (ParseException e) {
             assertEquals(expectedMessage, MESSAGE_MAIL_FAILURE);
             assertTrue(eventsCollectorRule.eventsCollector.isEmpty());
-        } catch (CommandException ce){
+        } catch (CommandException ce) {
             assertEquals(expectedMessage, MESSAGE_MAIL_FAILURE);
             assertTrue(eventsCollectorRule.eventsCollector.isEmpty());
         }
