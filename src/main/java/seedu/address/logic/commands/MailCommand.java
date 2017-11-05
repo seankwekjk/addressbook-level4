@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.Properties;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.ReadOnlyPerson;
-
 
 /**
  * Mails a person in Contags.
@@ -41,7 +41,7 @@ public class MailCommand extends Command {
      * Opens up Desktop Mail application.
      */
 
-    private void sendMail(String sendMailTo) throws ParseException {
+    public void sendMail(String sendMailTo) throws ParseException, IOException, URISyntaxException {
 
         String host = "localhost";
 
@@ -62,7 +62,7 @@ public class MailCommand extends Command {
     }
 
     @Override
-    public CommandResult execute() {
+    public CommandResult execute() throws CommandException {
 
         List<ReadOnlyPerson> lastShownList = model.getFilteredPersonList();
 
@@ -77,6 +77,8 @@ public class MailCommand extends Command {
         } catch (ParseException e) {
             e.printStackTrace();
             return new CommandResult(MESSAGE_FAILURE);
+        } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
         }
 
         return new CommandResult(MESSAGE_SUCCESS);
