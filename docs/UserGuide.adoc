@@ -51,7 +51,7 @@ As development of Contags is continuously ongoing, we recommend checking for new
 Having any Java 8 version is not enough. +
 This app will not work with earlier versions of Java 8.
 +
-.  Download the latest `Contags.jar` link:{https://github.com/CS2103AUG2017-T16-B4/main}/releases[here].
+.  Download the latest `Contags.jar` link:{repoURL}/releases[here].
 .  Copy the file to the folder you want to use as the home folder for Contags.
 .  Double-click the file to start Contags. The GUI should appear in a few seconds.
 +
@@ -76,22 +76,19 @@ Do take a look to understand how to use all the features that Contags provides y
 
 The Command Format Summary _(Figure 5.0.1)_ given below, guides you through how the commands are to be used and gives a brief explanation on how we describe the use of the commands.
 
-=========================================
-*Command Format*
-
-* Words in `UPPER_CASE` are the parameters to be supplied by you, the user. +
-** e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
-* Items in square brackets are optional. +
-** e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
-* Items with `…`​ after them can be used multiple times including zero times. +
-** e.g. `[t/TAG]...` can be used as `{nbsp}`
-(i.e. 0 times), `t/friend`, `t/friend t/family` etc.
-* Parameters can be in any order. +
-** e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also
-acceptable.
-* Commands with an alias indicates that the command word can be substituted with that letter instead when typing in the command. +
-** e.g. in `add n/NAME`, `a n/NAME` will also work.
-=========================================
+*Command Format Summary*
+===========
+ * Words in `UPPER_CASE` are the parameters to be supplied by you, the user. +
+ ** e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+ * Items in square brackets are optional.
+ ** e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+ * Items with `…`​ after them can be used multiple times including zero times.
+ ** e.g. `[t/TAG]...` can be used as `{nbsp}` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+ * Parameters can be in any order.
+ ** e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+ * Commands with an alias indicates that the command word can be substituted with that letter instead when typing in the command. +
+ ** e.g. in `add n/NAME`, `a n/NAME` will also work.
+===========
 _Figure 5.0.1 :Command Format Summary_
 
 === Features not requiring commands
