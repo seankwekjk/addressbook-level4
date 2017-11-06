@@ -274,6 +274,7 @@ Examples:
 *`mail to/john@gmail.com title/hi message/hello`
 Opens up mail application and to, title and message fields of the mail will be automatically filled in.
 
+// tag::remark[]
 === Adding remarks: `remark` `Since v1.1`
 
 Edits the remark for a contact specified in the INDEX.
@@ -286,6 +287,7 @@ Examples:
 Edits the remark for the first contact to `Likes to drink coffee.`
 *`remark 1 r/`
 Removes the remark for the first contact.
+// end::remark[]
 
 === Listing entered commands : `history`
 
