@@ -20,7 +20,6 @@ public class SortCommandTest {
     private static final String ADDRESS_SORT = "address";
     private static final String TAG_SORT = "tag";
 
-    private SortCommand sortCommand;
     private Model model;
     private Model expectedModel;
 
