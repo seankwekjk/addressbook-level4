@@ -58,8 +58,8 @@ public class BrowserPanel extends UiPart<Region> {
     //@@author seankwekjk
     private void loadSocialPage(ReadOnlyPerson pers) {
         loadPage(SOCIAL_MEDIA_URL_PREFIX + pers.getSocialMedia());
-        bindSocial(pers);
-        bindField("Social Media");
+        setSocial(pers);
+        setField("Social Media");
     }
 
     private void loadSocialPage() {
@@ -75,8 +75,8 @@ public class BrowserPanel extends UiPart<Region> {
     private void loadPersonPage(ReadOnlyPerson pers) {
         loadPage(GOOGLE_SEARCH_URL_PREFIX
                 + pers.getAddress().value.replaceAll(" ", "+").replaceAll(",", "%2C"));
-        bindAddress(pers);
-        bindField("Address");
+        setAddress(pers);
+        setField("Address");
     }
 
     private void loadPersonPage() {
@@ -87,24 +87,23 @@ public class BrowserPanel extends UiPart<Region> {
     }
 
     /**
-    * Bind address to the BrowserPanel
+    * Set Label on BrowserPanel to address
      */
-    private void bindAddress(ReadOnlyPerson pers) {
-        value.textProperty().bind(Bindings.convert(pers.addressProperty()));
-    }
-
-    //@@author seankwekjk
-    /**
-     * Bind social media to the BrowserPanel
-     */
-    private void bindSocial(ReadOnlyPerson pers) {
-        value.textProperty().bind(Bindings.convert(pers.socialProperty()));
+    private void setAddress(ReadOnlyPerson pers) {
+        value.setText(pers.getAddress().value);
     }
 
     /**
-     * Bind type of field to the BrowserPanel
+     * Set Label on BrowserPanel to social media url
      */
-    private void bindField(String type) {
+    private void setSocial(ReadOnlyPerson pers) {
+        value.setText(pers.getSocialMedia());
+    }
+
+    /**
+     * Set type of field to the BrowserPanel
+     */
+    private void setField(String type) {
         field.setText(type);
     }
 
@@ -152,7 +151,7 @@ public class BrowserPanel extends UiPart<Region> {
     @Subscribe
     private void handleToggleChangedEvent(ToggleChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        if(lastAddress == null){
+        if (lastAddress == null) {
             return;
         }
         if (browserMode) {
