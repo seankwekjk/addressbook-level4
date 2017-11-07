@@ -72,6 +72,7 @@ public class BrowserPanel extends UiPart<Region> {
     private void bindAddress(ReadOnlyPerson pers) {
         address.textProperty().bind(Bindings.convert(pers.addressProperty()));
     }
+    //@@author
 
     public static Boolean getBrowserMode() {
         return browserMode;
@@ -81,7 +82,6 @@ public class BrowserPanel extends UiPart<Region> {
         browserMode = !browserMode;
     }
 
-    //@@author
     public void loadPage(String url) {
         Platform.runLater(() -> browser.getEngine().load(url));
     }
