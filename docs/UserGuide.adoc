@@ -89,7 +89,7 @@ The Command Format Summary _(Figure 5.0.1)_ given below, guides you through how 
  * Commands with an alias indicates that the command word can be substituted with that letter instead when typing in the command. +
  ** e.g. in `add n/NAME`, `a n/NAME` will also work.
 ===========
-_Figure 5.0.1 :Command Format Summary_
+_Figure 5.0.1 : Command Format Summary_
 
 === Features not requiring commands
 
@@ -381,7 +381,7 @@ Format: `sort KEYWORD`
 As an alternative, you can use the UI dropdown box _(Figure 5.21.1)_ located near the top-right hand corner of Contags to select how you want the list to be sorted.
 
 image::sort_ui.png[width="200"]
-_Figure 5.21.1 :Sort UI Dropdown Box_
+_Figure 5.21.1 : Sort UI Dropdown Box_
 
 ****
 * Sorts the list of contacts saved in Contags and then displays the sorted list. +
