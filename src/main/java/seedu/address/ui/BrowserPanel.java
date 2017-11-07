@@ -15,6 +15,7 @@ import javafx.scene.web.WebView;
 import seedu.address.MainApp;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
+import seedu.address.model.person.Address;
 import seedu.address.model.person.ReadOnlyPerson;
 
 /**
@@ -29,7 +30,8 @@ public class BrowserPanel extends UiPart<Region> {
     private static Boolean browserMode = true;
     private static final String FXML = "BrowserPanel.fxml";
 
-    private ReadOnlyPerson pers;
+    private Address lastAddress;
+    private String lastUrl;
 
     private final Logger logger = LogsCenter.getLogger(this.getClass());
 
@@ -37,7 +39,10 @@ public class BrowserPanel extends UiPart<Region> {
     private WebView browser;
 
     @FXML
-    private Label address;
+    private Label field;
+
+    @FXML
+    private Label value;
 
     public BrowserPanel() {
         super(FXML);
@@ -52,6 +57,8 @@ public class BrowserPanel extends UiPart<Region> {
     //@@author seankwekjk
     private void loadSocialPage(ReadOnlyPerson pers) {
         loadPage(SOCIAL_MEDIA_URL_PREFIX + pers.getSocialMedia());
+        bindSocial(pers);
+        bindField("Social Media");
     }
 
     //@@author hymss
@@ -62,17 +69,31 @@ public class BrowserPanel extends UiPart<Region> {
     private void loadPersonPage(ReadOnlyPerson pers) {
         loadPage(GOOGLE_SEARCH_URL_PREFIX
                 + pers.getAddress().value.replaceAll(" ", "+").replaceAll(",", "%2C"));
-        this.pers = pers;
         bindAddress(pers);
+        bindField("Address");
     }
 
     /**
-    * Bind address to the person
+    * Bind address to the BrowserPanel
      */
     private void bindAddress(ReadOnlyPerson pers) {
-        address.textProperty().bind(Bindings.convert(pers.addressProperty()));
+        value.textProperty().bind(Bindings.convert(pers.addressProperty()));
     }
-    //@@author
+
+    //@@author seankwekjk
+    /**
+     * Bind social media to the BrowserPanel
+     */
+    private void bindSocial(ReadOnlyPerson pers) {
+        value.textProperty().bind(Bindings.convert(pers.socialProperty()));
+    }
+
+    /**
+     * Bind type of field to the BrowserPanel
+     */
+    private void bindField(String type) {
+        field.setText(type);
+    }
 
     public static Boolean getBrowserMode() {
         return browserMode;
@@ -85,6 +106,7 @@ public class BrowserPanel extends UiPart<Region> {
     public void loadPage(String url) {
         Platform.runLater(() -> browser.getEngine().load(url));
     }
+    //@@author
 
     /**
      * Loads a default HTML file with a background that matches the general theme.
@@ -110,5 +132,7 @@ public class BrowserPanel extends UiPart<Region> {
         }   else {
             loadSocialPage(event.getNewSelection().person);
         }
+        lastAddress = event.getNewSelection().person.getAddress();
+        lastUrl = event.getNewSelection().person.getSocialMedia();
     }
 }
