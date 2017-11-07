@@ -20,8 +20,7 @@ public class SortCommandParser implements Parser<SortCommand> {
         String trimmedArgs = args.trim().toLowerCase();
         if (trimmedArgs.isEmpty() || !trimmedArgs.equals("name") && !trimmedArgs.equals("phone")
                 && !trimmedArgs.equals("email") && !trimmedArgs.equals("address") && !trimmedArgs.equals("tag")) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
         }
         return new SortCommand(trimmedArgs);
     }
