@@ -15,6 +15,7 @@ import javafx.scene.web.WebView;
 import seedu.address.MainApp;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
+import seedu.address.commons.events.ui.ToggleChangedEvent;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.ReadOnlyPerson;
 
@@ -61,7 +62,12 @@ public class BrowserPanel extends UiPart<Region> {
         bindField("Social Media");
     }
 
-    //@@author hymss
+    private void loadSocialPage() {
+        loadPage(SOCIAL_MEDIA_URL_PREFIX + lastUrl);
+        value.setText(lastUrl);
+        field.setText("Social Media");
+    }
+
     /**
     * Loads the address of the contact select and corresponding google maps page.
     * @param pers
@@ -71,6 +77,13 @@ public class BrowserPanel extends UiPart<Region> {
                 + pers.getAddress().value.replaceAll(" ", "+").replaceAll(",", "%2C"));
         bindAddress(pers);
         bindField("Address");
+    }
+
+    private void loadPersonPage() {
+        loadPage(GOOGLE_SEARCH_URL_PREFIX + lastAddress.value.replaceAll(" ", "+")
+                .replaceAll(",", "%2C"));
+        value.setText(lastAddress.value);
+        field.setText("Address");
     }
 
     /**
@@ -134,5 +147,18 @@ public class BrowserPanel extends UiPart<Region> {
         }
         lastAddress = event.getNewSelection().person.getAddress();
         lastUrl = event.getNewSelection().person.getSocialMedia();
+    }
+
+    @Subscribe
+    private void handleToggleChangedEvent(ToggleChangedEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        if(lastAddress == null){
+            return;
+        }
+        if (browserMode) {
+            loadPersonPage();
+        }   else {
+            loadSocialPage();
+        }
     }
 }
