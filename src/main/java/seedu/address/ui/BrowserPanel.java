@@ -6,7 +6,6 @@ import java.util.logging.Logger;
 import com.google.common.eventbus.Subscribe;
 
 import javafx.application.Platform;
-import javafx.beans.binding.Bindings;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -56,12 +55,20 @@ public class BrowserPanel extends UiPart<Region> {
     }
 
     //@@author seankwekjk
+    /**
+     * Loads the social media page of the contact selected.
+     * @param pers
+     */
     private void loadSocialPage(ReadOnlyPerson pers) {
         loadPage(SOCIAL_MEDIA_URL_PREFIX + pers.getSocialMedia());
         setSocial(pers);
         setField("Social Media");
     }
 
+    /**
+     * Loads the social media page of the contact selected through last saved url.
+     * Meant to be called by ToggleCommand.
+     */
     private void loadSocialPage() {
         loadPage(SOCIAL_MEDIA_URL_PREFIX + lastUrl);
         value.setText(lastUrl);
@@ -69,8 +76,8 @@ public class BrowserPanel extends UiPart<Region> {
     }
 
     /**
-    * Loads the address of the contact select and corresponding google maps page.
-    * @param pers
+     * Loads the address of the contact selected and corresponding google maps page.
+     * @param pers
      */
     private void loadPersonPage(ReadOnlyPerson pers) {
         loadPage(GOOGLE_SEARCH_URL_PREFIX
@@ -79,6 +86,10 @@ public class BrowserPanel extends UiPart<Region> {
         setField("Address");
     }
 
+    /**
+     * Loads the address of the contact selected and corresponding google maps page through last saved address.
+     * Meant to be called by ToggleCommand.
+     */
     private void loadPersonPage() {
         loadPage(GOOGLE_SEARCH_URL_PREFIX + lastAddress.value.replaceAll(" ", "+")
                 .replaceAll(",", "%2C"));
