@@ -7,10 +7,10 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_PERSON_DISPLAY
 import static seedu.address.commons.core.Messages.MESSAGE_MAIL_FAILURE;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
-import java.util.List;
-
 import java.io.IOException;
 import java.net.URISyntaxException;
+
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -19,9 +19,9 @@ import org.junit.Test;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
-import seedu.address.model.AddressBook;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -96,13 +96,12 @@ public class MailCommandTest {
      */
     private void assertCommandSuccess(MailCommand command, String expectedMessage, List<ReadOnlyPerson> expectedList) {
         AddressBook expectedAddressBook = new AddressBook(model.getAddressBook());
-        try{
+        try {
             CommandResult commandResult = command.execute();
             assertEquals(expectedMessage, commandResult.feedbackToUser);
             assertEquals(expectedAddressBook, model.getAddressBook());
             assertEquals(expectedList, model.getFilteredPersonList());
-        }
-        catch (CommandException ce){
+        } catch (CommandException ce) {
             assertEquals(expectedMessage, MESSAGE_MAIL_FAILURE);
             assertTrue(eventsCollectorRule.eventsCollector.isEmpty());
         }
