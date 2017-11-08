@@ -165,7 +165,8 @@ public class MailCommandTest {
      * Asserts that the {@code AddressBook} in model remains the same after executing the {@code command}.
      * Asserts that the {@code FilteredList<ReadOnlyPerson>} is equal to {@code expectedList}.
      */
-    private void assertExecutionSuccess(MailCommand command, String expectedMessage, List<ReadOnlyPerson> expectedList) {
+    /* private void assertExecutionSuccess(MailCommand command, String expectedMessage,
+                                        List<ReadOnlyPerson> expectedList) {
         AddressBook expectedAddressBook = new AddressBook(model.getAddressBook());
         try {
             CommandResult commandResult = command.execute();
@@ -177,5 +178,5 @@ public class MailCommandTest {
             assertTrue(eventsCollectorRule.eventsCollector.isEmpty());
         }
 
-    }
+    } */
 }
