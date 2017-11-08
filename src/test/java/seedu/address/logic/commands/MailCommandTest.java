@@ -86,24 +86,24 @@ public class MailCommandTest {
 
     @Test
     public void equals() {
-        SelectCommand selectFirstCommand = new SelectCommand(INDEX_FIRST_PERSON);
-        SelectCommand selectSecondCommand = new SelectCommand(INDEX_SECOND_PERSON);
+        MailCommand mailFirstCommand = new MailCommand(INDEX_FIRST_PERSON);
+        MailCommand mailSecondCommand = new MailCommand(INDEX_SECOND_PERSON);
 
         // same object -> returns true
-        assertTrue(selectFirstCommand.equals(selectFirstCommand));
+        assertTrue(mailFirstCommand.equals(mailFirstCommand));
 
         // same values -> returns true
         SelectCommand selectFirstCommandCopy = new SelectCommand(INDEX_FIRST_PERSON);
-        assertTrue(selectFirstCommand.equals(selectFirstCommandCopy));
+        assertTrue(mailFirstCommand.equals(selectFirstCommandCopy));
 
         // different types -> returns false
-        assertFalse(selectFirstCommand.equals(1));
+        assertFalse(mailFirstCommand.equals(1));
 
         // null -> returns false
-        assertFalse(selectFirstCommand.equals(null));
+        assertFalse(mailFirstCommand.equals(null));
 
         // different person -> returns false
-        assertFalse(selectFirstCommand.equals(selectSecondCommand));
+        assertFalse(mailFirstCommand.equals(mailSecondCommand));
     }
 
     /**
@@ -122,7 +122,7 @@ public class MailCommandTest {
         }
 
         JumpToListRequestEvent lastEvent = (JumpToListRequestEvent) eventsCollectorRule.eventsCollector.getMostRecent();
-        assertEquals(index, Index.fromOneBased(lastEvent.targetIndex));
+        assertEquals(index, Index.fromZeroBased(lastEvent.targetIndex));
     }
 
     /**
