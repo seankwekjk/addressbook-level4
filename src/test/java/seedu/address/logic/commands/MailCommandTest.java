@@ -122,7 +122,7 @@ public class MailCommandTest {
         }
 
         JumpToListRequestEvent lastEvent = (JumpToListRequestEvent) eventsCollectorRule.eventsCollector.getMostRecent();
-        assertEquals(index, Index.fromZeroBased(lastEvent.targetIndex));
+        assertEquals(index, Index.fromOneBased(lastEvent.targetIndex));
     }
 
     /**
