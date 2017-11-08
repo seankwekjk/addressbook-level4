@@ -374,6 +374,7 @@ _Figure 4.1.8 : Activity Diagram of UndoRedoStack_
 **Cons:** Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things. +
 // end::undoredo[]
 
+// tag::remark[]
 === Remark mechanism
 
 `Remark` functions as an additional Optional field for a `Person`. It exists separately from tags, and does not interfere with its function.
@@ -423,6 +424,7 @@ To create a difference between the updating and clearing of the `Remark` field, 
 **Alternative 2:** Use the list of all persons +
 **Pros** It allows all persons, even those not currently being shown, to have their `Remark` edited. +
 **Cons** The user will find it difficult to know the `index` of the `Person` he would like to edit, particularly if it is not currently in the filtered list. It is not intuitive and difficult for the user to utilise.
+// end::remark[]
 
 === Birthday Field
 

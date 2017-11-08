@@ -77,7 +77,7 @@ Do take a look to understand how to use all the features that Contags provides y
 The Command Format Summary _(Figure 5.0.1)_ given below, guides you through how the commands are to be used and gives a brief explanation on how we describe the use of the commands.
 
 *Command Format Summary*
-===========
+====
  * Words in `UPPER_CASE` are the parameters to be supplied by you, the user. +
  ** e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
  * Items in square brackets are optional.
@@ -88,7 +88,9 @@ The Command Format Summary _(Figure 5.0.1)_ given below, guides you through how 
  ** e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
  * Commands with an alias indicates that the command word can be substituted with that letter instead when typing in the command. +
  ** e.g. in `add n/NAME`, `a n/NAME` will also work.
+
 ===========
+
 _Figure 5.0.1 : Command Format Summary_
 
 === Features not requiring commands
@@ -97,7 +99,7 @@ The features in this subsection do not require any commands to execute and are a
 
 ==== Coloured tags
 
-Each unique tag currently has a colour pre-fixed to that tag name, for you to easily identify different groups of tags that you have added. +
+Each unique tag currently has a colour that is set to that tag name, for you to easily identify different groups of tags that you have added. +
 You cannot individually set the colour you want for each tag, but this feature will be added in a future update to Contags.
 
 ==== Saving the data

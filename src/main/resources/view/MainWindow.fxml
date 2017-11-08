@@ -27,18 +27,7 @@
     </Menu>
   </MenuBar>
 
-  <StackPane fx:id="commandBoxPlaceholder" styleClass="pane-with-border" VBox.vgrow="NEVER">
-    <padding>
-      <Insets bottom="5" left="10" right="10" top="5" />
-    </padding>
-  </StackPane>
-
-  <StackPane fx:id="resultDisplayPlaceholder" maxHeight="155.0" minHeight="97.0" prefHeight="100.0" prefWidth="690.0" styleClass="pane-with-border" VBox.vgrow="NEVER">
-    <padding>
-      <Insets bottom="5" left="10" right="10" top="5" />
-    </padding>
   <!-- @@author mzxc152 -->
-  </StackPane>
   <StackPane prefHeight="42.0" prefWidth="690.0" styleClass="pane-with-border">
     <children>
       <Label style="-fx-font-size: 14; -fx-text-fill: white;" text="Sort By:" StackPane.alignment="CENTER_RIGHT">
@@ -59,7 +48,7 @@
     </children>
   </StackPane>
 
-  <!-- @@author -->
+  <!-- @@author seankwekjk -->
   <SplitPane id="splitPane" fx:id="splitPane" dividerPositions="0.4" VBox.vgrow="ALWAYS">
     <VBox fx:id="personList" minWidth="340" prefWidth="340" SplitPane.resizableWithParent="false">
       <padding>
@@ -68,12 +57,15 @@
       <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS" />
     </VBox>
 
-    <StackPane fx:id="browserPlaceholder" prefWidth="340">
-      <padding>
-        <Insets bottom="10" left="10" right="10" top="10" />
-      </padding>
-    </StackPane>
+    <VBox spacing="0">
+      <StackPane fx:id="browserPlaceholder" prefWidth="340" maxHeight="Infinity" VBox.vgrow="ALWAYS" />
+
+      <StackPane fx:id="resultDisplayPlaceholder" maxHeight="135.0" minHeight="97.0" prefHeight="100.0" prefWidth="350" styleClass="pane-with-border" />
+
+      <StackPane fx:id="commandBoxPlaceholder" maxHeight="90" styleClass="pane-with-border" />
+    </VBox>
   </SplitPane>
+  <!-- @@author -->
 
   <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
 </VBox>

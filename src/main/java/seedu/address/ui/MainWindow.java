@@ -75,6 +75,7 @@ public class MainWindow extends UiPart<Region> {
     @FXML
     private StackPane statusbarPlaceholder;
 
+
     //@@author mzxc152
     public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic)
             throws CommandException, ParseException {
