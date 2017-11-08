@@ -115,7 +115,7 @@ public class MailCommandTest {
 
         try {
             CommandResult commandResult = mailCommand.execute();
-            assertEquals(String.format(SelectCommand.MESSAGE_SELECT_PERSON_SUCCESS, index.getOneBased()),
+            assertEquals(String.format(SelectCommand.MESSAGE_SELECT_PERSON_SUCCESS, index.getZeroBased()),
                     commandResult.feedbackToUser);
         } catch (CommandException ce) {
             throw new IllegalArgumentException("Execution of command should not fail.", ce);
