@@ -112,10 +112,24 @@ public class BrowserPanel extends UiPart<Region> {
     }
 
     /**
+     * Get Label text on BrowserPanel for testing purposes
+     */
+    public String getValue() {
+        return value.getText();
+    }
+
+    /**
      * Set type of field to the BrowserPanel
      */
     private void setField(String type) {
         field.setText(type);
+    }
+
+    /**
+     * Get Label field on BrowserPanel for testing purposes
+     */
+    public String getField() {
+        return field.getText();
     }
 
     public static Boolean getBrowserMode() {
