@@ -9,6 +9,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_MAIL_FAILURE;
 import static seedu.address.logic.commands.CommandTestUtil.showFirstPersonOnly;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.io.IOException;
@@ -50,27 +51,28 @@ public class MailCommandTest {
         model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
     }
 
-    /* @Test
+    @Test
     public void execute_validIndexUnfilteredList_success() {
         Index lastPersonIndex = Index.fromOneBased(model.getFilteredPersonList().size());
 
         assertExecutionSuccess(INDEX_FIRST_PERSON);
         assertExecutionSuccess(INDEX_THIRD_PERSON);
         assertExecutionSuccess(lastPersonIndex);
-    } */
-
-    @Test
-    public void execute_unauthorizedIndex_failure() {
-        Index outOfBoundsIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
-        assertExecutionFailure(outOfBoundsIndex, MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
 
-    /* @Test
+    @Test
+    public void execute_invalidIndexUnfilteredList_failure() {
+        Index outOfBoundsIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
+
+        assertExecutionFailure(outOfBoundsIndex, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+    }
+
+    @Test
     public void execute_validIndexFilteredList_success() {
         showFirstPersonOnly(model);
 
         assertExecutionSuccess(INDEX_FIRST_PERSON);
-    } */
+    }
 
     @Test
     public void execute_invalidIndexFilteredList_failure() {
@@ -148,7 +150,7 @@ public class MailCommandTest {
             assertEquals(expectedMessage, MESSAGE_MAIL_FAILURE);
             assertTrue(eventsCollectorRule.eventsCollector.isEmpty());
         } catch (CommandException ce) {
-            assertEquals(expectedMessage, MESSAGE_MAIL_FAILURE);
+            assertEquals(expectedMessage, ce.getMessage());
             assertTrue(eventsCollectorRule.eventsCollector.isEmpty());
         }
     }

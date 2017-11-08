@@ -67,7 +67,7 @@ public class MailCommand extends Command {
         List<ReadOnlyPerson> lastShownList = model.getFilteredPersonList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            return new CommandResult(MESSAGE_FAILURE);
+            throw new CommandException(MESSAGE_FAILURE);
         }
 
         String sendMailTo = lastShownList.get(targetIndex.getZeroBased()).getEmail().toString();
