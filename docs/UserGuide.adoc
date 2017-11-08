@@ -88,7 +88,9 @@ The Command Format Summary _(Figure 5.0.1)_ given below, guides you through how 
  ** e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
  * Commands with an alias indicates that the command word can be substituted with that letter instead when typing in the command. +
  ** e.g. in `add n/NAME`, `a n/NAME` will also work.
-====
+
+===========
+
 _Figure 5.0.1 : Command Format Summary_
 
 === Features not requiring commands
