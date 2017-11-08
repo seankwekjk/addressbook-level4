@@ -7,6 +7,8 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_PERSON_DISPLAY
 import static seedu.address.commons.core.Messages.MESSAGE_MAIL_FAILURE;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
+import java.util.List;
+
 import java.io.IOException;
 import java.net.URISyntaxException;
 
@@ -15,11 +17,15 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.CommandHistory;
+import seedu.address.logic.UndoRedoStack;
+import seedu.address.model.AddressBook;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.ui.testutil.EventsCollectorRule;
 
 //@@ author hymss
@@ -71,5 +77,35 @@ public class MailCommandTest {
             assertEquals(expectedMessage, MESSAGE_MAIL_FAILURE);
             assertTrue(eventsCollectorRule.eventsCollector.isEmpty());
         }
+    }
+
+    /**
+     * Parses {@code userInput} into a {@code EmailCommand}.
+     */
+    private MailCommand prepareCommand(Index index) {
+        MailCommand command = new MailCommand(index);
+        command.setData(model, new CommandHistory(), new UndoRedoStack());
+        return command;
+    }
+
+    /**
+     * Asserts that {@code command} is successfully executed.
+     * Asserts that the command feedback is equal to {@code expectedMessage}.
+     * Asserts that the {@code AddressBook} in model remains the same after executing the {@code command}.
+     * Asserts that the {@code FilteredList<ReadOnlyPerson>} is equal to {@code expectedList}.
+     */
+    private void assertCommandSuccess(MailCommand command, String expectedMessage, List<ReadOnlyPerson> expectedList) {
+        AddressBook expectedAddressBook = new AddressBook(model.getAddressBook());
+        try{
+            CommandResult commandResult = command.execute();
+            assertEquals(expectedMessage, commandResult.feedbackToUser);
+            assertEquals(expectedAddressBook, model.getAddressBook());
+            assertEquals(expectedList, model.getFilteredPersonList());
+        }
+        catch (CommandException ce){
+            assertEquals(expectedMessage, MESSAGE_MAIL_FAILURE);
+            assertTrue(eventsCollectorRule.eventsCollector.isEmpty());
+        }
+
     }
 }
