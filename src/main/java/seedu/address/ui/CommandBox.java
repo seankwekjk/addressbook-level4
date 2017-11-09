@@ -184,8 +184,7 @@ public class CommandBox extends UiPart<Region> {
                 suggestionsMenu.hide();
             } else {
                 createPopupWindow(matchedSuggestions);
-                i
-                f (!suggestionsMenu.isShowing()) {
+                if (!suggestionsMenu.isShowing()) {
                     suggestionsMenu.show(this.commandTextField, Side.TOP, 200, 0); // Popup position.
                 }
             }
