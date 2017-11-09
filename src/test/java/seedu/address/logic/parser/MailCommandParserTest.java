@@ -20,7 +20,7 @@ public class MailCommandParserTest {
 
     @Test
     public void parse_invalidIndex_throwsParseException() {
-        assertParseFailure(parser, "0 " ,
+        assertParseFailure(parser, "0" ,
                 String.format(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX));
     }
 
