@@ -477,7 +477,7 @@ The BirthdayChecker class checks if a contact's birthday falls on the current da
 **Pros:** More user friendly as users might want to know whose birthday is nearing. +
 **Cons:** More tedious to implement.
 
-// end::listbirthday[]
+// tag::social[]
 
 === Social Media
 
@@ -492,17 +492,19 @@ public class BrowserPanel extends UiPart<Region> {
 }
 ----
 
+The mechanism of `SelectCommand` remains intact. However, there are changes in the handling of the `PersonPanelSelectionChangedEvent` raised by the `SelectCommand` within BrowserPanel based on the state of the boolean variable.
+
 By default, the variable is true, and it will cause the `select` command to display the contact's address. +
-When it is toggled, the `select` command will cause the `select` command to follow the url specified in the social media url field instead.
+When it is toggled, the `select` command will cause the `select` command to follow the url specified in the social media url field instead. The `toggle` command will itself refresh the `BrowserPanel` and cause it to display the opposite of what is currently being shown.
 
-The following sequence diagram shows the execution of the SelectCommand, including the `toggle` mechanism. The execution of the ToggleCommand is excluded for brevity.
+The following sequence diagram shows the execution of the ToggleCommand.
 
-image::SocialMediaSequenceDiagram.png[width="800"]
-_Figure 4.4a : Social Media sequence diagram_
+image::ToggleCommandSequenceDiagram.png[width="800"]
+_Figure 4.4a : ToggleCommand sequence diagram_
 
-The mechanism of the SelectCommand remains intact. However, the changes are in the execution within BrowserPanel based on the state of the boolean variable.
+The `ToggleCommand` is able to refresh the `BrowserPanel` through the use of a new `ToggleChangedEvent`. This is an event that is handled by the `BrowserPanel`, and relies on 2 private variables within `BrowserPanel`.
 
-After toggling, instead of retrieving the contact's address and opening a Google Maps page, it will follow the url of the contact's social media field
+When `BrowserPanel` handles a `PersonPanelSelectionChangedEvent`, it stores both the `Address` and `Social Media` fields. The handler of `ToggleChangedEvent` is thus able to cause the browser to load the url linked to the other mode.
 
 ==== Design Considerations
 
@@ -523,6 +525,7 @@ After toggling, instead of retrieving the contact's address and opening a Google
 **Alternative 2:** Enter choice in the select command +
 **Pros:** When users want to alternate between functions, it will be easier and require fewer commands. +
 **Cons:** Complicates the Select Command.
+// end::social[]
 
 //tag::sort[]
 === Sort Mechanism
