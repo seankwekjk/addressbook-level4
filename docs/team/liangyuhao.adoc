@@ -15,6 +15,8 @@ Contags is a desktop address book application used for business executives to ef
 ---
 #Start of Extract [from: User Guide]#
 
+include::../UserGuide.adoc[tag=sort]
+
 #End of Extract#
 
 ---
@@ -31,6 +33,8 @@ Currently, the sort feature works by sorting your list of contacts either by Nam
 ---
 #Start of Extract [from: Developer Guide]#
 
+include::../DeveloperGuide.adoc[tag=sortusecase]
+include::../DeveloperGuide.adoc[tag=sort]
 
 #End of Extract#
 
@@ -58,4 +62,7 @@ include::../UserGuide.adoc[tag=sort]
 
 === Other contributions
 
-* Updated the GUI with a UI dropdown box for sorting, and also a find field for easy finding without having to type `find KEYWORD` in the main command line bar.(Pull requests https://github.com[#33], https://github.com[#34])
+* Updated the GUI with a UI dropdown box for sorting, and also a find field for easy finding without having to type `find KEYWORD` in the main command line bar. +
+(Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/39[#39])
+* Updated Appendix C: Non Functional Requirements. +
+(Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/34[#34])
