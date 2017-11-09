@@ -406,11 +406,6 @@ Sends an sms message to the number of the contact indicated by the index, with t
 // end::smsContact[]
 // tag::mailContact[]
 
-=== Social media autocomplete : `social` `Coming in v2.0`
-
-Provides possible links to social media pages from various social media sites of the contact specified in the INDEX and allows the user to select the correct one to add to the contact +
-Format: `social INDEX`
-
 === Mailing contacts: `mail`
 
 Format: `mail INDEX`
