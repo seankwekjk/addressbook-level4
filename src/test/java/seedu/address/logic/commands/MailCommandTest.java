@@ -14,8 +14,6 @@ import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-import java.util.List;
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -26,11 +24,9 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.ui.testutil.EventsCollectorRule;
 
 //@@ author hymss
