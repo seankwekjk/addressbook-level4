@@ -1,5 +1,8 @@
 package seedu.address.logic.commands;
 
+import java.util.logging.Logger;
+
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
@@ -13,6 +16,7 @@ public abstract class Command {
     protected Model model;
     protected CommandHistory history;
     protected UndoRedoStack undoRedoStack;
+    protected final Logger logger = LogsCenter.getLogger(SmsCommand.class);
 
     /**
      * Constructs a feedback message to summarise an operation that displayed a listing of persons.

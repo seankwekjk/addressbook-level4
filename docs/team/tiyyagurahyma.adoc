@@ -12,19 +12,14 @@ Contags, is a desktop address book application that is a development of AddressB
 
 ==== External behavior
 
----
-
 include::../UserGuide.adoc[tag=mailContact]
 
 ---
 
 ==== Justification
-
 Mail is the most used application by working professionals and therefore a mail command is apt and necessary in an address book specifically targeted at working professionals.
 
 ==== Implementation
-
----
 
 include::../DeveloperGuide.adoc[tag=mailContact]
 include::../DeveloperGuide.adoc[tag=mailcommand]
@@ -53,19 +48,15 @@ include::../DeveloperGuide.adoc[tag=birthdayfield]
 
 include::../UserGuide.adoc[tag=listBirthday]
 
-
 ---
 
 ==== Justification
-
-
 
 ==== Implementation
 
 ---
 
 include::../DeveloperGuide.adoc[tag=listBirthday]
-
 
 ---
 
