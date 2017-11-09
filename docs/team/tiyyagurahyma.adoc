@@ -19,17 +19,6 @@ include::../UserGuide.adoc[tag=mailContact]
 
 #End of Extract#
 
-=== Mailing a contact: `mail` `m`
-
-Mails a contact in Contags
-
-Format: `mail INDEX`
-
-Examples:
-
-*`mail 1`
-Opens up mail application and to field of the mail will be automatically filled in with the email address of the contact at index 1.
-
 ---
 
 ==== Justification
@@ -42,53 +31,9 @@ Opens up mail application and to field of the mail will be automatically filled 
 #Start of Extract [from: Developer Guide]#
 
 include::../DeveloperGuide.adoc[tag=mailContact]
-include::../DeveloperGuide.adoc[tag=mailCommand]
+include::../DeveloperGuide.adoc[tag=mailcommand]
 
 #End of Extract#
-
-=== Use case: Mail Contact
-
-*MSS*
-
-1. User requests to mail a contact by typing in mail command, followed by the mail, title and message.
-2. Contags opens up desktop mail application and user clicks send.
-3. Use case ends.
-
-*Extensions*
-
-[none]
-* 1a. Index is invalid.
-+
-** 1a1. Contags informs user that index is not valid.
-
-=== Mail Command
-
-The mail command mails a `person` in `Contags` based on their `Index` in the most updated list. The implementation of `MailCommand` inherits from `Command`. +
-
-There is also the use of the `MailCommandParser`, which implements the `Parser` interface, that parses out the index to be used with the `sort` command. The `MailCommandParser` validates the input index.  +
-
-[NOTE]
-If the index entered by the user do not comply is out of range, ParseException will be thrown before execution of the method. +
-
-==== Design Considerations
-
-**Aspect:** Attributes to mail command +
-**Alternative 1 (current choice):** Only takes in to (email address) field. +
-**Pros:** Allows users to type in their title and message on the mail application itself. It would be more user friendly if the message is long or requires formatting such as new lines or separating the message into paragraphs. +
-**Cons:** Does not take in title and message fields, user would still have to type the subject and message when the mail application opens. +
-**Alternative 2:** Take in to, title and message fields. +
-**Pros:** Useful for most users who want to send a short message quickly without having to type in the mail application when it opens. +
-**Cons:** Not useful for users who want to send long messages with paragraphs.
-
----
-
-**Aspect:** Whether mail command should automatically send the mail without opening up the mail application +
-**Alternative 1 (current choice):** Mail command opens up the default desktop mail application. +
-**Pros:** User can decide on the preferred mail server and there would not be security issues with the log in since it is done externally. +
-**Cons:** Less user friendly as there is a need to open an extra application. +
-**Alternative 2:** Implement GMail API. +
-**Pros:** There is no need to open up the desktop mail application and users can easily send a mail using just the CLI. +
-**Cons:** There might be security issues pertaining to the log in. Furthermore, not all users would want to use Gmail. This alternative would not account for users having different preferences on which email server they would like to use. Interface for GMail is not optimal in `JavaFX WebView`.
 
 ---
 
@@ -98,8 +43,6 @@ If the index entered by the user do not comply is out of range, ParseException w
 
 ---
 #Start of Extract [from: User Guide]#
-
-include::../UserGuide.adoc[tag=birthdayfield]
 
 #End of Extract#
 
@@ -118,32 +61,6 @@ include::../DeveloperGuide.adoc[tag=birthdayfield]
 
 #End of Extract#
 
-=== Birthday Field
-
-The person class consists of five compulsory attributes, `Name` `Phone` `Email` `Address` `Birthday` and optional `Remark` and `Tag`. The implementation of the birthday attribute is similar to that of the other compulsory attributes. It is a compulsory field and cannot be left blank. The constructor takes in the birthday value in a String format and a new instance of the birthday field is initialised.
-
-The birthday value is validated before being accepted as a parameter in the constructor for the person class. A valid birthday value has to be in the form `DD/MM/YYYY` or `DD/MM/YY`. Only digits and forward slashes are permitted. The birthday value is also checked to ensure that the date actually exists. The different number of days in the month February in leap years are accounted for and the different days in various months are also taken into account. This check minimises the chances of the user making a typo in entering the birthday and also ensures that the user does not accidentally input a wrong field in place of the birthday field (i.e. input an address in the birthday field).
-
-==== Design Considerations
-
-**Aspect:** Implementation of birthday field +
-**Alternative 1 (current choice):** Add a new birthday field to all files containing the other fields (name, phone, address, email). +
-**Pros:** We will not lose any other functionality as it is now just an additional part of the default behaviour. Existing classes and commands do not have to know that the birthday field exists, barring Add and Edit command. It is also easy for new developers to understand. +
-**Cons:** Design is not modular and has high dependency. +
-**Alternative 2:** Create a new class completely for optional fields such as birthday field +
-**Pros:** Does not involve the existing template pattern, easier for new developers to understand. +
-**Cons:** Methods of the birthday field that are inherited from the other fields must remember to call the super methods, or lose the ability to perform like the other fields.
-
----
-
-**Aspect:** Whether it should be an optional field (can be left blank) +
-**Alternative 1 (current choice):** Birthday field currently cannot be an empty field. +
-**Pros:** Easy to implement and easy for new developers to understand the implementation and work on it. +
-**Cons:** Not very user-friendly as not all users would want to add birthdays for all their contacts. +
-**Alternative 2:** Make the birthday field optional. +
-**Pros:** More user-friendly. +
-**Cons: ** Implementation is slightly more tedious and new developers might need more time to understand the implementation.
-
 ---
 
 === Enhancement Added: ListBirthday Command
@@ -156,15 +73,6 @@ The birthday value is validated before being accepted as a parameter in the cons
 include::../UserGuide.adoc[tag=listBirthday]
 
 #End of Extract#
-
-=== Viewing contacts whose birthdays fall on the current date: `listbirthday`
-
-Lists the contacts whose birthdays matches the current date. +
-Format: `listbirthday`
-
-****
-* Lists the contacts in order of the most updated list.
-****
 
 ---
 
@@ -181,37 +89,6 @@ include::../DeveloperGuide.adoc[tag=listBirthday]
 
 #End of Extract#
 
-=== Use case: List contacts whose birthdays fall on current date
-
-*MSS*
-
-1. User requests to see the list of contacts whose birthdays fall on the current date.
-2. Contags shows the list of filtered contacts.
-+
-Use case ends.
-
-=== ListBirthday Mechanism
-
-The listbirthday command displays the list of contacts in Contags whose birthdays fall on the current date. The list is sorted in order of the list according to the `updateFilteredPersonsList`.
-
-The lisbirthday command is facilitated by the `BirthdayChecker` class in the person class. Take note that the listbirthday command is not an undoable command and hence inherits from `Command` rather than `UndoableCommand` (see design considerations below).
-
-The BirthdayChecker class checks if a contact's birthday falls on the current date by checking if the month and day of the contact's birthday and current date are equal. This is done so by converting the month and day first to a string, which is then converted to a date object and finally a calendar object.
-
-==== Design Considerations
-
-**Aspect:** Whether the listbirthday should be an executable command that requires manual typing of the command each time. +
-**Alternative 1 (current choice):** listbirthday is a command and users would have to type that every time they want to find out if a contact's birthday falls on that day. +
-**Pros:** Easy to implement and easy for new developers to understand and work on it. +
-**Cons:** Not as user friendly as users would have to manually key in the command every time. +
-**Alternative 2:** List of contacts whose birthdays falls on the current day appear as a popup every time the app is started. +
-**Pros:** More user friendly as users would not have to type the command every day. Users might forget to type the command everyday to check if any of their contact's birthday is on the current date. +
-**Cons:** Implementation is more tedious. +
-**Alternative 3:** List the contacts whose birthdays fall within a week from the current date. +
-**Pros:** More user friendly as users might want to know whose birthday is nearing. +
-**Cons:** More tedious to implement.
-
-
 ---
 
 === Developer Guide Glossary
@@ -222,162 +99,6 @@ The BirthdayChecker class checks if a contact's birthday falls on the current da
 include::../DeveloperGuide.adoc[tag=glossary]
 
 #End of Extract#
-
-== Glossary
-
-[[acsiidoc]]
-acsiidoc
-
-....
-Asciidoc is a human-readable document format which uses plain-text mark-up conventions. It is a markup language, which is a system for annotating a document in a way that is syntactically distinguishable from text.
-....
-
-[[api]]
-API
-
-....
-Application Programming Interface.
-....
-
-[[ci]]
-CI
-
-....
-Continuous Integration, CI, is an extreme application of build automation in which integration, building and testing happens automatically after each code change.
-....
-
-[[clean-up]]
-Clean up
-
-....
-Releases the references to objects.
-....
-
-[[event]]
-Event
-
-....
-Event is a significant change in state.
-....
-
-[[event-driven-design]]
-Event-driven design
-
-....
-Promotes the production, detection, consumption of and reaction to events.
-....
-
-[[gui]]
-GUI
-
-....
-Graphical User Interface, GUI, allows users to interact with the software using graphical and visual icons instead of text.
-....
-
-[[high-level-design]]
-High-level design
-
-....
-High-level design is the overall system design, including the database design and system architecture.
-....
-
-[[ide]]
-IDE
-
-....
-Integrated Development Environment, IDE, is a software application that provides comprehensive facilities to computer programmers for software development.
-....
-
-[[index]]
-Index
-
-....
-The specific numbering of contacts in the list. For example, index 1 refers to the first person in the list.
-....
-
-[[jar]]
-JAR
-
-....
-Java ARchive, JAR, is a package file format typically used to aggregate many Java class files and associated metadata and resources (text, images, etc.) into one file for distribution.
-....
-
-[[jdk]]
-JDK
-
-....
-Java Development Kit.
-....
-
-[[mainstream-os]]
-Mainstream OS
-
-....
-Windows, Linux, Unix, OS-X
-....
-
-[[mss]]
-MSS
-
-....
-Main Success Scenario, MSS, describes the most basic and straightforward implementation of a use case, disregarding the possibility of errors.
-....
-
-[[oop]]
-OOP
-
-....
-Object-orientated programming, OOP, is a programming language that is modelled based on objects and date as opposed to actions and logic.
-....
-
-[[pr]]
-PR
-
-....
-Pull Request, PR, is made to submit commits to Github.
-....
-
-[[private-contact-detail]]
-Private contact detail
-
-....
-A contact detail that is not meant to be shared with others
-....
-
-[[ui]]
-UI
-
-....
-User-interface, UI, focuses on maximising usability and optimal user experience.
-....
-
-[[separation-of-concerns]]
-Separation of Concerns
-
-....
-Separating a computer program into distinct sections such that each section addresses a single and unique concern.
-....
-
-[[single-responsibility-principle]]
-Single Responsibility Principle
-
-....
-Every module/class has responsibility (encapsulated in a single class) over a single part of functionality only.
-....
-
-[[tag]]
-Tag
-
-....
-A tag is a label that users can assign to their contacts to easily remember whether a contact is a family, friend, colleague, etc.
-....
-
-[[xml]]
-XML
-
-....
-XML is a metalanguage which allows users to define their own customized markup languages, especially in order to display documents on the Internet.
-....
 
 ---
 

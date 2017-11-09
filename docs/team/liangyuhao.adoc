@@ -15,8 +15,6 @@ Contags is a desktop address book application used for business executives to ef
 ---
 #Start of Extract [from: User Guide]#
 
-include::../UserGuide.adoc[tag=sort]
-
 #End of Extract#
 
 ---
@@ -31,7 +29,6 @@ The sort feature implemented in Contags allows business executives to easily loo
 ---
 #Start of Extract [from: Developer Guide]#
 
-include::../DeveloperGuide.adoc[tag=sort]
 
 #End of Extract#
 
