@@ -36,6 +36,34 @@ include::../DeveloperGuide.adoc[tag=undoredo]
 
 ---
 
+=== Enhancement Added: Birthday Field
+
+==== External behavior
+
+---
+#Start of Extract [from: User Guide]#
+
+include::../UserGuide.adoc[tag=birthdayfield]
+
+#End of Extract#
+
+---
+
+==== Justification
+
+{Justify the need for, and the current design (i.e. external behavior) of, the feature}
+
+==== Implementation
+
+---
+#Start of Extract [from: Developer Guide]#
+
+include::../DeveloperGuide.adoc[tag=birthdayfield]
+
+#End of Extract#
+
+---
+
 === Enhancement Added: ListBirthday Command
 
 ==== External behavior
@@ -64,6 +92,17 @@ include::../DeveloperGuide.adoc[tag=listBirthday]
 
 ---
 
+=== Developer Guide Glossary
+
+---
+#Start of Extract [from: Developer Guide]#
+
+include::../DeveloperGuide.adoc[tag=glossary]
+
+#End of Extract#
+
+---
+
 === Enhancement Proposed: Add command `schedule`
 
 {Explain similar to the Undo/Redo feature above.}
@@ -76,6 +115,6 @@ include::../DeveloperGuide.adoc[tag=listBirthday]
 * Updated UI to include a separate browser panel displaying the address of a contact when contact is selected (Pull request https://github.com[#107]])
 * Enhanced find command to find by tags (Pull request https://github.com[#111])
 
-== Project: PowerPointLabs
+== Project:
 
 {Optionally (not graded), you may include other projects in your portfolio.}
