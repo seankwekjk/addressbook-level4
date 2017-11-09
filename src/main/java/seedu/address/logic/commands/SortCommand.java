@@ -12,7 +12,7 @@ public class SortCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Sorts the list by name, phone, email, address or tag.\n"
-            + "Parameters: KEYWORD\n"
+            + "Parameters: name/phone/email/address/tag\n"
             + "Example for email sort: " + COMMAND_WORD + " email";
 
     public final String toSort;

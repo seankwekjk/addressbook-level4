@@ -12,56 +12,31 @@ Contags, is a desktop address book application that is a development of AddressB
 
 ==== External behavior
 
----
-#Start of Extract [from: User Guide]#
-
 include::../UserGuide.adoc[tag=mailContact]
-
-#End of Extract#
 
 ---
 
 ==== Justification
-
-{Justify the need for, and the current design (i.e. external behavior) of, the feature}
+Mail is the most used application by working professionals and therefore a mail command is apt and necessary in an address book specifically targeted at working professionals.
 
 ==== Implementation
 
----
-#Start of Extract [from: Developer Guide]#
-
 include::../DeveloperGuide.adoc[tag=mailContact]
-include::../DeveloperGuide.adoc[tag=mailCommand]
-
-#End of Extract#
+include::../DeveloperGuide.adoc[tag=mailcommand]
 
 ---
 
 === Enhancement Added: Birthday Field
 
-==== External behavior
-
----
-#Start of Extract [from: User Guide]#
-
-include::../UserGuide.adoc[tag=birthdayfield]
-
-#End of Extract#
-
----
-
 ==== Justification
 
-{Justify the need for, and the current design (i.e. external behavior) of, the feature}
+Birthday field is an important field as users would find it useful to keep track of their contacts' birthdays to wish them and maintain business relationships on top of friendships and family relationships.
 
 ==== Implementation
 
 ---
-#Start of Extract [from: Developer Guide]#
 
 include::../DeveloperGuide.adoc[tag=birthdayfield]
-
-#End of Extract#
 
 ---
 
@@ -70,43 +45,32 @@ include::../DeveloperGuide.adoc[tag=birthdayfield]
 ==== External behavior
 
 ---
-#Start of Extract [from: User Guide]#
 
 include::../UserGuide.adoc[tag=listBirthday]
-
-#End of Extract#
 
 ---
 
 ==== Justification
 
-{Justify the need for, and the current design (i.e. external behavior) of, the feature}
-
 ==== Implementation
 
 ---
-#Start of Extract [from: Developer Guide]#
 
 include::../DeveloperGuide.adoc[tag=listBirthday]
-
-#End of Extract#
 
 ---
 
 === Developer Guide Glossary
 
 ---
-#Start of Extract [from: Developer Guide]#
 
 include::../DeveloperGuide.adoc[tag=glossary]
-
-#End of Extract#
 
 ---
 
 === Enhancement Proposed: Add command `schedule`
 
-{Explain similar to the Undo/Redo feature above.}
+A schedule feature would allow users to create events such as meetings or dinner with other contacts.
 
 === Other contributions
 
