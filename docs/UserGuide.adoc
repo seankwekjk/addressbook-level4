@@ -77,7 +77,7 @@ Do take a look to understand how to use all the features that Contags provides y
 The Command Format Summary _(Figure 5.0.1)_ given below, guides you through how the commands are to be used and gives a brief explanation on how we describe the use of the commands.
 
 *Command Format Summary*
-====
+****
  * Words in `UPPER_CASE` are the parameters to be supplied by you, the user. +
  ** e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
  * Items in square brackets are optional.
@@ -88,7 +88,7 @@ The Command Format Summary _(Figure 5.0.1)_ given below, guides you through how 
  ** e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
  * Commands with an alias indicates that the command word can be substituted with that letter instead when typing in the command. +
  ** e.g. in `add n/NAME`, `a n/NAME` will also work.
-====
+****
 
 _Figure 5.0.1 : Command Format Summary_
 
@@ -227,6 +227,7 @@ Displays a list of sorted contacts based upon the frequency of communication.
 Require assistance or some guide? `help` opens the help window within Contags. +
 Format: `help`
 
+=== Deleting a contact : `delete` `d`
 [TIP]
 Pressing kbd:[F1] will also open the help window. Try it out if you are unsure of what to do and need some help.
 
@@ -292,6 +293,7 @@ The `delete 1` command has been reapplied. +
 `redo` +
  The `clear` command has been reapplied. +
 
+// tag::remark[]
 === Adding remarks: `remark` `Since v1.1`
 
 Edits the remark for a contact specified in the INDEX.
@@ -304,6 +306,7 @@ Examples:
 Edits the remark for the first contact to `Likes to drink coffee.`
 * `remark 1 r/` +
 Removes the remark for the first contact.
+// end::remark[]
 
 // tag::removeTag[]
 
@@ -324,13 +327,13 @@ Searches through all contacts in the Contags and deletes all instances of the Ta
 
 // end::removeTag[]
 
+// tag::social[]
 === Selecting a contact : `select` `s`
 
 Selects the contact identified by the index number used in the last contact listing. +
 Format: `select INDEX` +
 Alias: `s`
 ****
-* Selects the contact and loads a Google Maps search of the contact's specified address
 * Selects the contact and loads either a Google Maps search of the person's specified address, or the person's specified social media link
  at the specified `INDEX`.
 * The function is toggled using the `toggle` command.
@@ -346,6 +349,44 @@ Selects the 2nd contact in Contags.
 * `find Betsy` +
 `select 1` +
 Selects the 1st contact in the results of the `find` command.
+// end::social[]
+
+=== Sorting the list of contacts: `sort`
+
+Sorts the list of contacts saved in Contags according to: +
+Name, Phone number, Email, Address, Tag. +
+Format: `sort KEYWORD`
+
+****
+* Sorts the list of contacts saved in Contags and then displays the sorted list. +
+* Sorting is done in alphanumerical ascending order. +
+* Keywords for sorting: `name`, `phone`, `email`, `address`, `tag`. +
+* Keywords are *case-insensitive*. e.g. `sort name` and `sort NAME` both sorts the list . +
+****
+
+Examples:
+
+* `sort name` +
+List is sorted according to name in ascending order.
+* `sort EMAIL` +
+List is sorted according to email addresses in ascending order.
+* `sort Address` +
+List is sorted according to addresses in ascending order.
+
+// tag::listBirthday[]
+
+=== Viewing contacts whose birthdays fall on the current date: `listbirthday`
+
+Lists the contacts whose birthdays matches the current date. +
+Format: `listbirthday`
+
+****
+* Lists the contacts in order of the most updated list.
+****
+
+// end::listBirthday[]
+
+=== Sending a SMS Message to the telephone number of the contact indicated bby the given index: `select INDEX`
 
 // tag::smsContact[]
 
@@ -366,19 +407,20 @@ Examples:
 Sends an sms message to the number of the contact indicated by the index, with the message "hello there!"
 
 // end::smsContact[]
+// tag::mailContact[]
 
-=== Social media autocomplete : `social` `Coming in v2.0`
+=== Mailing contacts: `mail`
 
-Provides possible links to social media pages from various social media sites of the contact specified in the INDEX and allows the user to select the correct one to add to the contact +
-Format: `social INDEX`
+Format: `mail INDEX`
+*`mail 1`
+Opens up mail application and to field of the mail will be automatically filled in with the email address of the contact at index 1.
 
-// tag::sort[]
-
-=== Sorting contacts: `sort`
+// end::mailContact[]
 
 Want to change the way your list of contacts is displayed? `sort` sorts the list of contacts saved in Contags according to: +
 `Name`, `Phone`, `Email`, `Address`, `Tag`. +
 Format: `sort KEYWORD`
+
 
 As an alternative, you can use the UI dropdown box _(Figure 5.21.1)_ located near the top-right hand corner of Contags to select how you want the list to be sorted.
 
@@ -413,10 +455,13 @@ image::sortemailresult.png[width="700"]
 _Figure 5.21.5 : Result after sorting by email address__
 // end::sort[]
 
+// tag::social[]
 === Toggling `select` command function : `toggle` `Since v1.3`
 
 When used, toggles the function of the `select` command between displaying a Google Maps search and the specified social media page. +
+Refreshes the currently displayed contact to show the other mode as well. +
 Format: `toggle`
+// end::social[]
 
 === Undoing previous command : `undo` `u`
 

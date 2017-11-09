@@ -15,8 +15,6 @@ Contags is a desktop address book application used for business executives to ef
 ---
 #Start of Extract [from: User Guide]#
 
-include::../UserGuide.adoc[tag=sort]
-
 #End of Extract#
 
 ---
@@ -33,7 +31,6 @@ Currently, the sort feature works by sorting your list of contacts either by Nam
 ---
 #Start of Extract [from: Developer Guide]#
 
-include::../DeveloperGuide.adoc[tag=sort]
 
 #End of Extract#
 
