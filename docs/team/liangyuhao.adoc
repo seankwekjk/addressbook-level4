@@ -6,7 +6,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 == Project: Contags
 Contags is a desktop address book application used for business executives to efficiently connect with their contacts through effective management of contact details and ease of use in contacting them through integrated mail and SMS features. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.
 
-*Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] {give links to collated code files}
+*Code contributed*: [https://github.com/CS2103AUG2017-T16-B4/main/blob/master/collated/main/mzxc152.md[Functional code]] [https://github.com/CS2103AUG2017-T16-B4/main/blob/master/collated/test/mzxc152.md[Test code]]
 
 === Enhancement Added: Sort
 
@@ -20,9 +20,11 @@ Contags is a desktop address book application used for business executives to ef
 ---
 
 ==== Justification
-The sort feature implemented in Contags allows business executives to easily look through the list of Contacts that they have saved in Contags without looking through the whole list one contact at a time just to find that one particular contact.+
+The sort feature implemented in Contags allows you to easily look through the list of Contacts that you have saved in Contags
+without looking through the whole list one contact at a time just to find that one particular contact. +
+This reduces the time and effort required to find your contacts, making it more user-friendly.
 
-{Justify the need for, and the current design (i.e. external behavior) of, the feature}
+Currently, the sort feature works by sorting your list of contacts either by Name, Phone, Email, Address or Tag, in alphabetical order.
 
 ==== Implementation
 
@@ -33,6 +35,22 @@ The sort feature implemented in Contags allows business executives to easily loo
 #End of Extract#
 
 ---
+
+=== Enhancement added: Coloured Tags
+
+==== External behavior
+
+---
+#Start of Extract [from: User Guide]#
+
+include::../UserGuide.adoc[tag=sort]
+
+#End of Extract#
+
+---
+
+==== Justification
+
 
 === Enhancement Proposed: Add command `remark`
 
