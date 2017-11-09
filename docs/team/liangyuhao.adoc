@@ -4,24 +4,25 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :stylesDir: ../stylesheets
 
 == Project: Contags
-Contags is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.
+Contags is a desktop address book application used for business executives to efficiently connect with their contacts through effective management of contact details and ease of use in contacting them through integrated mail and SMS features. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.
 
 *Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] {give links to collated code files}
 
-=== Enhancement Added: Undo/Redo
+=== Enhancement Added: Sort
 
 ==== External behavior
 
 ---
 #Start of Extract [from: User Guide]#
 
-include::../UserGuide.adoc[tag=undoredo]
+include::../UserGuide.adoc[tag=sort]
 
 #End of Extract#
 
 ---
 
 ==== Justification
+The sort feature implemented in Contags allows business executives to easily look through the list of Contacts that they have saved in Contags without looking through the whole list one contact at a time just to find that one particular contact.+
 
 {Justify the need for, and the current design (i.e. external behavior) of, the feature}
 
@@ -30,7 +31,7 @@ include::../UserGuide.adoc[tag=undoredo]
 ---
 #Start of Extract [from: Developer Guide]#
 
-include::../DeveloperGuide.adoc[tag=undoredo]
+include::../DeveloperGuide.adoc[tag=sort]
 
 #End of Extract#
 
@@ -42,9 +43,4 @@ include::../DeveloperGuide.adoc[tag=undoredo]
 
 === Other contributions
 
-* Updated the GUI color scheme (Pull requests https://github.com[#33], https://github.com[#34])
-* Wrote additional tests to increase coverage from 88% to 92% (Pull requests https://github.com[#36], https://github.com[#38])
-
-== Project: PowerPointLabs
-
-{Optionally (not graded), you may include other projects in your portfolio.}
+* Updated the GUI with a UI dropdown box for sorting, and also a find field for easy finding without having to type `find KEYWORD` in the main command line bar.(Pull requests https://github.com[#33], https://github.com[#34])

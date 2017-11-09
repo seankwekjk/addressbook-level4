@@ -8,11 +8,14 @@ import com.google.common.eventbus.Subscribe;
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import javafx.scene.web.WebView;
 import seedu.address.MainApp;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
+import seedu.address.commons.events.ui.ToggleChangedEvent;
+import seedu.address.model.person.Address;
 import seedu.address.model.person.ReadOnlyPerson;
 
 /**
@@ -27,10 +30,19 @@ public class BrowserPanel extends UiPart<Region> {
     private static Boolean browserMode = true;
     private static final String FXML = "BrowserPanel.fxml";
 
+    private Address lastAddress;
+    private String lastUrl;
+
     private final Logger logger = LogsCenter.getLogger(this.getClass());
 
     @FXML
     private WebView browser;
+
+    @FXML
+    private Label field;
+
+    @FXML
+    private Label value;
 
     public BrowserPanel() {
         super(FXML);
@@ -43,13 +55,67 @@ public class BrowserPanel extends UiPart<Region> {
     }
 
     //@@author seankwekjk
+    /**
+     * Loads the social media page of the contact selected.
+     * @param pers
+     */
+    private void loadSocialPage(ReadOnlyPerson pers) {
+        loadPage(SOCIAL_MEDIA_URL_PREFIX + pers.getSocialMedia());
+        setSocial(pers);
+        setField("Social Media");
+    }
+
+    /**
+     * Loads the social media page of the contact selected through last saved url.
+     * Meant to be called by ToggleCommand.
+     */
+    private void loadSocialPage() {
+        loadPage(SOCIAL_MEDIA_URL_PREFIX + lastUrl);
+        value.setText(lastUrl);
+        field.setText("Social Media");
+    }
+
+    /**
+     * Loads the address of the contact selected and corresponding google maps page.
+     * @param pers
+     */
     private void loadPersonPage(ReadOnlyPerson pers) {
         loadPage(GOOGLE_SEARCH_URL_PREFIX
                 + pers.getAddress().value.replaceAll(" ", "+").replaceAll(",", "%2C"));
+        setAddress(pers);
+        setField("Address");
     }
 
-    private void loadSocialPage(ReadOnlyPerson pers) {
-        loadPage(SOCIAL_MEDIA_URL_PREFIX + pers.getSocialMedia());
+    /**
+     * Loads the address of the contact selected and corresponding google maps page through last saved address.
+     * Meant to be called by ToggleCommand.
+     */
+    private void loadPersonPage() {
+        loadPage(GOOGLE_SEARCH_URL_PREFIX + lastAddress.value.replaceAll(" ", "+")
+                .replaceAll(",", "%2C"));
+        value.setText(lastAddress.value);
+        field.setText("Address");
+    }
+
+    /**
+    * Set Label on BrowserPanel to address
+     */
+    private void setAddress(ReadOnlyPerson pers) {
+        value.setText(pers.getAddress().value);
+    }
+
+    /**
+     * Set Label on BrowserPanel to social media url
+     */
+    private void setSocial(ReadOnlyPerson pers) {
+        value.setText(pers.getSocialMedia());
+    }
+
+    /**
+     * Set type of field to the BrowserPanel
+     */
+    private void setField(String type) {
+        field.setText(type);
     }
 
     public static Boolean getBrowserMode() {
@@ -60,10 +126,10 @@ public class BrowserPanel extends UiPart<Region> {
         browserMode = !browserMode;
     }
 
-    //@@author
     public void loadPage(String url) {
         Platform.runLater(() -> browser.getEngine().load(url));
     }
+    //@@author
 
     /**
      * Loads a default HTML file with a background that matches the general theme.
@@ -88,6 +154,21 @@ public class BrowserPanel extends UiPart<Region> {
             loadPersonPage(event.getNewSelection().person);
         }   else {
             loadSocialPage(event.getNewSelection().person);
+        }
+        lastAddress = event.getNewSelection().person.getAddress();
+        lastUrl = event.getNewSelection().person.getSocialMedia();
+    }
+
+    @Subscribe
+    private void handleToggleChangedEvent(ToggleChangedEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        if (lastAddress == null) {
+            return;
+        }
+        if (browserMode) {
+            loadPersonPage();
+        }   else {
+            loadSocialPage();
         }
     }
 }
