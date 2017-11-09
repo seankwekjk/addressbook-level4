@@ -925,12 +925,13 @@ Use case ends.
 +
 Use case ends.
 
+// tag::sortusecase[]
 [discrete]
 === Use case: Sort list of contacts
 
 *MSS*
 
-1. User requests to sort list of contacts based on Name, Phone, Email or Address.
+1. User requests to sort list of contacts based on Name, Phone, Email, Address or Tag.
 2. Contags sorts the list of contacts and displays the list based on user selection.
 3. Use case ends.
 
@@ -940,6 +941,8 @@ Use case ends.
 * 2a. The list is empty.
 +
 Use case ends.
+
+// end::sortusecase[]
 
 [discrete]
 === Use case: Edit Contact
@@ -1123,6 +1126,8 @@ Use case ends.
 +
 Contags informs user that the tag does not exist. Use case ends.
 
+// tag:NFR[]
+
 [appendix]
 == Non Functional Requirements
 
@@ -1136,7 +1141,7 @@ Contags informs user that the tag does not exist. Use case ends.
 .  Should be a free application for all.
 .  App should be updated regularly for bug fixes or implementing new features.
 
-{More to be added}
+// end::NFR[]
 
 // tag::glossary[]
 [appendix]

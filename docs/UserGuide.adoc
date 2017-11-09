@@ -420,7 +420,7 @@ _Figure 5.20.4 : Sorting by email address_ +
 
 
 image::sortemailresult.png[width="700"]
-_Figure 5.20.5 : Result after sorting by email address__ +
+_Figure 5.20.5 : Result after sorting by email address_ +
 
 List is sorted according to email addresses in ascending order _(Figure 5.20.5)_.
 // end::sort[]
