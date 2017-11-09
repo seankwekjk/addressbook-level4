@@ -18,5 +18,8 @@ public class CliSyntax {
     public static final Prefix PREFIX_MAIL_MESSAGE = new Prefix("message/");
     public static final Prefix PREFIX_MAIL_TITLE = new Prefix("title/");
     public static final Prefix PREFIX_SMS_TEXT = new Prefix("text/");
+    public static final Prefix PREFIX_ACCOUNT_SID = new Prefix("id/");
+    public static final Prefix PREFIX_AUTH_TOKEN = new Prefix("auth/");
+    public static final Prefix PREFIX_SENDING_NUMBER = new Prefix("num/");
 
 }

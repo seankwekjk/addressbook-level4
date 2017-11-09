@@ -17,9 +17,11 @@ import org.junit.Test;
 import guitests.guihandles.BrowserPanelHandle;
 import seedu.address.MainApp;
 import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
+import seedu.address.commons.events.ui.ToggleChangedEvent;
 
 public class BrowserPanelTest extends GuiUnitTest {
     private PersonPanelSelectionChangedEvent selectionChangedEventStub;
+    private ToggleChangedEvent toggleEventStub;
 
     private BrowserPanel browserPanel;
     private BrowserPanelHandle browserPanelHandle;
@@ -47,6 +49,8 @@ public class BrowserPanelTest extends GuiUnitTest {
                 + CARL.getAddress().value.replaceAll(" ", "+").replaceAll(",", "%2C"));
 
         assertEquals(expectedPersonUrl, browserPanelHandle.getLoadedUrl());
+        assertEquals(CARL.getAddress().value, browserPanel.getValue());
+        assertEquals("Address", browserPanel.getField());
 
         // associated social media page of a person
         selectionChangedEventStub = new PersonPanelSelectionChangedEvent(new PersonCard(ALICE, 1));
@@ -55,6 +59,30 @@ public class BrowserPanelTest extends GuiUnitTest {
         URL expectedSocialUrl = new URL(SOCIAL_MEDIA_URL_PREFIX + ALICE.getSocialMedia() + "/");
 
         assertEquals(expectedSocialUrl, browserPanelHandle.getLoadedUrl());
+        assertEquals(ALICE.getSocialMedia(), browserPanel.getValue());
+        assertEquals("Social Media", browserPanel.getField());
+
+        // toggle refresh behaviour
+        BrowserPanel.setBrowserMode();
+        toggleEventStub = new ToggleChangedEvent();
+        postNow(toggleEventStub);
+        expectedPersonUrl = new URL(GOOGLE_SEARCH_URL_PREFIX
+                + ALICE.getAddress().value.replaceAll(" ", "+").replaceAll(",", "%2C"));
+
+        assertEquals(expectedPersonUrl, browserPanelHandle.getLoadedUrl());
+        assertEquals(ALICE.getAddress().value, browserPanel.getValue());
+        assertEquals("Address", browserPanel.getField());
+
+        BrowserPanel.setBrowserMode();
+        toggleEventStub = new ToggleChangedEvent();
+        postNow(toggleEventStub);
+        expectedSocialUrl = new URL(SOCIAL_MEDIA_URL_PREFIX + ALICE.getSocialMedia() + "/");
+
+        assertEquals(expectedSocialUrl, browserPanelHandle.getLoadedUrl());
+        assertEquals(ALICE.getSocialMedia(), browserPanel.getValue());
+        assertEquals("Social Media", browserPanel.getField());
+
+        //revert BrowserMode to original state
         BrowserPanel.setBrowserMode();
     }
 }

@@ -33,7 +33,7 @@ import seedu.address.model.UserPrefs;
  */
 public class MainWindow extends UiPart<Region> {
 
-    private static final String ICON = "/images/address_book_32.png";
+    private static final String ICON = "/images/main_icon.png";
     private static final String FXML = "MainWindow.fxml";
     private static final int MIN_HEIGHT = 600;
     private static final int MIN_WIDTH = 450;
@@ -51,12 +51,14 @@ public class MainWindow extends UiPart<Region> {
 
     @FXML
     private StackPane browserPlaceholder;
+
     //@@author mzxc152
     @FXML
     private TextField findField;
 
     @FXML
     private ComboBox comboBox;
+
     //@@author
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -72,6 +74,8 @@ public class MainWindow extends UiPart<Region> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+
     //@@author mzxc152
     public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic)
             throws CommandException, ParseException {
@@ -192,6 +196,7 @@ public class MainWindow extends UiPart<Region> {
 
         CommandBox commandBox = new CommandBox(logic);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+
     }
 
     void hide() {
@@ -269,4 +274,5 @@ public class MainWindow extends UiPart<Region> {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         handleHelp();
     }
+
 }

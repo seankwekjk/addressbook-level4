@@ -51,8 +51,7 @@ public class SortCommandParser implements Parser<SortCommand> {
         String trimmedArgs = args.trim().toLowerCase();
         if (trimmedArgs.isEmpty() || !trimmedArgs.equals("name") && !trimmedArgs.equals("phone")
                 && !trimmedArgs.equals("email") && !trimmedArgs.equals("address") && !trimmedArgs.equals("tag")) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
         }
         return new SortCommand(trimmedArgs);
     }
@@ -118,6 +117,7 @@ public class SortCommandParser implements Parser<SortCommand> {
 
     @FXML
     private ComboBox comboBox;
+
 ```
 ###### \java\seedu\address\ui\MainWindow.java
 ``` java
@@ -287,7 +287,6 @@ public class SortCommandParser implements Parser<SortCommand> {
 ```
 ###### \resources\view\MainWindow.fxml
 ``` fxml
-  </StackPane>
   <StackPane prefHeight="42.0" prefWidth="690.0" styleClass="pane-with-border">
     <children>
       <Label style="-fx-font-size: 14; -fx-text-fill: white;" text="Sort By:" StackPane.alignment="CENTER_RIGHT">
