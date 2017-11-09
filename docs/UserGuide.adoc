@@ -89,6 +89,7 @@ The Command Format Summary _(Figure 5.0.1)_ given below, guides you through how 
  * Commands with an alias indicates that the command word can be substituted with that letter instead when typing in the command. +
  ** e.g. in `add n/NAME`, `a n/NAME` will also work.
 ====
+
 _Figure 5.0.1 : Command Format Summary_
 
 === Features not requiring commands
@@ -98,6 +99,7 @@ The features in this subsection do not require any commands to execute and are a
 ==== Coloured tags
 
 Each unique tag currently has a colour that is set to that tag name, for you to easily identify different groups of tags that you have added. +
+
 You cannot individually set the colour you want for each tag, but this feature will be added in a future update to Contags.
 
 ==== Saving the data
@@ -393,12 +395,17 @@ _Figure 5.21.1 : Sort UI Dropdown Box_
 Examples:
 
 * `sort name` +
+image::sortname.png[width="200"]
+_Figure 5.21.2 : Sorting by name_ +
 List is sorted according to name in ascending order.
+image::sortnamedisplay.png[width="200"]
+_Figure 5.21.3 : Result after sorting by name_ +_
 * `sort EMAIL` +
+image::sortemail.png[width="200"]
+_Figure 5.21.4 : Sorting by email address_ +
 List is sorted according to email addresses in ascending order.
-* `sort Address` +
-List is sorted according to addresses in ascending order.
-
+image::sortemaildisplay.png[width="200"]
+_Figure 5.21.5 : Result after sorting by email address__
 // end::sort[]
 
 === Toggling `select` command function : `toggle` `Since v1.3`
