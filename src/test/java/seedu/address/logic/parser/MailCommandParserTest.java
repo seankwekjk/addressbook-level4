@@ -20,7 +20,7 @@ public class MailCommandParserTest {
     private MailCommandParser parser = new MailCommandParser();
 
     @Test
-    public void parse_validArgs_returnsSelectCommand() {
+    public void parse_validArgs_returnsMailCommand() {
         assertParseSuccess(parser, "1", new MailCommand(INDEX_FIRST_PERSON));
     }
 
