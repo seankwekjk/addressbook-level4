@@ -1010,6 +1010,7 @@ Contags informs user that the format is invalid, providing the correct format. U
 Contags informs user that the contact cannot be found. Use case ends.
 
 // end::findCommand[]
+// tag::mailContact[]
 [discrete]
 === Use case: Mail Contact
 
@@ -1026,6 +1027,8 @@ Contags informs user that the contact cannot be found. Use case ends.
 +
 ** 1a1. Contags informs user that index is not valid.
 
+// end::mailContact[]
+// tag::listBirthday[]
 [discrete]
 === Use case: List contacts whose birthdays fall on current date
 
@@ -1036,6 +1039,7 @@ Contags informs user that the contact cannot be found. Use case ends.
 +
 Use case ends.
 
+// end::listBirthday[]
 [discrete]
 === Use case: Select Contact
 

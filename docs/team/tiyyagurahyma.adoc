@@ -36,7 +36,35 @@ include::../DeveloperGuide.adoc[tag=undoredo]
 
 ---
 
-=== Enhancement Proposed: Add command `remark`
+=== Enhancement Added: ListBirthday Command
+
+==== External behavior
+
+---
+#Start of Extract [from: User Guide]#
+
+include::../UserGuide.adoc[tag=listBirthday]
+
+#End of Extract#
+
+---
+
+==== Justification
+
+{Justify the need for, and the current design (i.e. external behavior) of, the feature}
+
+==== Implementation
+
+---
+#Start of Extract [from: Developer Guide]#
+
+include::../DeveloperGuide.adoc[tag=listBirthday]
+
+#End of Extract#
+
+---
+
+=== Enhancement Proposed: Add command `schedule`
 
 {Explain similar to the Undo/Redo feature above.}
 

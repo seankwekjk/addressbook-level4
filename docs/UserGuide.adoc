@@ -169,7 +169,7 @@ Searches through all contacts in the Contags and deletes all instances of the Ta
 
 // end::removeTag[]
 
-=== Deleting a contact : `delete`
+=== Deleting a contact : `delete` `d`
 
 Deletes the specified contact from Contags. +
 Format: `delete INDEX`
@@ -234,7 +234,7 @@ List is sorted according to email addresses in ascending order.
 * `sort Address` +
 List is sorted according to addresses in ascending order.
 
-// tag::listBirthdayCommand[]
+// tag::listBirthday[]
 
 === Viewing contacts whose birthdays fall on the current date: `listbirthday`
 
@@ -245,7 +245,7 @@ Format: `listbirthday`
 * Lists the contacts in order of the most updated list.
 ****
 
-// end::listBirthdayCommand[]
+// end::listBirthday[]
 
 === Sending a SMS Message to the telephone number of the contact indicated bby the given index: `select INDEX`
 // tag::smsContact[]
