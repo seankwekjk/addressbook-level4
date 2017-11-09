@@ -30,7 +30,8 @@ include::../UserGuide.adoc[tag=mailContact]
 ---
 #Start of Extract [from: Developer Guide]#
 
-include::../DeveloperGuide.adoc[tag=undoredo]
+include::../DeveloperGuide.adoc[tag=mailContact]
+include::../DeveloperGuide.adoc[tag=mailCommand]
 
 #End of Extract#
 
