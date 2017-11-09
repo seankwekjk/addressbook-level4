@@ -41,7 +41,7 @@ Having any Java 8 version is not enough. +
 This app will not work with earlier versions of Java 8.
 +
 
-. *IntelliJ* IDE
+. *IntelliJ* IDE.
 +
 [NOTE]
 IntelliJ by default has Gradle and JavaFx plugins installed. +
@@ -106,7 +106,7 @@ Once you've completed the steps above and are ready to start coding, get some se
 image::Architecture.png[width="600"]
 _Figure 3.1.1 : Architecture Diagram_
 
-The *_Architecture Diagram (Figure 3.1.1)_* given above explains the high-level design of the App. Given below is a quick overview of each component.
+The Architecture Diagram _(Figure 3.1.1)_ given above explains the high-level design of the App. Given below is a quick overview of each component.
 
 [TIP]
 You can find the `.pptx` files used to create diagrams in this document in the link:{repoURL}/docs/diagrams/[diagrams] folder. +
@@ -137,10 +137,10 @@ Each of the four components:
 * Defines its _API_ in an `interface` with the same name as the Component.
 * Exposes its functionality using a `{Component Name}Manager` class.
 
-For example, the `Logic` component (see the _class diagram (Figure 3.1.2)_ given below) defines its API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class.
+For example, the `Logic` component ( _Class Diagram (Figure 3.1.2)_ given below) defines it's API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class.
 
 image::LogicClassDiagram.png[width="800"]
-_Figure 2.1.2 : Class Diagram of the Logic Component_
+_Figure 3.1.2 : Class Diagram of the Logic Component_
 
 [discrete]
 ==== Events-Driven nature of the design
@@ -148,10 +148,10 @@ _Figure 2.1.2 : Class Diagram of the Logic Component_
 The _Sequence Diagram (Figure 3.1.3a)_ below shows how the components interact in a scenario where the user issues the command `delete 1`.
 
 image::SDforDeletePerson.png[width="800"]
-_Figure 2.1.3a : Component interactions for `delete 1` command (part 1)_
+_Figure 3.1.3a : Component interactions for `delete 1` command (part 1)_
 
 [NOTE]
-Note how the `Model` simply raises a `AddressBookChangedEvent` when the Contags data are changed, instead of asking the `Storage` to save the updates to the hard disk.
+Note how the `Model` simply raises a `AddressBookChangedEvent` when the data in Contags are changed, instead of asking the `Storage` to save the updates to the hard disk.
 
 The _Sequence Diagram (Figure 3.1.3b)_ below shows how the `EventsCenter` reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.
 
@@ -190,9 +190,9 @@ image::LogicClassDiagram.png[width="800"]
 _Figure 3.3.1 : Structure of the Logic Component_
 
 image::LogicCommandClassDiagram.png[width="800"]
-_Figure 3.3.2 : Structure of Commands in the Logic Component.
+_Figure 3.3.2 : Structure of Commands in the Logic Component_
 
-This diagram shows finer details concerning `XYZCommand` and `Command` in Figure 3.3.1_
+This diagram shows finer details concerning `XYZCommand` and `Command` in _Figure 3.3.1_.
 
 *API* :
 link:{repoURL}/src/main/java/seedu/address/logic/Logic.java[`Logic.java`]
@@ -205,7 +205,7 @@ link:{repoURL}/src/main/java/seedu/address/logic/Logic.java[`Logic.java`]
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
 
 image::DeletePersonSdForLogic.png[width="800"]
-_Figure 3.3.1 : Interactions Inside the Logic Component for the `delete 1` Command_
+_Figure 3.3.3 : Interactions inside the Logic Component for the `delete 1` Command_
 
 === Model component
 
@@ -249,7 +249,7 @@ The undo/redo mechanism is facilitated by an `UndoRedoStack`, which resides insi
 `UndoRedoStack` only deals with `UndoableCommand`. Commands that cannot be undone will inherit from `Command` instead. The following diagram shows the inheritance diagram for commands:
 
 image::LogicCommandClassDiagram.png[width="800"]
-_Figure 4.1a : Logic Command class diagram_
+_Figure 4.1.1 : Logic Command Class Diagram_
 
 As you can see from the _Class Diagram (Figure 4.1.1)_ above, `UndoableCommand` adds an extra layer between the abstract `Command` class and concrete commands that can be undone, such as the `DeleteCommand`. Note that extra tasks need to be done when executing a command in an _undoable_ way, such as saving the state of the address book before execution. `UndoableCommand` contains the high-level algorithm for those extra tasks while the child classes implements the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the https://www.tutorialspoint.com/design_pattern/template_pattern.htm[template pattern].
 
@@ -289,12 +289,12 @@ Suppose that the user has just launched the application. The `UndoRedoStack` wil
 The user executes a new `UndoableCommand`, `delete 5`, to delete the 5th person in the address book. The current state of the address book is saved before the `delete 5` command is executed. The `delete 5` command will then be pushed onto the `undoStack` (the current state is saved together with the command).
 
 image::UndoRedoStartingStackDiagram.png[width="800"]
-_Figure 4.1b : Undo/Redo starting stack diagram_
+_Figure 4.1.2 : Diagram of UndoRedoStack after executing DeleteCommand_
 
 As the user continues to use the program, more commands are added into the `undoStack`. For example, the user may execute `add n/David ...` to add a new person.
 
 image::UndoRedoNewCommand1StackDiagram.png[width="800"]
-_Figure 4.1c : Undo/Redo new command stack diagram_
+_Figure 4.1.3 : Diagram of UndoRedoStack after executing AddCommand_
 
 [NOTE]
 If a command fails its execution, it will not be pushed to the `UndoRedoStack` at all.
@@ -304,7 +304,7 @@ The user now decides that adding the person was a mistake, and decides to undo t
 We will pop the most recent command out of the `undoStack` and push it back to the `redoStack`. We will restore the address book to the state before the `add` command executed.
 
 image::UndoRedoExecuteUndoStackDiagram.png[width="800"]
-_Figure 4.1d : Undo/Redo execute undo stack diagram_
+_Figure 4.1.4 : Diagram of UndoRedoStack after undoing AddCommand_
 
 [NOTE]
 If the `undoStack` is empty, there are no other commands left to be undone and an `Exception` will be thrown when popping the `undoStack`.
@@ -312,7 +312,7 @@ If the `undoStack` is empty, there are no other commands left to be undone and a
 The following sequence diagram shows how the undo operation works:
 
 image::UndoRedoSequenceDiagram.png[width="800"]
-_Figure 4.1e : Undo/Redo sequence diagram_
+_Figure 4.1.5 : Sequence Diagram of Undo Operation_
 
 The redo does the exact opposite (pops from `redoStack`, push to `undoStack`, and restores the address book to the state after the command is executed).
 
@@ -322,18 +322,17 @@ If the `redoStack` is empty, there are no other commands left to be redone and a
 The user now decides to execute a new command, `clear`. As before, `clear` will be pushed into the `undoStack`. This time the `redoStack` is no longer empty. It will be purged as it no longer make sense to redo the `add n/David` command (this is the behavior that most modern desktop applications follow).
 
 image::UndoRedoNewCommand2StackDiagram.png[width="800"]
-_Figure 4.1f : Undo/Redo new command part 1_
+_Figure 4.1.6 : Diagram of UndoRedoStack after executing Clear Command_
 
 Commands that cannot be undone are not added into the `undoStack`. For example, `list`, which inherits from `Command` rather than `UndoableCommand`, will not be added after execution:
 
 image::UndoRedoNewCommand3StackDiagram.png[width="800"]
-_Figure 4.1g : Undo/Redo new command part 2_
+_Figure 4.1.7 : Diagram of UndoRedoStack after executing List Command_
 
 The following activity diagram summarizes what happens inside the `UndoRedoStack` when a user executes a new command:
 
 image::UndoRedoActivityDiagram.png[width="200"]
-_Figure 4.1h : Undo/Redo activity diagram_
-
+_Figure 4.1.8 : Activity Diagram of UndoRedoStack_
 ==== Design Considerations
 
 **Aspect:** Implementation of `UndoableCommand` +
@@ -375,6 +374,7 @@ _Figure 4.1h : Undo/Redo activity diagram_
 **Cons:** Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things. +
 // end::undoredo[]
 
+// tag::remark[]
 === Remark mechanism
 
 `Remark` functions as an additional Optional field for a `Person`. It exists separately from tags, and does not interfere with its function.
@@ -424,7 +424,9 @@ To create a difference between the updating and clearing of the `Remark` field, 
 **Alternative 2:** Use the list of all persons +
 **Pros** It allows all persons, even those not currently being shown, to have their `Remark` edited. +
 **Cons** The user will find it difficult to know the `index` of the `Person` he would like to edit, particularly if it is not currently in the filtered list. It is not intuitive and difficult for the user to utilise.
+// end::remark[]
 
+// tag::birthdayfield[]
 === Birthday Field
 
 The person class consists of five compulsory attributes, `Name` `Phone` `Email` `Address` `Birthday` and optional `Remark` and `Tag`. The implementation of the birthday attribute is similar to that of the other compulsory attributes. It is a compulsory field and cannot be left blank. The constructor takes in the birthday value in a String format and a new instance of the birthday field is initialised.
@@ -449,7 +451,10 @@ The birthday value is validated before being accepted as a parameter in the cons
 **Cons:** Not very user-friendly as not all users would want to add birthdays for all their contacts. +
 **Alternative 2:** Make the birthday field optional. +
 **Pros:** More user-friendly. +
-**Cons: Implementation is slightly more tedious and new developers might need more time to understand the implementation. **
+**Cons: ** Implementation is slightly more tedious and new developers might need more time to understand the implementation.
+
+// end::birthdayfield[]
+// tag::listbirthday[]
 
 === ListBirthday Mechanism
 
@@ -461,16 +466,18 @@ The BirthdayChecker class checks if a contact's birthday falls on the current da
 
 ==== Design Considerations
 
-**Aspect:** Whether the listbirthday should be an executable command that requires manual typing of the command each time.
-**Alternative 1 (current choice):** listbirthday is a command and users would have to type that every time they want to find out if a contact's birthday falls on that day.
-**Pros:** Easy to implement and easy for new developers to understand and work on it.
-**Cons:** Not as user friendly as users would have to manually key in the command every time.
-**Alternative 2:** List of contacts whose birthdays falls on the current day appear as a popup every time the app is started.
-**Pros:** More user friendly as users would not have to type the command every day. Users might forget to type the command everyday to check if any of their contact's birthday is on the current date.
-**Cons:** Implementation is more tedious.
-**Alternative 3:** List the contacts whose birthdays fall within a week from the current date.
-**Pros:** More user friendly as users might want to know whose birthday is nearing.
+**Aspect:** Whether the listbirthday should be an executable command that requires manual typing of the command each time. +
+**Alternative 1 (current choice):** listbirthday is a command and users would have to type that every time they want to find out if a contact's birthday falls on that day. +
+**Pros:** Easy to implement and easy for new developers to understand and work on it. +
+**Cons:** Not as user friendly as users would have to manually key in the command every time. +
+**Alternative 2:** List of contacts whose birthdays falls on the current day appear as a popup every time the app is started. +
+**Pros:** More user friendly as users would not have to type the command every day. Users might forget to type the command everyday to check if any of their contact's birthday is on the current date. +
+**Cons:** Implementation is more tedious. +
+**Alternative 3:** List the contacts whose birthdays fall within a week from the current date. +
+**Pros:** More user friendly as users might want to know whose birthday is nearing. +
 **Cons:** More tedious to implement.
+
+// tag::social[]
 
 === Social Media
 
@@ -485,17 +492,19 @@ public class BrowserPanel extends UiPart<Region> {
 }
 ----
 
+The mechanism of `SelectCommand` remains intact. However, there are changes in the handling of the `PersonPanelSelectionChangedEvent` raised by the `SelectCommand` within BrowserPanel based on the state of the boolean variable.
+
 By default, the variable is true, and it will cause the `select` command to display the contact's address. +
-When it is toggled, the `select` command will cause the `select` command to follow the url specified in the social media url field instead.
+When it is toggled, the `select` command will cause the `select` command to follow the url specified in the social media url field instead. The `toggle` command will itself refresh the `BrowserPanel` and cause it to display the opposite of what is currently being shown.
 
-The following sequence diagram shows the execution of the SelectCommand, including the `toggle` mechanism. The execution of the ToggleCommand is excluded for brevity.
+The following sequence diagram shows the execution of the ToggleCommand.
 
-image::SocialMediaSequenceDiagram.png[width="800"]
-_Figure 4.4a : Social Media sequence diagram_
+image::ToggleCommandSequenceDiagram.png[width="800"]
+_Figure 4.4a : ToggleCommand sequence diagram_
 
-The mechanism of the SelectCommand remains intact. However, the changes are in the execution within BrowserPanel based on the state of the boolean variable.
+The `ToggleCommand` is able to refresh the `BrowserPanel` through the use of a new `ToggleChangedEvent`. This is an event that is handled by the `BrowserPanel`, and relies on 2 private variables within `BrowserPanel`.
 
-After toggling, instead of retrieving the contact's address and opening a Google Maps page, it will follow the url of the contact's social media field
+When `BrowserPanel` handles a `PersonPanelSelectionChangedEvent`, it stores both the `Address` and `Social Media` fields. The handler of `ToggleChangedEvent` is thus able to cause the browser to load the url linked to the other mode.
 
 ==== Design Considerations
 
@@ -516,15 +525,17 @@ After toggling, instead of retrieving the contact's address and opening a Google
 **Alternative 2:** Enter choice in the select command +
 **Pros:** When users want to alternate between functions, it will be easier and require fewer commands. +
 **Cons:** Complicates the Select Command.
+// end::social[]
 
+//tag::sort[]
 === Sort Mechanism
 
-The sort command sorts the `person` in `Contags` based on their `Name`, `Phone`, `Email`, `Address` or `Tag`. The implementation of `SortCommand` inherits from `Command`. Sorting currently works in ascending order only. +
+`SortCommand` sorts the `person` in Contags based on their `Name`, `Phone`, `Email`, `Address` or `Tag`. The implementation of `SortCommand` inherits from `Command`. Sorting currently works in ascending order only. +
 
-There is also the use of the `SortCommandParser`, which implements the `Parser` interface, that parses out the keywords to be used with the `sort` command. The `SortCommandParser` checks for the correct keywords used and also allows the keywords to be case-insensitive.  +
+There is also the use of the `SortCommandParser` class, which implements the `Parser` interface, that parses out the keywords to be used with the `sort` command. The `SortCommandParser` checks for the correct keywords used and also allows the keywords to be case-insensitive.  +
 
 [NOTE]
-If arguments entered by the user do not comply with the correct format, ParseException will be thrown before execution of the method. +
+If you entered arguments that do not follow the required format, `ParseException` will be thrown. +
 
 ==== Design Considerations
 
@@ -545,6 +556,40 @@ If arguments entered by the user do not comply with the correct format, ParseExc
 **Alternative 2:** List of contacts is sorted in alphabetical order, and can be in either ascending or descending order as decided by user. +
 **Pros:** Has more functionality, more user-friendly. +
 **Cons:** Harder to implement and develop. +
+// end::sort[]
+
+// tag::mailcommand[]
+
+=== Mail Command
+
+The mail command mails a `person` in `Contags` based on their `Index` in the most updated list. The implementation of `MailCommand` inherits from `Command`. +
+
+There is also the use of the `MailCommandParser`, which implements the `Parser` interface, that parses out the index to be used with the `sort` command. The `MailCommandParser` validates the input index.  +
+
+[NOTE]
+If the index entered by the user do not comply is out of range, ParseException will be thrown before execution of the method. +
+
+==== Design Considerations
+
+**Aspect:** Attributes to mail command +
+**Alternative 1 (current choice):** Only takes in to (email address) field. +
+**Pros:** Allows users to type in their title and message on the mail application itself. It would be more user friendly if the message is long or requires formatting such as new lines or separating the message into paragraphs. +
+**Cons:** Does not take in title and message fields, user would still have to type the subject and message when the mail application opens. +
+**Alternative 2:** Take in to, title and message fields. +
+**Pros:** Useful for most users who want to send a short message quickly without having to type in the mail application when it opens. +
+**Cons:** Not useful for users who want to send long messages with paragraphs.
+
+---
+
+**Aspect:** Whether mail command should automatically send the mail without opening up the mail application +
+**Alternative 1 (current choice):** Mail command opens up the default desktop mail application. +
+**Pros:** User can decide on the preferred mail server and there would not be security issues with the log in since it is done externally. +
+**Cons:** Less user friendly as there is a need to open an extra application. +
+**Alternative 2:** Implement GMail API. +
+**Pros:** There is no need to open up the desktop mail application and users can easily send a mail using just the CLI. +
+**Cons:** There might be security issues pertaining to the log in. Furthermore, not all users would want to use Gmail. This alternative would not account for users having different preferences on which email server they would like to use. Interface for GMail is not optimal in `JavaFX WebView`.
+
+// end::mailcommand[]
 
 === Logging
 
@@ -1010,6 +1055,7 @@ Contags informs user that the format is invalid, providing the correct format. U
 Contags informs user that the contact cannot be found. Use case ends.
 
 // end::findCommand[]
+// tag::mailContact[]
 [discrete]
 === Use case: Mail Contact
 
@@ -1026,6 +1072,8 @@ Contags informs user that the contact cannot be found. Use case ends.
 +
 ** 1a1. Contags informs user that index is not valid.
 
+// end::mailContact[]
+// tag::listBirthday[]
 [discrete]
 === Use case: List contacts whose birthdays fall on current date
 
@@ -1036,6 +1084,7 @@ Contags informs user that the contact cannot be found. Use case ends.
 +
 Use case ends.
 
+// end::listBirthday[]
 [discrete]
 === Use case: Select Contact
 
@@ -1089,6 +1138,7 @@ Contags informs user that the tag does not exist. Use case ends.
 
 {More to be added}
 
+// tag::glossary[]
 [appendix]
 == Glossary
 
@@ -1245,6 +1295,8 @@ XML
 ....
 XML is a metalanguage which allows users to define their own customized markup languages, especially in order to display documents on the Internet.
 ....
+
+// end::glossary[]
 
 [appendix]
 == Product Survey

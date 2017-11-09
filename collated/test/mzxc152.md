@@ -16,7 +16,6 @@ public class SortCommandTest {
     private static final String ADDRESS_SORT = "address";
     private static final String TAG_SORT = "tag";
 
-    private SortCommand sortCommand;
     private Model model;
     private Model expectedModel;
 
@@ -70,6 +69,29 @@ public class SortCommandTest {
         SortCommand command = new SortCommand(toSort);
         command.setData(model, new CommandHistory(), new UndoRedoStack());
         return command;
+    }
+}
+```
+###### \java\seedu\address\logic\parser\SortCommandParserTest.java
+``` java
+
+public class SortCommandParserTest {
+
+    private SortCommandParser parser = new SortCommandParser();
+
+    @Test
+    public void parse_emptyArg_throwsParseException() {
+        assertParseFailure(parser, "     ",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
+    }
+
+    @Test
+    public void parse_invalidArg_throwsParseException() {
+        assertParseFailure(parser, "birthday",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
+
+        assertParseFailure(parser, "!@#$`2",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
     }
 }
 ```

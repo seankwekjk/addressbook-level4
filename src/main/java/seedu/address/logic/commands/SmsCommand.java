@@ -5,6 +5,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_SMS_NUMBER_UNAUTHORIZE
 import static seedu.address.commons.core.Messages.MESSAGE_SMS_PERSON_SUCCESS;
 
 import java.util.List;
+import java.util.logging.Level;
 
 import com.twilio.Twilio;
 import com.twilio.exception.ApiException;
@@ -22,8 +23,9 @@ import seedu.address.model.person.ReadOnlyPerson;
 public class SmsCommand extends Command {
 
     public static final String COMMAND_WORD = "sms";
-    public static final String ACCOUNT_SID = "ACed7baf2459e41d773a5f9c2232d4d975";
-    public static final String AUTH_TOKEN = "6a26cc5c91ff355ebf48fe019700920b";
+    private static String accountSid = "ACed7baf2459e41d773a5f9c2232d4d975";
+    private static String authenticationToken = "6a26cc5c91ff355ebf48fe019700920b";
+    private static String sendingNumber = "+12082157763";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": sends a phone SMS message to the phone number of the contact identified by the index number\n"
@@ -36,7 +38,7 @@ public class SmsCommand extends Command {
     public SmsCommand(Index targetIndex, String text) {
         this.targetIndex = targetIndex;
         this.text = text;
-        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+        Twilio.init(accountSid, authenticationToken);
     }
 
     @Override
@@ -53,14 +55,23 @@ public class SmsCommand extends Command {
         try {
 
             Message message = Message
-                    .creator(new PhoneNumber("+65" + receivingNumber), new PhoneNumber("+12082157763"), text)
+                    .creator(new PhoneNumber("+65" + receivingNumber), new PhoneNumber(sendingNumber), text)
                     .create();
+
         } catch (ApiException ae) {
+            logger.log(Level.INFO, MESSAGE_SMS_NUMBER_UNAUTHORIZED);
             return new CommandResult(MESSAGE_SMS_NUMBER_UNAUTHORIZED);
         }
 
+        logger.log(Level.FINE, MESSAGE_SMS_PERSON_SUCCESS);
         return new CommandResult(MESSAGE_SMS_PERSON_SUCCESS);
 
     }
 
+    public static void setAccountParticulars(String initializeAccountSid, String initializeAuthenticationToken,
+                                             String initializeSendingNumber) {
+        accountSid = initializeAccountSid;
+        authenticationToken = initializeAuthenticationToken;
+        sendingNumber = initializeSendingNumber;
+    }
 }

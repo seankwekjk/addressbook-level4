@@ -1,8 +1,6 @@
 package seedu.address.logic.commands;
 
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_MESSAGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_RECEPIENT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MAIL_TITLE;
 
 import java.awt.Desktop;
 import java.io.IOException;
@@ -12,9 +10,9 @@ import java.util.List;
 import java.util.Properties;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.ReadOnlyPerson;
-
 
 /**
  * Mails a person in Contags.
@@ -26,34 +24,24 @@ public class MailCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Mails a contact in Contags.\n"
             + "Recepient mail address cannot be blank.\n"
-            + "Parameters: " + PREFIX_MAIL_RECEPIENT + " INDEX" + PREFIX_MAIL_TITLE + " TITLE" + PREFIX_MAIL_MESSAGE
-            + " MESSAGE\n"
-            + "Example: " + COMMAND_WORD + " " + PREFIX_MAIL_RECEPIENT + "1" + " " + PREFIX_MAIL_TITLE
-            + "Meeting Reminder" + " " + PREFIX_MAIL_MESSAGE + "Meeting is at 2pm on Sunday.";
+            + "Parameters: " + PREFIX_MAIL_RECEPIENT + " INDEX"
+            + "Example: " + COMMAND_WORD + " " + PREFIX_MAIL_RECEPIENT + "1";
 
     public static final String MESSAGE_SUCCESS = "Redirect to Mail application success.";
     public static final String MESSAGE_FAILURE = "Could not redirect to Mail application. "
-            + "Please enter a valid mail address.";
+            + "Please enter a valid index.";
 
-    //private final AnyParticularContainsKeywordsPredicate targetIndex;
     private final Index targetIndex;
-    private final String title;
-    private final String message;
 
-    public MailCommand(Index targetIndex, String title, String message) {
+    public MailCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
-        this.title = title;
-        this.message = message;
     }
 
     /**
      * Opens up Desktop Mail application.
      */
 
-    private void sendMail(String sendMailTo) throws ParseException {
-        if (sendMailTo.equalsIgnoreCase(" ")) {
-            throw new ParseException("Recipient mail is not valid. Please enter a valid mail address.");
-        }
+    public void sendMail(String sendMailTo) throws ParseException, IOException, URISyntaxException {
 
         String host = "localhost";
 
@@ -65,7 +53,7 @@ public class MailCommand extends Command {
         String url = "";
 
         try {
-            url = "mailTo:" + sendMailTo + "?subject=" + this.title + "&body=" + this.message;;
+            url = "mailTo:" + sendMailTo;
             mailTo = new URI(url);
             desktop.mail(mailTo);
         } catch (IOException | URISyntaxException e) {
@@ -74,9 +62,14 @@ public class MailCommand extends Command {
     }
 
     @Override
-    public CommandResult execute() {
+    public CommandResult execute() throws CommandException {
 
         List<ReadOnlyPerson> lastShownList = model.getFilteredPersonList();
+
+        if (targetIndex.getZeroBased() >= lastShownList.size()) {
+            throw new CommandException(MESSAGE_FAILURE);
+        }
+
         String sendMailTo = lastShownList.get(targetIndex.getZeroBased()).getEmail().toString();
 
         try {
@@ -84,6 +77,8 @@ public class MailCommand extends Command {
         } catch (ParseException e) {
             e.printStackTrace();
             return new CommandResult(MESSAGE_FAILURE);
+        } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
         }
 
         return new CommandResult(MESSAGE_SUCCESS);
