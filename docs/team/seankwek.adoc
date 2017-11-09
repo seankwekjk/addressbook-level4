@@ -36,6 +36,34 @@ include::../DeveloperGuide.adoc[tag=remark]
 
 ---
 
+=== Enhancement Added: Social Media
+
+==== External behavior
+
+---
+#Start of Extract [from: User Guide]#
+
+include::../UserGuide.adoc[tag=social]
+
+#End of Extract#
+
+---
+
+==== Justification
+
+{Justify the need for, and the current design (i.e. external behavior) of, the feature}
+
+==== Implementation
+
+---
+#Start of Extract [from: Developer Guide]#
+
+include::../DeveloperGuide.adoc[tag=social]
+
+#End of Extract#
+
+---
+
 === Enhancement Proposed: Add command `remark`
 
 {Explain similar to the Undo/Redo feature above.}
