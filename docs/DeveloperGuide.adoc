@@ -587,7 +587,7 @@ If the index entered by the user do not comply is out of range, ParseException w
 **Cons:** Less user friendly as there is a need to open an extra application. +
 **Alternative 2:** Implement GMail API. +
 **Pros:** There is no need to open up the desktop mail application and users can easily send a mail using just the CLI. +
-**Cons:** There might be security issues pertaining to the log in. Furthermore, not all users would want to use Gmail. This alternative would not account for users having different preferences on which email server they would like to use. Interface for GMail is not optimal in `JavaFX WebView`. +
+**Cons:** There might be security issues pertaining to the log in. Furthermore, not all users would want to use Gmail. This alternative would not account for users having different preferences on which email server they would like to use. Interface for GMail is not optimal in `JavaFX WebView`.
 
 // end::mailcommand[]
 
