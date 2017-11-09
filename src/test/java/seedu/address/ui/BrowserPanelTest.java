@@ -72,5 +72,17 @@ public class BrowserPanelTest extends GuiUnitTest {
         assertEquals(expectedPersonUrl, browserPanelHandle.getLoadedUrl());
         assertEquals(ALICE.getAddress().value, browserPanel.getValue());
         assertEquals("Address", browserPanel.getField());
+
+        BrowserPanel.setBrowserMode();
+        toggleEventStub = new ToggleChangedEvent();
+        postNow(toggleEventStub);
+        expectedSocialUrl = new URL(SOCIAL_MEDIA_URL_PREFIX + ALICE.getSocialMedia() + "/");
+
+        assertEquals(expectedSocialUrl, browserPanelHandle.getLoadedUrl());
+        assertEquals(ALICE.getSocialMedia(), browserPanel.getValue());
+        assertEquals("Social Media", browserPanel.getField());
+
+        //revert BrowserMode to original state
+        BrowserPanel.setBrowserMode();
     }
 }
