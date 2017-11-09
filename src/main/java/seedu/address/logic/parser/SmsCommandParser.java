@@ -3,6 +3,8 @@ package seedu.address.logic.parser;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SMS_TEXT;
 
+import java.util.stream.Stream;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.SmsCommand;
@@ -23,6 +25,10 @@ public class SmsCommandParser implements Parser<SmsCommand> {
         Index index;
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_SMS_TEXT);
 
+        if (!arePrefixesPresent(argMultimap, PREFIX_SMS_TEXT)) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SmsCommand.MESSAGE_USAGE));
+        }
+
         try {
             index = ParserUtil.parseIndex(firstWord(args));
 
@@ -38,6 +44,10 @@ public class SmsCommandParser implements Parser<SmsCommand> {
 
     public static String firstWord(String input) {
         return input.split(" ")[1]; // Create array of words and return the 1st word
+    }
+
+    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 }
 
