@@ -180,9 +180,10 @@ public class CommandBox extends UiPart<Region> {
                 .filter(i-> i.toLowerCase().startsWith(userInput.toLowerCase()))
                 .collect(Collectors.toList());
 
-            if (matchedSuggestions.contains(userInput) || userInput.isEmpty() || matchedSuggestions.isEmpty()) {
+            if (matchedSuggestions.contains(userInput.toLowerCase()) || userInput.isEmpty() || matchedSuggestions.isEmpty()) {
                 suggestionsMenu.hide();
-            } else {
+
+           } else {
                 createPopupWindow(matchedSuggestions);
                 if (!suggestionsMenu.isShowing()) {
                     suggestionsMenu.show(this.commandTextField, Side.TOP, 200, 0); // Popup position.
