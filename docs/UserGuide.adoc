@@ -234,6 +234,8 @@ List is sorted according to email addresses in ascending order.
 * `sort Address` +
 List is sorted according to addresses in ascending order.
 
+// tag::listBirthdayCommand[]
+
 === Viewing contacts whose birthdays fall on the current date: `listbirthday`
 
 Lists the contacts whose birthdays matches the current date. +
@@ -242,6 +244,8 @@ Format: `listbirthday`
 ****
 * Lists the contacts in order of the most updated list.
 ****
+
+// end::listBirthdayCommand[]
 
 === Sending a SMS Message to the telephone number of the contact indicated bby the given index: `select INDEX`
 // tag::smsContact[]
@@ -264,17 +268,20 @@ Examples:
 Sends an sms message to the number of the contact indicated by the index, with the message "hello there!"
 
 // end::smsContact[]
+// tag::mailContact[]
 
 === Mailing a contact: `mail` `m`
 
 Mails a contact in Contags
 
-Format: `mail to/[EMAIL] title/[SUBJECT] message/[MESSAGE]`
+Format: `mail INDEX`
 
 Examples:
 
-*`mail to/john@gmail.com title/hi message/hello`
-Opens up mail application and to, title and message fields of the mail will be automatically filled in.
+*`mail 1`
+Opens up mail application and to field of the mail will be automatically filled in with the email address of the contact at index 1.
+
+// end::mailContact[]
 
 === Adding remarks: `remark` `Since v1.1`
 
