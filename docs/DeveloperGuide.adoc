@@ -426,6 +426,7 @@ To create a difference between the updating and clearing of the `Remark` field, 
 **Cons** The user will find it difficult to know the `index` of the `Person` he would like to edit, particularly if it is not currently in the filtered list. It is not intuitive and difficult for the user to utilise.
 // end::remark[]
 
+// tag::birthdayfield[]
 === Birthday Field
 
 The person class consists of five compulsory attributes, `Name` `Phone` `Email` `Address` `Birthday` and optional `Remark` and `Tag`. The implementation of the birthday attribute is similar to that of the other compulsory attributes. It is a compulsory field and cannot be left blank. The constructor takes in the birthday value in a String format and a new instance of the birthday field is initialised.
@@ -450,7 +451,10 @@ The birthday value is validated before being accepted as a parameter in the cons
 **Cons:** Not very user-friendly as not all users would want to add birthdays for all their contacts. +
 **Alternative 2:** Make the birthday field optional. +
 **Pros:** More user-friendly. +
-**Cons: Implementation is slightly more tedious and new developers might need more time to understand the implementation. **
+**Cons: ** Implementation is slightly more tedious and new developers might need more time to understand the implementation.
+
+// end::birthdayfield[]
+// tag::listbirthday[]
 
 === ListBirthday Mechanism
 
@@ -462,16 +466,18 @@ The BirthdayChecker class checks if a contact's birthday falls on the current da
 
 ==== Design Considerations
 
-**Aspect:** Whether the listbirthday should be an executable command that requires manual typing of the command each time.
-**Alternative 1 (current choice):** listbirthday is a command and users would have to type that every time they want to find out if a contact's birthday falls on that day.
-**Pros:** Easy to implement and easy for new developers to understand and work on it.
-**Cons:** Not as user friendly as users would have to manually key in the command every time.
-**Alternative 2:** List of contacts whose birthdays falls on the current day appear as a popup every time the app is started.
-**Pros:** More user friendly as users would not have to type the command every day. Users might forget to type the command everyday to check if any of their contact's birthday is on the current date.
-**Cons:** Implementation is more tedious.
-**Alternative 3:** List the contacts whose birthdays fall within a week from the current date.
-**Pros:** More user friendly as users might want to know whose birthday is nearing.
+**Aspect:** Whether the listbirthday should be an executable command that requires manual typing of the command each time. +
+**Alternative 1 (current choice):** listbirthday is a command and users would have to type that every time they want to find out if a contact's birthday falls on that day. +
+**Pros:** Easy to implement and easy for new developers to understand and work on it. +
+**Cons:** Not as user friendly as users would have to manually key in the command every time. +
+**Alternative 2:** List of contacts whose birthdays falls on the current day appear as a popup every time the app is started. +
+**Pros:** More user friendly as users would not have to type the command every day. Users might forget to type the command everyday to check if any of their contact's birthday is on the current date. +
+**Cons:** Implementation is more tedious. +
+**Alternative 3:** List the contacts whose birthdays fall within a week from the current date. +
+**Pros:** More user friendly as users might want to know whose birthday is nearing. +
 **Cons:** More tedious to implement.
+
+// end::listbirthday[]
 
 === Social Media
 
@@ -547,8 +553,41 @@ If you entered arguments that do not follow the required format, `ParseException
 **Alternative 2:** List of contacts is sorted in alphabetical order, and can be in either ascending or descending order as decided by user. +
 **Pros:** Has more functionality, more user-friendly. +
 **Cons:** Harder to implement and develop. +
+// end::sort[]
 
-//end::sort[]
+// tag::mailcommand[]
+
+=== Mail Command
+
+The mail command mails a `person` in `Contags` based on their `Index` in the most updated list. The implementation of `MailCommand` inherits from `Command`. +
+
+There is also the use of the `MailCommandParser`, which implements the `Parser` interface, that parses out the index to be used with the `sort` command. The `MailCommandParser` validates the input index.  +
+
+[NOTE]
+If the index entered by the user do not comply is out of range, ParseException will be thrown before execution of the method. +
+
+==== Design Considerations
+
+**Aspect:** Attributes to mail command +
+**Alternative 1 (current choice):** Only takes in to (email address) field. +
+**Pros:** Allows users to type in their title and message on the mail application itself. It would be more user friendly if the message is long or requires formatting such as new lines or separating the message into paragraphs. +
+**Cons:** Does not take in title and message fields, user would still have to type the subject and message when the mail application opens. +
+**Alternative 2:** Take in to, title and message fields. +
+**Pros:** Useful for most users who want to send a short message quickly without having to type in the mail application when it opens. +
+**Cons:** Not useful for users who want to send long messages with paragraphs.
+
+---
+
+**Aspect:** Whether mail command should automatically send the mail without opening up the mail application +
+**Alternative 1 (current choice):** Mail command opens up the default desktop mail application. +
+**Pros:** User can decide on the preferred mail server and there would not be security issues with the log in since it is done externally. +
+**Cons:** Less user friendly as there is a need to open an extra application. +
+**Alternative 2:** Implement GMail API. +
+**Pros:** There is no need to open up the desktop mail application and users can easily send a mail using just the CLI. +
+**Cons:** There might be security issues pertaining to the log in. Furthermore, not all users would want to use Gmail. This alternative would not account for users having different preferences on which email server they would like to use. Interface for GMail is not optimal in `JavaFX WebView`. +
+
+// end::mailcommand[]
+
 === Logging
 
 We are using `java.util.logging` package for logging. The `LogsCenter` class is used to manage the logging levels and logging destinations.
@@ -1013,6 +1052,7 @@ Contags informs user that the format is invalid, providing the correct format. U
 Contags informs user that the contact cannot be found. Use case ends.
 
 // end::findCommand[]
+// tag::mailContact[]
 [discrete]
 === Use case: Mail Contact
 
@@ -1029,6 +1069,8 @@ Contags informs user that the contact cannot be found. Use case ends.
 +
 ** 1a1. Contags informs user that index is not valid.
 
+// end::mailContact[]
+// tag::listBirthday[]
 [discrete]
 === Use case: List contacts whose birthdays fall on current date
 
@@ -1039,6 +1081,7 @@ Contags informs user that the contact cannot be found. Use case ends.
 +
 Use case ends.
 
+// end::listBirthday[]
 [discrete]
 === Use case: Select Contact
 
@@ -1092,6 +1135,7 @@ Contags informs user that the tag does not exist. Use case ends.
 
 {More to be added}
 
+// tag::glossary[]
 [appendix]
 == Glossary
 
@@ -1248,6 +1292,8 @@ XML
 ....
 XML is a metalanguage which allows users to define their own customized markup languages, especially in order to display documents on the Internet.
 ....
+
+// end::glossary[]
 
 [appendix]
 == Product Survey
