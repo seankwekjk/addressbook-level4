@@ -1,0 +1,28 @@
+= Test Script
+:relfileprefix: team/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:stylesDir: stylesheets
+
+== Manual Testing Script
+
+To load the sample data in the address book,
+
+=== User Interface
+
+
+'''
+
+
+=== Organisation
+
+'''
+
+=== Communication platforms
+
+
+'''
+
+=== Social Media and maintaining relationships
+
+
+
