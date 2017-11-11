@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import seedu.address.model.person.BirthdayChecker;
 
+//@@author hymss
 /**
  * Lists all persons in Contags whose birthday falls on the current day.
  */

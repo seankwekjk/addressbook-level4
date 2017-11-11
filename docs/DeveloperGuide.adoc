@@ -592,7 +592,7 @@ The `MailCommand` links the logic in Contags to the content (email address of th
 
 The following sequence diagram illustrates the execution of the `mail` command.
 
-image::mailCommandSeqDiagram.png[width="800"]
+image::MailCommandSequenceDiagram.png[width="800"]
 _Figure 4.7a : Mail Command sequence diagram_
 
 ==== Design Considerations

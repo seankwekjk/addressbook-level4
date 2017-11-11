@@ -13,6 +13,9 @@ Contags is a desktop address book application that is targeted at business profe
 ==== External behavior
 
 include::../UserGuide.adoc[tag=mailContact]
+
+===== Use Case
+
 include::../DeveloperGuide.adoc[tag=mailContact]
 
 ---
@@ -28,6 +31,8 @@ include::../DeveloperGuide.adoc[tag=mailcommand]
 
 === Enhancement Added: Birthday Field
 
+---
+
 ==== Justification
 
 Business professionals would find it useful to keep track of their contacts' birthdays so that they can maintain business relationships on top of friendships and family relationships. In today's world where connections are so necessary and powerful, maintaining business relationships have never been more important. One of the most important ways to maintain any relationship is to wish the person a happy birthday. Integrating a birthday field as part of a contact's particulars would help users to have a record of their contacts' birthdays.
@@ -41,6 +46,8 @@ include::../DeveloperGuide.adoc[tag=birthdayfield]
 ---
 
 === Enhancement Added: ListBirthday Command
+
+---
 
 ==== External behavior
 
@@ -62,7 +69,7 @@ include::../DeveloperGuide.adoc[tag=listBirthday]
 
 ---
 
-=== Developer Guide Glossary
+=== Developer Guide Appendix: Glossary
 
 ---
 
@@ -70,7 +77,7 @@ include::../DeveloperGuide.adoc[tag=glossary]
 
 ---
 
-=== Developer Guide Product Survey
+=== Developer Guide Appendix: Product Survey
 
 ---
 

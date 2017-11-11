@@ -127,20 +127,6 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public String updateMailRecipientList(Predicate<ReadOnlyPerson> predicate) {
-        requireNonNull(predicate);
-        filteredMails.setPredicate(predicate);
-        List<String> validPeopleList = new ArrayList<>();
-        for (ReadOnlyPerson person : filteredPersons) {
-            if (person.getEmail() != null && !person.getEmail().value.equalsIgnoreCase("INVALID_EMAIL@EXAMPLE.COM")
-                 && !validPeopleList.contains(person.getEmail().value)) {
-                validPeopleList.add(person.getEmail().value);
-            }
-        }
-        return String.join(",", validPeopleList);
-    }
-
-    @Override
     public boolean equals(Object obj) {
         // short circuit if same object
         if (obj == this) {
