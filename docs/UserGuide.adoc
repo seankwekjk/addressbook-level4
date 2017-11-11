@@ -78,6 +78,8 @@ The Command Format Summary _(Figure 5.0.1)_ given below, guides you through how 
 
 *Command Format Summary*
 ====
+ * Command words always have to be entered as the first word in any command. They may be replaced by an alias if a command has one. +
+ ** e.g. `add` is the Command Word for the add command, and its alias is `a`.
  * Words in `UPPER_CASE` are the parameters to be supplied by you, the user. +
  ** e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
  * Items in square brackets are optional.
@@ -109,11 +111,13 @@ Instructions on how to transfer data can be found in the FAQ section.
 
 ==== Autocomplete
 
-
+Are you new to Contags? We have included an autocomplete function to assist you in case you forget our command words. As you type, we will provide you with a list of all the features that begin with the text that you have entered.
 
 === Adding a contact: `add` `a`
 
-Adds a contact to Contags. +
+Adding a contact to Contags is simple! Simply enter the command with all the compulsory parameters in any order.
+
+
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS b/BIRTHDAY [s/SOCIAL_MEDIA_URL] [t/TAG]...` +
 Alias: `a`
 
@@ -129,13 +133,15 @@ Examples:
 
 === Clearing all entries : `clear` `c`
 
-Clears all entries from Contags. +
+This command empties all entries in Contags.
+
 Format: `clear` +
 Alias: `c`
 
 === Deleting a contact : `delete` `d`
 
-Deletes the specified contact from Contags. +
+Want to remove a contact from your address book? Contags just requires the index of the contact.
+
 Format: `delete INDEX` +
 Alias: `d`
 
@@ -154,14 +160,10 @@ Deletes the 2nd contact in Contags.
 `delete 1` +
 Deletes the 1st contact in the results of the `find` command.
 
-=== Directions to address : `direct` `Coming in v2.0`
-
-Provides directions to the address of the selected contact. +
-Format: `direct`
-
 === Editing a contact : `edit` `e`
 
-Edits an existing contact in Contags. +
+Did one of your contacts change phone number? Did you make a mistake in a contact? Do not fret, modifying contacts in Contags is easy!
+
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [b/BIRTHDAY] [s/SOCIAL_MEDIA_URL] [t/TAG]...` +
 Alias: `e`
 ****
@@ -181,14 +183,16 @@ Edits the name of the 2nd contact to be `Betsy Crower` and clears all existing t
 
 === Exiting the program : `exit`
 
-Exits the program. +
+Closes Contags :( Hope to see you again!
+
 Format: `exit`
 
 // tag::findCommand[]
 
 === Locating Contacts by any field: `find` `f`
 
-Finds contacts whose names, and any other information particular fields contain any of the given keywords. +
+Forgot the full name of your contact? Don't know who name of the person who just called you? Contags is here to help! You can search for your contacts in Contags using any one piece of information.
+
 Format: `find KEYWORD [MORE_KEYWORDS]` +
 Alias: `f`
 
@@ -209,27 +213,9 @@ Returns any contacts having addresses `Clementi`, `Bugis`, or `Tuas`.
 
 // end::findCommand[]
 
-=== Sorting Contacts based on Frequency `frequent` `Coming in v2.0`
-
-Displays a list of sorted contacts in Contags based upon the frequency of communication between user and
-contact. +
-Format: `frequent`
-
-****
-* Sorts all contacts based upon frequency of communication.
-* Contacts that have been communicated with most frequently will appear at the top of the list.
-* Application determines frequency by keeping a counter of contact particulars that have been accessed since the contact
-has been added.
-* All contact particulars that have been accessed add an equal count of 1 to this counter.
-****
-
-Examples:
-
-* `frequent` +
-Displays a list of sorted contacts based upon the frequency of communication.
-
 === Viewing help : `help`
-Require assistance or some guide? `help` opens the help window within Contags. +
+Require assistance with the app? `help` opens the help window within Contags.
+
 Format: `help`
 
 [TIP]
@@ -237,7 +223,8 @@ Pressing kbd:[F1] will also open the help window. Try it out if you are unsure o
 
 === Listing entered commands : `history`
 
-Lists all the commands that you have entered in reverse chronological order. +
+Lists all the commands that you have entered in reverse chronological order.
+
 Format: `history`
 
 [NOTE]
@@ -246,7 +233,8 @@ Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and 
 ====
 === Listing all contacts : `list` `l`
 
-To view a list of all your contacts, you can enter `list`. +
+To view a list of all your contacts, you can enter `list`.
+
 Format: `list` +
 Alias: `l`
 
@@ -254,7 +242,8 @@ Alias: `l`
 
 === Viewing contacts whose birthdays fall on the current date: `listbirthday`
 
-Lists the contacts whose birthdays matches the current date. +
+Lists the contacts whose birthdays matches the current date.
+
 Format: `listbirthday`
 
 ****
@@ -267,7 +256,8 @@ Format: `listbirthday`
 
 === Mailing contacts: `mail`
 
-Mails a contact in Contags. +
+Mails a contact in Contags.
+
 Format: `mail INDEX` +
 Alias: `m` +
 
@@ -280,7 +270,8 @@ Opens up mail application and to field of the mail will be automatically filled 
 
 === Redoing the previously undone command : `redo`
 
-Reverses the most recent `undo` command. +
+Reverses the most recent `undo` command.
+
 Format: `redo`
 
 Examples:
@@ -325,7 +316,8 @@ Removes the remark for the first contact.
 
 === Removing a Tag from all contacts in Contags : `removeTag`
 
-Removes the Tag specified by the tag name. +
+Removes the Tag specified by the tag name.
+
 Format: `removeTag TAG`
 
 ****
@@ -343,7 +335,8 @@ Searches through all contacts in the Contags and deletes all instances of the Ta
 // tag::social[]
 === Selecting a contact : `select` `s`
 
-Selects the contact identified by the index number used in the last contact listing. +
+Selects the contact identified by the index number used in the last contact listing.
+
 Format: `select INDEX` +
 Alias: `s`
 ****
@@ -369,7 +362,9 @@ Selects the 1st contact in the results of the `find` command.
 === Sending a SMS Message to the telephone number of the contact indicated by the given index: `sms`
 
 Sends a SMS message from the user's phone number (to be configured) to the phone number indicated by the contact
-particulars of the index given. +
+particulars of the index given.
+
+
 Format: `sms INDEX text/MESSAGE`
 
 ****
@@ -387,8 +382,8 @@ Sends an sms message to the number of the contact indicated by the index, with t
 // tag::sort[]
 
 === Sorting the list of contacts: `sort`
-Want to change the way your list of contacts is displayed? `sort` sorts the list of contacts saved in Contags according to: +
-`Name`, `Phone`, `Email`, `Address`, `Tag`. +
+Want to change the way your list of contacts is displayed? `sort` sorts the list of contacts saved in Contags according to: `Name`, `Phone`, `Email`, `Address`, `Tag`.
+
 Format: `sort KEYWORD`
 
 
@@ -433,13 +428,15 @@ List is sorted according to email addresses in ascending order _(Figure 5.20.5)_
 === Toggling `select` command function : `toggle` `Since v1.3`
 
 When used, toggles the function of the `select` command between displaying a Google Maps search and the specified social media page. +
-Refreshes the currently displayed contact to show the other mode as well. +
+Refreshes the currently displayed contact to show the other mode as well.
+
 Format: `toggle`
 // end::social[]
 
 === Undoing previous command : `undo` `u`
 
-Restores Contags to the state before the previous _undoable_ command was executed. +
+Made a mistake? Do not worry, it can easily be undone with the `undo` command!
+
 Format: `undo` +
 Alias: `u`
 
