@@ -7,7 +7,22 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 To load the sample data in the address book,
 
+For all the commands, we have an autocomplete function where you can select which command you want to type by using the up and down arrows to navigate the list of suggested commands and clicking 'Enter'. To exit the autocomplete list, simply press 'tab'.
+
 === User Interface
+
+To add a contact, type in: add
+The remark field is optional, so you can type: add
+
+To edit a contact, type:
+edit 1 name/
+edit 2 phone/91238888
+edit 3 email/
+edit 4 address/
+edit 5 birthday/
+
+
+To remove a tag from a contact, type:
 
 
 '''
@@ -15,14 +30,43 @@ To load the sample data in the address book,
 
 === Organisation
 
+To find a contact, type find followed by the field you want to find by.
+- find John
+- find 91239123
+- find colleagues
+
+To sort a list of contacts, type
+- sort name
+- sort tags
+- sort address
+- sort phone
+- sort email
+- sort remark
+
+To select a contact, type select followed by the index
+- select 1
 '''
 
 === Communication platforms
 
+To mail a contact, type mail followed by the index of the contact.
+- mail 1
+
+To SMS a contact, type sms followed by the index of the contact and the message.
+- sms 1 message/hi do you want to meet for dinner?
 
 '''
 
 === Social Media and maintaining relationships
+
+To see a contact's address on google maps, type select followed by the index.
+- select 1
+
+To view the social media page of a contact instead of the google map page of their address, type:
+- toggle
+
+To switch back to the google maps page, type:
+- toggle
 
 
 
