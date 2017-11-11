@@ -12,6 +12,7 @@ import seedu.address.ui.BrowserPanel;
 public class ToggleCommand extends Command {
 
     public static final String COMMAND_WORD = "toggle";
+    public static final String COMMAND_ALIAS = "t";
 
     public static final String TOGGLE_SUCCESS = "Browser Panel Toggled to ";
 

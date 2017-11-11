@@ -231,10 +231,10 @@ Format: `help`
 [TIP]
 Pressing kbd:[F1] will also open the help window. Try it out if you are unsure of what to do and need some help.
 
-=== Listing entered commands : `history`
+=== Listing entered commands : `history` `h`
 
 Lists all the commands that you have entered in reverse chronological order. +
-Format: `history`
+Format: `history` `h`
 
 [NOTE]
 ====
@@ -248,7 +248,7 @@ Alias: `l`
 
 // tag::listBirthday[]
 
-=== Viewing contacts whose birthdays fall on the current date: `listbirthday`
+=== Viewing contacts whose birthdays fall on the current date: `listbirthday` `lb`
 
 Lists the contacts whose birthdays match the current date. +
 Format: `listbirthday`
@@ -263,7 +263,7 @@ You can wish the listed contacts a happy birthday by using the mail or SMS comma
 // end::listBirthday[]
 // tag::mailContact[]
 
-=== Mailing a contact: `mail`
+=== Mailing a contact: `mail` `m`
 
 Mails a contact in Contags. +
 Format: `mail INDEX` +
@@ -276,7 +276,7 @@ Opens up mail application and the to field of the mail will be automatically fil
 
 // end::mailContact[]
 
-=== Redoing the previously undone command : `redo`
+=== Redoing the previously undone command : `redo` `r`
 
 Reverses the most recent `undo` command. +
 Format: `redo`
@@ -305,7 +305,7 @@ The `delete 1` command has been reapplied. +
  The `clear` command has been reapplied. +
 
 // tag::remark[]
-=== Adding remarks: `remark` `Since v1.1`
+=== Adding remarks: `remark` `re`
 
 Edits the remark for a contact specified in the INDEX.
 
@@ -321,7 +321,7 @@ Removes the remark for the first contact.
 
 // tag::removeTag[]
 
-=== Removing a Tag from all contacts in Contags : `removeTag`
+=== Removing a Tag from all contacts in Contags : `removeTag` `rt`
 
 Removes the Tag specified by the tag name. +
 Format: `removeTag TAG`
@@ -347,7 +347,7 @@ Alias: `s`
 ****
 * Selects the contact and loads either a Google Maps search of the person's specified address, or the person's specified social media link
  at the specified `INDEX`.
-* The function is toggled using the `toggle` command.
+* The function is toggled using the `toggle` `t` command.
 * The index refers to the index number shown in the most recent listing.
 * The index *must be a positive integer*. e.g. `1`, `2`, `3`, `...`.
 ****
@@ -429,11 +429,11 @@ List is sorted according to email addresses in ascending order _(Figure 5.20.5)_
 // end::sort[]
 
 // tag::social[]
-=== Toggling `select` command function : `toggle` `Since v1.3`
+=== Toggling `select` command function : `toggle` `t`
 
 When used, toggles the function of the `select` command between displaying a Google Maps search and the specified social media page. +
 Refreshes the currently displayed contact to show the other mode as well. +
-Format: `toggle`
+Format: `toggle` `t`
 // end::social[]
 
 === Undoing previous command : `undo` `u`

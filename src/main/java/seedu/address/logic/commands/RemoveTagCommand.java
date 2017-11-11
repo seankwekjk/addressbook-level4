@@ -17,6 +17,7 @@ import seedu.address.model.tag.exceptions.TagNotFoundException;
 public class RemoveTagCommand extends UndoableCommand {
 
     public static final String COMMAND_WORD = "removeTag";
+    public static final String COMMAND_ALIAS = "rt";
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Removes the specified tag from all contacts in the AddressBook\n"
             + "Parameters: (TAG_NAME) \n"

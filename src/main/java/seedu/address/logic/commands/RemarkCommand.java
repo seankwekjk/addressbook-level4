@@ -21,6 +21,7 @@ import seedu.address.model.person.exceptions.PersonNotFoundException;
 public class RemarkCommand extends UndoableCommand {
 
     public static final String COMMAND_WORD = "remark";
+    public static final String COMMAND_ALIAS = "re";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a remark to a person in the address book. "
             + "Parameters: "

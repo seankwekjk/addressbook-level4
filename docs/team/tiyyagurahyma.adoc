@@ -70,6 +70,14 @@ include::../DeveloperGuide.adoc[tag=glossary]
 
 ---
 
+=== Developer Guide Product Survey
+
+---
+
+include::../DeveloperGuide.adoc[tag=productSurvey]
+
+---
+
 === Enhancement Proposed: Add command `schedule`
 
 A schedule feature would allow users to create events such as meetings or dinner with other contacts.
