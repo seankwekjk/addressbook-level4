@@ -11,8 +11,8 @@ import seedu.address.commons.exceptions.IllegalValueException;
 public class Birthday {
 
     public static final String MESSAGE_BIRTHDAY_CONSTRAINTS =
-            "Person birthdays can only contain numbers and forward slashes, and it should not be blank."
-                + " The birthday must be in the form dd/mm/yy or dd/mm/yyy";
+            "Birthdays should be an actual date and can only contain numbers and forward slashes. It cannot be left blank."
+                + " The birthday must be in the form dd/mm/yy or dd/mm/yyy.";
 
     /*
      * The first character of the birthday must not be a whitespace,
@@ -27,7 +27,7 @@ public class Birthday {
 
     /**
      * Validates given birthday.
-     *
+     * @param birthday
      * @throws IllegalValueException if given birthday string is invalid.
      */
     public Birthday(String birthday) throws IllegalValueException {

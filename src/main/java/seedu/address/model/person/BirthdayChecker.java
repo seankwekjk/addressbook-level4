@@ -16,10 +16,10 @@ public class BirthdayChecker implements Predicate<ReadOnlyPerson> {
     }
 
     /**
-    * Checks if a contact's birthday falls on the current day
+    * Checks if a contact's birthday falls on the current day.
     * @param person
     * @return boolean
-    * * @throws ParseException
+    * @throws ParseException
     */
 
     public boolean birthdayList(ReadOnlyPerson person) throws ParseException {
@@ -30,6 +30,7 @@ public class BirthdayChecker implements Predicate<ReadOnlyPerson> {
         return (((calendar.get(Calendar.MONTH)) == Calendar.getInstance().get(Calendar.MONTH))
                 && ((calendar.get(Calendar.DAY_OF_MONTH) == Calendar.getInstance().get(Calendar.DAY_OF_MONTH))));
     }
+
     @Override
     public boolean test(ReadOnlyPerson person) {
         boolean index = false;
