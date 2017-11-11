@@ -246,9 +246,9 @@ To view a list of all your contacts, you can enter `list`. +
 Format: `list` +
 Alias: `l`
 
-// tag::listBirthday[]
-
 === Viewing contacts whose birthdays fall on the current date: `listbirthday` `lb`
+
+// tag::listBirthday[]
 
 Lists the contacts whose birthdays match the current date. +
 Format: `listbirthday`
@@ -261,13 +261,14 @@ You can wish the listed contacts a happy birthday by using the mail or SMS comma
 ****
 
 // end::listBirthday[]
-// tag::mailContact[]
 
 === Mailing a contact: `mail` `m`
 
+// tag::mailContact[]
+
 Mails a contact in Contags. +
 Format: `mail INDEX` +
-Alias: `m` +
+Alias: `m INDEX` +
 
 Examples:
 

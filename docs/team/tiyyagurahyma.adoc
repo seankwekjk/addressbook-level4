@@ -13,6 +13,7 @@ Contags is a desktop address book application that is targeted at business profe
 ==== External behavior
 
 include::../UserGuide.adoc[tag=mailContact]
+include::../DeveloperGuide.adoc[tag=mailContact]
 
 ---
 
@@ -21,7 +22,6 @@ As Contags was developed with working professionals in mind, having a mail comma
 
 ==== Implementation
 
-include::../DeveloperGuide.adoc[tag=mailContact]
 include::../DeveloperGuide.adoc[tag=mailcommand]
 
 ---
@@ -84,11 +84,11 @@ A schedule feature would allow users to create events such as meetings or dinner
 
 === Other contributions
 
-* Added alias for commands (Pull request https://github.com[#22])
-* Added a backup to store contents of addressbook (Pull request https://github.com[#23])
-* Added birthday field (Pull request https://github.com[#37])
-* Updated UI to include a separate browser panel displaying the address of a contact when contact is selected (Pull request https://github.com[#107]])
-* Enhanced find command to find by tags (Pull request https://github.com[#111])
+* Added alias for commands (Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/22[#22], Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/124[#124])
+* Added a backup to store contents of addressbook (Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/23[#23])
+* Added birthday field (Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/37[#37])
+* Updated UI to add new logo and include a separate browser panel displaying the address of a contact when contact is selected (Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/107[#107]])
+* Enhanced find command to find by tags (Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/111[#111])
 
 == Project:
 

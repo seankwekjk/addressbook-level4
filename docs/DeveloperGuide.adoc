@@ -426,12 +426,13 @@ To create a difference between the updating and clearing of the `Remark` field, 
 **Cons** The user will find it difficult to know the `index` of the `Person` he would like to edit, particularly if it is not currently in the filtered list. It is not intuitive and difficult for the user to utilise.
 // end::remark[]
 
-// tag::birthdayfield[]
 === Birthday Field
+// tag::birthdayfield[]
 
 The person class consists of five compulsory attributes, `Name` `Phone` `Email` `Address` `Birthday` and optional `Remark` and `Tag`. The implementation of the birthday attribute is similar to that of the other compulsory attributes. It is a compulsory field and cannot be left blank. The constructor takes in the birthday value in a String format and a new instance of the birthday field is initialised.
 
 The birthday value is validated before being accepted as a parameter in the constructor for the person class. A valid birthday value has to be in the form `DD/MM/YYYY` or `DD/MM/YY`. Only digits and forward slashes are permitted. The birthday value is also checked to ensure that the date actually exists. The different number of days in the month February in leap years are accounted for and the different days in various months are also taken into account. This check minimises the chances of the user making a typo in entering the birthday and also ensures that the user does not accidentally input a wrong field in place of the birthday field (i.e. input an address in the birthday field). +
+
 The code snippet below shows how the birthday value is validated.
 
 [source,java]
@@ -465,9 +466,10 @@ public class ListCommand extends Command {
 **Cons: ** Implementation is slightly more tedious and new developers might need more time to understand the implementation.
 
 // end::birthdayfield[]
-// tag::listbirthday[]
 
 === ListBirthday Mechanism
+
+// tag::listBirthday[]
 
 The listbirthday command displays the list of contacts in Contags whose birthdays fall on the current date. The list is sorted in order of the list according to the `updateFilteredPersonsList`.
 
@@ -493,6 +495,7 @@ _Figure 4.4a : listbirthday Command sequence diagram_
 **Pros:** More user friendly as users might want to know whose birthday is nearing. +
 **Cons:** More tedious to implement.
 
+// end::listBirthday[]
 // tag::social[]
 
 === Social Media
@@ -574,9 +577,9 @@ If you entered arguments that do not follow the required format, `ParseException
 **Cons:** Harder to implement and develop. +
 // end::sort[]
 
-// tag::mailcommand[]
-
 === Mail Command
+
+// tag::mailcommand[]
 
 The `mail` command mails a `person` in `Contags` based on their `Index` in the most updated list. The implementation of `MailCommand` inherits from `Command`. +
 
@@ -764,6 +767,8 @@ Priorities: +
 |`* * *` |user |find all my contacts that have the same tag |search for groups of people easily
 
 |`* * *` |user |search all my contacts by any keyword, name, email address, or address |search for people by other means than names
+
+|`* * *` |user |have a birthday field for my contacts |have a record of their birthdays
 
 |`* * *` |user |send an email to any contact in Contags |so that I can conveniently send an email
 
@@ -1079,9 +1084,11 @@ Contags informs user that the format is invalid, providing the correct format. U
 Contags informs user that the contact cannot be found. Use case ends.
 
 // end::findCommand[]
-// tag::mailContact[]
+
 [discrete]
 === Use case: Mail Contact
+
+// tag::mailContact[]
 
 *MSS*
 
@@ -1097,9 +1104,11 @@ Contags informs user that the contact cannot be found. Use case ends.
 ** 1a1. Contags informs user that index is not valid.
 
 // end::mailContact[]
-// tag::listBirthday[]
+
 [discrete]
 === Use case: List contacts whose birthdays fall on current date
+
+// tag::listBirthday[]
 
 *MSS*
 
