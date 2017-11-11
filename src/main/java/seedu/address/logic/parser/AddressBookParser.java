@@ -112,9 +112,12 @@ public class AddressBookParser {
         case RedoCommand.COMMAND_ALIAS:
             return new RedoCommand();
 
+        //@@author hymss
         case MailCommand.COMMAND_WORD:
+        case MailCommand.COMMAND_ALIAS:
             return new MailCommandParser().parse(arguments);
 
+        //@@author
         case ReauthenticateCommand.COMMAND_WORD:
             return new ReauthenticateCommandParser().parse(arguments);
 
