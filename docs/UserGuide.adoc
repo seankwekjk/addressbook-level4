@@ -231,10 +231,10 @@ Format: `help`
 [TIP]
 Pressing kbd:[F1] will also open the help window. Try it out if you are unsure of what to do and need some help.
 
-=== Listing entered commands : `history`
+=== Listing entered commands : `history` `h`
 
 Lists all the commands that you have entered in reverse chronological order. +
-Format: `history`
+Format: `history` `h`
 
 [NOTE]
 ====
@@ -276,7 +276,7 @@ Opens up mail application and the to field of the mail will be automatically fil
 
 // end::mailContact[]
 
-=== Redoing the previously undone command : `redo`
+=== Redoing the previously undone command : `redo` `r`
 
 Reverses the most recent `undo` command. +
 Format: `redo`
@@ -305,7 +305,7 @@ The `delete 1` command has been reapplied. +
  The `clear` command has been reapplied. +
 
 // tag::remark[]
-=== Adding remarks: `remark` `Since v1.1`
+=== Adding remarks: `remark` `re`
 
 Edits the remark for a contact specified in the INDEX.
 
@@ -321,7 +321,7 @@ Removes the remark for the first contact.
 
 // tag::removeTag[]
 
-=== Removing a Tag from all contacts in Contags : `removeTag`
+=== Removing a Tag from all contacts in Contags : `removeTag` `rt`
 
 Removes the Tag specified by the tag name. +
 Format: `removeTag TAG`
