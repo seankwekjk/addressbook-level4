@@ -7,6 +7,7 @@ import java.util.function.Predicate;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.model.tag.Tag;
 
+//@@author hymss
 /**
  * Tests that a {@code ReadOnlyPerson}'s {@code Name} matches any of the keywords given.
  */
@@ -42,6 +43,7 @@ public class AnyParticularContainsKeywordsPredicate implements Predicate<ReadOnl
                 || keywords.stream().anyMatch(keyword -> StringUtil.containsWordIgnoreCase(allTagNames, keyword));
     }
 
+    //@@author
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
