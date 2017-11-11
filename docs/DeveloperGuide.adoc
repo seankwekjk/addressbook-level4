@@ -571,7 +571,7 @@ If the index entered by the user does not comply with the expected range, ParseE
 
 The following sequence diagram illustrates the execution of the `mail` command.
 
-image::mailCommandDiagram.png[width="800"]
+image::mailCommandSeqDiagram.png[width="800"]
 _Figure 4.1.4 : Mail Command sequence diagram_
 
 ==== Design Considerations
