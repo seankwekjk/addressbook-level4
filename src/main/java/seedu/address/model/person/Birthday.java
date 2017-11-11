@@ -11,7 +11,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 public class Birthday {
 
     public static final String MESSAGE_BIRTHDAY_CONSTRAINTS =
-            "Birthdays should be an actual date and can only contain numbers and forward slashes. It cannot be left blank."
+            "Birthdays cannot be empty and should be an actual date. They can only contain numbers and forward slashes."
                 + " The birthday must be in the form dd/mm/yy or dd/mm/yyy.";
 
     /*
