@@ -223,7 +223,7 @@ Pressing kbd:[F1] will also open the help window. Try it out if you are unsure o
 
 === Listing entered commands : `history`
 
-Lists all the commands that you have entered in reverse chronological order.
+Need to see exactly what you just typed? Contags allows you to see the commands that you have entered since opening the program.
 
 Format: `history`
 
@@ -233,16 +233,16 @@ Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and 
 ====
 === Listing all contacts : `list` `l`
 
-To view a list of all your contacts, you can enter `list`.
+You can use this command to display all of your contacts, sorted according your last selected preference.
 
 Format: `list` +
 Alias: `l`
 
 // tag::listBirthday[]
 
-=== Viewing contacts whose birthdays fall on the current date: `listbirthday`
+=== Viewing contacts with  birthdays on the current date: `listbirthday`
 
-Lists the contacts whose birthdays matches the current date.
+We struggle with remembering the birthdays of all of our contacts too. Never miss another one by using this command everyday!
 
 Format: `listbirthday`
 
@@ -256,7 +256,7 @@ Format: `listbirthday`
 
 === Mailing contacts: `mail`
 
-Mails a contact in Contags.
+You no longer need to open up your mail program and enter the addressee's details. This command will do it all for you!
 
 Format: `mail INDEX` +
 Alias: `m` +
@@ -270,7 +270,7 @@ Opens up mail application and to field of the mail will be automatically filled 
 
 === Redoing the previously undone command : `redo`
 
-Reverses the most recent `undo` command.
+Want to reapply a change that you just undid? The redo command allows you to do just that!
 
 Format: `redo`
 
@@ -300,7 +300,7 @@ The `delete 1` command has been reapplied. +
 // tag::remark[]
 === Adding remarks: `remark` `Since v1.1`
 
-Edits the remark for a contact specified in the INDEX.
+You can add any brief line of text to any contact to better identify them, or remind yourself of anything!
 
 Format: `remark INDEX r/[REMARK]`
 
@@ -316,7 +316,7 @@ Removes the remark for the first contact.
 
 === Removing a Tag from all contacts in Contags : `removeTag`
 
-Removes the Tag specified by the tag name.
+You can use this command to remove the indicated tag from every contact in your list.
 
 Format: `removeTag TAG`
 
@@ -335,7 +335,7 @@ Searches through all contacts in the Contags and deletes all instances of the Ta
 // tag::social[]
 === Selecting a contact : `select` `s`
 
-Selects the contact identified by the index number used in the last contact listing.
+Access Contag's web-based features in the built-in browser by selecting the desired contact! You can use this command with your mouse by clicking on the contact as well.
 
 Format: `select INDEX` +
 Alias: `s`
@@ -359,10 +359,9 @@ Selects the 1st contact in the results of the `find` command.
 
 // tag::smsContact[]
 
-=== Sending a SMS Message to the telephone number of the contact indicated by the given index: `sms`
+=== Sending a SMS Messages: `sms`
 
-Sends a SMS message from the user's phone number (to be configured) to the phone number indicated by the contact
-particulars of the index given.
+You can send a SMS message to your contacts through Contags! Users must first set up an account with Twilio to utilise this function.
 
 
 Format: `sms INDEX text/MESSAGE`
@@ -382,7 +381,8 @@ Sends an sms message to the number of the contact indicated by the index, with t
 // tag::sort[]
 
 === Sorting the list of contacts: `sort`
-Want to change the way your list of contacts is displayed? `sort` sorts the list of contacts saved in Contags according to: `Name`, `Phone`, `Email`, `Address`, `Tag`.
+Want to change the order by which your contacts are arranged? +
+`sort` sorts the list of contacts saved in Contags according to: `Name`, `Phone`, `Email`, `Address`, `Tag`.
 
 Format: `sort KEYWORD`
 
@@ -427,15 +427,15 @@ List is sorted according to email addresses in ascending order _(Figure 5.20.5)_
 // tag::social[]
 === Toggling `select` command function : `toggle` `Since v1.3`
 
-When used, toggles the function of the `select` command between displaying a Google Maps search and the specified social media page. +
-Refreshes the currently displayed contact to show the other mode as well.
+Contags allows you to switch between Google Maps and Social Media functionality for the `select` command. +
+When you use this command, the browser will be refreshed!
 
 Format: `toggle`
 // end::social[]
 
 === Undoing previous command : `undo` `u`
 
-Made a mistake? Do not worry, it can easily be undone with the `undo` command!
+Made a mistake? Do not worry, it can easily be undone with the `undo` command! Does not apply to every command.
 
 Format: `undo` +
 Alias: `u`
@@ -573,9 +573,15 @@ free timings with that contact.
 * Contacts can be starred in Contags based on your preference to give priority in the list of
 contacts.
 
+* Sorting of contacts according to frequency of use.
+
 * Social Media links displayed in the list of contacts will be divided into 2 parts, the first displaying which social media platform, and the second displaying the profile url.
 
 * Multiple social media pages can be added to a single contact.
+
+* Automatic suggestion of social media pages to associate with a contact.
+
+* listbirthday will display all contacts with birthdays that fall within the week.
 
 * Tag colors can be changed according to your preference by typing in the command `change` followed by the tag's name and the preferred color. +
 ** e.g. `change` `friends` `yellow` +
