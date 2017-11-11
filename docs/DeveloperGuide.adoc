@@ -464,6 +464,11 @@ The lisbirthday command is facilitated by the `BirthdayChecker` class in the per
 
 The BirthdayChecker class checks if a contact's birthday falls on the current date by checking if the month and day of the contact's birthday and current date are equal. This is done so by converting the month and day first to a string, which is then converted to a date object and finally a calendar object.
 
+The sequence diagram for the listbirthday command is shown below.
+
+image::listBirthdayCommandSeqDiagram.png[width="800"]
+_Figure 4.4a : listbirthday Command sequence diagram_
+
 ==== Design Considerations
 
 **Aspect:** Whether the listbirthday should be an executable command that requires manual typing of the command each time. +
