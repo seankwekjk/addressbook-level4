@@ -248,7 +248,7 @@ Alias: `l`
 
 // tag::listBirthday[]
 
-=== Viewing contacts whose birthdays fall on the current date: `listbirthday`
+=== Viewing contacts whose birthdays fall on the current date: `listbirthday` `lb`
 
 Lists the contacts whose birthdays match the current date. +
 Format: `listbirthday`
@@ -263,7 +263,7 @@ You can wish the listed contacts a happy birthday by using the mail or SMS comma
 // end::listBirthday[]
 // tag::mailContact[]
 
-=== Mailing a contact: `mail`
+=== Mailing a contact: `mail` `m`
 
 Mails a contact in Contags. +
 Format: `mail INDEX` +

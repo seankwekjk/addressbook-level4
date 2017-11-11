@@ -85,10 +85,12 @@ public class AddressBookParser {
         case ListCommand.COMMAND_ALIAS:
             return new ListCommand();
 
+        //@@author hymss
         case ListBirthdayCommand.COMMAND_WORD:
         case ListBirthdayCommand.COMMAND_ALIAS:
             return new ListBirthdayCommand();
 
+        //@@author
         case SmsCommand.COMMAND_WORD:
             return new SmsCommandParser().parse(arguments);
         //@@author mzxc152
