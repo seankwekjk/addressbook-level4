@@ -86,6 +86,7 @@ public class AddressBookParser {
             return new ListCommand();
 
         case ListBirthdayCommand.COMMAND_WORD:
+            case ListBirthdayCommand.COMMAND_ALIAS:
             return new ListBirthdayCommand();
 
         case SmsCommand.COMMAND_WORD:
