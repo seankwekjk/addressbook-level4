@@ -131,7 +131,7 @@ public class AddressBookParserTest {
     }
 
     @Test
-    public void parseCommand_mail() throws Exception{
+    public void parseCommand_mail() throws Exception {
         MailCommand command = (MailCommand) parser.parseCommand(
                 MailCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
         MailCommand commandAlias = (MailCommand) parser.parseCommand(

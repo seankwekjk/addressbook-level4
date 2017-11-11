@@ -122,16 +122,20 @@ public class AddressBookParser {
 
         //@@author
         case ReauthenticateCommand.COMMAND_WORD:
+        case ReauthenticateCommand.COMMAND_ALIAS:
             return new ReauthenticateCommandParser().parse(arguments);
 
         case RemoveTagCommand.COMMAND_WORD:
+        case RemoveTagCommand.COMMAND_ALIAS:
             return new RemoveTagCommandParser().parse(arguments);
 
         //@@author seankwekjk
         case RemarkCommand.COMMAND_WORD:
+        case RemarkCommand.COMMAND_ALIAS:
             return new RemarkCommandParser().parse(arguments);
 
         case ToggleCommand.COMMAND_WORD:
+        case ToggleCommand.COMMAND_ALIAS:
             return new ToggleCommand();
 
         //@@author

@@ -347,7 +347,7 @@ Alias: `s`
 ****
 * Selects the contact and loads either a Google Maps search of the person's specified address, or the person's specified social media link
  at the specified `INDEX`.
-* The function is toggled using the `toggle` command.
+* The function is toggled using the `toggle` `t` command.
 * The index refers to the index number shown in the most recent listing.
 * The index *must be a positive integer*. e.g. `1`, `2`, `3`, `...`.
 ****
@@ -429,11 +429,11 @@ List is sorted according to email addresses in ascending order _(Figure 5.20.5)_
 // end::sort[]
 
 // tag::social[]
-=== Toggling `select` command function : `toggle` `Since v1.3`
+=== Toggling `select` command function : `toggle` `t`
 
 When used, toggles the function of the `select` command between displaying a Google Maps search and the specified social media page. +
 Refreshes the currently displayed contact to show the other mode as well. +
-Format: `toggle`
+Format: `toggle` `t`
 // end::social[]
 
 === Undoing previous command : `undo` `u`
