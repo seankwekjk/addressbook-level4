@@ -100,12 +100,16 @@ The features in this subsection do not require any commands to execute and are a
 
 Each unique tag currently has a colour that is set to that tag name, for you to easily identify different groups of tags that you have added. +
 
-You cannot individually set the colour you want for each tag, but this feature will be added in a future update to Contags.
+You cannot individually set the colour you want for each tag, but we are working to include this feature in a future update to Contags.
 
 ==== Saving the data
 
-Contags data are saved in the hard disk automatically after any command that changes the data. +
-There is no need for you to save manually.
+Data is saved in the hard disk automatically after any command that changes the data. There is no need for you to save manually. +
+Instructions on how to transfer data can be found in the FAQ section.
+
+==== Autocomplete
+
+
 
 === Adding a contact: `add` `a`
 
