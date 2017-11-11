@@ -250,18 +250,20 @@ Alias: `l`
 
 === Viewing contacts whose birthdays fall on the current date: `listbirthday`
 
-Lists the contacts whose birthdays matches the current date. +
+Lists the contacts whose birthdays match the current date. +
 Format: `listbirthday`
+
+[TIP]
+You can wish the listed contacts a happy birthday by using the mail or SMS command!
 
 ****
 * Lists the contacts in order of the most updated list.
 ****
 
 // end::listBirthday[]
-
 // tag::mailContact[]
 
-=== Mailing contacts: `mail`
+=== Mailing a contact: `mail`
 
 Mails a contact in Contags. +
 Format: `mail INDEX` +
@@ -270,7 +272,7 @@ Alias: `m` +
 Examples:
 
 * `mail 1` +
-Opens up mail application and to field of the mail will be automatically filled in with the email address of the contact at index 1.
+Opens up mail application and the to field of the mail will be automatically filled in with the email address of the contact at the specified index.
 
 // end::mailContact[]
 
@@ -381,6 +383,7 @@ Sends an sms message to the number of the contact indicated by the index, with t
 // end::smsContact[]
 
 // tag::sort[]
+=== Sorting list of contacts
 
 === Sorting the list of contacts: `sort`
 Want to change the way your list of contacts is displayed? `sort` sorts the list of contacts saved in Contags according to: +
