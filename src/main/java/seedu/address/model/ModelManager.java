@@ -63,6 +63,7 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public void removeTag(Tag toRemove) {
         addressBook.deleteTag(toRemove);
+        indicateAddressBookChanged();
     }
     //@@author mzxc152
     /**

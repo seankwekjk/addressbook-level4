@@ -1,12 +1,14 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_REMOVE_TAG_SUCCESS;
+import static seedu.address.commons.core.Messages.MESSAGE_TAG_NOT_FOUND;
 
 import java.util.logging.Level;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.tag.exceptions.TagNotFoundException;
 
 /**
  * Deletes a tag from the entire AddressBook
@@ -19,8 +21,6 @@ public class RemoveTagCommand extends UndoableCommand {
             + ": Removes the specified tag from all contacts in the AddressBook\n"
             + "Parameters: (TAG_NAME) \n"
             + "Example: " + COMMAND_WORD + " friends";
-
-    public static final String MESSAGE_REMOVE_TAG_SUCCESS = "Tag Removed";
     private final Tag toRemove;
 
     public RemoveTagCommand(Tag toRemove) {
@@ -28,7 +28,7 @@ public class RemoveTagCommand extends UndoableCommand {
     }
 
     /**Searches the entire AddressBook for the {@Code toRemove Tag}
-     *
+     *Returns either "Tag Removed" or "Tag not found", depending on data
      *
      */
 
@@ -37,7 +37,7 @@ public class RemoveTagCommand extends UndoableCommand {
         requireNonNull(model);
 
         if (!model.getAddressBook().getTagList().contains(toRemove)) {
-            throw new CommandException(Messages.MESSAGE_INVALID_TAG);
+            throw new TagNotFoundException(String.format(MESSAGE_TAG_NOT_FOUND));
         } else {
             model.removeTag(toRemove);
             logger.log(Level.FINE, "Tag " + toRemove.tagName + " Removed");
