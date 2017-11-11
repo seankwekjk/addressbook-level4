@@ -77,7 +77,7 @@ Do take a look to understand how to use all the features that Contags provides y
 The Command Format Summary _(Figure 5.0.1)_ given below, guides you through how the commands are to be used and gives a brief explanation on how we describe the use of the commands.
 
 *Command Format Summary*
-****
+====
  * Words in `UPPER_CASE` are the parameters to be supplied by you, the user. +
  ** e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
  * Items in square brackets are optional.
@@ -88,7 +88,7 @@ The Command Format Summary _(Figure 5.0.1)_ given below, guides you through how 
  ** e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
  * Commands with an alias indicates that the command word can be substituted with that letter instead when typing in the command. +
  ** e.g. in `add n/NAME`, `a n/NAME` will also work.
-****
+====
 
 _Figure 5.0.1 : Command Format Summary_
 
@@ -127,13 +127,13 @@ Examples:
 
 Clears all entries from Contags. +
 Format: `clear` +
-Alias: `c` +
+Alias: `c`
 
 === Deleting a contact : `delete` `d`
 
 Deletes the specified contact from Contags. +
-Format: `delete INDEX`
-Alias: `d` +
+Format: `delete INDEX` +
+Alias: `d`
 
 ****
 * Deletes the contact at the specified `INDEX`.
@@ -175,7 +175,7 @@ Edits the phone number and email address of the 1st contact to be `91234567` and
 * `edit 2 n/Betsy Crower t/` +
 Edits the name of the 2nd contact to be `Betsy Crower` and clears all existing tags.
 
-=== Exiting the program : `exit` `e`
+=== Exiting the program : `exit`
 
 Exits the program. +
 Format: `exit`
@@ -246,7 +246,7 @@ To view a list of all your contacts, you can enter `list`. +
 Format: `list` +
 Alias: `l`
 
-// tag::listbirthday[]
+// tag::listBirthday[]
 
 === Viewing contacts whose birthdays fall on the current date: `listbirthday`
 
@@ -260,14 +260,15 @@ You can wish the listed contacts a happy birthday by using the mail or SMS comma
 * Lists the contacts in order of the most updated list.
 ****
 
-// end::listbirthday[]
+// end::listBirthday[]
 // tag::mailContact[]
 
-=== Mailing a contact: `mail` `m`
+=== Mailing a contact: `mail`
 
 Mails a contact in Contags. +
 Format: `mail INDEX` +
 Alias: `m` +
+
 Examples:
 
 * `mail 1` +
@@ -384,15 +385,16 @@ Sends an sms message to the number of the contact indicated by the index, with t
 // tag::sort[]
 === Sorting list of contacts
 
+=== Sorting the list of contacts: `sort`
 Want to change the way your list of contacts is displayed? `sort` sorts the list of contacts saved in Contags according to: +
 `Name`, `Phone`, `Email`, `Address`, `Tag`. +
 Format: `sort KEYWORD`
 
 
-As an alternative, you can use the UI dropdown box _(Figure 5.21.1)_ located near the top-right hand corner of Contags to select how you want the list to be sorted.
+As an alternative, you can use the UI dropdown box _(Figure 5.20.1)_ located near the top-right hand corner of Contags to select how you want the list to be sorted.
 
 image::sort_ui.png[width="200"]
-_Figure 5.21.1 : Sort UI Dropdown Box_
+_Figure 5.20.1 : Sort UI Dropdown Box_
 
 ****
 * Sorts the list of contacts saved in Contags and then displays the sorted list. +
@@ -406,20 +408,24 @@ Examples:
 * `sort name` +
 
 image::sortname.png[width="200"]
-_Figure 5.21.2 : Sorting by name_ +
-List is sorted according to name in ascending order _(Figure 5.21.3)_.
+_Figure 5.20.2 : Sorting by name_ +
+
 
 image::sortnameresult.png[width="700"]
-_Figure 5.21.3 : Result after sorting by name_ +
+_Figure 5.20.3 : Result after sorting by name_ +
+
+List is sorted according to name in ascending order _(Figure 5.20.3)_. +
 
 * `sort EMAIL` +
 
 image::sortemail.png[width="200"]
-_Figure 5.21.4 : Sorting by email address_ +
-List is sorted according to email addresses in ascending order _(Figure 5.21.5)_.
+_Figure 5.20.4 : Sorting by email address_ +
+
 
 image::sortemailresult.png[width="700"]
-_Figure 5.21.5 : Result after sorting by email address__
+_Figure 5.20.5 : Result after sorting by email address_ +
+
+List is sorted according to email addresses in ascending order _(Figure 5.20.5)_.
 // end::sort[]
 
 // tag::social[]
@@ -548,8 +554,6 @@ Here is a quick list of all the commands that Contags can execute:
 |`select INDEX` |selecting a particular contact |`select 4`
 
 |`sms INDEX` |sending an SMS to a contact |`sms 3`
-
-|`social INDEX` |providing possible links to social media pages of the contact to add to the contact |`social 2`
 
 |`sort KEYWORD` |displaying a sorted list of contacts based on the keyword provided |`sort phone`
 
