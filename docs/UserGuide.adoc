@@ -246,15 +246,17 @@ We struggle with remembering the birthdays of all of our contacts too. Never mis
 
 Format: `listbirthday`
 
+[TIP]
+You can wish the listed contacts a happy birthday by using the mail or SMS command!
+
 ****
 * Lists the contacts in order of the most updated list.
 ****
 
 // end::listBirthday[]
-
 // tag::mailContact[]
 
-=== Mailing contacts: `mail`
+=== Mailing a contact: `mail`
 
 You no longer need to open up your mail program and enter the addressee's details. This command will do it all for you!
 
@@ -264,7 +266,7 @@ Alias: `m` +
 Examples:
 
 * `mail 1` +
-Opens up mail application and to field of the mail will be automatically filled in with the email address of the contact at index 1.
+Opens up mail application and the to field of the mail will be automatically filled in with the email address of the contact at the specified index.
 
 // end::mailContact[]
 
@@ -379,6 +381,7 @@ Sends an sms message to the number of the contact indicated by the index, with t
 // end::smsContact[]
 
 // tag::sort[]
+=== Sorting list of contacts
 
 === Sorting the list of contacts: `sort`
 Want to change the order by which your contacts are arranged? +
