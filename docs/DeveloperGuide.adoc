@@ -564,15 +564,17 @@ If you entered arguments that do not follow the required format, `ParseException
 
 The `mail` command mails a `person` in `Contags` based on their `Index` in the most updated list. The implementation of `MailCommand` inherits from `Command`. +
 
-There is also the use of the `MailCommandParser`, which implements the `Parser` interface, that parses out the index to be used with the `sort` command. The `MailCommandParser` validates the input index.  +
+There is also the use of the `MailCommandParser`, which implements the `Parser` interface, that parses out the index to be used with the `mail` command. The `MailCommandParser` validates the input index.  +
 
 [NOTE]
 If the index entered by the user does not comply with the expected range, ParseException will be thrown before execution of the method. +
 
+The `MailCommand` links the logic in Contags to the content (email address of the specified index) that in displayed on the Desktop Mail Application. +
+
 The following sequence diagram illustrates the execution of the `mail` command.
 
 image::mailCommandSeqDiagram.png[width="800"]
-_Figure 4.1.4 : Mail Command sequence diagram_
+_Figure 4.7a : Mail Command sequence diagram_
 
 ==== Design Considerations
 
