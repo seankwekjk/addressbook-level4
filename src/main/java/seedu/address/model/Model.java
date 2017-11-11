@@ -7,6 +7,7 @@ import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.tag.exceptions.TagNotFoundException;
 
 /**
  * The API of the Model component.
@@ -30,7 +31,9 @@ public interface Model {
     /** Adds the given person */
     void addPerson(ReadOnlyPerson person) throws DuplicatePersonException;
 
-    void removeTag(Tag tag);
+    /** Removes the given tag. */
+    void removeTag(Tag tag) throws TagNotFoundException;
+
     /**
      * Replaces the given person {@code target} with {@code editedPerson}.
      *
