@@ -1,66 +1,192 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addressbook>
     <persons>
-        <name>Hans Muster</name>
-        <phone isPrivate="false">9482424</phone>
-        <email isPrivate="false">hans@example.com</email>
-        <address isPrivate="false">4th street</address>
-        <birthday isPrivate="false">01/01/1971</birthday>
+        <name>John Lim</name>
+        <phone isPrivate="false">91234567</phone>
+        <email isPrivate="false">johnlim@example.com</email>
+        <address isPrivate="false">Changi Business Park</address>
+        <birthday isPrivate="false">17/11/1971</birthday>
+        <remark>Raw Materials Supplier</remark>
     </persons>
     <persons>
-        <name>Ruth Mueller</name>
-        <phone isPrivate="false">87249245</phone>
-        <email isPrivate="false">ruth@example.com</email>
-        <address isPrivate="false">81th street</address>
-        <birthday isPrivate="false">12/02/1976</birthday>
+        <name>John Tan</name>
+        <phone isPrivate="false">92345678</phone>
+        <email isPrivate="false">johntan@example.com</email>
+        <address isPrivate="false">12 Kent Ridge Drive</address>
+        <birthday isPrivate="false">18/11/1975</birthday>
+        <remark>Usually Late</remark>
     </persons>
     <persons>
-        <name>Heinz Kurz</name>
+        <name>Damith Rajapakse</name>
         <phone isPrivate="false">95352563</phone>
-        <email isPrivate="false">heinz@example.com</email>
-        <address isPrivate="false">wall street</address>
-        <birthday isPrivate="false">02/08/1989</birthday>
+        <email isPrivate="false">damith@example.com</email>
+        <address isPrivate="false">12 Computing Drive</address>
+        <birthday isPrivate="false">02/08/1970</birthday>
+        <tag>Client</tag>
+        <remark>Long-time Client</remark>
     </persons>
     <persons>
-        <name>Cornelia Meier</name>
+        <name>Isabel Chew</name>
         <phone isPrivate="false">87652533</phone>
-        <email isPrivate="false">cornelia@example.com</email>
-        <address isPrivate="false">10th street</address>
+        <email isPrivate="false">isabel@example.com</email>
+        <address isPrivate="false">Choa Chu Kang Street 52</address>
         <birthday isPrivate="false">11/11/1977</birthday>
+        <tag>Mentor</tag>
+        <tag>Friend</tag>
+        <tag>Advisor</tag>
     </persons>
     <persons>
-        <name>Werner Meyer</name>
+        <name>Steve Jobs</name>
         <phone isPrivate="false">9482224</phone>
-        <email isPrivate="false">werner@example.com</email>
-        <address isPrivate="false">michegan ave</address>
+        <email isPrivate="false">steve@example.com</email>
+        <address isPrivate="false">Apple Inc., California</address>
         <birthday isPrivate="false">17/07/1970</birthday>
+        <tag>Boss</tag>
     </persons>
     <persons>
-        <name>Lydia Kunz</name>
+        <name>Lydia Lim</name>
         <phone isPrivate="false">9482427</phone>
-        <email isPrivate="false">lydia@example.com</email>
-        <address isPrivate="false">little tokyo</address>
+        <email isPrivate="false">lydialim@example.com</email>
+        <address isPrivate="false">11 Blackmore Drive</address>
         <birthday isPrivate="false">19/09/1980</birthday>
+        <tag>Colleague</tag>
     </persons>
     <persons>
-        <name>Anna Best</name>
+        <name>Anna Heng</name>
         <phone isPrivate="false">9482442</phone>
         <email isPrivate="false">anna@example.com</email>
-        <address isPrivate="false">4th street</address>
+        <address isPrivate="false">4th Toa Payoh Street</address>
         <birthday isPrivate="false">20/11/1975</birthday>
+        <tag>Colleague</tag>
+        <tag>Friend</tag>
+        <tag>Neighbour</tag>
     </persons>
     <persons>
-        <name>Stefan Meier</name>
+        <name>Mary Tan</name>
         <phone isPrivate="false">8482424</phone>
-        <email isPrivate="false">stefan@example.com</email>
-        <address isPrivate="false">little india</address>
+        <email isPrivate="false">marytan@example.com</email>
+        <address isPrivate="false">12 Bukit Timah Road</address>
         <birthday isPrivate="false">11/01/1978</birthday>
+        <tag>Colleague</tag>
     </persons>
     <persons>
-        <name>Martin Mueller</name>
+        <name>Martin Lee</name>
         <phone isPrivate="false">8482131</phone>
-        <email isPrivate="false">hans@example.com</email>
-        <address isPrivate="false">chicago ave</address>
+        <email isPrivate="false">martinlee@example.com</email>
+        <address isPrivate="false">11 Hume Ave</address>
         <birthday isPrivate="false">12/12/1979</birthday>
+        <tag>Client</tag>
+    </persons>
+    <persons>
+        <name>Tiyyagura Hyma</name>
+        <phone isPrivate="false">97259090</phone>
+        <email isPrivate="false">hyma@example.com</email>
+        <address isPrivate="false">118A Hillcrest Ave</address>
+        <birthday isPrivate="false">20/11/1997</birthday>
+        <tag>Friend</tag>
+        <tag>Colleague</tag>
+        <tag>Teammate</tag>
+        <remark>CS2103 Project</remark>
+    </persons>
+    <persons>
+        <name>Liang Yu Hao</name>
+        <phone isPrivate="false">8412111</phone>
+        <email isPrivate="false">yuhao@example.com</email>
+        <address isPrivate="false">13 Bukit Batok Ave</address>
+        <birthday isPrivate="false">12/12/1995</birthday>
+        <tag>Friend</tag>
+        <tag>Colleague</tag>
+        <tag>Teammate</tag>
+        <remark>CS2103 Project</remark>
+    </persons>
+    <persons>
+        <name>Sean Kwek</name>
+        <phone isPrivate="false">91239122</phone>
+        <email isPrivate="false">sean@example.com</email>
+        <address isPrivate="false">2 Dover Road</address>
+        <birthday isPrivate="false">01/01/1995</birthday>
+        <tag>Friend</tag>
+        <tag>Colleague</tag>
+        <tag>Teammate</tag>
+        <remark>CS2103 Project</remark>
+    </persons>
+    <persons>
+        <name>Justus Wah</name>
+        <phone isPrivate="false">81926743</phone>
+        <email isPrivate="false">justus@example.com</email>
+        <address isPrivate="false">23 South Bridge Road</address>
+        <birthday isPrivate="false">11/11/1995</birthday>
+        <tag>Friend</tag>
+        <tag>Colleague</tag>
+        <tag>Teammate</tag>
+        <remark>CS2103 Project</remark>
+    </persons>
+    <persons>
+        <name>Kendrick Tan</name>
+        <phone isPrivate="false">8482131</phone>
+        <email isPrivate="false">kendrick@example.com</email>
+        <address isPrivate="false">11 Beach Road</address>
+        <birthday isPrivate="false">10/10/1979</birthday>
+        <tag>Client</tag>
+    </persons>
+    <persons>
+        <name>Rachel Koh</name>
+        <phone isPrivate="false">97152122</phone>
+        <email isPrivate="false">rachel@example.com</email>
+        <address isPrivate="false">133 Potong Pasir Avenue 1</address>
+        <birthday isPrivate="false">10/05/1959</birthday>
+        <tag>Colleague</tag>
+        <tag>Friend</tag>
+    </persons>
+    <persons>
+        <name>Sharon Chan</name>
+        <phone isPrivate="false">91233434</phone>
+        <email isPrivate="false">sharon@example.com</email>
+        <address isPrivate="false">12 Jurong West Avenue</address>
+        <birthday isPrivate="false">14/12/1979</birthday>
+        <tag>Client</tag>
+    </persons>
+    <persons>
+        <name>Matthew Loh</name>
+        <phone isPrivate="false">98761234</phone>
+        <email isPrivate="false">matthew@example.com</email>
+        <address isPrivate="false">12 Upper Bukit Timah View</address>
+        <birthday isPrivate="false">08/11/1998</birthday>
+        <tag>Client</tag>
+        <remark>In Europe till 12 December</remark>
+    </persons>
+    <persons>
+        <name>Sheryl Lee</name>
+        <phone isPrivate="false">94453483</phone>
+        <email isPrivate="false">sheryl@example.com</email>
+        <address isPrivate="false">11 Tanah Merah Besar Road</address>
+        <birthday isPrivate="false">16/06/1997</birthday>
+        <tag>Family</tag>
+    </persons>
+    <persons>
+        <name>Susan Yeo</name>
+        <phone isPrivate="false">8482131</phone>
+        <email isPrivate="false">susan@example.com</email>
+        <address isPrivate="false">17 Tanah Merah Besar Road</address>
+        <birthday isPrivate="false">01/10/1970</birthday>
+        <tag>Family</tag>
+        <remark>Return Books</remark>
+    </persons>
+    <persons>
+        <name>Cindy Lee</name>
+        <phone isPrivate="false">91239123</phone>
+        <email isPrivate="false">cindy@example.com</email>
+        <address isPrivate="false">11 Kent Ridge Drive</address>
+        <birthday isPrivate="false">12/12/1979</birthday>
+        <tag>Family</tag>
+    </persons>
+    <persons>
+        <name>Rochelle Tan</name>
+        <phone isPrivate="false">99991234</phone>
+        <email isPrivate="false">rochelle@example.com</email>
+        <address isPrivate="false">19 Jurong West Avenue 5</address>
+        <birthday isPrivate="false">12/03/1974</birthday>
+        <tag>Colleague</tag>
+        <remark>Owes Money</remark>
     </persons>
 </addressbook>
