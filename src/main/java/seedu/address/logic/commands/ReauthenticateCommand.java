@@ -21,6 +21,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 public class ReauthenticateCommand extends UndoableCommand {
 
     public static final String COMMAND_WORD = "reauthenticate";
+    public static final String COMMAND_ALIAS = "ra";
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": reauthenticates the Account SID, Authentication Token, and Sending Number. "
             + "Parameters: "

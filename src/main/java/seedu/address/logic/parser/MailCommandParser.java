@@ -7,10 +7,12 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.MailCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
+//@@author hymss
 /**
  * Parses input arguments and creates a new MailCommand object
  */
 public class MailCommandParser implements Parser<MailCommand> {
+
     /**
      * Parses the given {@code String} of arguments in the context of the MailCommand
      * and returns an MailCommand object for execution.

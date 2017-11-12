@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 
+//@@author hymss
 /**
  * Represents a Person's birthday in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidBirthday(String)}
@@ -11,8 +12,8 @@ import seedu.address.commons.exceptions.IllegalValueException;
 public class Birthday {
 
     public static final String MESSAGE_BIRTHDAY_CONSTRAINTS =
-            "Person birthdays can only contain numbers and forward slashes, and it should not be blank."
-                + " The birthday must be in the form dd/mm/yy or dd/mm/yyy";
+            "Birthdays cannot be empty and should be an actual date. They can only contain numbers and forward slashes."
+                + " The birthday must be in the form dd/mm/yy or dd/mm/yyy.";
 
     /*
      * The first character of the birthday must not be a whitespace,
@@ -27,7 +28,7 @@ public class Birthday {
 
     /**
      * Validates given birthday.
-     *
+     * @param birthday
      * @throws IllegalValueException if given birthday string is invalid.
      */
     public Birthday(String birthday) throws IllegalValueException {

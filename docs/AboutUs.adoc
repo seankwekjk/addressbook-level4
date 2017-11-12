@@ -17,16 +17,16 @@ image::mzxc152.jpg[width="150", align="left"]
 {empty}[https://github.com/mzxc152[github]] [<<liangyuhao#, portfolio>>]
 
 Role: Team Member +
-Responsibilities: -
+Responsibilities: UI Component
 
 '''
 
 
 === Tiyyagura Hyma
 image::hymss.jpg[width="150", align="left"]
-{empty}[http://github.com/hymss[github]] [<<johndoe#, portfolio>>]
+{empty}[http://github.com/hymss[github]] [<<tiyyagurahyma#, portfolio>>]
 Role: Team Member +
-Responsibilities: -
+Responsibilities: Model Component
 
 
 === Sean Kwek
@@ -34,7 +34,7 @@ image::seankwekjk.png[width="150", align="left"]
 {empty}[https://github.com/seankwekjk[github]] [<<seankwek#, portfolio>>]
 
 Role: Team Member +
-Responsibilities: Social Media Implementation, Command Logic
+Responsibilities: Logic Component, Social Media Implementation
 
 '''
 
@@ -43,5 +43,5 @@ image::justusw.jpg[width="150", align="left"]
 {empty}[https://github.com/justuswah[github]] [<<justuswah#, portfolio>>]
 
 Role: Team Member +
-Responsibilities: SMS Command Implementation, Find Command Enhancement, RemoveTag Command, JUnit Testing
+Responsibilities: Storage Component, SMS Command Implementation, Find Command Enhancement, RemoveTag Command, JUnit Testing
 

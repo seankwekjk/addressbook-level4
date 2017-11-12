@@ -426,12 +426,24 @@ To create a difference between the updating and clearing of the `Remark` field, 
 **Cons** The user will find it difficult to know the `index` of the `Person` he would like to edit, particularly if it is not currently in the filtered list. It is not intuitive and difficult for the user to utilise.
 // end::remark[]
 
-// tag::birthdayfield[]
 === Birthday Field
+// tag::birthdayfield[]
 
 The person class consists of five compulsory attributes, `Name` `Phone` `Email` `Address` `Birthday` and optional `Remark` and `Tag`. The implementation of the birthday attribute is similar to that of the other compulsory attributes. It is a compulsory field and cannot be left blank. The constructor takes in the birthday value in a String format and a new instance of the birthday field is initialised.
 
-The birthday value is validated before being accepted as a parameter in the constructor for the person class. A valid birthday value has to be in the form `DD/MM/YYYY` or `DD/MM/YY`. Only digits and forward slashes are permitted. The birthday value is also checked to ensure that the date actually exists. The different number of days in the month February in leap years are accounted for and the different days in various months are also taken into account. This check minimises the chances of the user making a typo in entering the birthday and also ensures that the user does not accidentally input a wrong field in place of the birthday field (i.e. input an address in the birthday field).
+The birthday value is validated before being accepted as a parameter in the constructor for the person class. A valid birthday value has to be in the form `DD/MM/YYYY` or `DD/MM/YY`. Only digits and forward slashes are permitted. The birthday value is also checked to ensure that the date actually exists. The different number of days in the month February in leap years are accounted for and the different days in various months are also taken into account. This check minimises the chances of the user making a typo in entering the birthday and also ensures that the user does not accidentally input a wrong field in place of the birthday field (i.e. input an address in the birthday field). +
+
+The code snippet below shows how the birthday value is validated.
+
+[source,java]
+----
+public class ListCommand extends Command {
+    public static final String BIRTHDAY_VALIDATION_REGEX = "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)"
+                + "(\\/|-|\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3"
+                + "(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$"
+                + "|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$";
+}
+----
 
 ==== Design Considerations
 
@@ -454,15 +466,21 @@ The birthday value is validated before being accepted as a parameter in the cons
 **Cons: ** Implementation is slightly more tedious and new developers might need more time to understand the implementation.
 
 // end::birthdayfield[]
-// tag::listbirthday[]
 
 === ListBirthday Mechanism
+
+// tag::listBirthday[]
 
 The listbirthday command displays the list of contacts in Contags whose birthdays fall on the current date. The list is sorted in order of the list according to the `updateFilteredPersonsList`.
 
 The lisbirthday command is facilitated by the `BirthdayChecker` class in the person class. Take note that the listbirthday command is not an undoable command and hence inherits from `Command` rather than `UndoableCommand` (see design considerations below).
 
 The BirthdayChecker class checks if a contact's birthday falls on the current date by checking if the month and day of the contact's birthday and current date are equal. This is done so by converting the month and day first to a string, which is then converted to a date object and finally a calendar object.
+
+The sequence diagram for the listbirthday command is shown below.
+
+image::listBirthdayCommandSeqDiagram.png[width="800"]
+_Figure 4.4a : listbirthday Command sequence diagram_
 
 ==== Design Considerations
 
@@ -477,6 +495,7 @@ The BirthdayChecker class checks if a contact's birthday falls on the current da
 **Pros:** More user friendly as users might want to know whose birthday is nearing. +
 **Cons:** More tedious to implement.
 
+// end::listBirthday[]
 // tag::social[]
 
 === Social Media
@@ -558,23 +577,32 @@ If you entered arguments that do not follow the required format, `ParseException
 **Cons:** Harder to implement and develop. +
 // end::sort[]
 
-// tag::mailcommand[]
-
 === Mail Command
 
-The mail command mails a `person` in `Contags` based on their `Index` in the most updated list. The implementation of `MailCommand` inherits from `Command`. +
+// tag::mailcommand[]
 
-There is also the use of the `MailCommandParser`, which implements the `Parser` interface, that parses out the index to be used with the `sort` command. The `MailCommandParser` validates the input index.  +
+The `mail` command mails a `person` in `Contags` based on their `Index` in the most updated list. The implementation of `MailCommand` inherits from `Command`. +
+
+`MailCommandParser`, which implements the `Parser` interface, serves two functions: +
+• parses out the index to be used with the `mail` command; and +
+• validates the input index to ensure that it is within the range of the current list of contacts.
 
 [NOTE]
-If the index entered by the user do not comply is out of range, ParseException will be thrown before execution of the method. +
+If the index entered by the user does not comply with the expected range, ParseException will be thrown before execution of the method. +
+
+The `MailCommand` links the logic in Contags to the content (email address of the specified index) that in displayed on the desktop mail application. +
+
+The following sequence diagram illustrates the execution of the `mail` command.
+
+image::MailCommandSequenceDiagram.png[width="800"]
+_Figure 4.7a : Mail Command sequence diagram_
 
 ==== Design Considerations
 
 **Aspect:** Attributes to mail command +
 **Alternative 1 (current choice):** Only takes in to (email address) field. +
-**Pros:** Allows users to type in their title and message on the mail application itself. It would be more user friendly if the message is long or requires formatting such as new lines or separating the message into paragraphs. +
-**Cons:** Does not take in title and message fields, user would still have to type the subject and message when the mail application opens. +
+**Pros:** Allows users to type in their title and message on the mail application itself. It would be more user friendly if the message is long or requires formatting such as separating the message into paragraphs. +
+**Cons:** Users would still have to type the subject and message when the mail application opens. +
 **Alternative 2:** Take in to, title and message fields. +
 **Pros:** Useful for most users who want to send a short message quickly without having to type in the mail application when it opens. +
 **Cons:** Not useful for users who want to send long messages with paragraphs.
@@ -584,10 +612,10 @@ If the index entered by the user do not comply is out of range, ParseException w
 **Aspect:** Whether mail command should automatically send the mail without opening up the mail application +
 **Alternative 1 (current choice):** Mail command opens up the default desktop mail application. +
 **Pros:** User can decide on the preferred mail server and there would not be security issues with the log in since it is done externally. +
-**Cons:** Less user friendly as there is a need to open an extra application. +
+**Cons:** Less user friendly as there is a need to open an extra application and it would be more of a hassle for users. Furthermore, it is not in tandem with one of our intended purposes of Contags, which is to integrate the different communication platforms onto one application itself. +
 **Alternative 2:** Implement GMail API. +
 **Pros:** There is no need to open up the desktop mail application and users can easily send a mail using just the CLI. +
-**Cons:** There might be security issues pertaining to the log in. Furthermore, not all users would want to use Gmail. This alternative would not account for users having different preferences on which email server they would like to use. Interface for GMail is not optimal in `JavaFX WebView`.
+**Cons:** Not all users would want have the same consensus on the preferred mail server. Implementing the GMail API would not cater to the needs and preferences of many users who would want to use other mail servers. Furthermore, the interface for GMail is not optimal in `JavaFX WebView`.
 
 // end::mailcommand[]
 
@@ -742,11 +770,11 @@ Priorities: +
 
 |`* * *` |user |search all my contacts by any keyword, name, email address, or address |search for people by other means than names
 
+|`* * *` |user |have a birthday field for my contacts |have a record of their birthdays
+
 |`* * *` |user |send an email to any contact in Contags |so that I can conveniently send an email
 
-|`* * *` |user |send an SMS message to any contact in the Contags Application |so that I can conveniently send a SMS
-
-|`* * *` |user |find a person with an incomplete name |to find a person even if I cannot remember or spell the person's name correctly
+|`* * *` |user |send a SMS message to any contact in the Contags Application |so that I can conveniently send a SMS
 
 |`* * *` |user |see all tags for a contact |to organise contacts easily
 
@@ -754,23 +782,9 @@ Priorities: +
 
 |`* * *` |user |create a new contact with a name that already exists in Contags |have multiple contacts with the same name if I know people with the same name
 
-|`* *` |user |hide link:#private-contact-detail[private contact details] by default |minimize chance of someone else seeing them by accident
-
-|`* *` |user |add contacts with missing fields |include a contact even if I do not know some of the information fields
-
-|`* *` |user |attribute multiple phone numbers to a contact |have a contact's mobile and home numbers in the same contact
-
-|`* *` |user |delete certain fields for my contacts |
-
-|`* *` |user |know if any of my contact information clashes with another one |organise contacts easily |
-
 |`* *` |user |delete all tags for a contact |
 
 |`* *` |user |undo previous commands |revert mistakes made
-
-|`* *` |user |add tags to a contact while editing without removing them all |simplify the editing of tags
-
-|`* *` |user |attribute multiple addresses to a contact |have a contact's work and home addresses in the same contact
 
 |`* *` |user |sort the list of contacts in alphabetical order |organise the list
 
@@ -780,9 +794,21 @@ Priorities: +
 
 |`* *` |user |have tags of different colours |easily identify different tags
 
-|`*` |user| change colors of the tags |customise the tags to my own color groupings
+|`*` |user |find a person with an incomplete name |to find a person even if I cannot remember or spell the person's name correctly
 
-|`*` |user with many persons in Contags |sort persons by name |locate a person easily
+|`*` |user |attribute multiple phone numbers to a contact |have a contact's mobile and home numbers in the same contact
+
+|`*` |user |attribute multiple addresses to a contact |have a contact's work and home addresses in the same contact
+
+|`*` |user |delete certain fields for my contacts |
+
+|`*` |user |add tags to a contact while editing without removing them all |simplify the editing of tags
+
+|`*` |user |know if any of my contact information clashes with another one |organise contacts easily
+
+|`*` |user |add contacts with missing fields |include a contact even if I do not know some of the information fields
+
+|`*` |user| change colors of the tags |customise the tags to my own color groupings
 
 |`*` |user |see which contacts have recently been changed or updated |locate changes easily
 
@@ -791,6 +817,8 @@ Priorities: +
 |`*` |user |add nicknames to a contact |to identify contacts easily
 
 |`*` |user |view the last 10 commands I typed |track my usage of Contags
+
+|`*` |user |hide link:#private-contact-detail[private contact details] by default |minimize chance of someone else seeing them by accident
 
 |`*` |user |add a priority number to each contact |
 
@@ -1058,9 +1086,11 @@ Contags informs user that the format is invalid, providing the correct format. U
 Contags informs user that the contact cannot be found. Use case ends.
 
 // end::findCommand[]
-// tag::mailContact[]
+
 [discrete]
 === Use case: Mail Contact
+
+// tag::mailContact[]
 
 *MSS*
 
@@ -1076,9 +1106,11 @@ Contags informs user that the contact cannot be found. Use case ends.
 ** 1a1. Contags informs user that index is not valid.
 
 // end::mailContact[]
-// tag::listBirthday[]
+
 [discrete]
 === Use case: List contacts whose birthdays fall on current date
+
+// tag::listBirthday[]
 
 *MSS*
 
@@ -1306,6 +1338,8 @@ XML is a metalanguage which allows users to define their own customized markup l
 [appendix]
 == Product Survey
 
+// tag::productSurvey[]
+
 *Mac Contacts*
 
 Author: Apple Inc.
@@ -1319,6 +1353,8 @@ Cons:
 
 * Has no command-line interface.
 * Only available on Mac OS.
+
+// end::productSurvey[]
 
 ---
 

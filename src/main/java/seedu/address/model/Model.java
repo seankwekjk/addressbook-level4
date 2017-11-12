@@ -53,12 +53,6 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<ReadOnlyPerson> predicate);
 
-    /**
-     * Updates the filter of the filtered list of people to mail to filter by the given {@code predicate}.
-     * @throws NullPointerException if {@code predicate} is null.
-     */
-    String updateMailRecipientList(Predicate<ReadOnlyPerson> predicate);
-
     /** Reauthenticates Twilio Particulars */
     void reauthenticate(String newId, String newToken, String newNumber);
 }

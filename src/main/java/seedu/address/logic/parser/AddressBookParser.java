@@ -85,9 +85,12 @@ public class AddressBookParser {
         case ListCommand.COMMAND_ALIAS:
             return new ListCommand();
 
+        //@@author hymss
         case ListBirthdayCommand.COMMAND_WORD:
+        case ListBirthdayCommand.COMMAND_ALIAS:
             return new ListBirthdayCommand();
 
+        //@@author
         case SmsCommand.COMMAND_WORD:
             return new SmsCommandParser().parse(arguments);
         //@@author mzxc152
@@ -99,6 +102,7 @@ public class AddressBookParser {
             return new HistoryCommand();
 
         case ExitCommand.COMMAND_WORD:
+        case ExitCommand.COMMAND_ALIAS:
             return new ExitCommand();
 
         case HelpCommand.COMMAND_WORD:
@@ -112,20 +116,27 @@ public class AddressBookParser {
         case RedoCommand.COMMAND_ALIAS:
             return new RedoCommand();
 
+        //@@author hymss
         case MailCommand.COMMAND_WORD:
+        case MailCommand.COMMAND_ALIAS:
             return new MailCommandParser().parse(arguments);
 
+        //@@author
         case ReauthenticateCommand.COMMAND_WORD:
+        case ReauthenticateCommand.COMMAND_ALIAS:
             return new ReauthenticateCommandParser().parse(arguments);
 
         case RemoveTagCommand.COMMAND_WORD:
+        case RemoveTagCommand.COMMAND_ALIAS:
             return new RemoveTagCommandParser().parse(arguments);
 
         //@@author seankwekjk
         case RemarkCommand.COMMAND_WORD:
+        case RemarkCommand.COMMAND_ALIAS:
             return new RemarkCommandParser().parse(arguments);
 
         case ToggleCommand.COMMAND_WORD:
+        case ToggleCommand.COMMAND_ALIAS:
             return new ToggleCommand();
 
         //@@author
