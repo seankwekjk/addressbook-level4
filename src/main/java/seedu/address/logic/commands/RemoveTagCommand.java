@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_REMOVE_TAG_SUCCESS;
 import static seedu.address.commons.core.Messages.MESSAGE_TAG_NOT_FOUND;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.logging.Level;
 
@@ -41,6 +42,7 @@ public class RemoveTagCommand extends UndoableCommand {
             throw new TagNotFoundException(String.format(MESSAGE_TAG_NOT_FOUND));
         } else {
             model.removeTag(toRemove);
+            model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
             logger.log(Level.FINE, "Tag " + toRemove.tagName + " Removed");
             return new CommandResult(String.format(MESSAGE_REMOVE_TAG_SUCCESS));
         }
