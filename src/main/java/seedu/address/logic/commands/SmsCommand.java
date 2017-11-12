@@ -63,7 +63,7 @@ public class SmsCommand extends Command {
         }
 
         logger.log(Level.FINE, MESSAGE_SMS_PERSON_SUCCESS);
-        return new CommandResult(MESSAGE_SMS_PERSON_SUCCESS);
+        return new CommandResult(MESSAGE_SMS_PERSON_SUCCESS + " to " + receivingNumber + ": " + text);
 
     }
 
