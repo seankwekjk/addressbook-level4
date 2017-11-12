@@ -829,8 +829,6 @@ Priorities: +
 |`*` |forgetful user |link appointments with specific contacts |
 |=======================================================================
 
-{More to be added}
-
 [appendix]
 == Use Cases
 The use cases here are for you (and other developers) to understand the flow in which a user may follow in using a particular feature implemented in Contags. +

@@ -49,7 +49,7 @@ public class SortCommandSystemTest extends AddressBookSystemTest {
         /* Case: sort by tag -> list is sorted alphabetically by tag */
         Model modelBeforeSortPhone = getModel();
         command = SortCommand.COMMAND_WORD + " " + TAG_SORT;
-        expectedResultMessage = String.format(SortCommand.MESSAGE_SUCCESS, ADDRESS_SORT);
+        expectedResultMessage = String.format(SortCommand.MESSAGE_SUCCESS, TAG_SORT);
         model.sortList(TAG_SORT);
         assertCommandSuccess(command, expectedResultMessage, model);
 
