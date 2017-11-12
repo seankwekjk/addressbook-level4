@@ -20,8 +20,6 @@ include::../DeveloperGuide.adoc[tag=mailContact]
 
 ---
 
-
-
 ==== Justification
 As Contags was developed with working professionals in mind, having a mail command was of very high priority. Mail is the most widely used application by business professionals and according to a study done by The Radicarti Group, the average business professional sends 35 emails a day. Having a mail command integrated into an address book application would be more convenient for users who can find contacts easily and email them.
 
@@ -39,9 +37,9 @@ include::../DeveloperGuide.adoc[tag=mailcommand]
 
 Business professionals would find it useful to keep track of their contacts' birthdays so that they can maintain business relationships on top of friendships and family relationships. In today's world where connections are so necessary and powerful, maintaining business relationships have never been more important. Integrating a birthday field as part of a contact's particulars would help users to have a record of their contacts' birthdays and would make it more convenient for users to wish the colleagues and friends.
 
-==== Implementation
-
 ---
+
+==== Implementation
 
 include::../DeveloperGuide.adoc[tag=birthdayfield]
 
@@ -53,7 +51,6 @@ include::../DeveloperGuide.adoc[tag=birthdayfield]
 
 ==== External behavior
 
----
 
 include::../UserGuide.adoc[tag=listBirthday]
 
@@ -65,15 +62,20 @@ As mentioned, the birthday field is an important aspect of a contact's particula
 
 ==== Implementation
 
----
-
 include::../DeveloperGuide.adoc[tag=listBirthday]
 
 ---
 
-=== Developer Guide Appendix: Glossary
+=== Enhancement Added: Alias for Commands
+
+==== Justification
+
+We wanted users to be able to execute their desired commands with as little effort as possible. Therefore, we have added an alternative alias for commands to minimise the amount of typing they have to do.
+See (Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/22[#22], Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/124[#124]).
 
 ---
+
+=== Developer Guide Appendix: Glossary
 
 include::../DeveloperGuide.adoc[tag=glossary]
 
@@ -93,7 +95,6 @@ A schedule feature would allow users to create events such as meetings or dinner
 
 === Other contributions
 
-* Added alias for commands (Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/22[#22], Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/124[#124])
 * Added a backup to store contents of addressbook (Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/23[#23])
 * Added birthday field (Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/37[#37])
 * Updated UI to add new logo and include a separate browser panel displaying the address of a contact when contact is selected (Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/107[#107]])
