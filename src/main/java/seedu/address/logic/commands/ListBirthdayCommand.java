@@ -26,6 +26,6 @@ public class ListBirthdayCommand extends Command {
     @Override
     public CommandResult execute() {
         model.updateFilteredPersonList(checker);
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(getMessageForBirthdayListShownSummary(model.getFilteredPersonList().size()));
     }
 }
