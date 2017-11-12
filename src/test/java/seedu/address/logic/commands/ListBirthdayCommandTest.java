@@ -11,6 +11,7 @@ import seedu.address.logic.UndoRedoStack;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.person.BirthdayChecker;
 
 //@@author hymss
 /**
@@ -21,6 +22,7 @@ public class ListBirthdayCommandTest {
     private Model model;
     private Model expectedModel;
     private ListBirthdayCommand listBirthdayCommand;
+    private BirthdayChecker checker = new BirthdayChecker();
 
     @Before
     public void setUp() {
@@ -34,6 +36,7 @@ public class ListBirthdayCommandTest {
     @Test
     public void executeListBirthdaySuccess() {
         ListBirthdayCommand listBirthdayCommand = prepareCommand();
+        expectedModel.updateFilteredPersonList(checker);
         assertCommandSuccess(listBirthdayCommand, model, listBirthdayCommand.MESSAGE_SUCCESS, expectedModel);
     }
 
