@@ -4,9 +4,13 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
+import static seedu.address.testutil.TypicalPersons.ALICE;
+import static seedu.address.testutil.TypicalPersons.BENSON;
 import static seedu.address.testutil.TypicalPersons.CARL;
+import static seedu.address.testutil.TypicalPersons.DANIEL;
 import static seedu.address.testutil.TypicalPersons.ELLE;
 import static seedu.address.testutil.TypicalPersons.FIONA;
+import static seedu.address.testutil.TypicalPersons.GEORGE;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.Arrays;
@@ -70,7 +74,64 @@ public class FindCommandTest {
         FindCommand command = prepareCommand("Kurz Elle Kunz");
         assertCommandSuccess(command, expectedMessage, Arrays.asList(CARL, ELLE, FIONA));
     }
+    //@@author justuswah
+    @Test
+    public void execute_emailKeyword_onePersonFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 1);
+        FindCommand command = prepareCommand("werner@example.com");
+        assertCommandSuccess(command, expectedMessage, Arrays.asList(ELLE));
+    }
 
+    @Test
+    public void execute_emailKeyword_multiplePersonsFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 2);
+        FindCommand command = prepareCommand("werner@example.com heinz@example.com");
+        assertCommandSuccess(command, expectedMessage, Arrays.asList(CARL, ELLE));
+    }
+
+    @Test
+    public void execute_addressKeyword_onePersonFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 1);
+        FindCommand command = prepareCommand("little tokyo");
+        assertCommandSuccess(command, expectedMessage, Arrays.asList(FIONA));
+    }
+
+    @Test
+    public void execute_addressKeyword_multiplePersonsFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 3);
+        FindCommand command = prepareCommand("street");
+        assertCommandSuccess(command, expectedMessage, Arrays.asList(CARL, DANIEL, GEORGE));
+    }
+
+    @Test
+    public void execute_phoneKeyword_onePersonFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 1);
+        FindCommand command = prepareCommand("98765432");
+        assertCommandSuccess(command, expectedMessage, Arrays.asList(BENSON));
+    }
+
+    @Test
+    public void execute_phoneKeyword_multiplePersonsFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 2);
+        FindCommand command = prepareCommand("98765432 85355255");
+        assertCommandSuccess(command, expectedMessage, Arrays.asList(ALICE, BENSON));
+    }
+
+    @Test
+    public void execute_birthdayKeyword_onePersonFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 1);
+        FindCommand command = prepareCommand("01/02/03");
+        assertCommandSuccess(command, expectedMessage, Arrays.asList(ALICE));
+    }
+
+    @Test
+    public void execute_birthdayKeyword_multiplePersonsFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 2);
+        FindCommand command = prepareCommand("01/02/03 02/03/04");
+        assertCommandSuccess(command, expectedMessage, Arrays.asList(ALICE, BENSON));
+    }
+
+    //@@author
     /**
      * Parses {@code userInput} into a {@code FindCommand}.
      */
