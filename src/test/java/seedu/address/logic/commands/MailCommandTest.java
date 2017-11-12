@@ -12,6 +12,7 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
+import java.awt.HeadlessException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
@@ -92,6 +93,7 @@ public class MailCommandTest {
         assertFalse(mailFirstCommand.equals(mailSecondCommand));
     }
 
+    //commented out method below as it fails on Travis due to headlessException
     /**
      * Executes a {@code SelectCommand} with the given {@code index}, and checks that {@code JumpToListRequestEvent}
      * is raised with the correct index.
@@ -104,6 +106,8 @@ public class MailCommandTest {
             assertEquals(expectedMessage, MESSAGE_MAIL_SUCCESS);
         } catch (CommandException ce) {
             throw new IllegalArgumentException("Execution of command should not fail.", ce);
+        } catch (HeadlessException he){
+            fail("Execution of command shoud not fail.");
         }
     }
 
