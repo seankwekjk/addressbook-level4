@@ -6,10 +6,10 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_MAIL_FAILURE;
+import static seedu.address.commons.core.Messages.MESSAGE_MAIL_SUCCESS;
 import static seedu.address.logic.commands.CommandTestUtil.showFirstPersonOnly;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
-import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.io.IOException;
@@ -21,7 +21,6 @@ import org.junit.Test;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
-import seedu.address.commons.events.ui.JumpToListRequestEvent;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -47,16 +46,6 @@ public class MailCommandTest {
         model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
     }
 
-
-    @Test
-    public void execute_validIndexUnfilteredList_success() {
-        Index lastPersonIndex = Index.fromOneBased(model.getFilteredPersonList().size());
-
-        assertExecutionSuccess(INDEX_FIRST_PERSON);
-        assertExecutionSuccess(INDEX_THIRD_PERSON);
-        assertExecutionSuccess(lastPersonIndex);
-    }
-
     @Test
     public void execute_invalidIndexUnfilteredList_failure() {
         Index outOfBoundsIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
@@ -67,8 +56,7 @@ public class MailCommandTest {
     @Test
     public void execute_validIndexFilteredList_success() {
         showFirstPersonOnly(model);
-
-        assertExecutionSuccess(INDEX_FIRST_PERSON);
+        assertExecutionSuccess(INDEX_FIRST_PERSON, MESSAGE_MAIL_SUCCESS);
     }
 
     @Test
@@ -108,35 +96,15 @@ public class MailCommandTest {
      * Executes a {@code SelectCommand} with the given {@code index}, and checks that {@code JumpToListRequestEvent}
      * is raised with the correct index.
      */
-    /* private void assertExecutionSuccess(Index index) {
+    private void assertExecutionSuccess(Index index, String expectedMessage) {
         MailCommand mailCommand = prepareCommand(index);
 
         try {
-            CommandResult commandResult = mailCommand.execute();
-            assertEquals(String.format(MailCommand.MESSAGE_SUCCESS, index.getOneBased()),
-                    commandResult.feedbackToUser);
+            mailCommand.execute();
+            assertEquals(expectedMessage, MESSAGE_MAIL_SUCCESS);
         } catch (CommandException ce) {
             throw new IllegalArgumentException("Execution of command should not fail.", ce);
         }
-    } */
-
-    /**
-     * Executes a {@code SelectCommand} with the given {@code index}, and checks that {@code JumpToListRequestEvent}
-     * is raised with the correct index.
-     */
-    private void assertExecutionSuccess(Index index) {
-        MailCommand mailCommand = prepareCommand(index);
-
-        try {
-            CommandResult commandResult = mailCommand.execute();
-            assertEquals(String.format(MailCommand.MESSAGE_SUCCESS, index.getOneBased()),
-                    commandResult.feedbackToUser);
-        } catch (CommandException ce) {
-            throw new IllegalArgumentException("Execution of command should not fail.", ce);
-        }
-
-        JumpToListRequestEvent lastEvent = (JumpToListRequestEvent) eventsCollectorRule.eventsCollector.getMostRecent();
-        assertEquals(index, Index.fromZeroBased(lastEvent.targetIndex));
     }
 
     /**
@@ -144,7 +112,7 @@ public class MailCommandTest {
      * is thrown with the {@code expectedMessage}.
      */
     private void assertExecutionFailure(Index index, String expectedMessage) {
-        MailCommand mailCommand = prepareCommand(index);
+        MailCommand mailCommand = new MailCommand(index);
 
         try {
             mailCommand.execute();
@@ -176,25 +144,4 @@ public class MailCommandTest {
         mailCommand.setData(model, new CommandHistory(), new UndoRedoStack());
         return mailCommand;
     }
-
-    /**
-     * Asserts that {@code command} is successfully executed.
-     * Asserts that the command feedback is equal to {@code expectedMessage}.
-     * Asserts that the {@code AddressBook} in model remains the same after executing the {@code command}.
-     * Asserts that the {@code FilteredList<ReadOnlyPerson>} is equal to {@code expectedList}.
-     */
-    /* private void assertExecutionSuccess(MailCommand command, String expectedMessage,
-                                        List<ReadOnlyPerson> expectedList) {
-        AddressBook expectedAddressBook = new AddressBook(model.getAddressBook());
-        try {
-            CommandResult commandResult = command.execute();
-            assertEquals(expectedMessage, commandResult.feedbackToUser);
-            assertEquals(expectedAddressBook, model.getAddressBook());
-            assertEquals(expectedList, model.getFilteredPersonList());
-        } catch (CommandException ce) {
-            assertEquals(expectedMessage, MESSAGE_MAIL_FAILURE);
-            assertTrue(eventsCollectorRule.eventsCollector.isEmpty());
-        }
-
-    } */
 }
