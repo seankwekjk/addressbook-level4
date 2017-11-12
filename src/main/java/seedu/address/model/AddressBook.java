@@ -10,6 +10,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import javafx.collections.ObservableList;
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.SmsCommand;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.ReadOnlyPerson;
@@ -76,6 +77,10 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     public void reauthenticate (String newId, String newToken, String newNumber) {
         SmsCommand.setAccountParticulars(newId, newToken, newNumber);
+    }
+
+    public void smsContact (Index index, String text) {
+        new SmsCommand(index, text);
     }
 
     //@@author
