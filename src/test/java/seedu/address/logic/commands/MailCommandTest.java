@@ -9,6 +9,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_MAIL_FAILURE;
 import static seedu.address.logic.commands.CommandTestUtil.showFirstPersonOnly;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.io.IOException;
@@ -45,6 +46,16 @@ public class MailCommandTest {
         model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
     }
 
+
+    @Test
+    public void execute_validIndexUnfilteredList_success() {
+        Index lastPersonIndex = Index.fromOneBased(model.getFilteredPersonList().size());
+
+        assertExecutionSuccess(INDEX_FIRST_PERSON);
+        assertExecutionSuccess(INDEX_THIRD_PERSON);
+        assertExecutionSuccess(lastPersonIndex);
+    }
+
     @Test
     public void execute_invalidIndexUnfilteredList_failure() {
         Index outOfBoundsIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
@@ -52,12 +63,12 @@ public class MailCommandTest {
         assertExecutionFailure(outOfBoundsIndex, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
 
-    /* @Test
+    @Test
     public void execute_validIndexFilteredList_success() {
         showFirstPersonOnly(model);
 
         assertExecutionSuccess(INDEX_FIRST_PERSON);
-    } */
+    }
 
     @Test
     public void execute_invalidIndexFilteredList_failure() {
@@ -97,7 +108,7 @@ public class MailCommandTest {
      * is raised with the correct index.
      */
     private void assertExecutionSuccess(Index index) {
-        MailCommand mailCommand = prepareCommand(index);
+        MailCommandStub mailCommand = prepareCommand(index);
 
         try {
             CommandResult commandResult = mailCommand.execute();
@@ -113,7 +124,7 @@ public class MailCommandTest {
      * is thrown with the {@code expectedMessage}.
      */
     private void assertExecutionFailure(Index index, String expectedMessage) {
-        MailCommand mailCommand = new MailCommand(index);
+        MailCommandStub mailCommand = prepareCommand(index);
 
         try {
             mailCommand.execute();
@@ -140,8 +151,14 @@ public class MailCommandTest {
     /**
      * Parses {@code userInput} into a {@code EmailCommand}.
      */
-    private MailCommand prepareCommand(Index index) {
+    /* private MailCommand prepareCommand(Index index) {
         MailCommand mailCommand = new MailCommand(index);
+        mailCommand.setData(model, new CommandHistory(), new UndoRedoStack());
+        return mailCommand;
+    } */
+
+    private MailCommandStub prepareCommand(Index index) {
+        MailCommandStub mailCommand = new MailCommandStub(index);
         mailCommand.setData(model, new CommandHistory(), new UndoRedoStack());
         return mailCommand;
     }
@@ -166,4 +183,11 @@ public class MailCommandTest {
         }
 
     } */
+}
+
+class MailCommandStub extends MailCommand {
+
+    MailCommandStub(Index index) {
+        super(index);
+    }
 }
