@@ -62,6 +62,8 @@ public class ModelManager extends ComponentManager implements Model {
         addressBook.deleteTag(toRemove);
         indicateAddressBookChanged();
     }
+
+
     //@@author mzxc152
     /**
      * Sorts the list in alphabetical order.
@@ -140,6 +142,12 @@ public class ModelManager extends ComponentManager implements Model {
         ModelManager other = (ModelManager) obj;
         return addressBook.equals(other.addressBook)
                 && filteredPersons.equals(other.filteredPersons);
+    }
+
+    @Override
+    public void reauthenticate(String newId, String newToken, String newNumber) {
+        addressBook.reauthenticate(newId, newToken, newNumber);
+        indicateAddressBookChanged();
     }
 
 }
