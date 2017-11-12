@@ -431,6 +431,7 @@ List is sorted according to email addresses in ascending order _(Figure 5.20.5)_
 // end::sort[]
 
 // tag::social[]
+
 === Toggling `select` command function : `toggle` `t`
 
 Contags allows you to switch between Google Maps and Social Media functionality for the `select` command. +

@@ -498,12 +498,12 @@ _Figure 4.4a : listbirthday Command sequence diagram_
 // end::listBirthday[]
 // tag::social[]
 
-=== Social Media
+=== Web-based Features
 
-The Social Media display consists of several parts. Firstly, there is the social media url field contained within the `Person` class. +
-This field is an optional one that does not have to be included in the `add` command when adding new a new contact.
+The enhancements made to the Browser consists of several parts. Firstly, the default behaviour of SelectCommand will load the url of a Google Maps search for the contact's address. +
+Secondly is the social media url field contained within the `Person` class. This field is an optional one that does not have to be included in the `add` command when adding new a new contact. In a contact that does not have its social media url specified, an empty String will be assigned to it.
 
-The second part is the `toggle` command, which modifies a class-level variable within the `BrowserPanel` class.
+The third part is the `toggle` command, which modifies a class-level variable within the `BrowserPanel` class.
 [source,java]
 ----
 public class BrowserPanel extends UiPart<Region> {
@@ -523,7 +523,7 @@ _Figure 4.4a : ToggleCommand sequence diagram_
 
 The `ToggleCommand` is able to refresh the `BrowserPanel` through the use of a new `ToggleChangedEvent`. This is an event that is handled by the `BrowserPanel`, and relies on 2 private variables within `BrowserPanel`.
 
-When `BrowserPanel` handles a `PersonPanelSelectionChangedEvent`, it stores both the `Address` and `Social Media` fields. The handler of `ToggleChangedEvent` is thus able to cause the browser to load the url linked to the other mode.
+When `BrowserPanel` handles a `PersonPanelSelectionChangedEvent`, it stores both the `Address` and `Social Media` fields of the selected contact within private variables. The handler of `ToggleChangedEvent` is thus able to cause the browser to load the url linked to the other mode.
 
 ==== Design Considerations
 
