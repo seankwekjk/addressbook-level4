@@ -32,7 +32,7 @@ public class ListBirthdayCommandTest {
     }
 
     @Test
-    public void executeListBirthdaySortSuccess() {
+    public void executeListBirthdaySuccess() {
         ListBirthdayCommand listBirthdayCommand = prepareCommand();
         assertCommandSuccess(listBirthdayCommand, model, listBirthdayCommand.MESSAGE_SUCCESS, expectedModel);
     }
