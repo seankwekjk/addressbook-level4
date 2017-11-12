@@ -29,7 +29,7 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.ui.testutil.EventsCollectorRule;
 
-//@@ author hymss
+//@@author hymss
 /**
  * Contains integration tests (interaction with the Model) for {@code MailCommand}.
  */
@@ -44,15 +44,6 @@ public class MailCommandTest {
     public void setUp() {
         model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
     }
-
-    /* @Test
-    public void execute_validIndexUnfilteredList_success() {
-        Index lastPersonIndex = Index.fromOneBased(model.getFilteredPersonList().size());
-
-        assertExecutionSuccess(INDEX_FIRST_PERSON);
-        assertExecutionSuccess(INDEX_THIRD_PERSON);
-        assertExecutionSuccess(lastPersonIndex);
-    } */
 
     @Test
     public void execute_invalidIndexUnfilteredList_failure() {

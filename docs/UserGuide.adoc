@@ -238,10 +238,11 @@ You can use this command to display all of your contacts, sorted according your 
 Format: `list` +
 Alias: `l`
 
+=== Viewing contacts whose birthdays fall on the current date: `listbirthday` `lb`
+
 // tag::listBirthday[]
 
-
-=== Viewing contacts with  birthdays on the current date: `listbirthday` `lb`
+Lists the contacts whose birthdays fall on the current date. +
 
 We struggle with remembering the birthdays of all of our contacts too. Never miss another one by using this command everyday!
 
@@ -255,19 +256,20 @@ You can wish the listed contacts a happy birthday by using the mail or SMS comma
 ****
 
 // end::listBirthday[]
-// tag::mailContact[]
 
 === Mailing a contact: `mail` `m`
+
+// tag::mailContact[]
 
 You no longer need to open up your mail program and enter the addressee's details. This command will do it all for you!
 
 Format: `mail INDEX` +
-Alias: `m` +
+Alias: `m INDEX` +
 
 Examples:
 
 * `mail 1` +
-Opens up mail application and the to field of the mail will be automatically filled in with the email address of the contact at the specified index.
+Opens up mail application and the to field of the message will be automatically filled in with the email address of the contact at the specified index.
 
 // end::mailContact[]
 

@@ -3,9 +3,6 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -125,20 +122,6 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredPersonList(Predicate<ReadOnlyPerson> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
-    }
-
-    @Override
-    public String updateMailRecipientList(Predicate<ReadOnlyPerson> predicate) {
-        requireNonNull(predicate);
-        filteredMails.setPredicate(predicate);
-        List<String> validPeopleList = new ArrayList<>();
-        for (ReadOnlyPerson person : filteredPersons) {
-            if (person.getEmail() != null && !person.getEmail().value.equalsIgnoreCase("INVALID_EMAIL@EXAMPLE.COM")
-                 && !validPeopleList.contains(person.getEmail().value)) {
-                validPeopleList.add(person.getEmail().value);
-            }
-        }
-        return String.join(",", validPeopleList);
     }
 
     @Override
