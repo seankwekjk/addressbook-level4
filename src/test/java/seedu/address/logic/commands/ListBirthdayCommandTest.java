@@ -1,10 +1,7 @@
 package seedu.address.logic.commands;
 
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.CommandTestUtil.showFirstPersonOnly;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
-
-import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -48,5 +45,4 @@ public class ListBirthdayCommandTest {
         command.setData(model, new CommandHistory(), new UndoRedoStack());
         return command;
     }
-
 }
