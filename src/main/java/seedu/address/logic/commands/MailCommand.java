@@ -23,13 +23,13 @@ public class MailCommand extends Command {
     public static final String COMMAND_ALIAS = "m";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Mails a contact in Contags.\n"
-            + "Recepient mail address cannot be blank.\n"
+            + "Recipient mail address cannot be blank.\n"
             + "Parameters: " + PREFIX_MAIL_RECEPIENT + " INDEX"
             + "Example: " + COMMAND_WORD + " " + PREFIX_MAIL_RECEPIENT + "1";
 
-    public static final String MESSAGE_SUCCESS = "Redirect to Mail application success.";
+    public static final String MESSAGE_SUCCESS = "Redirecting to Mail application.";
     public static final String MESSAGE_FAILURE = "Could not redirect to Mail application. "
-            + "Please enter a valid index.";
+            + "Please enter a valid index and ensure that you have a working internet connection.";
 
     private final Index targetIndex;
 
@@ -38,7 +38,7 @@ public class MailCommand extends Command {
     }
 
     /**
-     * Opens up Desktop Mail application.
+     * Opens up default Desktop Mail application.
      */
 
     public void sendMail(String sendMailTo) throws ParseException, IOException, URISyntaxException {

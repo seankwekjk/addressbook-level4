@@ -13,6 +13,7 @@ import java.util.logging.Level;
 public class ReauthenticateCommand extends Command {
 
     public static final String COMMAND_WORD = "reauthenticate";
+    public static final String COMMAND_ALIAS = "ra";
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": reauthenticates the Account SID, Authentication Token, and Sending Number. "
             + "Parameters: "

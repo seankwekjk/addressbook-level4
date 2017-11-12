@@ -24,7 +24,9 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
+import seedu.address.logic.commands.ListBirthdayCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.MailCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.UndoCommand;
@@ -120,6 +122,25 @@ public class AddressBookParserTest {
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
     }
 
+    //@@author hymss
+    @Test
+    public void parseCommand_listbirthday() throws Exception {
+        assertTrue(parser.parseCommand(ListBirthdayCommand.COMMAND_WORD) instanceof ListBirthdayCommand);
+        assertTrue(parser.parseCommand(ListBirthdayCommand.COMMAND_ALIAS) instanceof ListBirthdayCommand);
+        assertTrue(parser.parseCommand(ListBirthdayCommand.COMMAND_WORD + " 3") instanceof ListBirthdayCommand);
+    }
+
+    @Test
+    public void parseCommand_mail() throws Exception {
+        MailCommand command = (MailCommand) parser.parseCommand(
+                MailCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
+        MailCommand commandAlias = (MailCommand) parser.parseCommand(
+                MailCommand.COMMAND_ALIAS + " " + INDEX_FIRST_PERSON.getOneBased());
+        assertEquals(new MailCommand(INDEX_FIRST_PERSON), command);
+        assertEquals(command, commandAlias);
+    }
+
+    //@@author
     @Test
     public void parseCommand_select() throws Exception {
         SelectCommand command = (SelectCommand) parser.parseCommand(

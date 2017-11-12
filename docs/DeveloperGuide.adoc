@@ -562,12 +562,19 @@ If you entered arguments that do not follow the required format, `ParseException
 
 === Mail Command
 
-The mail command mails a `person` in `Contags` based on their `Index` in the most updated list. The implementation of `MailCommand` inherits from `Command`. +
+The `mail` command mails a `person` in `Contags` based on their `Index` in the most updated list. The implementation of `MailCommand` inherits from `Command`. +
 
-There is also the use of the `MailCommandParser`, which implements the `Parser` interface, that parses out the index to be used with the `sort` command. The `MailCommandParser` validates the input index.  +
+There is also the use of the `MailCommandParser`, which implements the `Parser` interface, that parses out the index to be used with the `mail` command. The `MailCommandParser` validates the input index.  +
 
 [NOTE]
-If the index entered by the user do not comply is out of range, ParseException will be thrown before execution of the method. +
+If the index entered by the user does not comply with the expected range, ParseException will be thrown before execution of the method. +
+
+The `MailCommand` links the logic in Contags to the content (email address of the specified index) that in displayed on the Desktop Mail Application. +
+
+The following sequence diagram illustrates the execution of the `mail` command.
+
+image::mailCommandSeqDiagram.png[width="800"]
+_Figure 4.7a : Mail Command sequence diagram_
 
 ==== Design Considerations
 
@@ -744,9 +751,7 @@ Priorities: +
 
 |`* * *` |user |send an email to any contact in Contags |so that I can conveniently send an email
 
-|`* * *` |user |send an SMS message to any contact in the Contags Application |so that I can conveniently send a SMS
-
-|`* * *` |user |find a person with an incomplete name |to find a person even if I cannot remember or spell the person's name correctly
+|`* * *` |user |send a SMS message to any contact in the Contags Application |so that I can conveniently send a SMS
 
 |`* * *` |user |see all tags for a contact |to organise contacts easily
 
@@ -754,23 +759,9 @@ Priorities: +
 
 |`* * *` |user |create a new contact with a name that already exists in Contags |have multiple contacts with the same name if I know people with the same name
 
-|`* *` |user |hide link:#private-contact-detail[private contact details] by default |minimize chance of someone else seeing them by accident
-
-|`* *` |user |add contacts with missing fields |include a contact even if I do not know some of the information fields
-
-|`* *` |user |attribute multiple phone numbers to a contact |have a contact's mobile and home numbers in the same contact
-
-|`* *` |user |delete certain fields for my contacts |
-
-|`* *` |user |know if any of my contact information clashes with another one |organise contacts easily |
-
 |`* *` |user |delete all tags for a contact |
 
 |`* *` |user |undo previous commands |revert mistakes made
-
-|`* *` |user |add tags to a contact while editing without removing them all |simplify the editing of tags
-
-|`* *` |user |attribute multiple addresses to a contact |have a contact's work and home addresses in the same contact
 
 |`* *` |user |sort the list of contacts in alphabetical order |organise the list
 
@@ -780,9 +771,21 @@ Priorities: +
 
 |`* *` |user |have tags of different colours |easily identify different tags
 
-|`*` |user| change colors of the tags |customise the tags to my own color groupings
+|`*` |user |find a person with an incomplete name |to find a person even if I cannot remember or spell the person's name correctly
 
-|`*` |user with many persons in Contags |sort persons by name |locate a person easily
+|`*` |user |attribute multiple phone numbers to a contact |have a contact's mobile and home numbers in the same contact
+
+|`*` |user |attribute multiple addresses to a contact |have a contact's work and home addresses in the same contact
+
+|`*` |user |delete certain fields for my contacts |
+
+|`*` |user |add tags to a contact while editing without removing them all |simplify the editing of tags
+
+|`*` |user |know if any of my contact information clashes with another one |organise contacts easily
+
+|`*` |user |add contacts with missing fields |include a contact even if I do not know some of the information fields
+
+|`*` |user| change colors of the tags |customise the tags to my own color groupings
 
 |`*` |user |see which contacts have recently been changed or updated |locate changes easily
 
@@ -791,6 +794,8 @@ Priorities: +
 |`*` |user |add nicknames to a contact |to identify contacts easily
 
 |`*` |user |view the last 10 commands I typed |track my usage of Contags
+
+|`*` |user |hide link:#private-contact-detail[private contact details] by default |minimize chance of someone else seeing them by accident
 
 |`*` |user |add a priority number to each contact |
 
@@ -1306,6 +1311,8 @@ XML is a metalanguage which allows users to define their own customized markup l
 [appendix]
 == Product Survey
 
+// tag::productSurvey[]
+
 *Mac Contacts*
 
 Author: Apple Inc.
@@ -1319,6 +1326,8 @@ Cons:
 
 * Has no command-line interface.
 * Only available on Mac OS.
+
+// end::productSurvey[]
 
 ---
 
