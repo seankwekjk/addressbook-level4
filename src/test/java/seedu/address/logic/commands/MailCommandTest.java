@@ -108,7 +108,7 @@ public class MailCommandTest {
      * is raised with the correct index.
      */
     private void assertExecutionSuccess(Index index) {
-        MailCommandStub mailCommand = prepareCommand(index);
+        MailCommand mailCommand = prepareCommand(index);
 
         try {
             CommandResult commandResult = mailCommand.execute();
@@ -124,7 +124,7 @@ public class MailCommandTest {
      * is thrown with the {@code expectedMessage}.
      */
     private void assertExecutionFailure(Index index, String expectedMessage) {
-        MailCommandStub mailCommand = prepareCommand(index);
+        MailCommand mailCommand = prepareCommand(index);
 
         try {
             mailCommand.execute();
@@ -151,14 +151,8 @@ public class MailCommandTest {
     /**
      * Parses {@code userInput} into a {@code EmailCommand}.
      */
-    /* private MailCommand prepareCommand(Index index) {
+    private MailCommand prepareCommand(Index index) {
         MailCommand mailCommand = new MailCommand(index);
-        mailCommand.setData(model, new CommandHistory(), new UndoRedoStack());
-        return mailCommand;
-    } */
-
-    private MailCommandStub prepareCommand(Index index) {
-        MailCommandStub mailCommand = new MailCommandStub(index);
         mailCommand.setData(model, new CommandHistory(), new UndoRedoStack());
         return mailCommand;
     }
