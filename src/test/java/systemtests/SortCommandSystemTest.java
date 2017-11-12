@@ -22,33 +22,33 @@ public class SortCommandSystemTest extends AddressBookSystemTest {
     public void sort() {
         Model model = getModel();
 
-        /* Case: sort by name -> list will be sorted alphabetically by name */
+        /* Case: sort by name -> list is sorted alphabetically by name */
         String command = SortCommand.COMMAND_WORD + " " + NAME_SORT;
         String expectedResultMessage = String.format(SortCommand.MESSAGE_SUCCESS, NAME_SORT);
         model.sortList(NAME_SORT);
         assertCommandSuccess(command, expectedResultMessage, model);
 
-        /* Case: sort by phone -> list will be sorted numerically by phone number */
+        /* Case: sort by phone -> list is sorted numerically by phone */
         command = SortCommand.COMMAND_WORD + " " + PHONE_SORT;
         expectedResultMessage = String.format(SortCommand.MESSAGE_SUCCESS, PHONE_SORT);
         model.sortList(PHONE_SORT);
         assertCommandSuccess(command, expectedResultMessage, model);
 
-        /* Case: sort by email -> list will be sorted alphabetically by email */
+        /* Case: sort by email -> list is sorted alphabetically by email */
         command = SortCommand.COMMAND_WORD + " " + EMAIL_SORT;
         expectedResultMessage = String.format(SortCommand.MESSAGE_SUCCESS, EMAIL_SORT);
         model.sortList(EMAIL_SORT);
         assertCommandSuccess(command, expectedResultMessage, model);
 
-        /* Case: sort by address -> list will be sorted alphabetically by address */
+        /* Case: sort by address -> list is sorted alphabetically by address */
         command = SortCommand.COMMAND_WORD + " " + ADDRESS_SORT;
         expectedResultMessage = String.format(SortCommand.MESSAGE_SUCCESS, ADDRESS_SORT);
         model.sortList(ADDRESS_SORT);
         assertCommandSuccess(command, expectedResultMessage, model);
 
-        /* Case: sort by tag -> list will be sorted alphabetically by tag */
+        /* Case: sort by tag -> list is sorted alphabetically by tag */
         Model modelBeforeSortPhone = getModel();
-        command = SortCommand.COMMAND_WORD + " " + ADDRESS_SORT;
+        command = SortCommand.COMMAND_WORD + " " + TAG_SORT;
         expectedResultMessage = String.format(SortCommand.MESSAGE_SUCCESS, ADDRESS_SORT);
         model.sortList(TAG_SORT);
         assertCommandSuccess(command, expectedResultMessage, model);
