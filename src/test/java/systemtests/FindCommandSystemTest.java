@@ -107,6 +107,71 @@ public class FindCommandSystemTest extends AddressBookSystemTest {
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
+        //@@author justuswah
+        /*---------------- Finding contacts based on other fields (not Name) ---------------- */
+
+        /* Case: find person by address -> 1 person found */
+        command = FindCommand.COMMAND_WORD + " " + expectedModel.getAddressBook()
+                .getPersonList().get(4).getAddress();
+        ModelHelper.setFilteredList(expectedModel, expectedModel.getAddressBook().getPersonList().get(4));
+        assertCommandSuccess(command, expectedModel);
+        assertSelectedCardUnchanged();
+
+        /* Case: find person by phone -> 1 person found */
+        command = FindCommand.COMMAND_WORD + " " + expectedModel.getAddressBook()
+                .getPersonList().get(0).getPhone().toString();
+        ModelHelper.setFilteredList(expectedModel, expectedModel.getAddressBook().getPersonList().get(0));
+        assertCommandSuccess(command, expectedModel);
+        assertSelectedCardUnchanged();
+
+        /* Case: find 2nd person by phone -> 1 person found */
+        command = FindCommand.COMMAND_WORD + " " + expectedModel.getAddressBook()
+                .getPersonList().get(1).getPhone().toString();
+        ModelHelper.setFilteredList(expectedModel, expectedModel.getAddressBook().getPersonList().get(1));
+        assertCommandSuccess(command, expectedModel);
+        assertSelectedCardUnchanged();
+
+        /* Case: find person by email -> 1 person found */
+        command = FindCommand.COMMAND_WORD + " " + expectedModel.getAddressBook()
+                .getPersonList().get(0).getEmail().toString();
+        ModelHelper.setFilteredList(expectedModel, expectedModel.getAddressBook().getPersonList().get(0));
+        assertCommandSuccess(command, expectedModel);
+        assertSelectedCardUnchanged();
+
+        /* Case: find 2nd person by email -> 1 person found */
+        command = FindCommand.COMMAND_WORD + " " + expectedModel.getAddressBook()
+                .getPersonList().get(2).getEmail().toString();
+        ModelHelper.setFilteredList(expectedModel, expectedModel.getAddressBook().getPersonList().get(2));
+        assertCommandSuccess(command, expectedModel);
+        assertSelectedCardUnchanged();
+
+        /* Case: find 2nd person by birthday -> 1 person found */
+        command = FindCommand.COMMAND_WORD + " " + expectedModel.getAddressBook()
+                .getPersonList().get(2).getBirthday().toString();
+        ModelHelper.setFilteredList(expectedModel, expectedModel.getAddressBook().getPersonList().get(2));
+        assertCommandSuccess(command, expectedModel);
+        assertSelectedCardUnchanged();
+
+        /* Case: find 1st person by birthday -> 1 person found */
+        command = FindCommand.COMMAND_WORD + " " + expectedModel.getAddressBook()
+                .getPersonList().get(1).getBirthday().toString();
+        ModelHelper.setFilteredList(expectedModel, expectedModel.getAddressBook().getPersonList().get(1));
+        assertCommandSuccess(command, expectedModel);
+        assertSelectedCardUnchanged();
+
+        /* Case: find other fields with incomplete words -> 0 persons found */
+        command = FindCommand.COMMAND_WORD + " a";
+        ModelHelper.setFilteredList(expectedModel);
+        assertCommandSuccess(command, expectedModel);
+        assertSelectedCardUnchanged();
+
+        /* Case: find other fields with another incomplete word -> 0 persons found */
+        command = FindCommand.COMMAND_WORD + " b";
+        ModelHelper.setFilteredList(expectedModel);
+        assertCommandSuccess(command, expectedModel);
+        assertSelectedCardUnchanged();
+        //@@author
+
         /* Case: find while a person is selected -> selected card deselected */
         showAllPersons();
         selectPerson(Index.fromOneBased(1));
