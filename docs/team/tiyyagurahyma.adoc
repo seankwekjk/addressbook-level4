@@ -20,8 +20,10 @@ include::../DeveloperGuide.adoc[tag=mailContact]
 
 ---
 
+
+
 ==== Justification
-As Contags was developed with working professionals in mind, having a mail command was of very high priority. Mail is the most widely used application by business professionals and according to a study done by The Radicarti Group, the average business professional sends 35 emails a day. Having a mail command integrated into an address book application would really make it more convenient for users who can find contacts easily and email them.
+As Contags was developed with working professionals in mind, having a mail command was of very high priority. Mail is the most widely used application by business professionals and according to a study done by The Radicarti Group, the average business professional sends 35 emails a day. Having a mail command integrated into an address book application would be more convenient for users who can find contacts easily and email them.
 
 ==== Implementation
 
@@ -35,7 +37,7 @@ include::../DeveloperGuide.adoc[tag=mailcommand]
 
 ==== Justification
 
-Business professionals would find it useful to keep track of their contacts' birthdays so that they can maintain business relationships on top of friendships and family relationships. In today's world where connections are so necessary and powerful, maintaining business relationships have never been more important. One of the most important ways to maintain any relationship is to wish the person a happy birthday. Integrating a birthday field as part of a contact's particulars would help users to have a record of their contacts' birthdays.
+Business professionals would find it useful to keep track of their contacts' birthdays so that they can maintain business relationships on top of friendships and family relationships. In today's world where connections are so necessary and powerful, maintaining business relationships have never been more important. Integrating a birthday field as part of a contact's particulars would help users to have a record of their contacts' birthdays and would make it more convenient for users to wish the colleagues and friends.
 
 ==== Implementation
 
