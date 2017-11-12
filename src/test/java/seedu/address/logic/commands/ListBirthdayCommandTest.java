@@ -4,6 +4,8 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showFirstPersonOnly;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,13 +35,18 @@ public class ListBirthdayCommandTest {
     }
 
     @Test
-    public void execute_listIsNotFiltered_showsSameList() {
-        assertCommandSuccess(listBirthdayCommand, model, ListCommand.MESSAGE_SUCCESS, expectedModel);
+    public void executeListBirthdaySortSuccess() {
+        ListBirthdayCommand listBirthdayCommand = prepareCommand();
+        assertCommandSuccess(listBirthdayCommand, model, listBirthdayCommand.MESSAGE_SUCCESS, expectedModel);
     }
 
-    @Test
-    public void execute_listIsFiltered_showsEverything() {
-        showFirstPersonOnly(model);
-        assertCommandSuccess(listBirthdayCommand, model, ListCommand.MESSAGE_SUCCESS, expectedModel);
+    /**
+     *  This filters Contags to show persons whose birthdays fall on the current date.
+     */
+    private ListBirthdayCommand prepareCommand() {
+        ListBirthdayCommand command = new ListBirthdayCommand();
+        command.setData(model, new CommandHistory(), new UndoRedoStack());
+        return command;
     }
+
 }
