@@ -34,7 +34,7 @@ image::seankwekjk.png[width="150", align="left"]
 {empty}[https://github.com/seankwekjk[github]] [<<seankwek#, portfolio>>]
 
 Role: Team Member +
-Responsibilities: Logic Component, Social Media Implementation
+Responsibilities: Logic Component, Web-Based Features
 
 '''
 
