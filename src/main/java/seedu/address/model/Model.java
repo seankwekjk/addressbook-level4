@@ -59,4 +59,6 @@ public interface Model {
      */
     String updateMailRecipientList(Predicate<ReadOnlyPerson> predicate);
 
+    /** Reauthenticates Twilio Particulars */
+    void reauthenticate(String newId, String newToken, String newNumber);
 }
