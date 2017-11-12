@@ -96,7 +96,7 @@ public class MailCommandSystemTest extends AddressBookSystemTest {
     /**
      * Executes {@code command} and verifies that the command box displays an empty string, the result display
      * box displays the success message of executing mail command with the {@code expectedSelectedCardIndex}
-     * of the selected person, and the model related components equal to the current model.
+     * of the mailed person, and the model related components equal to the current model.
      * These verifications are done by
      * {@code AddressBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)}.<br>
      * Also verifies that the command box has the default style class and the status bar remain unchanged. The resulting

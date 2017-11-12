@@ -29,6 +29,7 @@ public class Tag {
         this.tagName = trimmedName;
     }
 
+    //@@author hymss
     public String getTagName() {
         return this.tagName;
     }

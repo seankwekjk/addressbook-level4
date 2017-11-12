@@ -166,6 +166,7 @@ public class ParserUtilTest {
         assertEquals(expectedEmail, actualEmail.get());
     }
 
+    //@@author hymss
     @Test
     public void parseBirthday_optionalEmpty_returnsOptionalEmpty() throws Exception {
         assertFalse(ParserUtil.parseBirthday(Optional.empty()).isPresent());
@@ -191,6 +192,7 @@ public class ParserUtilTest {
         ParserUtil.parseBirthday(Optional.of(INVALID_BIRTHDAY));
     }
 
+    //@@author
     @Test
     public void parseTags_null_throwsNullPointerException() throws Exception {
         thrown.expect(NullPointerException.class);
