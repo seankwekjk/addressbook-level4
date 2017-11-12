@@ -46,7 +46,7 @@ public class ListBirthdayCommandTest {
     }
 
     @Test
-    public void ShowNoPerson() {
+    public void executeListBirthdayNoBirthdays() {
         CommandResult result = listBirthdayCommand.execute();
         assertEquals(result.feedbackToUser, "None of your contacts' birthday is today.");
         assertEquals(model.getFilteredPersonList(), emptyModel.getFilteredPersonList());
