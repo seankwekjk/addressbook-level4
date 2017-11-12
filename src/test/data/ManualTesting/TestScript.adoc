@@ -37,7 +37,7 @@ To add a remark to a contact, type:
 To remove a tag from a contact, type:
 • edit 8 t/
 
-=== Organisation
+=== Organising Contacts
 
 To find a contact, type find followed by the field you want to find by.
 • find John
@@ -76,7 +76,7 @@ Steps to follow before executing sms command:
 To SMS a contact, type sms followed by the index of the contact and the message.
 • sms 1 message/hi do you want to meet for dinner?
 
-=== Social Media and maintaining relationships
+=== Web-Based Features
 
 To see a contact's address on google maps, type select followed by the index:
 • select 1
