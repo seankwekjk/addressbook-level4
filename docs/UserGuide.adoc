@@ -78,6 +78,8 @@ The Command Format Summary _(Figure 5.0.1)_ given below, guides you through how 
 
 *Command Format Summary*
 ====
+ * Command words always have to be entered as the first word in any command. They may be replaced by an alias if a command has one. +
+ ** e.g. `add` is the Command Word for the add command, and its alias is `a`.
  * Words in `UPPER_CASE` are the parameters to be supplied by you, the user. +
  ** e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
  * Items in square brackets are optional.
@@ -100,16 +102,22 @@ The features in this subsection do not require any commands to execute and are a
 
 Each unique tag currently has a colour that is set to that tag name, for you to easily identify different groups of tags that you have added. +
 
-You cannot individually set the colour you want for each tag, but this feature will be added in a future update to Contags.
+You cannot individually set the colour you want for each tag, but we are working to include this feature in a future update to Contags.
 
 ==== Saving the data
 
-Contags data are saved in the hard disk automatically after any command that changes the data. +
-There is no need for you to save manually.
+Data is saved in the hard disk automatically after any command that changes the data. There is no need for you to save manually. +
+Instructions on how to transfer data can be found in the FAQ section.
+
+==== Autocomplete
+
+Are you new to Contags? We have included an autocomplete function to assist you in case you forget our command words. As you type, we will provide you with a list of all the features that begin with the text that you have entered.
 
 === Adding a contact: `add` `a`
 
-Adds a contact to Contags. +
+Adding a contact to Contags is simple! Simply enter the command with all the compulsory parameters in any order.
+
+
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS b/BIRTHDAY [s/SOCIAL_MEDIA_URL] [t/TAG]...` +
 Alias: `a`
 
@@ -125,13 +133,15 @@ Examples:
 
 === Clearing all entries : `clear` `c`
 
-Clears all entries from Contags. +
+This command empties all entries in Contags.
+
 Format: `clear` +
 Alias: `c`
 
 === Deleting a contact : `delete` `d`
 
-Deletes the specified contact from Contags. +
+Want to remove a contact from your address book? Contags just requires the index of the contact.
+
 Format: `delete INDEX` +
 Alias: `d`
 
@@ -150,14 +160,10 @@ Deletes the 2nd contact in Contags.
 `delete 1` +
 Deletes the 1st contact in the results of the `find` command.
 
-=== Directions to address : `direct` `Coming in v2.0`
-
-Provides directions to the address of the selected contact. +
-Format: `direct`
-
 === Editing a contact : `edit` `e`
 
-Edits an existing contact in Contags. +
+Did one of your contacts change phone number? Did you make a mistake in a contact? Do not fret, modifying contacts in Contags is easy!
+
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [b/BIRTHDAY] [s/SOCIAL_MEDIA_URL] [t/TAG]...` +
 Alias: `e`
 ****
@@ -177,14 +183,16 @@ Edits the name of the 2nd contact to be `Betsy Crower` and clears all existing t
 
 === Exiting the program : `exit`
 
-Exits the program. +
+Closes Contags :( Hope to see you again!
+
 Format: `exit`
 
 // tag::findCommand[]
 
 === Locating Contacts by any field: `find` `f`
 
-Finds contacts whose names, and any other information particular fields contain any of the given keywords. +
+Forgot the full name of your contact? Don't know who name of the person who just called you? Contags is here to help! You can search for your contacts in Contags using any one piece of information.
+
 Format: `find KEYWORD [MORE_KEYWORDS]` +
 Alias: `f`
 
@@ -205,27 +213,9 @@ Returns any contacts having addresses `Clementi`, `Bugis`, or `Tuas`.
 
 // end::findCommand[]
 
-=== Sorting Contacts based on Frequency `frequent` `Coming in v2.0`
-
-Displays a list of sorted contacts in Contags based upon the frequency of communication between user and
-contact. +
-Format: `frequent`
-
-****
-* Sorts all contacts based upon frequency of communication.
-* Contacts that have been communicated with most frequently will appear at the top of the list.
-* Application determines frequency by keeping a counter of contact particulars that have been accessed since the contact
-has been added.
-* All contact particulars that have been accessed add an equal count of 1 to this counter.
-****
-
-Examples:
-
-* `frequent` +
-Displays a list of sorted contacts based upon the frequency of communication.
-
 === Viewing help : `help`
-Require assistance or some guide? `help` opens the help window within Contags. +
+Require assistance with the app? `help` opens the help window within Contags.
+
 Format: `help`
 
 [TIP]
@@ -233,8 +223,9 @@ Pressing kbd:[F1] will also open the help window. Try it out if you are unsure o
 
 === Listing entered commands : `history` `h`
 
-Lists all the commands that you have entered in reverse chronological order. +
-Format: `history` `h`
+Need to see exactly what you just typed? Contags allows you to see the commands that you have entered since opening the program.
+
+Format: `history`
 
 [NOTE]
 ====
@@ -242,7 +233,8 @@ Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and 
 ====
 === Listing all contacts : `list` `l`
 
-To view a list of all your contacts, you can enter `list`. +
+You can use this command to display all of your contacts, sorted according your last selected preference.
+
 Format: `list` +
 Alias: `l`
 
@@ -251,6 +243,9 @@ Alias: `l`
 // tag::listBirthday[]
 
 Lists the contacts whose birthdays fall on the current date. +
+
+We struggle with remembering the birthdays of all of our contacts too. Never miss another one by using this command everyday!
+
 Format: `listbirthday`
 
 [TIP]
@@ -266,7 +261,8 @@ You can wish the listed contacts a happy birthday by using the mail or SMS comma
 
 // tag::mailContact[]
 
-Mails a contact in Contags. +
+You no longer need to open up your mail program and enter the addressee's details. This command will do it all for you!
+
 Format: `mail INDEX` +
 Alias: `m INDEX` +
 
@@ -279,7 +275,8 @@ Opens up mail application and the to field of the message will be automatically 
 
 === Redoing the previously undone command : `redo` `r`
 
-Reverses the most recent `undo` command. +
+Want to reapply a change that you just undid? The redo command allows you to do just that!
+
 Format: `redo`
 
 Examples:
@@ -308,7 +305,7 @@ The `delete 1` command has been reapplied. +
 // tag::remark[]
 === Adding remarks: `remark` `re`
 
-Edits the remark for a contact specified in the INDEX.
+You can add any brief line of text to any contact to better identify them, or remind yourself of anything!
 
 Format: `remark INDEX r/[REMARK]`
 
@@ -324,7 +321,8 @@ Removes the remark for the first contact.
 
 === Removing a Tag from all contacts in Contags : `removeTag` `rt`
 
-Removes the Tag specified by the tag name. +
+You can use this command to remove the indicated tag from every contact in your list.
+
 Format: `removeTag TAG`
 
 ****
@@ -342,7 +340,8 @@ Searches through all contacts in the Contags and deletes all instances of the Ta
 // tag::social[]
 === Selecting a contact : `select` `s`
 
-Selects the contact identified by the index number used in the last contact listing. +
+Access Contag's web-based features in the built-in browser by selecting the desired contact! You can use this command with your mouse by clicking on the contact as well.
+
 Format: `select INDEX` +
 Alias: `s`
 ****
@@ -365,10 +364,11 @@ Selects the 1st contact in the results of the `find` command.
 
 // tag::smsContact[]
 
-=== Sending a SMS Message to the telephone number of the contact indicated by the given index: `sms`
+=== Sending a SMS Messages: `sms`
 
-Sends a SMS message from the user's phone number (to be configured) to the phone number indicated by the contact
-particulars of the index given. +
+You can send a SMS message to your contacts through Contags! Users must first set up an account with Twilio to utilise this function.
+
+
 Format: `sms INDEX text/MESSAGE`
 
 ****
@@ -387,8 +387,9 @@ Sends an sms message to the number of the contact indicated by the index, with t
 === Sorting list of contacts
 
 === Sorting the list of contacts: `sort`
-Want to change the way your list of contacts is displayed? `sort` sorts the list of contacts saved in Contags according to: +
-`Name`, `Phone`, `Email`, `Address`, `Tag`. +
+Want to change the order by which your contacts are arranged? +
+`sort` sorts the list of contacts saved in Contags according to: `Name`, `Phone`, `Email`, `Address`, `Tag`.
+
 Format: `sort KEYWORD`
 
 
@@ -432,14 +433,17 @@ List is sorted according to email addresses in ascending order _(Figure 5.20.5)_
 // tag::social[]
 === Toggling `select` command function : `toggle` `t`
 
-When used, toggles the function of the `select` command between displaying a Google Maps search and the specified social media page. +
-Refreshes the currently displayed contact to show the other mode as well. +
-Format: `toggle` `t`
+Contags allows you to switch between Google Maps and Social Media functionality for the `select` command. +
+When you use this command, the browser will be refreshed!
+
+Format: `toggle` +
+Alias: `t`
 // end::social[]
 
 === Undoing previous command : `undo` `u`
 
-Restores Contags to the state before the previous _undoable_ command was executed. +
+Made a mistake? Do not worry, it can easily be undone with the `undo` command! Does not apply to every command.
+
 Format: `undo` +
 Alias: `u`
 
@@ -576,9 +580,15 @@ free timings with that contact.
 * Contacts can be starred in Contags based on your preference to give priority in the list of
 contacts.
 
+* Sorting of contacts according to frequency of use.
+
 * Social Media links displayed in the list of contacts will be divided into 2 parts, the first displaying which social media platform, and the second displaying the profile url.
 
 * Multiple social media pages can be added to a single contact.
+
+* Automatic suggestion of social media pages to associate with a contact.
+
+* listbirthday will display all contacts with birthdays that fall within the week.
 
 * Tag colors can be changed according to your preference by typing in the command `change` followed by the tag's name and the preferred color. +
 ** e.g. `change` `friends` `yellow` +
