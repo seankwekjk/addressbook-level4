@@ -123,13 +123,13 @@ public class MailCommandTest {
      * Executes a {@code MailCommand} with the given {@code index}, and checks that a {@code CommandException}
      * is thrown with the {@code expectedMessage}.
      */
-    /* private void assertExecutionFailure(Index index, String expectedMessage) {
+    private void assertExecutionFailure(Index index, String expectedMessage) {
         MailCommandStub mailCommand = prepareCommand(index);
 
         try {
             mailCommand.execute();
-            fail("The expected CommandException was not thrown.");
             mailCommand.sendMail(index.toString());
+            fail("The expected CommandException was not thrown.");
         } catch (IOException ioe) {
             assertEquals(expectedMessage, MESSAGE_MAIL_FAILURE);
             assertTrue(eventsCollectorRule.eventsCollector.isEmpty());
@@ -142,18 +142,6 @@ public class MailCommandTest {
         } catch (ParseException e) {
             assertEquals(expectedMessage, MESSAGE_MAIL_FAILURE);
             assertTrue(eventsCollectorRule.eventsCollector.isEmpty());
-        } catch (CommandException ce) {
-            assertEquals(expectedMessage, ce.getMessage());
-            assertTrue(eventsCollectorRule.eventsCollector.isEmpty());
-        }
-    } */
-
-    private void assertExecutionFailure(Index index, String expectedMessage) {
-        MailCommandStub mailCommand = prepareCommand(index);
-
-        try {
-            mailCommand.execute();
-            fail("The expected CommandException was not thrown.");
         } catch (CommandException ce) {
             assertEquals(expectedMessage, ce.getMessage());
             assertTrue(eventsCollectorRule.eventsCollector.isEmpty());
