@@ -30,7 +30,7 @@
   <!-- @@author mzxc152 -->
   <StackPane prefHeight="42.0" prefWidth="690.0" styleClass="pane-with-border">
     <children>
-      <Label style="-fx-font-size: 14; -fx-text-fill: white;" text="Sort By:" StackPane.alignment="CENTER_RIGHT">
+      <Label style="-fx-font-size: 14; -fx-text-fill: #383838;" text="Sort By:" StackPane.alignment="CENTER_RIGHT">
         <StackPane.margin>
           <Insets right="140.0" />
         </StackPane.margin>

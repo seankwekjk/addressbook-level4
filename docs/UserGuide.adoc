@@ -384,7 +384,6 @@ Sends an sms message to the number of the contact indicated by the index, with t
 // end::smsContact[]
 
 // tag::sort[]
-=== Sorting list of contacts
 
 === Sorting the list of contacts: `sort`
 Want to change the order by which your contacts are arranged? +
@@ -393,10 +392,10 @@ Want to change the order by which your contacts are arranged? +
 Format: `sort KEYWORD`
 
 
-As an alternative, you can use the UI dropdown box _(Figure 5.20.1)_ located near the top-right hand corner of Contags to select how you want the list to be sorted.
+As an alternative, you can use the UI dropdown box _(Figure 5.18.1)_ located near the top-right hand corner of Contags to select how you want the list to be sorted.
 
 image::sort_ui.png[width="200"]
-_Figure 5.20.1 : Sort UI Dropdown Box_
+_Figure 5.18.1 : Sort UI Dropdown Box_
 
 ****
 * Sorts the list of contacts saved in Contags and then displays the sorted list. +
@@ -410,24 +409,24 @@ Examples:
 * `sort name` +
 
 image::sortname.png[width="200"]
-_Figure 5.20.2 : Sorting by name_ +
+_Figure 5.18.2 : Sorting by name_ +
 
 
 image::sortnameresult.png[width="700"]
-_Figure 5.20.3 : Result after sorting by name_ +
+_Figure 5.18.3 : Result after sorting by name_ +
 
-List is sorted according to name in ascending order _(Figure 5.20.3)_. +
+List is sorted according to name in ascending order _(Figure 5.18.3)_. +
 
 * `sort EMAIL` +
 
 image::sortemail.png[width="200"]
-_Figure 5.20.4 : Sorting by email address_ +
+_Figure 5.18.4 : Sorting by email address_ +
 
 
 image::sortemailresult.png[width="700"]
-_Figure 5.20.5 : Result after sorting by email address_ +
+_Figure 5.18.5 : Result after sorting by email address_ +
 
-List is sorted according to email addresses in ascending order _(Figure 5.20.5)_.
+List is sorted according to email addresses in ascending order _(Figure 5.18.5)_.
 // end::sort[]
 
 // tag::social[]
@@ -531,15 +530,11 @@ Here is a quick list of all the commands that Contags can execute:
 
 |`delete INDEX` |deleting a contact |`delete 3`
 
-|`direct` |providing directions to the address of the selected contact |`direct`
-
 |`edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [b/BIRTHDAY] [s/SOCIAL_MEDIA_URL] [t/TAG]...`` |editing details of a contact | `edit 2 p/28283912 e/happyboy99@example.com`
 
 |`exit` |exiting Contags|`exit`
 
 |`find KEYWORD [MORE_KEYWORDS]` |finding all contacts with that particular field |`find alex clementi james`
-
-|`frequent`|displaying a list of the most frequent contacts contacted |`frequent`
 
 |`help` |opening the help window |`help`
 
