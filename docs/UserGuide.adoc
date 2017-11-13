@@ -408,6 +408,13 @@ _Figure 5.18.1 : Sort UI Dropdown Box_
 * Keywords are *case-insensitive*. e.g. `sort name` and `sort NAME` both sorts the list . +
 ****
 
+How to use: +
+1. Type `sort KEYWORD` where `KEYWORD` is either `name`, `phone`, `email`, `address` or `tag`. +
+
+Outcome: +
+1. The list of contacts is sorted according to the keyword. +
+2. `List has been sorted.` is shown on the window to show that sorting has been done successfully.
+
 Examples:
 
 * `sort name` +

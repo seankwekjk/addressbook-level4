@@ -3,8 +3,24 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :imagesDir: ../images
 :stylesDir: ../stylesheets
 
+== Introduction
+
+The purpose of this project portfolio page is to document the enhancements that I have worked on for different software projects that I have been involved in.
+
+This portfolio also serves to showcase my work to potential employees or other software developers who may be interested in working alongside me in future projects, or to discuss
+how the enhancements can be further improved.
+
 == Project: Contags
-Contags is a desktop address book application used for business executives to efficiently connect with their contacts through effective management of contact details and ease of use in contacting them through integrated mail and SMS features. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.
+
+=== Introduction
+
+Contags is a desktop address book application for business executives to efficiently connect with their contacts. Contags aims to be the one-stop application for business executives to contact clients, colleagues and also
+get to know them better
+
+Contags achieves this through the effective management of contact details and ease of use in contacting them through integrated mail and SMS features.
+Furthermore, Contags also includes web-based features such as an in-built Google Maps Search and a Social Media Browser for integrated access within Contags itself.
+
+The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
 
 *Code contributed*: [https://github.com/CS2103AUG2017-T16-B4/main/blob/master/collated/main/mzxc152.md[Functional code]] [https://github.com/CS2103AUG2017-T16-B4/main/blob/master/collated/test/mzxc152.md[Test code]]
 
@@ -71,6 +87,7 @@ include::../DeveloperGuide.adoc[tag=tagcolor]
 #End of Extract#
 
 ---
+
 === Enhancement Proposed: Add command `change`
 
 A `change` feature which allows users to change the color of each unique tag in their contacts list to the color of the choice.
@@ -81,6 +98,16 @@ A `change` feature which allows users to change the color of each unique tag in 
 include::../UserGuide.adoc[tag=change]
 
 #End of Extract#
+
+---
+
+==== Justification
+
+Letting users change the tag color to the color of their choice will make the application more user-friendly and customisable
+for the user. Setting the color of each tag also allows them to sort their tags in their own way which lets them better use the colors
+as another form of organisation.
+
+---
 
 === Other contributions
 
