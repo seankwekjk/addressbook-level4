@@ -479,7 +479,7 @@ The BirthdayChecker class checks if a contact's birthday falls on the current da
 
 The sequence diagram for the listbirthday command is shown below.
 
-image::listBirthdayCommandSeqDiagram.png[width="800"]
+image::ListBirthdayCommandSequenceDiagram.png[width="800"]
 _Figure 4.4a : listbirthday Command sequence diagram_
 
 ==== Design Considerations
