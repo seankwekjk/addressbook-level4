@@ -496,7 +496,7 @@ Have many meetings and simply cannot keep track of them? Don't fret, Contags wil
 Format: `meeting d/DATE t/TIME c/INDEX` +
 
 Examples:
-* `meeting d/23/12/2017 t/12:00 c/1`
+`meeting d/23/12/2017 t/12:00 c/1`
 
 // end::meeting[]
 

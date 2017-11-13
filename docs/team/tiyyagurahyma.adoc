@@ -152,4 +152,4 @@ include::../DeveloperGuide.adoc[tag=schedule]
 * Updated UI to add new logo and include a separate browser panel displaying the address of a contact when contact is selected (Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/107[#107])
 * Enhanced find command to find by tags (Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/111[#111])
 * Wrote manual testing scripts (TestScript.adoc and SampleData.xml) (Pull requests https://github.com/CS2103AUG2017-T16-B4/main/pull/137[#137], https://github.com/CS2103AUG2017-T16-B4/main/pull/123[#123])
-* Wrote glossary and product survey in developer guide (Pull requests https://github.com/CS2103AUG2017-T16-B4/main/pull/3[#3], https://github.com/CS2103AUG2017-T16-B4/main/pull/[61])
+* Wrote glossary and product survey in developer guide (Pull requests https://github.com/CS2103AUG2017-T16-B4/main/pull/3[#3], https://github.com/CS2103AUG2017-T16-B4/main/pull/61[#61])
