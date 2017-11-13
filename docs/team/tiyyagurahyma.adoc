@@ -66,6 +66,16 @@ include::../DeveloperGuide.adoc[tag=listBirthday]
 
 ---
 
+=== Enhancement Added: BackUpAddressBook
+
+---
+
+==== Justification
+
+==== Implementation
+
+include::../DeveloperGuide.adoc[tag=backup]
+
 === Enhancement Added: Alias for Commands
 
 ==== Justification
