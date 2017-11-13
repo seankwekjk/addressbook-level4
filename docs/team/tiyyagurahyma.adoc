@@ -97,6 +97,8 @@ include::../DeveloperGuide.adoc[tag=listbirthday]
 
 ==== Justification
 
+Saving a backup of the data in Contags would help in reverting any changes made to the data that results in data loss or corruption.
+
 ---
 
 ==== Implementation
