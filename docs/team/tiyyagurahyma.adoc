@@ -121,11 +121,19 @@ See pull requests https://github.com/CS2103AUG2017-T16-B4/main/pull/22[#22], htt
 
 ---
 
-=== Enhancement Proposed:
+=== Enhancement Proposed: Meeting Command (v2.0)
 
 ---
 
+==== External Behaviour
+
+Function: Creating a meeting event
+
+include::../UserGuide.adoc[tag=meeting]
+
 ==== Justification
+
+Business professionals spend more time in meetings than doing work. A meeting command would be paramount in maximising the productivity of business professionals as they can easily keep track of their meetings schedules and which contacts are involved in the meeting.
 
 ---
 
