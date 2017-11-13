@@ -619,11 +619,11 @@ _Figure 4.7a : Mail Command sequence diagram_
 
 // end::mailcommand[]
 
-=== BackUp Storage Mechanism
+=== Backup Storage Mechanism
 
 // tag::backup[]
 
-The backUp storage mechanism is implemented through the `backUpAddressBook` method which resides in the `StorageManager` class. The backUp mechanism stores the data in Contags in the same directory as the main `AddressBook` storage file. The `BackUpAddressBook` storage file will be saved with `-backup.xml` appended at the back of the `AddressBook` storage file.
+The backup storage mechanism is implemented through the `backUpAddressBook` method which resides in the `StorageManager` class. The backup mechanism stores the data in Contags in the same directory as the main `AddressBook` storage file. The `BackUpAddressBook` storage file will be saved with `-backup.xml` appended at the back of the `AddressBook` storage file.
 
 Upon launch of Contags, the `init` method in `MainApp` would be executed, which initialises `StorageManager` which then calls the method `backUpAddressBook`. The `backUpAddressBook` calls the method `saveAddressBook` which resides in the `StoreManager` class and saves the `backUpAddressBook` file in a fixed temporary location as mentioned above. The code snippet is shown below.
 
@@ -1123,8 +1123,8 @@ Contags informs user that the contact cannot be found. Use case ends.
 
 *MSS*
 
-1. User requests to mail a contact by typing in mail command, followed by the mail, title and message.
-2. Contags opens up desktop mail application and user clicks send.
+1. User requests to mail a contact by typing in the mail command with input index of the contact to mail.
+2. Contags opens up desktop mail application. User fills in the subject and message fields and clicks send.
 3. Use case ends.
 
 *Extensions*
@@ -1144,7 +1144,7 @@ Contags informs user that the contact cannot be found. Use case ends.
 *MSS*
 
 1. User requests to see the list of contacts whose birthdays fall on the current date.
-2. Contags shows the list of filtered contacts.
+2. Contags shows the list of filtered contacts in order of the most updated list.
 +
 Use case ends.
 
