@@ -109,9 +109,12 @@ You cannot individually set the colour you want for each tag, but we are working
 Data is saved in the hard disk automatically after any command that changes the data. There is no need for you to save manually. +
 Instructions on how to transfer data can be found in the FAQ section.
 
+// tag::autocomplete[]
 ==== Autocomplete
 
 Are you new to Contags? We have included an autocomplete function to assist you in case you forget our command words. As you type, we will provide you with a list of all the features that begin with the text that you have entered.
+
+// end::autocomplete[]
 
 === Adding a contact: `add` `a`
 
@@ -332,7 +335,7 @@ Removes the remark for the first contact.
 
 // tag::removeTag[]
 
-=== Removing a Tag from all contacts in Contags : `removeTag` `rt`
+=== Removing a Tag from all contacts in Contags : `removeTag`
 
 You can use this command to remove the indicated tag from every contact in your list.
 
@@ -381,20 +384,78 @@ Selects the 1st contact in the results of the `find` command.
 
 You can send a SMS message to your contacts through Contags! Users must first set up an account with Twilio to utilise this function.
 
+Set up a Twilio account first, or you can use the default one.
+
+By default, the application is synchronized with a sample account that can be used immediately. Follow these instructions to send a text message to any number:
+
+....
+Logging into Twilio using the Sample Account:
+
+1. Go to  https://www.twilio.com/login
+
+    Username: justus.wah@hotmail.com
+    Password: CS2103Ttestingaccount
+
+2. Check the "I'm not a robot" box, and press login.
+....
+
+....
+Authenticating a Phone Number on Twilio so Contags can send messages to your phone:
+
+1. After logging in, from the Twilio Console Dashboard, click on the `All Products and Services` Logo on the far left border of the screen.
+
+2. Then, under the "Super Network" Section, click on `Phone Numbers`
+
+3. Now, click on the `Verified Caller IDs` label on the left.
+
+4. Under the Verified Caller IDs Title, click on the `Add new Number` Icon, denoted by the Red Addition Sign.
+
+5. Click on the "text you instead" button that is underlined. Type in your phone number. Ensure that the country code is correct (+65).
+
+6. Click on the "Text Me" Button, and you should receive a verification code on your phone via SMS.
+
+7. Enter the verification code into the Twilio website on your computer.
+
+8. Your phone number is now authenticated on this account.
+....
+
 
 Format: `sms INDEX text/MESSAGE`
 
-****
-* Message is sent directly to the Singapore extension of the phone number indicated
-* Twilio Account must be set up properly, with correct authentication token. Currently synced to developer's account.
-****
+• Message is sent directly to the Singapore extension of the phone number indicated
+• Twilio Account must be set up properly, with correct authentication token. Currently synced to developer's account.
+
 
 Examples:
 
 * `sms 1 text/hello there!` +
-Sends an sms message to the number of the contact indicated by the index, with the message "hello there!"
+Sends an sms message to the number of the contact indicated by the index, with the message "hello there!".
+In this case, phone number of the contact in the first index MUST be authenticated by twilio.
 
 // end::smsContact[]
+
+// tag::reauthenticateCommand[]
+=== Reauthenticates the Twilio account details of the Application `reauthenticate`
+Want to use your own Twilio account so you can begin sending text messages to your contacts through our application?
+
+After signing up for a Twilio account, you will be given three fields: AccountSid, Authentication Token, and Sending Number.
+Use these three fields to authenticate your new account with the application.
+
+Format: `reauthenticate id/[AccountSid] auth/[AuthenticationToken] num/[SendingNumber]`
+
+****
+* Reauthenticates the account details by interacting with the Twilio platform.  +
+* Application will inform user the status of the reauthentication. +
+* If account details fail to log in to Twilio, application will inform user that "Account Details are Incorrect, Please Try Again" +
+* All fields are case sensitive, based on the fields given by Twilio.
+****
+
+Examples:
+
+Type in the following into the command box to reauthenticate the Twilio details back to the sample account.
+
+`reauthenticate id/ACed7baf2459e41d773a5f9c2232d4d975 auth/6a26cc5c91ff355ebf48fe019700920b num/+12082157763`
+// end::reauthenticateCommand[]
 
 // tag::sort[]
 
@@ -570,7 +631,9 @@ Here is a quick list of all the commands that Contags can execute:
 
 |`select INDEX` |selecting a particular contact |`select 4`
 
-|`sms INDEX` |sending an SMS to a contact |`sms 3`
+|`sms INDEX text/[TEXT]` |sending an SMS to a contact with the text field input after the text/ prefix. |`sms 3 text/hello!`
+
+|`reauthenticate id/[ACCOUNT_SID] auth/[AUTHENTICATION_TOKEN] num/[SENDING_NUMBER]` | reauthenticates the twilio account synchronized with the Contacts application to the Twilio account of these three fields. | `reauthenticate id/CS2103 auth/CS2103PASSWORD num/91234567`
 
 |`sort KEYWORD` |displaying a sorted list of contacts based on the keyword provided |`sort phone`
 
