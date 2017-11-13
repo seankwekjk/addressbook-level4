@@ -249,7 +249,7 @@ We struggle with remembering the birthdays of all of our contacts too. Never mis
 Format: `listbirthday`
 
 [TIP]
-You can wish the listed contacts a happy birthday by using the mail or SMS command!
+You can wish the listed contacts a happy birthday by using the `mail` or `sms` command!
 
 ****
 * Lists the contacts in order of the most updated list.
@@ -439,6 +439,9 @@ When you use this command, the browser will be refreshed!
 
 Format: `toggle` +
 Alias: `t`
+
+[TIP]
+The browser will not load if the contact does not have a social media link provided. You can add a link to the contact using the `edit` command!
 // end::social[]
 
 === Undoing previous command : `undo` `u`
