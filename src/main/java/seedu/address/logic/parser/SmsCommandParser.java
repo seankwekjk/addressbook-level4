@@ -37,7 +37,7 @@ public class SmsCommandParser implements Parser<SmsCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, SmsCommand.MESSAGE_USAGE));
         }
 
-        String text = argMultimap.getValue(PREFIX_SMS_TEXT).toString();
+        String text = argMultimap.getAllValues(PREFIX_SMS_TEXT).toString();
         return new SmsCommand(index, text);
 
     }

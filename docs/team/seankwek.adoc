@@ -15,6 +15,7 @@ Contags is a desktop address book application developed in the NUS CS2103T Softw
 ---
 #Start of Extract [from: User Guide]#
 
+include::../UserGuide.adoc[tag=remark]
 
 #End of Extract#
 
@@ -22,19 +23,24 @@ Contags is a desktop address book application developed in the NUS CS2103T Softw
 
 ==== Justification
 
-{Justify the need for, and the current design (i.e. external behavior) of, the feature}
+As Contags was designed with a business executive in mind, our additional features have to meet the needs of such an individual. When we deal with large numbers of contacts, as a business executive is more than likely to, it becomes increasingly likely that we have contacts that share the same name.
+
+One simple solution was to allow the user to add any string of text that can differentiate the similarly named contacts apart. By ensuring that the user is able to see the remark on the Person Card at first glance, it makes the feature accessible and easy to use.
+
+This differentiates itself from the already existing tags feature, as the remark can contain any text, even multiple words, thus opening itself up to more diverse usage.
 
 ==== Implementation
 
 ---
 #Start of Extract [from: Developer Guide]#
 
+include::../DeveloperGuide.adoc[tag=remark]
 
 #End of Extract#
 
 ---
 
-=== Enhancement Added: Social Media
+=== Enhancement Added: Web-based Features
 
 ==== External behavior
 
@@ -49,7 +55,11 @@ include::../UserGuide.adoc[tag=social]
 
 ==== Justification
 
-{Justify the need for, and the current design (i.e. external behavior) of, the feature}
+Since Contags was designed for business executives, the team identified 2 web-features that would appeal the most to our target audience. The first of which was Google Maps. Maps play a key role in the life of any business-person, be it for finding the location of a meeting or the direction's to a client's workplace.
+
+The second was social media. Social media sites play a large role in connecting people in the business world as well, for example through sites such as LinkedIn, that are built primarily to cater to working professionals.
+
+Contags is intended to bring all the features a business executive might use on a daily basis together, making it a convenient solution to meet all of the person's needs without having to rely on external applications. With this in mind, we integrated these web-based features into Contags.
 
 ==== Implementation
 
@@ -64,16 +74,23 @@ include::../DeveloperGuide.adoc[tag=social]
 
 === Enhancement Proposed: Add command `search`
 
-{Explain similar to the Undo/Redo feature above.}
+The `search` command is intended to provide suggestions on the social media sites to associate with a contact, based on the data that is stored within the contact. This feature is intended to help promote closer ties between the user and the contacts that the user might have just added.
+
+The search command will search several popular social media sites such as LinkedIn, Facebook and Twitter for social media pages that most closely correlate with the provided contact. It will use the provided data such as name, email address and contact number to conduct this search. Contags will then load a list that allows the user to select any of the options.
+
+=== Enhancement Proposed: Allow multiple social media pages
+
+With the widespread use of social media, and reported figures stating that the average user has 7 social media accounts, Contags has to assist in keeping up with the activities of the user's contacts. By allowing several social media pages to be associated to a contact, and a new command that allows you to select between the options available, Contags can continue to fulfill it's intended purpose to be a one-stop solution for the business executive.
 
 === Enhancement Proposed: Add command `call`
 
-{Explain similar to the Undo/Redo feature above.}
+The `call` command is a further enhancement on the connectivity aspect of Contags. It will function similarly to the `mail` command, whereby it automatically launches an external application for you, with the contact's details already entered.
+
+In the case of the `call` command, the intention is to harness the power of Skype, which allows desktop users to call both mobile and landlines in Singapore.
 
 === Other contributions
 
-* Updated the position of Command Box, Command Result Panel and Browser Panel in the GUI (Pull requests https://github.com/CS2103AUG2017-T16-B4/main/pull/115[#115])
-
-== Project: PowerPointLabs
-
-{Optionally (not graded), you may include other projects in your portfolio.}
+* Updated the position of Command Box, Command Result Panel and Browser Panel in the GUI (Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/115[#115])
+* Updated the behaviour of the Labels in the Browser Panel to display the field that was currently being displayed as well as the value of the selected contact's field.
+* Assisted with fixing of removeTag command to refresh Person Panel.
+* Rewrote User Guide Features section to make it directed towards the reader.

@@ -6,64 +6,151 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 == Project: Contags
 "Contags" is a desktop address book application used for organizing, storing, and easily accessing contact information for Business Executives. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 8 kLoC.
 
-*Code contributed*:  See "collated/Main/justuswah.md" & "collated/test/justuswah.md"
+*Code contributed*: [https://github.com/CS2103AUG2017-T16-B4/main/blob/master/collated/main/justuswah.md[Functional code]] [https://github.com/CS2103AUG2017-T16-B4/main/blob/master/collated/test/justuswah.md[Test code]]
 
-//to be changed and updated
 
-=== Enhancement Added: Undo/Redo
+== Enhancement Added: Find Command searches all Fields
 
-==== External behavior
+=== External behavior
 
----
 #Start of Extract [from: User Guide]#
-
-include::../UserGuide.adoc[tag=removeTag]
-
-include::../UserGuide.adoc[tag=smsContact]
 
 include::../UserGuide.adoc[tag=findCommand]
 
 #End of Extract#
 
----
-
-==== Justification
+=== Justification
 
 
-1. RemoveTag Method added such that tags which are no longer applicable to the user can be removed and deleted.
-This provides the most relevant and updated AddressBook for the user.
-
-2. assignTagColor is a feature implemented directly into the UI.
+1. Find Command can now be utilized to search all fields, making all contacts in the application far more accessible, and improves convenience for the user.
 
 
-==== Implementation
+=== Implementation
 
----
 #Start of Extract [from: Developer Guide]#
 
-include::../DeveloperGuide.adoc[tag=removeTag]
-
-include::../DeveloperGuide.adoc[tag=smsContact]
-
 include::../DeveloperGuide.adoc[tag=findCommand]
+include::../DeveloperGuide.adoc[tag=findUse]
 
 #End of Extract#
 
----
 
-=== Enhancement Proposed: Expand command `find`
+== Enhancement Added: RemoveTag Command removes a Tag from all Contacts in the Application
 
-Searches the AddressBook for the string of characters that will be inputted after this function. This will be especially useful for an AddressBook with a large number of contacts. Expands on the current `find` function by searching the phone numbers, addresses, tags, and emails for any instance of the string.
+=== External behavior
 
 
-=== Enhancement Proposed: Add command `last command`
+#Start of Extract [from: User Guide]#
 
-Implements a stack to keep track of the last 10 commands that have been utilized by the user. Can use the existing undo/redo stack to construct this function.
+include::../UserGuide.adoc[tag=removeTag]
+
+#End of Extract#
+
+==== Justification
+
+1. If a tag is no longer applicable to the user, the user can simply remove this Tag from all contacts in the Contags application through this feature.
+2. Removing a Tag from all contacts allows the user to reshuffle Tags and reassign Tags slightly easier.
+
+==== Implementation
+
+#Start of Extract [from: Developer Guide]#
+
+include::../DeveloperGuide.adoc[tag=removeTagCommand]
+include::../DeveloperGuide.adoc[tag=removeTag]
+
+#End of Extract#
+
+== Enhancement Added: SMS Command
+
+=== External behavior
+
+#Start of Extract [from: User Guide]#
+
+include::../UserGuide.adoc[tag=smsContact]
+
+#End of Extract#
+
+=== Justification
+
+
+1. Allows the user to send an SMS Message through the platform, allowing for ease of communication for the user.
+2. Allows the user to use the convenience of the Contags Application to send the same sms message to several contacts with ease, simply by changing the indices of the command.
+
+
+=== Implementation
+
+#Start of Extract [from: Developer Guide]#
+
+include::../DeveloperGuide.adoc[tag=smsCommand]
+include::../DeveloperGuide.adoc[tag=smsContact]
+
+#End of Extract#
+
+
+== Enhancement Added: Reauthenticate Command
+
+=== External behavior
+
+#Start of Extract [from: User Guide]#
+
+include::../UserGuide.adoc[tag=reauthenticateCommand]
+
+#End of Extract#
+
+=== Justification
+
+
+1. Allows the user to switch Twilio accounts, such that the user can send text messages from his/her own number
+
+
+=== Implementation
+
+#Start of Extract [from: Developer Guide]#
+
+include::../DeveloperGuide.adoc[tag=reauthenticateCommand]
+include::../DeveloperGuide.adoc[tag=reauthenticateUse]
+
+#End of Extract#
+
 
 === Other contributions
 
-//to be added at a later time.
+==== Cover Page Design: Designed the Cover Page for our User Guide
 
-== Project: PowerPointLabs
+image::cove_page.jpg[width="790"]
+Figure 1: Cover Page Design
 
-{Optionally (not graded), you may include other projects in your portfolio.}
+==== User Interface: Implemented the AutoComplete Function in the Application
+
+While typing user input, autocomplete provides suggestions for the user, in reference to the commands that we have provided in this application.
+
+
+image::AutocompleteFunction.png[width="790"]
+Figure 2: Utilization of Autocomplete function popup, to assist user in using commands with the application.
+
+==== User Interface: Implemented the AutoComplete Function in the Application
+
+Redesigned the red/white color scheme utilized for the Contags application.
+
+image::Ui.png[width="800]
+Figure 3: Implementation of new User Interface Colours
+
+
+==== Posted for Reuse: Autocomplete Feature
+https://github.com/nus-cs2103-AY1718S1/forum/issues/227
+
+==== Posted for Reuse: SMS Command Function
+https://github.com/nus-cs2103-AY1718S1/forum/issues/226
+
+==== Posted for Reuse: RemoveTag Command Function
+https://github.com/nus-cs2103-AY1718S1/forum/issues/225
+
+== Project: OMOF Application
+
+Conceptualized and wrote a portion of a mock "OMOF" Application. The application's purpose is to connect people by allowing users to create nearby events that any other user can join.
+
+image::omof1.jpg[width="800]
+Figure 4: OMOF Application User Interface
+
+image::omof2.jpg[width="800]
+Figure 5: OMOF Application Launch Page

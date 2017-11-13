@@ -3,6 +3,7 @@ package seedu.address.model;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
+import seedu.address.commons.core.index.Index;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
@@ -34,6 +35,9 @@ public interface Model {
     /** Removes the given tag. */
     void removeTag(Tag tag) throws TagNotFoundException;
 
+    /** Sends the text message to the contact number of given index. */
+    void smsContact(Index index, String text);
+
     /**
      * Replaces the given person {@code target} with {@code editedPerson}.
      *
@@ -53,4 +57,6 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<ReadOnlyPerson> predicate);
 
+    /** Reauthenticates Twilio Particulars */
+    void reauthenticate(String newId, String newToken, String newNumber);
 }

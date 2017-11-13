@@ -34,14 +34,22 @@ image::seankwekjk.png[width="150", align="left"]
 {empty}[https://github.com/seankwekjk[github]] [<<seankwek#, portfolio>>]
 
 Role: Team Member +
-Responsibilities: Logic Component, Social Media Implementation
+Responsibilities: Logic Component, Web-Based Features
 
 '''
 
 === Justus Wah
 image::justusw.jpg[width="150", align="left"]
-{empty}[https://github.com/justuswah[github]] [<<justuswah#, portfolio>>]
+{empty}[https://github.com/justuswah[github]] [<<justuswah.adoc, portfolio>>]
 
 Role: Team Member +
-Responsibilities: Storage Component, SMS Command Implementation, Find Command Enhancement, RemoveTag Command, JUnit Testing
+
+Responsibilities:
+
+• UI autocomplete function
+• UI Colour Theme (Red/White)
+• Find Command Enhancement to search all fields including Name, Phone, Email, Birthday, Addrss
+• RemoveTag Command
+• SMS Command
+• Reauthenticate Command
 

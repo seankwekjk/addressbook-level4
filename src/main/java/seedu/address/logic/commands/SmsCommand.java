@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import com.twilio.Twilio;
 import com.twilio.exception.ApiException;
 import com.twilio.rest.api.v2010.account.Message;
-import com.twilio.type.PhoneNumber;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -53,9 +52,9 @@ public class SmsCommand extends Command {
         String receivingNumber = lastShownList.get(targetIndex.getZeroBased()).getPhone().toString();
 
         try {
-
             Message message = Message
-                    .creator(new PhoneNumber("+65" + receivingNumber), new PhoneNumber(sendingNumber), text)
+                    .creator(new com.twilio.type.PhoneNumber("+65" + receivingNumber),
+                            new com.twilio.type.PhoneNumber(sendingNumber), text)
                     .create();
 
         } catch (ApiException ae) {
@@ -64,7 +63,7 @@ public class SmsCommand extends Command {
         }
 
         logger.log(Level.FINE, MESSAGE_SMS_PERSON_SUCCESS);
-        return new CommandResult(MESSAGE_SMS_PERSON_SUCCESS);
+        return new CommandResult(MESSAGE_SMS_PERSON_SUCCESS + " to " + receivingNumber + ": " + text);
 
     }
 
