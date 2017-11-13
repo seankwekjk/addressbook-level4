@@ -263,16 +263,16 @@ _Figure 5.11.1 : Listbirthday Command Success_ +
 
 // tag::mailContact[]
 
-Isn't it a hassle to find the email address of the contact you want to email? Especially if you don't remember the contact's name or email address? With Contags, you no longer need to spend time trying to find your intended email address in your mail browser or application. All you have to do is use of of Contags' many find and sort options to find your desired contact. Then, simply use the mail command and you're good to go!
+Isn't it a hassle to find the email address of the contact you want to email? Especially if you don't remember the contact's name or email address? With Contags, you no longer need to spend time trying to find your intended email address in your mail browser or application. All you have to do is make use of Contags' many find and sort options to find your desired contact. Then, simply use the mail command and you're good to go!
 
 [NOTE]
 ====
-You can choose which desktop mail application or mail browser you want the mail command to redirect to. Simply modify your computer/ laptop settings such that the default mail application/ browser to set it to your desired mail application or browser!
+You can choose which desktop mail application or mail browser you want the mail command to redirect to. Simply modify your computer/ laptop settings such that the default mail application/ browser is set to your desired mail application or browser!
 ====
 
 1. On the CLI, type in the mail command (`mail` or `m` followed by the index of the contact you want to mail). The format and examples are shown below.
 2. You will be redirected to your chosen mail application or browser and the 'to' field of the message will be automatically filled in with the email address of the contact at the specified index.
-3. Fill in the subject and message field and hit send! Your mail will be successfully sent. Figure 5.12.1 below shows how your screen should look like after execution of the mail command if you set your default mail application to be the desktop mail on Windows.
+3. Fill in the subject and message field and hit send! Your mail will be successfully sent. Figure 5.12.1 below shows how your screen should look like after execution of the mail command if you set your default mail application to be the desktop mail.
 
 Format: `mail INDEX` +
 Alias: `m INDEX` +

@@ -49,7 +49,7 @@ include::../DeveloperGuide.adoc[tag=mailContact]
 
 ==== Justification
 
-Business professionals would find it useful to keep track of their contacts' birthdays so that they can maintain business relationships on top of friendships and family relationships. In today's world where connections are so necessary and powerful, maintaining business relationships have never been more important. Integrating a birthday field as part of a contact's particulars would help users to have a record of their contacts' birthdays and would make it more convenient for users to wish the colleagues and friends.
+Business professionals would find it useful to keep track of their contacts' birthdays so that they can maintain business relationships on top of friendships and family relationships. In today's world where connections are so necessary and powerful, maintaining business relationships have never been more important. Integrating a birthday field as part of a contact's particulars would help users to have a record of their contacts' birthdays and would make it more convenient for users to wish the colleagues and friends, thereby helping users to maintain and improve their personal and business relationships.
 
 ---
 
