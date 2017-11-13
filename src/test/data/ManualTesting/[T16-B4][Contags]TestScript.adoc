@@ -48,6 +48,10 @@ To remove a tag from a contact, type: +
 
 • `history` `h`
 
+===== 1.4 List Command
+
+• `list` `l`
+
 === 2. Organising Contacts
 
 ===== 2.1 Find Command
