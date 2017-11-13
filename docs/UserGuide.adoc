@@ -247,12 +247,15 @@ We all struggle with remembering all our contacts' birthdays. With the `listbirt
 This command refreshes the listed contacts to show a list of your contacts whose birthdays fall on the current day. The contacts are listed in order of the latest updated list.
 
 1. On the CLI, simply type `listbirthday`.
-2. On the left panel, you will see a list of contacts with birthdays on the current day.
+2. On the left panel, you will see a list of contacts with birthdays on the current day, similar to figure 5.11.1.
 
 Format: `listbirthday`
 
 [TIP]
 You can wish the listed contacts a happy birthday by using the mail or SMS command!
+
+image::listBirthdayResult.png[width="500"]
+_Figure 5.11.1 : Listbirthday Command Success_ +
 
 // end::listBirthday[]
 
@@ -269,7 +272,7 @@ You can choose which desktop mail application or mail browser you want the mail 
 
 1. On the CLI, type in the mail command (`mail` or `m` followed by the index of the contact you want to mail). The format and examples are shown below.
 2. You will be redirected to your chosen mail application or browser and the 'to' field of the message will be automatically filled in with the email address of the contact at the specified index.
-3. Fill in the subject and message field and hit send! Your mail will be successfully sent.
+3. Fill in the subject and message field and hit send! Your mail will be successfully sent. Figure 5.12.1 below shows how your screen should look like after execution of the mail command if you set your default mail application to be the desktop mail on Mac OS.
 
 Format: `mail INDEX` +
 Alias: `m INDEX` +
@@ -277,6 +280,9 @@ Alias: `m INDEX` +
 Examples:
 * `mail 1` +
 * `m 4`
+
+image::MailCommandResult.png[width="500"]
+_Figure 5.12.1 : Mail Command Success_ +
 
 // end::mailContact[]
 
