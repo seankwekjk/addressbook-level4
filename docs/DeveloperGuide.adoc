@@ -209,7 +209,7 @@ _Figure 3.3.3 : Interactions inside the Logic Component for the `delete 1` Comma
 
 === Model component
 
-image::UpdatedModelClassDiagram.png[width="800"]
+image::ModelClassDiagramNew.png[width="800"]
 _Figure 3.4.1 : Structure of the Model Component_
 
 *API* : link:{repoURL}/src/main/java/seedu/address/model/Model.java[`Model.java`]
@@ -479,7 +479,7 @@ The BirthdayChecker class checks if a contact's birthday falls on the current da
 
 The sequence diagram for the listbirthday command is shown below.
 
-image::listBirthdayCommandSeqDiagram.png[width="800"]
+image::ListBirthdayCommandSequenceDiagram.png[width="800"]
 _Figure 4.4a : listbirthday Command sequence diagram_
 
 ==== Design Considerations

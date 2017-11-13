@@ -121,6 +121,14 @@ See pull requests https://github.com/CS2103AUG2017-T16-B4/main/pull/22[#22], htt
 
 ---
 
+=== Enhancement Proposed:
+
+---
+
+==== Justification
+
+---
+
 === Developer Guide Appendix: Glossary
 
 ---
