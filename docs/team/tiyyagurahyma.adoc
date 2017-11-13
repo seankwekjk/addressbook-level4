@@ -6,7 +6,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 == Project: Contags
 Contags is a desktop address book application that is targeted at business professionals. Contags, developed by Team CS2103-T16-B4, is an enhancement and further development of [https://github.com/se-edu/addressbook-level4[AddressBook - Level 4]], created by team SE-EDU as part of the module 2103, offered by the School of Computing in National University of Singapore. The user interacts with Contags primarily using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
 
-*Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] {give links to collated code files}
+*Code contributed*: [https://github.com/CS2103AUG2017-T16-B4/main/blob/master/collated/main/hymss.md[Functional code]] [https://github.com/CS2103AUG2017-T16-B4/main/blob/master/collated/test/hymss.md[Test code]] {give links to collated code files}
 
 === Enhancement Added: Mail Command
 
@@ -43,6 +43,7 @@ Business professionals would find it useful to keep track of their contacts' bir
 
 include::../DeveloperGuide.adoc[tag=birthdayfield]
 
+See (Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/37[#37])
 ---
 
 === Enhancement Added: ListBirthday Command
@@ -76,6 +77,8 @@ include::../DeveloperGuide.adoc[tag=listBirthday]
 
 include::../DeveloperGuide.adoc[tag=backup]
 
+See (Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/23[#23]).
+
 === Enhancement Added: Alias for Commands
 
 ==== Justification
@@ -105,10 +108,9 @@ A schedule feature would allow users to create events such as meetings or dinner
 
 === Other contributions
 
-* Added a backup to store contents of addressbook (Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/23[#23])
-* Added birthday field (Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/37[#37])
 * Updated UI to add new logo and include a separate browser panel displaying the address of a contact when contact is selected (Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/107[#107]])
 * Enhanced find command to find by tags (Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/111[#111])
+* Wrote manual testing scripts (TestScript.adoc and SampleData.xml) (Pull requests Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/137[#137], https://github.com/CS2103AUG2017-T16-B4/main/pull/123[#123])
 
 == Project:
 
