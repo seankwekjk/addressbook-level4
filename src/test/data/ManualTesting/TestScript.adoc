@@ -6,6 +6,11 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 = Manual Testing Script
 
 To load the sample data in the address book,
+1. In the same folder as the downloaded `Contags.jar` file, create a folder named `data`.
+2. Move `SampleData.xml` (from src/test/data/ManualTesting) to the data folder and rename it as `addressbook.xml`.
+3. Open the `Contags.jar` file.
++
+The application should be loaded with the sample data.
 
 For all the commands, we have an autocomplete function where you can select which command you want to type by using the up and down arrows to navigate the list of suggested commands and clicking 'Enter'. To exit the autocomplete list, simply press 'tab'.
 
@@ -67,7 +72,7 @@ To sort a list of contacts, type sort follows by the field you want to sort by.
 
 [NOTE]
 ====
-The `removeTag` Command is case-sensitive. The case you type must be the exact case used in the application.
+The `removeTag` Command is case-sensitive. The case of the Tag you identify must be the exact case used in the application.
 ====
 
 •  The "Client" tag should be removed from all contacts in the application.
