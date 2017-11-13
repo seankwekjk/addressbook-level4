@@ -1,16 +1,24 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_REAUTHENTICATION_FAILURE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ACCOUNT_SID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_AUTH_TOKEN;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SENDING_NUMBER;
 
 import java.util.logging.Level;
+
+import com.twilio.Twilio;
+
+import seedu.address.logic.commands.exceptions.CommandException;
+
 /**
  * Reauthenticates the Twilio Account Details & Sending Phone Number for the User
- *
+ * Checks if Account Details are correct
+ * Returns @MESSAGE_REAUTHENTICATION_FAILURE if account details are incorrect
  */
 //@@author justuswah
-public class ReauthenticateCommand extends Command {
+public class ReauthenticateCommand extends UndoableCommand {
 
     public static final String COMMAND_WORD = "reauthenticate";
     public static final String COMMAND_ALIAS = "ra";
@@ -37,8 +45,21 @@ public class ReauthenticateCommand extends Command {
     }
 
     @Override
-    public CommandResult execute() {
-        SmsCommand.setAccountParticulars(accountSid, authenticationToken, sendingNumber);
+    public CommandResult executeUndoableCommand() throws CommandException {
+        requireNonNull(model);
+
+        try {
+            Twilio.init(accountSid, authenticationToken);
+            com.twilio.rest.lookups.v1.PhoneNumber number = com.twilio.rest.lookups.v1.PhoneNumber
+                    .fetcher(new com.twilio.type.PhoneNumber(sendingNumber))
+                    .setType("carrier")
+                    .fetch();
+        } catch (com.twilio.exception.ApiException e) {
+            logger.log(Level.INFO, "Authentication Attempt Failed");
+            return new CommandResult(MESSAGE_REAUTHENTICATION_FAILURE);
+        }
+
+        model.reauthenticate(accountSid, authenticationToken, sendingNumber);
         logger.log(Level.WARNING, REAUTHENTICATE_SUCCESS);
         return new CommandResult(REAUTHENTICATE_SUCCESS);
     }

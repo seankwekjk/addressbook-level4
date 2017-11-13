@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.core.index.Index;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
@@ -60,6 +61,12 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public void removeTag(Tag toRemove) {
         addressBook.deleteTag(toRemove);
+        indicateAddressBookChanged();
+    }
+
+    @Override
+    public void smsContact(Index index, String text) {
+        addressBook.smsContact(index, text);
         indicateAddressBookChanged();
     }
     //@@author mzxc152
@@ -140,6 +147,12 @@ public class ModelManager extends ComponentManager implements Model {
         ModelManager other = (ModelManager) obj;
         return addressBook.equals(other.addressBook)
                 && filteredPersons.equals(other.filteredPersons);
+    }
+
+    @Override
+    public void reauthenticate(String newId, String newToken, String newNumber) {
+        addressBook.reauthenticate(newId, newToken, newNumber);
+        indicateAddressBookChanged();
     }
 
 }

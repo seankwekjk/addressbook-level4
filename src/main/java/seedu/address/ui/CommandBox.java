@@ -34,7 +34,7 @@ public class CommandBox extends UiPart<Region> {
     private static final String[] allSuggestions = {"add", "a n/ p/ e/ a/ b/ s/ r/ t/", "clear", "delete",
         "edit", "e n/ p/ e/ a/ b/ s/ r/ t/", "exit", "x", "find", "f", "help", "sort name", "history",
         "list", "removeTag", "select", "undo", "redo", "sort email", "sort phone", "sort address", "sort tag",
-        "listBirthday", "sms", "text/", "mail", "remark", "toggle", "reauthenticate"};
+        "listbirthday", "sms", "text/", "mail", "remark", "toggle", "reauthenticate id/ auth/ num/"};
     private final Logger logger = LogsCenter.getLogger(CommandBox.class);
     private final Logic logic;
     private ListElementPointer historySnapshot;

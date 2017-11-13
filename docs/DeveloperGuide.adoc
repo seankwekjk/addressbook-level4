@@ -333,6 +333,7 @@ The following activity diagram summarizes what happens inside the `UndoRedoStack
 
 image::UndoRedoActivityDiagram.png[width="200"]
 _Figure 4.1.8 : Activity Diagram of UndoRedoStack_
+
 ==== Design Considerations
 
 **Aspect:** Implementation of `UndoableCommand` +
@@ -466,6 +467,26 @@ public class ListCommand extends Command {
 **Cons: ** Implementation is slightly more tedious and new developers might need more time to understand the implementation.
 
 // end::birthdayfield[]
+// tag::findCommand[]
+=== Find Mechanism
+
+The find command searches through all contact fields for every contact for KEYWORD, and if there is a match, lists the contact for the user. +
+The five fields that will be searched by this mechanism are: Name, Phone, Birthday, Email, Address.
+
+[NOTE]
+The command will only match entirely complete fields. Eg. user input `find cl` will not return Clementi as an address given to a contact for the user. User input must be: `find clementi`. Case insensitive.
+
+==== Design Considerations
+
+**Aspect:** Whether or not incomplete fields should still be searched for in complete fields and returned for the user (see Note). +
+**Alternative 1 (current choice):** KEYWORD must be a complete field (full word) to match with the same full word in the contact particular. +
+**Pros:** User can still identify contacts easily as long as the KEYWORD entirely matches a particular word in the field of a contact. +
+**Cons:** Typos or incomplete words will not return the contact if the fields are not matched with the entire word given by the user. +
+**Alternative 2:** Make incomplete fields still return the full field, as long as the combination of letters can be found in the contact particulars. +
+**Pros:** More contacts will be returned. +
+**Cons: ** List might be too long for it to be of any use to the user. For example, `find a` will probably return a large number of contacts if this feature is implemented.
+
+// end::findCommand[]
 
 === ListBirthday Mechanism
 
@@ -496,12 +517,12 @@ _Figure 4.4a : listbirthday Command sequence diagram_
 // end::listBirthday[]
 // tag::social[]
 
-=== Social Media
+=== Web-based Features
 
-The Social Media display consists of several parts. Firstly, there is the social media url field contained within the `Person` class. +
-This field is an optional one that does not have to be included in the `add` command when adding new a new contact.
+The enhancements made to the Browser consists of several parts. Firstly, the default behaviour of SelectCommand will load the url of a Google Maps search for the contact's address. +
+Secondly is the social media url field contained within the `Person` class. This field is an optional one that does not have to be included in the `add` command when adding new a new contact. In a contact that does not have its social media url specified, an empty String will be assigned to it.
 
-The second part is the `toggle` command, which modifies a class-level variable within the `BrowserPanel` class.
+The third part is the `toggle` command, which modifies a class-level variable within the `BrowserPanel` class.
 [source,java]
 ----
 public class BrowserPanel extends UiPart<Region> {
@@ -521,7 +542,7 @@ _Figure 4.4a : ToggleCommand sequence diagram_
 
 The `ToggleCommand` is able to refresh the `BrowserPanel` through the use of a new `ToggleChangedEvent`. This is an event that is handled by the `BrowserPanel`, and relies on 2 private variables within `BrowserPanel`.
 
-When `BrowserPanel` handles a `PersonPanelSelectionChangedEvent`, it stores both the `Address` and `Social Media` fields. The handler of `ToggleChangedEvent` is thus able to cause the browser to load the url linked to the other mode.
+When `BrowserPanel` handles a `PersonPanelSelectionChangedEvent`, it stores both the `Address` and `Social Media` fields of the selected contact within private variables. The handler of `ToggleChangedEvent` is thus able to cause the browser to load the url linked to the other mode.
 
 ==== Design Considerations
 
@@ -545,7 +566,7 @@ When `BrowserPanel` handles a `PersonPanelSelectionChangedEvent`, it stores both
 // end::social[]
 
 //tag::sort[]
-=== Sort Mechanism
+=== Sort mechanism
 
 `SortCommand` sorts the `person` in Contags based on their `Name`, `Phone`, `Email`, `Address` or `Tag`. The implementation of `SortCommand` inherits from `Command`. Sorting currently works in ascending order only. +
 
@@ -553,6 +574,13 @@ There is also the use of the `SortCommandParser` class, which implements the `Pa
 
 [NOTE]
 If you entered arguments that do not follow the required format, `ParseException` will be thrown. +
+
+The following sequence diagram _(Figure 4.6a)_ illustrates the execution of the `sort` command in Contags.
+
+image::SortCommandSequenceDiagram.png[width="800"]
+_Figure 4.6a : SortCommand sequence diagram_
+
+`SortCommand` links the logic in Contags to the model that is displayed in the main window.
 
 ==== Design Considerations
 
@@ -616,6 +644,115 @@ _Figure 4.7a : Mail Command sequence diagram_
 **Cons:** Not all users would have the same preferred mail server. Implementing the GMail API would not cater to the needs and preferences of many users who would want to use other mail servers. Furthermore, the interface for GMail is not optimal in `JavaFX WebView`.
 
 // end::mailcommand[]
+// tag::smsCommand[]
+=== SMS Command
+
+The `sms` command sends a text message to a `person` in `Contags` based on their `Index`, as well as the phone number saved in the application. in the most updated list.
+The implementation of `sms` inherits from `Command`.
+
+The code interacts with the Twilio online platform to create a message, verify the number that it is to be sent to, then sends the message through the internet.
+
+`SmsCommandParser`, which implements the `Parser` interface, serves three functions: +
+• parses out the index to be used with the `sms` command; and +
+• validates the input index to ensure that it is within the range of the current list of contacts.
+• extracts the text from the `text/` prefix, and wraps it in a text message to be sent through Twilio.
+
+[NOTE]
+If the index entered by the user does not comply with the expected range, ParseException will be thrown before execution of the method. +
+
+The `SmsCommand` links the logic in Contags to the content (phone number of the person in the specified index) to the Twilio user interface, allowing text messages to be sent through the application.
+
+The following sequence diagram illustrates the execution of the `sms` command.
+
+image::SmsCommandSequenceDiagram.png[width="800"]
+_Figure 4.8a : SMS Command sequence diagram_
+
+==== Design Considerations
+
+**Aspect:** Attributes to sms command +
+**Alternative 1 (Current Choice):** Takes in the index of the contact, and retrieves the phone number from the Contact.  +
+**Pros:** Useful for most users who want to send multiple short messages quickly, can directly type texts (not having to type on your phone), and allows for sending the same text to multiple contacts simply by changing the indices. +
+**Cons:** Not useful for users who want to send long messages with paragraphs. Must add contacts and their phone numbers in the application to send texts. +
+**Alternative 2 (Alternate choice):** Directly takes in the phone number to SMS, not by contact index. +
+**Pros:** Allows users to type in any phone number they want, without having to save the contact. +
+**Cons:** Fast and efficient text messaging would be a problem. We used indexes such that SMS messages can be repeatedly sent to different contacts every fast, simply by cycling through the indices.  +
+
+---
+
+**Aspect:** Whether sms command should open up another input box to type the message +
+**Alternative 1 (current choice):** type the text message directly into the command line using the "text/" prefix. +
+**Pros:** Text message could be sent in one command line input, do not have to type into two different interfaces. +
+**Cons:** Less user friendly integrate, also no security measures to ensure privacy of text. +
+**Alternative 2 (Alternate Choice):** Open up a separate application/interface for message input to be sent - similar to "mail" command. +
+**Pros:** Security of the text message might be able to be enforced with separate application or interface. +
+**Cons:** Does not conform with the goal of Contags, which is to integrate various communication platforms into one application.
+
+// end::smsCommand[]
+
+
+// tag::reauthenticateCommand[]
+=== Reauthenticate Command
+
+The `Reauthenticate` command reauthenticates the user's Twilio account details to enable the user to send text messages through the Twilio platform.
+
+The code interacts with the Twilio online platform to verify that the Authetication Token, Account SID, and Sending Number are all correct, and have been previously created through the Twilio Account. Once the Reauthenticate Command is successful, the user can send text messages through the account.
+
+`ReauthenticateCommandParser`, which implements the `Parser` interface, serves two functions: +
+• parses out the three fields to be used with the `Reauthenticate` command; and +
+• validates it with the Twilio database. Then it informs the user the outcome of the authentication: Success/Failure.
+
+[NOTE]
+If any of the fields are incorrect, the Reauthenticate Command will throw an error, informing the user that the Account Details are incorrect. +
+
+The `ReauthenticateCommand` links the logic in Contags to the content (three fields) of the Twilio user interface, ultimately allowing text messages to be sent through the application.
+
+
+==== Design Considerations
+
+**Aspect:** Attributes to Reauthenticate command +
+**Alternative 1 (Current Choice):** Takes in all three authentication particulars directly from the Command Line.  +
+**Pros:** Useful for most users who want to authenticate quickly, can directly type the fields into the application. +
+**Cons:** Not useful for users who have tendencies to make typos, as the command line consumes the input evrey time, requiring user to type in fields repeatedly. +
+**Alternative 2 (Alternate choice):** Command Line does not consume user input if the reauthentication fails +
+**Pros:** Allows users to fix typos very easily in the authentication fields, as they would not have to retype the entirety of any field. +
+**Cons:** Security level drops, as users can repeatedly and easily try different authentication fields for accounts that are not theirs.  +
+
+---
+
+**Aspect:** Whether reauthenticate command should accept all inputs, and lets application attempt to send SMS even if fields are incorrect - SMS will fail.  +
+**Alternative 1 (current choice):** Reauthenticate command immediately lets user know if any of the entered account particulars are incorrect.  +
+**Pros:** User can easily find out if their account details are incorrect, hence if an SMS message does not send, it is not because the user account is unauthenticated. +
+**Cons:** User MUST input correct fields into the reauthenticate command, and must use this command to verify account details. If not, no SMS messages can be sent. +
+**Alternative 2:** (Alternate Choice) Reauthenticate Command accepts any field, and attempts to send emails with it.  +
+**Pros:** None. +
+**Cons:** User does not know if message is not sent because of incorrect account particulars, or because there is a server error.
+
+// end::reauthenticateCommand[]
+
+// tag::removeTagCommand[]
+=== RemoveTag Command
+
+The `RemoveTag` command searches through all contacts and removes the Tag identified by the user.
+
+The code immediately removes the tag from the application. It is an undoable command - the tag can be reinserted by undoing the removeTag command.
+
+`RemoveTagCommandParser`, which implements the `Parser` interface, serves one function: +
+• parses out the Tag Name from the user input, and attempts to identify the tag that the user is referring to.
+
+[NOTE]
+The `removeTag` command is case sensitive, and the tags identified are case sensitive as well.
+
+==== Design Considerations
+
+**Aspect:** Attributes to `removeTag` command +
+**Alternative 1 (Current Choice):** Takes in the name of the tag directly, and searches through all contacts to remove the tag. +
+**Pros:** Useful for users to disband certain tags. Acts in supplement, as user can already edit tags from a contact, hence manually removing a tag from a single contact. +
+**Cons:** Not useful for users who want to remove the tag from only certain contacts, not all contacts. Can be inefficient.+
+**Alternative 2 (Alternate choice):** User manually removes tag from all contacts. +
+**Pros:** Allows users to remove the tag only from certain contacts, not all.  +
+**Cons:** Time consuming, as user would have to go through contacts one by one.  +
+
+// end::removeTagCommand[]
 
 === Backup Storage Mechanism
 
@@ -664,6 +801,48 @@ We are using `java.util.logging` package for logging. The `LogsCenter` class is 
 === Configuration
 
 Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: `config.json`).
+
+// tag::tagcolor[]
+
+=== Tag Colors
+
+The tag colors are implemented using a predefined string of chosen colors in an ArrayList, as shown in the code snippet below.
+
+[source,java]
+----
+private static ArrayList<String> colors = new
+            ArrayList<String>(Arrays.asList("salmon", "mediumspringgreen", "tan", "royalblue",
+            "maroon", "seagreen", "rosybrown", "pink", "black", "red", "beige"));
+----
+
+In the next code snippet, the method checks whether each `tagName` has a color assigned to it and if there is no color assigned, the 1st
+color in the ArrayList is given to that tag before being added back into the ArrayList and then removing it so as to push the next color to the front of the ArrayList.
+This cycles the range of colors that have been predefined for new tags that do not yet have a color assigned.
+
+[source,java]
+----
+ private static String getColorForTag(String tagName) {
+        if (!tagColors.containsKey(tagName) && !colors.isEmpty()) {
+            String color = colors.get(0);
+            tagColors.put(tagName, color);
+            colors.add(color);
+            colors.remove(0);
+        }
+        return tagColors.get(tagName);
+    }
+----
+
+==== Design Considerations
+
+**Aspect:** Colors that can be added to the tag +
+**Alternative 1 (current choice):** Predefined string of chosen colors for users. +
+**Pros:** Allows users to simply add their tag(s) and the color will be automatically chosen for each tag or tags . +
+**Cons:** Users would not be able to choose the color for each individual tag as it is automatically assigned by the application. +
+**Alternative 2:** Allow users to choose the color of the tag for each unique tag that they have added. +
+**Pros:** Useful for users who want to customise the colors of each tag to their own choice, for better organisation. +
+**Cons:** Complicates the adding contacts part of the application with more commands to input just to add a contact.
+
+// end::tagcolor[]
 
 == Documentation
 
@@ -809,7 +988,7 @@ Priorities: +
 
 |`* * *` |user |create a new contact with a name that already exists in Contags |have multiple contacts with the same name if I know people with the same name
 
-|`* *` |user |delete all tags for a contact |
+|`* *` |user |delete a tag from all contacts |
 
 |`* *` |user |undo previous commands |revert mistakes made
 
@@ -817,9 +996,11 @@ Priorities: +
 
 |`* *` |user |sort the list of contacts in the list based on phone number |organise the list
 
+|`* *` |user |reauthenticate the online text messaging API account | can send texts with my own account and phone number.
+
 |`* *` |user |view a list of contacts whose birthdays fall on the current date |remember their birthdays and wish them
 
-|`* *` |user |have tags of different colours |easily identify different tags
+|`* *` |user |have tags of different colors |easily identify different tags
 
 |`*` |user |find a person with an incomplete name |to find a person even if I cannot remember or spell the person's name correctly
 
@@ -855,8 +1036,6 @@ Priorities: +
 
 |`*` |forgetful user |link appointments with specific contacts |
 |=======================================================================
-
-{More to be added}
 
 [appendix]
 == Use Cases
@@ -993,6 +1172,10 @@ Use case ends.
 *Extensions*
 
 [none]
+* 1a. The given keyword is invalid.
++
+** 1a1. Contags informs user that keyword entered is not valid.
++
 * 2a. The list is empty.
 +
 Use case ends.
@@ -1042,7 +1225,7 @@ Use case ends.
 *MSS*
 
  1.  User requests to removeTag from all contacts, and includes tag label name.
- 2.  Contags searches through all contacts that have been tagged with the same tag, removes the tags from all these contacts and displays latest change
+ 2.  Contags searches through all contacts that have been tagged with the same tag, removes the tags from all these contacts and displays latest change.
  3.  Use case ends.
 
 *Extensions*
@@ -1167,7 +1350,7 @@ Use case ends.
 * 2a. User inputs invalid contact index.
 +
 Contags informs user that the input is not a valid contact index. Use case ends.
-
+// tag:removeTagUse[]
 [discrete]
 === Use case: Remove Tag from all Contacts
 
@@ -1184,6 +1367,51 @@ Use case ends.
 * 1a. Tag cannot be found.
 +
 Contags informs user that the tag does not exist. Use case ends.
+
+// end:removeTagUse[]
+
+// tag::reauthenticateUse[]
+[discrete]
+=== Use case: Reauthenticate Twilio Account Details
+
+*MSS*
+
+1.  User requests to reauthenticate Twilio account particulars, namely: Account SID, Authentication Token, Sending Number.
+2.  Contags verifies with the Twilio platform if the account details are correct.
+3.  Informs the user that the account details are correct. Changes the account details to synchronize with the new account.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. Incorrect fields are input into the application by the user.
++
+Contags informs user that the account details are incorrect. Does not change the account details. Use case ends.
+
+// end::reauthenticateUse[]
+// tag::findUse[]
+
+[discrete]
+=== Use case: Find a contact based on either Phone, Address, Email, Birthday, or Name
+
+*MSS*
+
+1.  User requests to find a contact, given by user input KEYWORD.
+2.  Contags searches all five fields in attempt to locate all contacts with given KEYWORD inside field.
+3.  Lists all the contacts that have KEYWORD in any of the five fields.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. User input KEYWORD cannot be found in any of the fields for any of the contacts.
++
+Contags informs user that 0 persons are found. Use case ends.
+
+// end::findUse[]
+
 
 [discrete]
 === Use case: Add events/meetings `Coming in v2.0`
@@ -1205,7 +1433,6 @@ Use case ends.
 Contags informs the user to specify a valid index. Use case ends.
 
 // end::schedule[]
-
 // tag:NFR[]
 
 [appendix]
@@ -1403,8 +1630,6 @@ Cons:
 * Has no command-line interface.
 * Only available on Mac OS.
 
-// end::productSurvey[]
-
 ---
 
 *Microsoft People*
@@ -1421,3 +1646,5 @@ Cons:
 * Only available on Windows.
 * No command-line interface, requires use of mouse and keyboard.
 * Does not support tags.
+
+// end::productSurvey[]

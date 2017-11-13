@@ -3,25 +3,23 @@
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :stylesDir: stylesheets
 
-== Manual Testing Script
+= Manual Testing Script
 
 To load the sample data in the address book,
 1. In the same folder as the downloaded `Contags.jar` file, create a folder named `data`.
 2. Move `SampleData.xml` (from src/test/data/ManualTesting) to the data folder and rename it as `addressbook.xml`.
 3. Open the `Contags.jar` file.
-+
+
 The application should be loaded with the sample data.
 
 For all the commands, we have an autocomplete function where you can select which command you want to type by using the up and down arrows to navigate the list of suggested commands and clicking 'Enter'. To exit the autocomplete list, simply press 'tab'.
 
-=== 1. Basic commands
+== User Interface
 
-===== 1.1 Add Command:
-
-• You can use the autocomplete function to select: a n/ p/ e/ a/ b/ s/ r/ t/
-• To add a contact, type in: `add n/Ernest Choo p/97121212 e/ernest@example.com a/117B HillCrest Road b/10/05/1995 t/friend`
-• You can also type the alias for add which is a: `a n/Rachel Ang p/98769877 e/rachelang@example.com a/11 Kent Ridge Drive b/04/07/1997 t/friend`
-• The tag field is optional, so you can type: `add n/Ian Koh p/97890657 e/ian@example.com a/31 Lorong Chuan b/11/07/1997`
+• You can use the autocomplete function to select: a n/ p/ e/ a/ b/ s/ t/
+• To add a contact, type in: `add n/Ernest Choo p/97121212 e/ernest@example.com a/117B HillCrest Road b/10/05/1995 s/sg.linkedin.com t/friend`
+• You can also type the alias for add which is a: `a n/Rachel Ang p/98769877 e/rachelang@example.com a/11 Kent Ridge Drive b/04/07/1997 s/twitter.com t/friend`
+• The tag and social media fields are optional, so you can type: `add n/Ian Koh p/97890657 e/ian@example.com a/31 Lorong Chuan b/11/07/1997`
 
 ===== 1.2 Edit Command:
 +
@@ -30,103 +28,169 @@ For all the commands, we have an autocomplete function where you can select whic
 • `edit 3 e/damithrajapakse@example.com` +
 • `edit 4 a/Choa Chu Kang Street 51` +
 • `edit 5 b/08/11/1996` +
-• `edit 6 t/friend` +
+• `edit 6 facebook.com` +
+• `edit 7 t/friend` +
 
 You can also type the alias for edit which is e: +
+
 • `e 1 n/John Yeo`
 
-You can also edit more than one field at once: +
+You can also edit more than one field at once:
+
 • `edit 1 b/13/02/1976 t/friends`
 
 To add a remark to a contact, type: +
-• `edit 7 r/Owes Money`
+• `remark 7 r/Owes Money`
 
-To remove a tag from a contact, type: +
+To remove a tag from a contact, type:
+
 • `edit 8 t/`
 
-===== 1.3 History Command
+=== Organising Contacts
 
-• `history` `h`
+To find a contact, type find followed by the field you want to find by.
 
-===== 1.4 List Command
+• `find John`
+• `find 91239123`
+• `find colleagues`
 
-• `list` `l`
+To sort a list of contacts, type sort follows by the field you want to sort by.
 
-=== 2. Organising Contacts
-
-===== 2.1 Find Command
-
-To find a contact, type find followed by the field you want to find by. +
-• `find John` +
-• `find 95352563` +
-• `find colleague`
-
-===== 2.2 Sort Command
-
-To sort a list of contacts, type sort follows by the field you want to sort by. +
-• `sort name` +
-• `sort tags` +
-• `sort address` +
-• `sort phone` +
-• `sort email` +
+• `sort name`
+• `sort tags`
+• `sort address`
+• `sort phone`
+• `sort email`
 • `sort remark`
 
-===== 2.3 RemoveTag Command
+=== Removing a Tag from all Contacts: `removeTag`
 
-To remove all tags for a contact, type `removeTag` or `rt` followed by name of the tag. +
-• `removeTag client`
-• `rt neighbour`
+• To successfully remove a tag from all contacts, identify the tag you want to remove. For example, "Client".
 
-=== 3. Viewing contacts whose birthday falls on the current date
+• Type the following command into the command line:
 
-===== 3.1 ListBirthday command
+`removeTag Client`
 
-Steps to follow before executing listbirthday command: +
-1. Edit the birthday of the contact at index 3 to the current date. +
-2. i.e. If the current date is 17/11/2017, type `edit 3 b/17/11/1970`.
+[NOTE]
+====
+The `removeTag` Command is case-sensitive. The case of the Tag you identify must be the exact case used in the application.
+====
 
-To view the list of contacts whose birthday falls on the current date: +
-• `listbirthday`
+•  The "Client" tag should be removed from all contacts in the application.
 
-=== 4. Communication platforms
+=== Communication platforms
 
-===== 4.1 Mail Command
+==== Mail command:
+1. Firstly, `edit` email address of the contact at index 1 to your own, preferably an email that is on your phone so that you can easily check if the mail command successfully works.
+2. i.e. Type `edit 1 e/youremail@example.com` (replace with your own email address).
+3. Ensure that the computer/laptop settings are configured such that there is a default mail of your choice (it can be the mail application on your desktop or it can be an email server on google chrome, etc).
+4. Also ensure that there is a working internet connection.
 
-Steps to follow before executing mail command: +
-1. Firstly, edit email address of the contact at index 1 to your own, preferably an email that is on your phone so that you can easily check if the mail command successfully works. +
-2. i.e. Type `edit 1 e/youremail@example.com` (replace with your own email address). +
-3. Ensure that the computer/laptop settings are configured such that there is a default mail of your choice (it can be the mail application on your desktop or it can be an email server on google chrome, etc). +
-4. Also ensure that there is a working internet connection. +
+....
+To mail a contact, type mail followed by the index of the contact:
 
-To mail a contact, type mail followed by the index of the contact: +
-• `mail 1` +
-• `m 1` (m is the alias for mail)
+• mail 1
 
+OR
+
+• m 1 (m is the alias for mail)
+....
 You should be redirected to your preferred mail and the 'to' field of the message should be filled in with the email address at specified index 1 (i.e. it should be your email address that you just keyed in). You can then fill in the subject and message fields manually and click send. You should receive the email on your phone (if the email address you specified earlier is on your phone).
 
 ---
+==== SMS command:
+Steps to follow before executing sms command:
 
-===== 4.2 SMS Command
+• Firstly, you must have a working Twilio account. Ensure there is a working internet connection. You may use the sample one we have created, or create your own at https://www.twilio.com/
 
-Steps to follow before executing sms command: +
-1. Firstly, authenticate the phone number of the contact at index 1 to your own phone number. +
-2. Ensure that there is a working internet connection.
+[NOTE]
+====
+By default, the application is synchronized with the sample Twilio account. If you want to use your own account, you must perform a "reauthenticate" command before continuing.
+====
 
-To SMS a contact, type sms followed by the index of the contact and the message. +
-• `sms 1 message/hi do you want to meet for dinner?`
 
-=== 5. Web-Based Features
+....
+Logging into Twilio using the Sample Account:
 
-To see a contact's address on google maps, type select followed by the index: +
-• `select 1` +
-• `s 1` (s is the alias for select) +
+1. Go to  https://www.twilio.com/login
+
+    Username: justus.wah@hotmail.com
+    Password: CS2103Ttestingaccount
+
+2. Check the "I'm not a robot" box, and press login.
+....
+
+• Next, you have to verify that the phone number you want to SMS to is authenticated on the Twilio Platform. You should use your own phone number for testing purposes, as you will be receiving a verification code through SMS.
+
+....
+Authenticating Your Phone Number on Twilio so Contags can send messages to your phone:
+
+1. After logging in, from the Twilio Console Dashboard, click on the `All Products and Services` Logo on the far left border of the screen.
+
+2. Then, under the "Super Network" Section, click on `Phone Numbers`
+
+3. Now, click on the `Verified Caller IDs` label on the left.
+
+4. Under the Verified Caller IDs Title, click on the `Add new Number` Icon, denoted by the Red Addition Sign.
+
+5. Click on the "text you instead" button that is underlined. Type in your phone number. Ensure that the country code is correct (+65).
+
+6. Click on the "Text Me" Button, and you should receive a verification code on your phone via SMS.
+
+7. Enter the verification code into the Twilio website on your computer.
+
+8. Your phone number is now authenticated on this account.
+....
+
+• Now, you can either add yourself as a contact on our Application, or edit a sample contact's phone number to your own.
+Recommended: Edit the phone number of the first person using the following command (leave our the country code in the application):
+
+`edit` `1` `p/(your 8 digit phone number)`
+
+• To SMS to your phone number now, use the following format. Fill in the (your text message) portion with the messagee you wish to send to yourself.
+
+`sms` `1` `text/(your text message)`
+
+• You should receive the SMS message on your phone shortly.
+
+---
+==== Reauthenticate command:
+
+[NOTE]
+====
+By default, the application is synchronized with the sample Twilio account. There is no need to reauthenticate the account details further. However, for testing purposes, these steps will verify that the Reauthenticate command works.
+====
+
+• The reauthenticate command authenticates the application to access a Twilio account. Each Twilio account has three aspects:
+
+1. Account SID
+
+2. Authentication Token
+
+3. Phone number
+
+• First, try reauthenticating to dummy values. The reauthentication command should respond by informing the user that the Account Details are incorrect:
+`reauthenticate` `id/fakeid` `auth/fakeauth` `num/12345678`
+
+• If you have your own Twilio account, you can use this command to synchronize the Application to your twilio account. Otherwise, you can reauthenticate back to the details of our sample account by copying and pasting the command below:
+
+....
+reauthenticate id/ACed7baf2459e41d773a5f9c2232d4d975 auth/6a26cc5c91ff355ebf48fe019700920b num/+12082157763
+....
+• After reauthenticating to the sample Twilio account, you can now send SMS messages. See "SMS Command".
+
+---
+=== Web-Based Features
+
+To see a contact's address on google maps, type select followed by the index:
+`select 1`
+OR
+`s 1` (s is the alias for select).
 The browser panel on top of the CLI should display the google maps page of the contact's address.
 
-To view the social media page of a contact instead of the google map page of their address, type: +
-• `toggle` +
-• `t` (t is the alias for toggle) +
+To view the social media page of a contact instead of the google map page of their address, type:
+`toggle` OR
+`t` (t is the alias for toggle)
 The browser panel on top of the CLI should display the contact's social media page.
 
-To switch back to the google maps page, type: +
-• `toggle` `t` +
-The browser panel on top of the CLI should refresh to show the google maps page.
+To switch back to the google maps page, type: `toggle`. The browser panel on top of the CLI should refresh to show the google maps page.
