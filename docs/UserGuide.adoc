@@ -244,7 +244,10 @@ Alias: `l`
 
 We all struggle with remembering all our contacts' birthdays. With the `listbirthday` command, you'll never miss any of your contacts' birthdays again! +
 
-This command lists all your contacts whose birthdays fall on the current date. The contacts are listed in order of the latest updated list.
+This command refreshes the listed contacts to show a list of your contacts whose birthdays fall on the current day. The contacts are listed in order of the latest updated list.
+
+1. On the CLI, simply type `listbirthday`.
+2. On the left panel, you will see a list of contacts with birthdays on the current day.
 
 Format: `listbirthday`
 
@@ -266,13 +269,13 @@ You can choose which desktop mail application or mail browser you want the mail 
 
 1. On the CLI, type in the mail command (`mail` or `m` followed by the index of the contact you want to mail). The format and examples are shown below.
 2. You will be redirected to your chosen mail application or browser and the 'to' field of the message will be automatically filled in with the email address of the contact at the specified index.
-3. Fill in the subject and message field and hit send!
+3. Fill in the subject and message field and hit send! Your mail will be successfully sent.
 
 Format: `mail INDEX` +
 Alias: `m INDEX` +
 
 Examples:
-* `mail 1`
+* `mail 1` +
 * `m 4`
 
 // end::mailContact[]
