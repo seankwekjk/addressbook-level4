@@ -1139,7 +1139,7 @@ Contags informs user that the contact cannot be found. Use case ends.
 [discrete]
 === Use case: List contacts whose birthdays fall on current date
 
-// tag::listBirthday[]
+// tag::listbirthday[]
 
 *MSS*
 
@@ -1148,7 +1148,7 @@ Contags informs user that the contact cannot be found. Use case ends.
 +
 Use case ends.
 
-// end::listBirthday[]
+// end::listbirthday[]
 [discrete]
 === Use case: Select Contact
 
@@ -1187,6 +1187,27 @@ Use case ends.
 +
 Contags informs user that the tag does not exist. Use case ends.
 
+[discrete]
+=== Use case: Add events/meetings `Coming in v2.0`
+
+// tag::schedule[]
+
+*MSS*
+
+1. User requests to add events and includes title, date, time and optionally, contact index.
+2. Event panel on top of the browser panel refreshes to reflect the addition of event.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. Index is out of range.
++
+Contags informs the user to specify a valid index. Use case ends.
+
+// end::schedule[]
+
 // tag:NFR[]
 
 [appendix]
@@ -1204,9 +1225,10 @@ Contags informs user that the tag does not exist. Use case ends.
 
 // end::NFR[]
 
-// tag::glossary[]
 [appendix]
 == Glossary
+
+// tag::glossary[]
 
 [[acsiidoc]]
 acsiidoc
