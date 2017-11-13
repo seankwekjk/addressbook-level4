@@ -34,6 +34,7 @@ Currently, the sort feature works by sorting your list of contacts either by Nam
 #Start of Extract [from: Developer Guide]#
 
 include::../DeveloperGuide.adoc[tag=sortusecase]
+
 include::../DeveloperGuide.adoc[tag=sort]
 
 #End of Extract#

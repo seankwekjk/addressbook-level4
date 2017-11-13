@@ -547,7 +547,7 @@ When `BrowserPanel` handles a `PersonPanelSelectionChangedEvent`, it stores both
 // end::social[]
 
 //tag::sort[]
-=== Sort Mechanism
+=== Sort mechanism
 
 `SortCommand` sorts the `person` in Contags based on their `Name`, `Phone`, `Email`, `Address` or `Tag`. The implementation of `SortCommand` inherits from `Command`. Sorting currently works in ascending order only. +
 
@@ -555,6 +555,14 @@ There is also the use of the `SortCommandParser` class, which implements the `Pa
 
 [NOTE]
 If you entered arguments that do not follow the required format, `ParseException` will be thrown. +
+
+The following sequence diagram _(Figure 4.6a)_ illustrates the execution of the `sort` command in Contags.
+
+image::SortCommandSequenceDiagram.png[width="800"]
+
+_Figure 4.6a : Sort Command sequence diagram_
+
+`SortCommand` links the logic in Contags to the model that is displayed in the main window.
 
 ==== Design Considerations
 
@@ -964,6 +972,10 @@ Use case ends.
 *Extensions*
 
 [none]
+* 1a. The given keyword is invalid.
++
+** 1a1. Contags informs user that keyword entered is not valid.
++
 * 2a. The list is empty.
 +
 Use case ends.
