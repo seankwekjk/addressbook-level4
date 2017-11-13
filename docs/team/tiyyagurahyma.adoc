@@ -155,3 +155,7 @@ include::../DeveloperGuide.adoc[tag=schedule]
 * Enhanced find command to find by tags (Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/111[#111])
 * Wrote manual testing scripts (TestScript.adoc and SampleData.xml) (Pull requests https://github.com/CS2103AUG2017-T16-B4/main/pull/137[#137], https://github.com/CS2103AUG2017-T16-B4/main/pull/123[#123])
 * Wrote glossary and product survey in developer guide (Pull requests https://github.com/CS2103AUG2017-T16-B4/main/pull/3[#3], https://github.com/CS2103AUG2017-T16-B4/main/pull/61[#61])
+
+===== Offered feature for reuse
+
+Offered listbirthday command feature for reuse and it was reused by https://github.com/wynkheng[Wyn K Heng]. See the corresponding issue https://github.com/nus-cs2103-AY1718S1/forum/issues/223[here].
