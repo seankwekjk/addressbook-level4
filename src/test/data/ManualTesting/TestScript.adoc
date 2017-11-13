@@ -121,7 +121,7 @@ The browser panel on top of the CLI should display the google maps page of the c
 To view the social media page of a contact instead of the google map page of their address, type: +
 • `toggle` +
 • `t` (t is the alias for toggle) +
-The browser panel on top of the CLI should display the contact's social media page.
+The browser panel on top of the CLI should display the contact's social media page if one has been added.
 
 To switch back to the google maps page, type: +
 • `toggle` `t` +
