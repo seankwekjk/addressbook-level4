@@ -4,7 +4,13 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :stylesDir: ../stylesheets
 
 == Project: Contags
-Contags is a desktop address book application that is targeted at business professionals. Contags, developed by Team CS2103-T16-B4, is an enhancement and further development of [https://github.com/se-edu/addressbook-level4[AddressBook - Level 4]], created by team SE-EDU as part of the module 2103, offered by the School of Computing in National University of Singapore. The user interacts with Contags primarily using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+Contags is a desktop address book application that is targeted at business professionals.
+
+Contags, developed by Team CS2103-T16-B4, is an enhancement and further development of https://github.com/se-edu/addressbook-level4[AddressBook - Level 4], created by team SE-EDU as part of the module 2103, offered by the School of Computing in National University of Singapore. The user interacts with Contags primarily using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+
+Contags is a desktop address book application that is tailored to the needs of business professionals. The three main aspects of Contags that make it apt for business professionals are the ease of storing and organising large numbers of contacts, efficient integrated communication and ease of maintaining business relationships.
+
+The following project portfolio describes the enhancements that I have contributed to Contags.
 
 *Code contributed*: [https://github.com/CS2103AUG2017-T16-B4/main/blob/master/collated/main/hymss.md[Functional code]] [https://github.com/CS2103AUG2017-T16-B4/main/blob/master/collated/test/hymss.md[Test code]]
 
@@ -125,14 +131,6 @@ include::../DeveloperGuide.adoc[tag=glossary]
 ---
 
 include::../DeveloperGuide.adoc[tag=productSurvey]
-
----
-
-=== Enhancement Proposed: Add command `schedule`
-
----
-
-A schedule feature would allow users to create events such as meetings or dinner with other contacts.
 
 ---
 
