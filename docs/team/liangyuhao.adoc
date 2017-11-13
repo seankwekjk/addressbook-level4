@@ -41,25 +41,46 @@ include::../DeveloperGuide.adoc[tag=sort]
 
 ---
 
-=== Enhancement added: Coloured Tags
+=== Enhancement added: Tag colors
 
 ==== External behavior
 
 ---
 #Start of Extract [from: User Guide]#
 
-include::../UserGuide.adoc[tag=sort]
+include::../UserGuide.adoc[tag=tagcolor]
 
 #End of Extract#
 
 ---
 
 ==== Justification
+The inclusion of tag colors for each unique tag allows users to differentiate easily between different tags at a glance, without
+having to look through the list or using the `find` or `sort` command to search tags. Colors also allow for better memory retention of specific groups
+to help increase the productivity of users when organising and looking thorugh their contacts.
 
+Currently, the tag colors are a predefined string of colors, which can be seen in the code snippet in the implementation section.
 
-=== Enhancement Proposed: Add command `remark`
+==== Implementation
 
-{Explain similar to the Undo/Redo feature above.}
+---
+#Start of Extract [from: Developer Guide]#
+
+include::../DeveloperGuide.adoc[tag=tagcolor]
+
+#End of Extract#
+
+---
+=== Enhancement Proposed: Add command `change`
+
+A `change` feature which allows users to change the color of each unique tag in their contacts list to the color of the choice.
+
+---
+#Start of Extract [from: User Guide]#
+
+include::../UserGuide.adoc[tag=change]
+
+#End of Extract#
 
 === Other contributions
 
@@ -67,3 +88,5 @@ include::../UserGuide.adoc[tag=sort]
 (Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/39[#39])
 * Updated Appendix C: Non Functional Requirements. +
 (Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/34[#34])
+* Updated Appendix E: Product Survey - included Microsoft People App. +
+(Pull request https://github.com/CS2103AUG2017-T16-B4/main/pull/73[#73])
