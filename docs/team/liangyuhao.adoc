@@ -71,9 +71,9 @@ include::../UserGuide.adoc[tag=tagcolor]
 ---
 
 ==== Justification
-The inclusion of tag colors for each unique tag allows users to differentiate easily between different tags at a glance, without
+The inclusion of tag colors for each unique tag allows you to differentiate easily between different tags at a glance, without
 having to look through the list or using the `find` or `sort` command to search tags. Colors also allow for better memory retention of specific groups
-to help increase the productivity of users when organising and looking thorugh their contacts.
+to help increase your productivity when organising and looking through your contacts.
 
 Currently, the tag colors are a predefined string of colors, which can be seen in the code snippet in the implementation section.
 
@@ -90,7 +90,7 @@ include::../DeveloperGuide.adoc[tag=tagcolor]
 
 === Enhancement Proposed: Add command `change`
 
-A `change` feature which allows users to change the color of each unique tag in their contacts list to the color of the choice.
+A `change` feature which allows you to change the color of each unique tag in your contacts list to the color of your choice.
 
 ---
 #Start of Extract [from: User Guide]#
@@ -103,9 +103,9 @@ include::../UserGuide.adoc[tag=change]
 
 ==== Justification
 
-Letting users change the tag color to the color of their choice will make the application more user-friendly and customisable
-for the user. Setting the color of each tag also allows them to sort their tags in their own way which lets them better use the colors
-as another form of organisation.
+Letting you change the tag color to the color of your choice will make the application more user-friendly and customisable.
+Setting the color of each tag also allows you to sort the tags in your own way which in turn, allows you to better use the colors
+as another form of organisation within the application.
 
 ---
 
