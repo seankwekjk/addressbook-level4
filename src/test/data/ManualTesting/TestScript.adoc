@@ -6,109 +6,117 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 == Manual Testing Script
 
 To load the sample data in the address book,
+1. In the same folder as the downloaded `Contags.jar` file, create a folder named `data`.
+2. Move `SampleData.xml` (from src/test/data/ManualTesting) to the data folder and rename it as `addressbook.xml`.
+3. Open the `Contags.jar` file.
++
+The application should be loaded with the sample data.
 
 For all the commands, we have an autocomplete function where you can select which command you want to type by using the up and down arrows to navigate the list of suggested commands and clicking 'Enter'. To exit the autocomplete list, simply press 'tab'.
 
-=== Basic commands
+=== 1. Basic commands
 
-===== Adding a contact:
+===== 1.1 Add Command:
 
 • You can use the autocomplete function to select: a n/ p/ e/ a/ b/ s/ r/ t/
 • To add a contact, type in: `add n/Ernest Choo p/97121212 e/ernest@example.com a/117B HillCrest Road b/10/05/1995 t/friend`
 • You can also type the alias for add which is a: `a n/Rachel Ang p/98769877 e/rachelang@example.com a/11 Kent Ridge Drive b/04/07/1997 t/friend`
 • The tag field is optional, so you can type: `add n/Ian Koh p/97890657 e/ian@example.com a/31 Lorong Chuan b/11/07/1997`
 
-===== Editing contacts:
+===== 1.2 Edit Command:
++
+• `edit 1 n/John Yong` +
+• `edit 2 p/91238888` +
+• `edit 3 e/damithrajapakse@example.com` +
+• `edit 4 a/Choa Chu Kang Street 51` +
+• `edit 5 b/08/11/1996` +
+• `edit 6 t/friend` +
 
-• `edit 1 n/John Yong`
-• `edit 2 p/91238888`
-• `edit 3 e/damithrajapakse@example.com`
-• `edit 4 a/Choa Chu Kang Street 51`
-• `edit 5 b/08/11/1996`
-• `edit 6 t/friend`
-
-You can also type the alias for edit which is e:
+You can also type the alias for edit which is e: +
 • `e 1 n/John Yeo`
 
-You can also edit more than one field at once:
+You can also edit more than one field at once: +
 • `edit 1 b/13/02/1976 t/friends`
 
-To add a remark to a contact, type:
+To add a remark to a contact, type: +
 • `edit 7 r/Owes Money`
 
-To remove a tag from a contact, type:
+To remove a tag from a contact, type: +
 • `edit 8 t/`
 
-===== Viewing command history:
+===== 1.3 History Command
 
 • `history` `h`
 
-=== Organising Contacts
+=== 2. Organising Contacts
 
-===== Finding a contact:
+===== 2.1 Find Command
 
-To find a contact, type find followed by the field you want to find by.
-• `find John`
-• `find 91239123`
+To find a contact, type find followed by the field you want to find by. +
+• `find John` +
+• `find 91239123` +
 • `find colleagues`
 
-===== Sorting contact list
+===== 2.2 Sort Command
 
-To sort a list of contacts, type sort follows by the field you want to sort by.
-• `sort name`
-• `sort tags`
-• `sort address`
-• `sort phone`
-• `sort email`
-• `sort remark`
+To sort a list of contacts, type sort follows by the field you want to sort by. +
+• `sort name` +
+• `sort tags` +
+• `sort address` +
+• `sort phone` +
+• `sort email` +
+• `sort remark` +
 
-=== Viewing contacts whose birthday falls on the current date
+=== 3. Viewing contacts whose birthday falls on the current date
 
-Steps to follow before executing listbirthday command:
-1. Edit the birthday of the contact at index 3 to the current date.
-2. i.e. If the current date is 17/11/2017, type `edit 3 b/17/11/1970`
+===== 3.1 ListBirthday command
 
-To view the list of contacts whose birthday falls on the current date:
+Steps to follow before executing listbirthday command: +
+1. Edit the birthday of the contact at index 3 to the current date. +
+2. i.e. If the current date is 17/11/2017, type `edit 3 b/17/11/1970`.
+
+To view the list of contacts whose birthday falls on the current date: +
 • `listbirthday`
 
-=== Communication platforms
+=== 4. Communication platforms
 
-Steps to follow before executing mail command:
-1. Firstly, edit email address of the contact at index 1 to your own, preferably an email that is on your phone so that you can easily check if the mail command successfully works.
-2. i.e. Type `edit 1 e/youremail@example.com` (replace with your own email address).
-3. Ensure that the computer/laptop settings are configured such that there is a default mail of your choice (it can be the mail application on your desktop or it can be an email server on google chrome, etc).
-4. Also ensure that there is a working internet connection.
+===== 4.1 Mail Command
 
-To mail a contact, type mail followed by the index of the contact:
-• `mail 1`
-OR
+Steps to follow before executing mail command: +
+1. Firstly, edit email address of the contact at index 1 to your own, preferably an email that is on your phone so that you can easily check if the mail command successfully works. +
+2. i.e. Type `edit 1 e/youremail@example.com` (replace with your own email address). +
+3. Ensure that the computer/laptop settings are configured such that there is a default mail of your choice (it can be the mail application on your desktop or it can be an email server on google chrome, etc). +
+4. Also ensure that there is a working internet connection. +
+
+To mail a contact, type mail followed by the index of the contact: +
+• `mail 1` +
 • `m 1` (m is the alias for mail)
 
 You should be redirected to your preferred mail and the 'to' field of the message should be filled in with the email address at specified index 1 (i.e. it should be your email address that you just keyed in). You can then fill in the subject and message fields manually and click send. You should receive the email on your phone (if the email address you specified earlier is on your phone).
 
 ---
 
-Steps to follow before executing sms command:
-1. Firstly, authenticate the phone number of the contact at index 1 to your own phone number.
+===== 4.2 SMS Command
+
+Steps to follow before executing sms command: +
+1. Firstly, authenticate the phone number of the contact at index 1 to your own phone number. +
 2. Ensure that there is a working internet connection.
 
-To SMS a contact, type sms followed by the index of the contact and the message.
+To SMS a contact, type sms followed by the index of the contact and the message. +
 • `sms 1 message/hi do you want to meet for dinner?`
 
-=== Web-Based Features
+=== 5. Web-Based Features
 
-To see a contact's address on google maps, type select followed by the index:
-• `select 1`
-OR
-• `s 1` (s is the alias for select)
+To see a contact's address on google maps, type select followed by the index: +
+• `select 1` +
+• `s 1` (s is the alias for select) +
 The browser panel on top of the CLI should display the google maps page of the contact's address.
 
-To view the social media page of a contact instead of the google map page of their address, type:
-• `toggle`
-OR
-• `t` (t is the alias for toggle)
+To view the social media page of a contact instead of the google map page of their address, type: +
+• `toggle` +
+• `t` (t is the alias for toggle) +
 The browser panel on top of the CLI should display the contact's social media page.
 
-To switch back to the google maps page, type:
-• `toggle` `t`
+To switch back to the google maps page, type: +
+• `toggle` `t` +
 The browser panel on top of the CLI should refresh to show the google maps page.
